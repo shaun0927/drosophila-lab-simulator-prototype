@@ -160,7 +160,15 @@ public class PrototypeGame : MonoBehaviour
     {
         GUILayout.Label("<b>Step 1 — Select 3 traits</b>\nPI: “Make the flies do something weird. Then make it look rigorous.”\n\nGoal: discover one abnormal behavior, gather evidence, frame the figure, and submit before midnight.", bodyStyle);
         GUILayout.Label($"Selected traits: {selected.Count}/3  " + (selected.Count == 0 ? "[empty] [empty] [empty]" : string.Join("  |  ", selected.Select(t => t.Name))), subtitleStyle);
-        GUILayout.Label("Prototype shortcut: selecting the 3rd trait immediately creates the mutant line.", smallStyle);
+        if (selected.Count == 3)
+        {
+            if (GUILayout.Button("CREATE MUTANT LINE → DISCOVER BEHAVIOR\nPossible behavior: ???", selectedButtonStyle, GUILayout.Height(62)))
+                CreateMutantLine();
+        }
+        else
+        {
+            GUILayout.Label($"Select {3 - selected.Count} more trait(s) to unlock mutant creation.", smallStyle);
+        }
         GUILayout.Space(6);
 
         for (int row = 0; row < 3; row++)
@@ -292,10 +300,6 @@ public class PrototypeGame : MonoBehaviour
         {
             selected.Add(trait);
             AddLog("Trait selected: " + trait.Name + ".");
-            if (selected.Count == 3)
-            {
-                CreateMutantLine();
-            }
         }
     }
 

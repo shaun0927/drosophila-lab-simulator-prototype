@@ -1,22 +1,31 @@
 # Drosophila Lab Simulator: Publish or Perish
 
-A Unity WebGL vertical-slice prototype for an OpenAI Game Builders Seoul competition concept.
+A browser prototype repo for exploring a competition concept: engineer absurd Drosophila neural traits, discover bizarre behavior, package it as a suspiciously publishable figure, survive Reviewer #2, and submit before midnight.
 
-## One-sentence pitch
+## Current playable links
 
-Engineer absurd Drosophila neural traits, discover a bizarre behavior, package it as a suspiciously publishable figure, survive Reviewer #2, and submit before midnight.
+- Main stable prototype: https://shaun0927.github.io/drosophila-lab-simulator-prototype/
+- 15-loop playtest index: https://shaun0927.github.io/drosophila-lab-simulator-prototype/micro-prototypes/
 
-## Prototype scope
+## 15 core loop micro-prototypes
 
-This repository intentionally implements a small competition slice, not the full Steam-scale simulator:
+These are intentionally tiny playable loop tests. The goal is not polish; the goal is to decide which fun engine is worth developing into the competition build.
 
-- choose 3 neural/behavioral trait cards
-- create one mutant line
-- discover one behavior phenomenon
-- run optional assays to adjust Evidence/Credibility/Hype/Suspicion
-- frame the figure with conservative or sensational claims
-- respond to one Reviewer #2 attack
-- submit and receive an ending
+1. [Discover & Publish](https://shaun0927.github.io/drosophila-lab-simulator-prototype/micro-prototypes/prototype.html?id=01-discover-publish)
+2. [Phenomenon Catalog Collector](https://shaun0927.github.io/drosophila-lab-simulator-prototype/micro-prototypes/prototype.html?id=02-phenomenon-catalog)
+3. [Reviewer Boss Battle](https://shaun0927.github.io/drosophila-lab-simulator-prototype/micro-prototypes/prototype.html?id=03-reviewer-battle)
+4. [Figure Framing Puzzle](https://shaun0927.github.io/drosophila-lab-simulator-prototype/micro-prototypes/prototype.html?id=04-figure-framing)
+5. [Fly Behavior Spread](https://shaun0927.github.io/drosophila-lab-simulator-prototype/micro-prototypes/prototype.html?id=05-fly-spread)
+6. [Lab Disaster Survival](https://shaun0927.github.io/drosophila-lab-simulator-prototype/micro-prototypes/prototype.html?id=06-lab-disaster)
+7. [Mutant Behavior Sandbox](https://shaun0927.github.io/drosophila-lab-simulator-prototype/micro-prototypes/prototype.html?id=07-mutant-sandbox)
+8. [Grant Hype Economy](https://shaun0927.github.io/drosophila-lab-simulator-prototype/micro-prototypes/prototype.html?id=08-grant-hype)
+9. [Publish-or-Perish Roguelite](https://shaun0927.github.io/drosophila-lab-simulator-prototype/micro-prototypes/prototype.html?id=09-roguelite-run)
+10. [Fly Stock Deckbuilder](https://shaun0927.github.io/drosophila-lab-simulator-prototype/micro-prototypes/prototype.html?id=10-stock-deckbuilder)
+11. [Reviewer Roulette](https://shaun0927.github.io/drosophila-lab-simulator-prototype/micro-prototypes/prototype.html?id=11-reviewer-roulette)
+12. [Lab Automation Puzzle](https://shaun0927.github.io/drosophila-lab-simulator-prototype/micro-prototypes/prototype.html?id=12-lab-automation)
+13. [PI Email Simulator](https://shaun0927.github.io/drosophila-lab-simulator-prototype/micro-prototypes/prototype.html?id=13-pi-email)
+14. [Behavior Assay Arcade](https://shaun0927.github.io/drosophila-lab-simulator-prototype/micro-prototypes/prototype.html?id=14-assay-arcade)
+15. [Scientific Claim Tuning](https://shaun0927.github.io/drosophila-lab-simulator-prototype/micro-prototypes/prototype.html?id=15-claim-tuning)
 
 ## Core tension
 
@@ -24,27 +33,14 @@ This repository intentionally implements a small competition slice, not the full
 
 The player repeatedly chooses whether to make the phenomenon more believable or more sensational before the deadline.
 
-## Build
-
-Unity version verified locally: `6000.3.20f1`.
-
-Open this folder in Unity, then build for WebGL. The project includes an editor build script:
-
-```bash
-/Applications/Unity/Hub/Editor/6000.3.20f1/Unity.app/Contents/MacOS/Unity \
-  -batchmode -quit \
-  -projectPath /path/to/drosophila-lab-simulator-prototype \
-  -executeMethod BuildScript.BuildWebGL
-```
-
-Output path: `Builds/WebGLDeploy`.
-
 ## Design docs
 
 - `docs/00-competition-scope.md`
 - `docs/01-core-fun-loop-paper-design.md`
 - `docs/design-verdict.md`
+- `dogfood-output/web-prototype-qa.md`
+- `micro-prototypes/README.md`
 
-## Status
+## Unity note
 
-Playable prototype scaffold created by Hermes Agent. Intended as a foundation for the competition vertical slice.
+Unity version verified locally: `6000.3.20f1`. A Unity WebGL scaffold remains in the repo, but current fun-loop exploration is intentionally browser-native for faster QA and iteration.

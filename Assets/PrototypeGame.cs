@@ -181,6 +181,15 @@ public class PrototypeGame : MonoBehaviour
     {
         GUILayout.Label("<b>Step 1 — Select 3 traits</b>\nPI: “Make the flies do something weird. Then make it look rigorous.”\n\nGoal: discover one abnormal behavior, gather evidence, frame the figure, and submit before midnight.", bodyStyle);
         GUILayout.Label($"Selected traits: {selected.Count}/3  " + (selected.Count == 0 ? "[empty] [empty] [empty]" : string.Join("  |  ", selected.Select(t => t.Name))), subtitleStyle);
+        if (GUILayout.Button("START RECOMMENDED FIRST RUN\nBlue Light + Hyperactive + Social Bias", selectedButtonStyle, GUILayout.Height(54)))
+        {
+            selected.Clear();
+            selected.Add(traits.First(t => t.Name == "Blue Light Switch"));
+            selected.Add(traits.First(t => t.Name == "Hyperactive Motor Circuit"));
+            selected.Add(traits.First(t => t.Name == "Social Bias"));
+            AddLog("Recommended first-run combo selected.");
+            CreateMutantLine();
+        }
         if (selected.Count == 3)
         {
             if (GUILayout.Button("CREATE MUTANT LINE → DISCOVER BEHAVIOR\nPossible behavior: ???", selectedButtonStyle, GUILayout.Height(62)))

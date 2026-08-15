@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -59,6 +60,23 @@ public class PrototypeGame : MonoBehaviour
     {
         SeedData();
         AddLog("PI: We need a publishable behavior by midnight. Make the flies do something weird. Then make it look rigorous.");
+    }
+
+    void Start()
+    {
+        StartCoroutine(AutoDemo());
+    }
+
+    IEnumerator AutoDemo()
+    {
+        yield return new WaitForSeconds(1.5f);
+        if (phase != Phase.TraitSelection || selected.Count > 0) yield break;
+        selected.Clear();
+        selected.Add(traits.First(t => t.Name == "Blue Light Switch"));
+        selected.Add(traits.First(t => t.Name == "Hyperactive Motor Circuit"));
+        selected.Add(traits.First(t => t.Name == "Social Bias"));
+        AddLog("Auto-demo selected the recommended first-run combo.");
+        CreateMutantLine();
     }
 
     void EnsureStyles()

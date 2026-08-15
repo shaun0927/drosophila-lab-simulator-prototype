@@ -37,7 +37,7 @@ Open this folder in Unity, then build for WebGL. The project includes an editor 
   -executeMethod BuildScript.BuildWebGL
 ```
 
-Output path: `Builds/WebGL`.
+Output path: `Builds/WebGLDeploy`.
 
 ## Design docs
 

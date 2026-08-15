@@ -10,7 +10,7 @@ public static class BuildScript
         var options = new BuildPlayerOptions
         {
             scenes = scenes,
-            locationPathName = "Builds/WebGL",
+            locationPathName = "Builds/WebGLDeploy",
             target = BuildTarget.WebGL,
             options = BuildOptions.None
         };

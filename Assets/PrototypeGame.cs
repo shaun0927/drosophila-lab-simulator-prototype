@@ -85,6 +85,27 @@ public class PrototypeGame : MonoBehaviour
 
     void OnGUI()
     {
+        try
+        {
+            OnGUIImpl();
+        }
+        catch (Exception ex)
+        {
+            if (whiteTex == null)
+            {
+                whiteTex = new Texture2D(1, 1);
+                whiteTex.SetPixel(0, 0, Color.white);
+                whiteTex.Apply();
+            }
+            GUI.color = new Color(.08f, .02f, .02f, 1);
+            GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), whiteTex);
+            GUI.color = Color.white;
+            GUI.Label(new Rect(30, 30, Screen.width - 60, Screen.height - 60), "Prototype UI exception:\n" + ex);
+        }
+    }
+
+    void OnGUIImpl()
+    {
         EnsureStyles();
         DrawBackground();
 

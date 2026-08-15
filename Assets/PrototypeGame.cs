@@ -158,20 +158,31 @@ public class PrototypeGame : MonoBehaviour
 
     void DrawTraitSelection()
     {
-        GUILayout.Label("<b>PI:</b> “We need a publishable behavior by midnight. Make the flies do something weird. Then make it look rigorous.”\n\nChoose 3 neural/behavioral traits to engineer a fly line. First-run hint: Blue Light + Hyperactive + Social Bias creates a very visible phenomenon.\n", bodyStyle);
-        GUILayout.Label("Selected: " + (selected.Count == 0 ? "none" : string.Join(", ", selected.Select(t => t.Name))), subtitleStyle);
-        traitScroll = GUILayout.BeginScrollView(traitScroll);
-        foreach (var trait in traits)
+        GUILayout.Label("<b>Step 1 — Select 3 traits</b>\nPI: “Make the flies do something weird. Then make it look rigorous.”\n\nGoal: discover one abnormal behavior, gather evidence, frame the figure, and submit before midnight.", bodyStyle);
+        GUILayout.Label($"Selected traits: {selected.Count}/3  " + (selected.Count == 0 ? "[empty] [empty] [empty]" : string.Join("  |  ", selected.Select(t => t.Name))), subtitleStyle);
+        GUILayout.Space(6);
+
+        for (int row = 0; row < 3; row++)
         {
-            bool isSelected = selected.Contains(trait);
-            var old = GUI.skin.button;
-            if (GUILayout.Button((isSelected ? "✓ " : "") + trait.Name + "\n" + trait.Flavor, isSelected ? selectedButtonStyle : buttonStyle, GUILayout.MinHeight(50)))
-                ToggleTrait(trait);
+            GUILayout.BeginHorizontal();
+            for (int col = 0; col < 3; col++)
+            {
+                int idx = row * 3 + col;
+                var trait = traits[idx];
+                bool isSelected = selected.Contains(trait);
+                string label = (isSelected ? "✓ " : "+ ") + trait.Name + "\n" + trait.Flavor;
+                if (GUILayout.Button(label, isSelected ? selectedButtonStyle : buttonStyle, GUILayout.Height(58), GUILayout.ExpandWidth(true)))
+                    ToggleTrait(trait);
+            }
+            GUILayout.EndHorizontal();
         }
-        GUILayout.EndScrollView();
+
+        GUILayout.Space(8);
         GUI.enabled = selected.Count == 3;
-        if (BigButton("Create Mutant Line", "Possible behavior: ???")) CreateMutantLine();
+        string detail = selected.Count == 3 ? "Possible behavior: ???" : $"Select {3 - selected.Count} more trait(s) to unlock";
+        if (BigButton("Create Mutant Line", detail)) CreateMutantLine();
         GUI.enabled = true;
+        GUILayout.Label("First-run suggestion: Blue Light Switch + Hyperactive Motor Circuit + Social Bias.", smallStyle);
     }
 
     void DrawDiscovery()

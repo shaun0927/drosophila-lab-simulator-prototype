@@ -1,0 +1,30 @@
+# Unity generated
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/*
+![Bb]uilds/WebGL/
+![Bb]uilds/WebGL/**
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+[Mm]emoryCaptures/
+Recordings/
+
+# OS / IDE
+.DS_Store
+.vscode/
+.idea/
+*.csproj
+*.sln
+*.user
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# Unity crash reports
+sysinfo.txt

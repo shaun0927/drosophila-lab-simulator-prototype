@@ -1,0 +1,6602 @@
+[
+  {
+    "id": "001-discover-&-publish",
+    "n": 1,
+    "name": "Discover & Publish",
+    "axis": "Discovery",
+    "hook": "midnight deadline 상황에서 reveal an unknown fly behavior하는 2분 루프.",
+    "motive": "Curiosity: 플레이어가 reveal an unknown fly behavior하면서 try another trait combination고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 try another trait combination고 싶은가?",
+    "phenomenon": "Swarm Dance",
+    "setting": "midnight deadline",
+    "a": {
+      "label": "Engineer carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Engineer aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the midnight deadline",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "002-phenomenon-catalog-collector",
+    "n": 2,
+    "name": "Phenomenon Catalog Collector",
+    "axis": "Catalog",
+    "hook": "ethics audit 상황에서 fill a hidden phenomenon catalog하는 2분 루프.",
+    "motive": "Collection: 플레이어가 fill a hidden phenomenon catalog하면서 unlock one more ??? slot고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 unlock one more ??? slot고 싶은가?",
+    "phenomenon": "Wall Parade",
+    "setting": "ethics audit",
+    "a": {
+      "label": "Engineer carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Engineer aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the ethics audit",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "003-reviewer-boss-battle",
+    "n": 3,
+    "name": "Reviewer Boss Battle",
+    "axis": "Reviewer",
+    "hook": "midnight deadline 상황에서 counter Reviewer #2 attacks하는 2분 루프.",
+    "motive": "Competence: 플레이어가 counter Reviewer #2 attacks하면서 solve a smarter rebuttal고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 solve a smarter rebuttal고 싶은가?",
+    "phenomenon": "Grant Panic",
+    "setting": "midnight deadline",
+    "a": {
+      "label": "Engineer carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Engineer aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the midnight deadline",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "004-figure-framing-puzzle",
+    "n": 4,
+    "name": "Figure Framing Puzzle",
+    "axis": "Figure",
+    "hook": "ethics audit 상황에서 frame ambiguous data into a claim하는 2분 루프.",
+    "motive": "Autonomy: 플레이어가 frame ambiguous data into a claim하면서 try a different scientific identity고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 try a different scientific identity고 싶은가?",
+    "phenomenon": "Lab Myth",
+    "setting": "ethics audit",
+    "a": {
+      "label": "Engineer carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Engineer aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the ethics audit",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "005-fly-behavior-spread",
+    "n": 5,
+    "name": "Fly Behavior Spread",
+    "axis": "Spread",
+    "hook": "midnight deadline 상황에서 watch behavior/hype spread outward하는 2분 루프.",
+    "motive": "Power fantasy: 플레이어가 watch behavior/hype spread outward하면서 make a bigger systemic reaction고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 make a bigger systemic reaction고 싶은가?",
+    "phenomenon": "Courtship Disaster",
+    "setting": "midnight deadline",
+    "a": {
+      "label": "Engineer carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Engineer aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the midnight deadline",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "006-lab-disaster-survival",
+    "n": 6,
+    "name": "Lab Disaster Survival",
+    "axis": "Survival",
+    "hook": "ethics audit 상황에서 survive lab disasters before deadline하는 2분 루프.",
+    "motive": "Tension/recovery: 플레이어가 survive lab disasters before deadline하면서 recover from a different disaster고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 recover from a different disaster고 싶은가?",
+    "phenomenon": "Reviewer Trap",
+    "setting": "ethics audit",
+    "a": {
+      "label": "Engineer carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Engineer aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the ethics audit",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "007-mutant-behavior-sandbox",
+    "n": 7,
+    "name": "Mutant Behavior Sandbox",
+    "axis": "Sandbox",
+    "hook": "midnight deadline 상황에서 poke the assay chamber and observe weird motion하는 2분 루프.",
+    "motive": "Toy curiosity: 플레이어가 poke the assay chamber and observe weird motion하면서 press another stimulus고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 press another stimulus고 싶은가?",
+    "phenomenon": "Data Ghost",
+    "setting": "midnight deadline",
+    "a": {
+      "label": "Engineer carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Engineer aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the midnight deadline",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "008-grant-hype-economy",
+    "n": 8,
+    "name": "Grant Hype Economy",
+    "axis": "Economy",
+    "hook": "ethics audit 상황에서 trade credibility for funding and reach하는 2분 루프.",
+    "motive": "Greed/risk: 플레이어가 trade credibility for funding and reach하면서 risk a larger grant promise고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 risk a larger grant promise고 싶은가?",
+    "phenomenon": "Courtship Disaster",
+    "setting": "ethics audit",
+    "a": {
+      "label": "Engineer carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Engineer aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the ethics audit",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "009-publish-or-perish-roguelite",
+    "n": 9,
+    "name": "Publish-or-Perish Roguelite",
+    "axis": "Roguelite",
+    "hook": "midnight deadline 상황에서 adapt to a random paper-run modifier하는 2분 루프.",
+    "motive": "Replay/mastery: 플레이어가 adapt to a random paper-run modifier하면서 reroll and build differently고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 reroll and build differently고 싶은가?",
+    "phenomenon": "Reviewer Trap",
+    "setting": "midnight deadline",
+    "a": {
+      "label": "Engineer carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Engineer aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the midnight deadline",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "010-fly-stock-deckbuilder",
+    "n": 10,
+    "name": "Fly Stock Deckbuilder",
+    "axis": "Deck",
+    "hook": "ethics audit 상황에서 draft stock/protocol/reviewer cards하는 2분 루프.",
+    "motive": "Synergy mastery: 플레이어가 draft stock/protocol/reviewer cards하면서 find a stronger combo고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 find a stronger combo고 싶은가?",
+    "phenomenon": "Data Ghost",
+    "setting": "ethics audit",
+    "a": {
+      "label": "Engineer carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Engineer aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the ethics audit",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "011-reviewer-roulette",
+    "n": 11,
+    "name": "Reviewer Roulette",
+    "axis": "Roulette",
+    "hook": "midnight deadline 상황에서 submit before knowing the reviewer attack하는 2분 루프.",
+    "motive": "Risk anticipation: 플레이어가 submit before knowing the reviewer attack하면서 push a stronger claim고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 push a stronger claim고 싶은가?",
+    "phenomenon": "False Memory",
+    "setting": "midnight deadline",
+    "a": {
+      "label": "Engineer carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Engineer aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the midnight deadline",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "012-lab-automation-puzzle",
+    "n": 12,
+    "name": "Lab Automation Puzzle",
+    "axis": "Automation",
+    "hook": "replication race 상황에서 remove bottlenecks from a lab pipeline하는 2분 루프.",
+    "motive": "Optimization: 플레이어가 remove bottlenecks from a lab pipeline하면서 optimize the next bottleneck고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 optimize the next bottleneck고 싶은가?",
+    "phenomenon": "Foraging Spiral",
+    "setting": "replication race",
+    "a": {
+      "label": "Engineer carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Engineer aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the replication race",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "013-pi-email-simulator",
+    "n": 13,
+    "name": "PI Email Simulator",
+    "axis": "Email",
+    "hook": "angry PI email 상황에서 choose who to disappoint in lab politics하는 2분 루프.",
+    "motive": "Social pressure: 플레이어가 choose who to disappoint in lab politics하면서 triage a different message first고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 triage a different message first고 싶은가?",
+    "phenomenon": "Fly Riot",
+    "setting": "angry PI email",
+    "a": {
+      "label": "Engineer carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Engineer aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the angry PI email",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "014-behavior-assay-arcade",
+    "n": 14,
+    "name": "Behavior Assay Arcade",
+    "axis": "Arcade",
+    "hook": "replication race 상황에서 use timing/attention to improve assay data하는 2분 루프.",
+    "motive": "Skill competence: 플레이어가 use timing/attention to improve assay data하면서 master a cleaner trace고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 master a cleaner trace고 싶은가?",
+    "phenomenon": "Swarm Dance",
+    "setting": "replication race",
+    "a": {
+      "label": "Engineer carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Engineer aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the replication race",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "015-scientific-claim-tuning",
+    "n": 15,
+    "name": "Scientific Claim Tuning",
+    "axis": "Claim",
+    "hook": "angry PI email 상황에서 tune claim strength between boring and scandal하는 2분 루프.",
+    "motive": "Tuning mastery: 플레이어가 tune claim strength between boring and scandal하면서 find the sweet spot고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 find the sweet spot고 싶은가?",
+    "phenomenon": "Foraging Spiral",
+    "setting": "angry PI email",
+    "a": {
+      "label": "Engineer carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Engineer aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the angry PI email",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "016-engineer-the-fly-riot",
+    "n": 16,
+    "name": "Engineer the Fly Riot",
+    "axis": "Ethics",
+    "hook": "replication race 상황에서 balance discovery against suspicious methods하는 2분 루프.",
+    "motive": "Moral tension: 플레이어가 balance discovery against suspicious methods하면서 choose a cleaner or darker path고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 choose a cleaner or darker path고 싶은가?",
+    "phenomenon": "Fly Riot",
+    "setting": "replication race",
+    "a": {
+      "label": "Engineer carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Engineer aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the replication race",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "017-engineer-the-swarm-dance",
+    "n": 17,
+    "name": "Engineer the Swarm Dance",
+    "axis": "Mentor",
+    "hook": "angry PI email 상황에서 manage PI/postdoc/student expectations하는 2분 루프.",
+    "motive": "Relatedness: 플레이어가 manage PI/postdoc/student expectations하면서 protect a different relationship고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 protect a different relationship고 싶은가?",
+    "phenomenon": "Swarm Dance",
+    "setting": "angry PI email",
+    "a": {
+      "label": "Engineer carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Engineer aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the angry PI email",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "018-engineer-the-wall-parade",
+    "n": 18,
+    "name": "Engineer the Wall Parade",
+    "axis": "World",
+    "hook": "replication race 상황에서 turn a tiny fly result into world response하는 2분 루프.",
+    "motive": "Macro anticipation: 플레이어가 turn a tiny fly result into world response하면서 see the next social ripple고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 see the next social ripple고 싶은가?",
+    "phenomenon": "Wall Parade",
+    "setting": "replication race",
+    "a": {
+      "label": "Engineer carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Engineer aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the replication race",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "019-engineer-the-grant-panic",
+    "n": 19,
+    "name": "Engineer the Grant Panic",
+    "axis": "Humor",
+    "hook": "angry PI email 상황에서 produce absurd lab stories하는 2분 루프.",
+    "motive": "Surprise/comedy: 플레이어가 produce absurd lab stories하면서 discover a funnier failure고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 discover a funnier failure고 싶은가?",
+    "phenomenon": "Grant Panic",
+    "setting": "angry PI email",
+    "a": {
+      "label": "Engineer carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Engineer aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the angry PI email",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "020-engineer-the-lab-myth",
+    "n": 20,
+    "name": "Engineer the Lab Myth",
+    "axis": "Craft",
+    "hook": "replication race 상황에서 assemble a satisfying final paper artifact하는 2분 루프.",
+    "motive": "Completion: 플레이어가 assemble a satisfying final paper artifact하면서 polish a cleaner final object고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 polish a cleaner final object고 싶은가?",
+    "phenomenon": "Lab Myth",
+    "setting": "replication race",
+    "a": {
+      "label": "Engineer carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Engineer aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the replication race",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "021-publish-the-courtship-disaster",
+    "n": 21,
+    "name": "Publish the Courtship Disaster",
+    "axis": "Discovery",
+    "hook": "angry PI email 상황에서 reveal an unknown fly behavior하는 2분 루프.",
+    "motive": "Curiosity: 플레이어가 reveal an unknown fly behavior하면서 try another trait combination고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 try another trait combination고 싶은가?",
+    "phenomenon": "Courtship Disaster",
+    "setting": "angry PI email",
+    "a": {
+      "label": "Publish carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Publish aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the angry PI email",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "022-publish-the-grant-panic",
+    "n": 22,
+    "name": "Publish the Grant Panic",
+    "axis": "Catalog",
+    "hook": "replication race 상황에서 fill a hidden phenomenon catalog하는 2분 루프.",
+    "motive": "Collection: 플레이어가 fill a hidden phenomenon catalog하면서 unlock one more ??? slot고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 unlock one more ??? slot고 싶은가?",
+    "phenomenon": "Grant Panic",
+    "setting": "replication race",
+    "a": {
+      "label": "Publish carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Publish aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the replication race",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "023-publish-the-lab-myth",
+    "n": 23,
+    "name": "Publish the Lab Myth",
+    "axis": "Reviewer",
+    "hook": "preprint storm 상황에서 counter Reviewer #2 attacks하는 2분 루프.",
+    "motive": "Competence: 플레이어가 counter Reviewer #2 attacks하면서 solve a smarter rebuttal고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 solve a smarter rebuttal고 싶은가?",
+    "phenomenon": "Lab Myth",
+    "setting": "preprint storm",
+    "a": {
+      "label": "Publish carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Publish aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the preprint storm",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "024-publish-the-courtship-disaster",
+    "n": 24,
+    "name": "Publish the Courtship Disaster",
+    "axis": "Figure",
+    "hook": "funding review 상황에서 frame ambiguous data into a claim하는 2분 루프.",
+    "motive": "Autonomy: 플레이어가 frame ambiguous data into a claim하면서 try a different scientific identity고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 try a different scientific identity고 싶은가?",
+    "phenomenon": "Courtship Disaster",
+    "setting": "funding review",
+    "a": {
+      "label": "Publish carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Publish aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the funding review",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "025-publish-the-reviewer-trap",
+    "n": 25,
+    "name": "Publish the Reviewer Trap",
+    "axis": "Spread",
+    "hook": "preprint storm 상황에서 watch behavior/hype spread outward하는 2분 루프.",
+    "motive": "Power fantasy: 플레이어가 watch behavior/hype spread outward하면서 make a bigger systemic reaction고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 make a bigger systemic reaction고 싶은가?",
+    "phenomenon": "Reviewer Trap",
+    "setting": "preprint storm",
+    "a": {
+      "label": "Publish carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Publish aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the preprint storm",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "026-publish-the-data-ghost",
+    "n": 26,
+    "name": "Publish the Data Ghost",
+    "axis": "Survival",
+    "hook": "funding review 상황에서 survive lab disasters before deadline하는 2분 루프.",
+    "motive": "Tension/recovery: 플레이어가 survive lab disasters before deadline하면서 recover from a different disaster고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 recover from a different disaster고 싶은가?",
+    "phenomenon": "Data Ghost",
+    "setting": "funding review",
+    "a": {
+      "label": "Publish carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Publish aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the funding review",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "027-publish-the-false-memory",
+    "n": 27,
+    "name": "Publish the False Memory",
+    "axis": "Sandbox",
+    "hook": "preprint storm 상황에서 poke the assay chamber and observe weird motion하는 2분 루프.",
+    "motive": "Toy curiosity: 플레이어가 poke the assay chamber and observe weird motion하면서 press another stimulus고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 press another stimulus고 싶은가?",
+    "phenomenon": "False Memory",
+    "setting": "preprint storm",
+    "a": {
+      "label": "Publish carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Publish aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the preprint storm",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "028-publish-the-foraging-spiral",
+    "n": 28,
+    "name": "Publish the Foraging Spiral",
+    "axis": "Economy",
+    "hook": "funding review 상황에서 trade credibility for funding and reach하는 2분 루프.",
+    "motive": "Greed/risk: 플레이어가 trade credibility for funding and reach하면서 risk a larger grant promise고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 risk a larger grant promise고 싶은가?",
+    "phenomenon": "Foraging Spiral",
+    "setting": "funding review",
+    "a": {
+      "label": "Publish carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Publish aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the funding review",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "029-publish-the-data-ghost",
+    "n": 29,
+    "name": "Publish the Data Ghost",
+    "axis": "Roguelite",
+    "hook": "preprint storm 상황에서 adapt to a random paper-run modifier하는 2분 루프.",
+    "motive": "Replay/mastery: 플레이어가 adapt to a random paper-run modifier하면서 reroll and build differently고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 reroll and build differently고 싶은가?",
+    "phenomenon": "Data Ghost",
+    "setting": "preprint storm",
+    "a": {
+      "label": "Publish carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Publish aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the preprint storm",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "030-publish-the-false-memory",
+    "n": 30,
+    "name": "Publish the False Memory",
+    "axis": "Deck",
+    "hook": "funding review 상황에서 draft stock/protocol/reviewer cards하는 2분 루프.",
+    "motive": "Synergy mastery: 플레이어가 draft stock/protocol/reviewer cards하면서 find a stronger combo고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 find a stronger combo고 싶은가?",
+    "phenomenon": "False Memory",
+    "setting": "funding review",
+    "a": {
+      "label": "Publish carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Publish aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the funding review",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "031-publish-the-foraging-spiral",
+    "n": 31,
+    "name": "Publish the Foraging Spiral",
+    "axis": "Roulette",
+    "hook": "preprint storm 상황에서 submit before knowing the reviewer attack하는 2분 루프.",
+    "motive": "Risk anticipation: 플레이어가 submit before knowing the reviewer attack하면서 push a stronger claim고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 push a stronger claim고 싶은가?",
+    "phenomenon": "Foraging Spiral",
+    "setting": "preprint storm",
+    "a": {
+      "label": "Publish carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Publish aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the preprint storm",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "032-publish-the-fly-riot",
+    "n": 32,
+    "name": "Publish the Fly Riot",
+    "axis": "Automation",
+    "hook": "funding review 상황에서 remove bottlenecks from a lab pipeline하는 2분 루프.",
+    "motive": "Optimization: 플레이어가 remove bottlenecks from a lab pipeline하면서 optimize the next bottleneck고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 optimize the next bottleneck고 싶은가?",
+    "phenomenon": "Fly Riot",
+    "setting": "funding review",
+    "a": {
+      "label": "Publish carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Publish aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the funding review",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "033-publish-the-swarm-dance",
+    "n": 33,
+    "name": "Publish the Swarm Dance",
+    "axis": "Email",
+    "hook": "preprint storm 상황에서 choose who to disappoint in lab politics하는 2분 루프.",
+    "motive": "Social pressure: 플레이어가 choose who to disappoint in lab politics하면서 triage a different message first고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 triage a different message first고 싶은가?",
+    "phenomenon": "Swarm Dance",
+    "setting": "preprint storm",
+    "a": {
+      "label": "Publish carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Publish aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the preprint storm",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "034-publish-the-wall-parade",
+    "n": 34,
+    "name": "Publish the Wall Parade",
+    "axis": "Arcade",
+    "hook": "stock-room collapse 상황에서 use timing/attention to improve assay data하는 2분 루프.",
+    "motive": "Skill competence: 플레이어가 use timing/attention to improve assay data하면서 master a cleaner trace고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 master a cleaner trace고 싶은가?",
+    "phenomenon": "Wall Parade",
+    "setting": "stock-room collapse",
+    "a": {
+      "label": "Publish carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Publish aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the stock-room collapse",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "035-publish-the-grant-panic",
+    "n": 35,
+    "name": "Publish the Grant Panic",
+    "axis": "Claim",
+    "hook": "broken incubator 상황에서 tune claim strength between boring and scandal하는 2분 루프.",
+    "motive": "Tuning mastery: 플레이어가 tune claim strength between boring and scandal하면서 find the sweet spot고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 find the sweet spot고 싶은가?",
+    "phenomenon": "Grant Panic",
+    "setting": "broken incubator",
+    "a": {
+      "label": "Publish carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Publish aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the broken incubator",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "036-publish-the-swarm-dance",
+    "n": 36,
+    "name": "Publish the Swarm Dance",
+    "axis": "Ethics",
+    "hook": "stock-room collapse 상황에서 balance discovery against suspicious methods하는 2분 루프.",
+    "motive": "Moral tension: 플레이어가 balance discovery against suspicious methods하면서 choose a cleaner or darker path고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 choose a cleaner or darker path고 싶은가?",
+    "phenomenon": "Swarm Dance",
+    "setting": "stock-room collapse",
+    "a": {
+      "label": "Publish carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Publish aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the stock-room collapse",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "037-publish-the-wall-parade",
+    "n": 37,
+    "name": "Publish the Wall Parade",
+    "axis": "Mentor",
+    "hook": "broken incubator 상황에서 manage PI/postdoc/student expectations하는 2분 루프.",
+    "motive": "Relatedness: 플레이어가 manage PI/postdoc/student expectations하면서 protect a different relationship고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 protect a different relationship고 싶은가?",
+    "phenomenon": "Wall Parade",
+    "setting": "broken incubator",
+    "a": {
+      "label": "Publish carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Publish aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the broken incubator",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "038-publish-the-grant-panic",
+    "n": 38,
+    "name": "Publish the Grant Panic",
+    "axis": "World",
+    "hook": "stock-room collapse 상황에서 turn a tiny fly result into world response하는 2분 루프.",
+    "motive": "Macro anticipation: 플레이어가 turn a tiny fly result into world response하면서 see the next social ripple고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 see the next social ripple고 싶은가?",
+    "phenomenon": "Grant Panic",
+    "setting": "stock-room collapse",
+    "a": {
+      "label": "Publish carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Publish aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the stock-room collapse",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "039-publish-the-lab-myth",
+    "n": 39,
+    "name": "Publish the Lab Myth",
+    "axis": "Humor",
+    "hook": "broken incubator 상황에서 produce absurd lab stories하는 2분 루프.",
+    "motive": "Surprise/comedy: 플레이어가 produce absurd lab stories하면서 discover a funnier failure고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 discover a funnier failure고 싶은가?",
+    "phenomenon": "Lab Myth",
+    "setting": "broken incubator",
+    "a": {
+      "label": "Publish carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Publish aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the broken incubator",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "040-publish-the-courtship-disaster",
+    "n": 40,
+    "name": "Publish the Courtship Disaster",
+    "axis": "Craft",
+    "hook": "stock-room collapse 상황에서 assemble a satisfying final paper artifact하는 2분 루프.",
+    "motive": "Completion: 플레이어가 assemble a satisfying final paper artifact하면서 polish a cleaner final object고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 polish a cleaner final object고 싶은가?",
+    "phenomenon": "Courtship Disaster",
+    "setting": "stock-room collapse",
+    "a": {
+      "label": "Publish carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Publish aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the stock-room collapse",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "041-defend-the-reviewer-trap",
+    "n": 41,
+    "name": "Defend the Reviewer Trap",
+    "axis": "Discovery",
+    "hook": "broken incubator 상황에서 reveal an unknown fly behavior하는 2분 루프.",
+    "motive": "Curiosity: 플레이어가 reveal an unknown fly behavior하면서 try another trait combination고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 try another trait combination고 싶은가?",
+    "phenomenon": "Reviewer Trap",
+    "setting": "broken incubator",
+    "a": {
+      "label": "Defend carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Defend aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the broken incubator",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "042-defend-the-data-ghost",
+    "n": 42,
+    "name": "Defend the Data Ghost",
+    "axis": "Catalog",
+    "hook": "stock-room collapse 상황에서 fill a hidden phenomenon catalog하는 2분 루프.",
+    "motive": "Collection: 플레이어가 fill a hidden phenomenon catalog하면서 unlock one more ??? slot고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 unlock one more ??? slot고 싶은가?",
+    "phenomenon": "Data Ghost",
+    "setting": "stock-room collapse",
+    "a": {
+      "label": "Defend carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Defend aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the stock-room collapse",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "043-defend-the-courtship-disaster",
+    "n": 43,
+    "name": "Defend the Courtship Disaster",
+    "axis": "Reviewer",
+    "hook": "broken incubator 상황에서 counter Reviewer #2 attacks하는 2분 루프.",
+    "motive": "Competence: 플레이어가 counter Reviewer #2 attacks하면서 solve a smarter rebuttal고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 solve a smarter rebuttal고 싶은가?",
+    "phenomenon": "Courtship Disaster",
+    "setting": "broken incubator",
+    "a": {
+      "label": "Defend carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Defend aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the broken incubator",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "044-defend-the-reviewer-trap",
+    "n": 44,
+    "name": "Defend the Reviewer Trap",
+    "axis": "Figure",
+    "hook": "stock-room collapse 상황에서 frame ambiguous data into a claim하는 2분 루프.",
+    "motive": "Autonomy: 플레이어가 frame ambiguous data into a claim하면서 try a different scientific identity고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 try a different scientific identity고 싶은가?",
+    "phenomenon": "Reviewer Trap",
+    "setting": "stock-room collapse",
+    "a": {
+      "label": "Defend carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Defend aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the stock-room collapse",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "045-defend-the-data-ghost",
+    "n": 45,
+    "name": "Defend the Data Ghost",
+    "axis": "Spread",
+    "hook": "conference demo 상황에서 watch behavior/hype spread outward하는 2분 루프.",
+    "motive": "Power fantasy: 플레이어가 watch behavior/hype spread outward하면서 make a bigger systemic reaction고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 make a bigger systemic reaction고 싶은가?",
+    "phenomenon": "Data Ghost",
+    "setting": "conference demo",
+    "a": {
+      "label": "Defend carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Defend aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the conference demo",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "046-defend-the-false-memory",
+    "n": 46,
+    "name": "Defend the False Memory",
+    "axis": "Survival",
+    "hook": "viral lab Slack 상황에서 survive lab disasters before deadline하는 2분 루프.",
+    "motive": "Tension/recovery: 플레이어가 survive lab disasters before deadline하면서 recover from a different disaster고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 recover from a different disaster고 싶은가?",
+    "phenomenon": "False Memory",
+    "setting": "viral lab Slack",
+    "a": {
+      "label": "Defend carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Defend aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the viral lab Slack",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "047-defend-the-foraging-spiral",
+    "n": 47,
+    "name": "Defend the Foraging Spiral",
+    "axis": "Sandbox",
+    "hook": "conference demo 상황에서 poke the assay chamber and observe weird motion하는 2분 루프.",
+    "motive": "Toy curiosity: 플레이어가 poke the assay chamber and observe weird motion하면서 press another stimulus고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 press another stimulus고 싶은가?",
+    "phenomenon": "Foraging Spiral",
+    "setting": "conference demo",
+    "a": {
+      "label": "Defend carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Defend aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the conference demo",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "048-defend-the-fly-riot",
+    "n": 48,
+    "name": "Defend the Fly Riot",
+    "axis": "Economy",
+    "hook": "viral lab Slack 상황에서 trade credibility for funding and reach하는 2분 루프.",
+    "motive": "Greed/risk: 플레이어가 trade credibility for funding and reach하면서 risk a larger grant promise고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 risk a larger grant promise고 싶은가?",
+    "phenomenon": "Fly Riot",
+    "setting": "viral lab Slack",
+    "a": {
+      "label": "Defend carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Defend aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the viral lab Slack",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "049-defend-the-swarm-dance",
+    "n": 49,
+    "name": "Defend the Swarm Dance",
+    "axis": "Roguelite",
+    "hook": "conference demo 상황에서 adapt to a random paper-run modifier하는 2분 루프.",
+    "motive": "Replay/mastery: 플레이어가 adapt to a random paper-run modifier하면서 reroll and build differently고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 reroll and build differently고 싶은가?",
+    "phenomenon": "Swarm Dance",
+    "setting": "conference demo",
+    "a": {
+      "label": "Defend carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Defend aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the conference demo",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "050-defend-the-foraging-spiral",
+    "n": 50,
+    "name": "Defend the Foraging Spiral",
+    "axis": "Deck",
+    "hook": "viral lab Slack 상황에서 draft stock/protocol/reviewer cards하는 2분 루프.",
+    "motive": "Synergy mastery: 플레이어가 draft stock/protocol/reviewer cards하면서 find a stronger combo고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 find a stronger combo고 싶은가?",
+    "phenomenon": "Foraging Spiral",
+    "setting": "viral lab Slack",
+    "a": {
+      "label": "Defend carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Defend aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the viral lab Slack",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "051-defend-the-fly-riot",
+    "n": 51,
+    "name": "Defend the Fly Riot",
+    "axis": "Roulette",
+    "hook": "conference demo 상황에서 submit before knowing the reviewer attack하는 2분 루프.",
+    "motive": "Risk anticipation: 플레이어가 submit before knowing the reviewer attack하면서 push a stronger claim고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 push a stronger claim고 싶은가?",
+    "phenomenon": "Fly Riot",
+    "setting": "conference demo",
+    "a": {
+      "label": "Defend carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Defend aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the conference demo",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "052-defend-the-swarm-dance",
+    "n": 52,
+    "name": "Defend the Swarm Dance",
+    "axis": "Automation",
+    "hook": "viral lab Slack 상황에서 remove bottlenecks from a lab pipeline하는 2분 루프.",
+    "motive": "Optimization: 플레이어가 remove bottlenecks from a lab pipeline하면서 optimize the next bottleneck고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 optimize the next bottleneck고 싶은가?",
+    "phenomenon": "Swarm Dance",
+    "setting": "viral lab Slack",
+    "a": {
+      "label": "Defend carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Defend aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the viral lab Slack",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "053-defend-the-wall-parade",
+    "n": 53,
+    "name": "Defend the Wall Parade",
+    "axis": "Email",
+    "hook": "conference demo 상황에서 choose who to disappoint in lab politics하는 2분 루프.",
+    "motive": "Social pressure: 플레이어가 choose who to disappoint in lab politics하면서 triage a different message first고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 triage a different message first고 싶은가?",
+    "phenomenon": "Wall Parade",
+    "setting": "conference demo",
+    "a": {
+      "label": "Defend carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Defend aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the conference demo",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "054-defend-the-grant-panic",
+    "n": 54,
+    "name": "Defend the Grant Panic",
+    "axis": "Arcade",
+    "hook": "viral lab Slack 상황에서 use timing/attention to improve assay data하는 2분 루프.",
+    "motive": "Skill competence: 플레이어가 use timing/attention to improve assay data하면서 master a cleaner trace고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 master a cleaner trace고 싶은가?",
+    "phenomenon": "Grant Panic",
+    "setting": "viral lab Slack",
+    "a": {
+      "label": "Defend carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Defend aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the viral lab Slack",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "055-defend-the-lab-myth",
+    "n": 55,
+    "name": "Defend the Lab Myth",
+    "axis": "Claim",
+    "hook": "conference demo 상황에서 tune claim strength between boring and scandal하는 2분 루프.",
+    "motive": "Tuning mastery: 플레이어가 tune claim strength between boring and scandal하면서 find the sweet spot고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 find the sweet spot고 싶은가?",
+    "phenomenon": "Lab Myth",
+    "setting": "conference demo",
+    "a": {
+      "label": "Defend carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Defend aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the conference demo",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "056-defend-the-courtship-disaster",
+    "n": 56,
+    "name": "Defend the Courtship Disaster",
+    "axis": "Ethics",
+    "hook": "midnight deadline 상황에서 balance discovery against suspicious methods하는 2분 루프.",
+    "motive": "Moral tension: 플레이어가 balance discovery against suspicious methods하면서 choose a cleaner or darker path고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 choose a cleaner or darker path고 싶은가?",
+    "phenomenon": "Courtship Disaster",
+    "setting": "midnight deadline",
+    "a": {
+      "label": "Defend carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Defend aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the midnight deadline",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "057-defend-the-grant-panic",
+    "n": 57,
+    "name": "Defend the Grant Panic",
+    "axis": "Mentor",
+    "hook": "ethics audit 상황에서 manage PI/postdoc/student expectations하는 2분 루프.",
+    "motive": "Relatedness: 플레이어가 manage PI/postdoc/student expectations하면서 protect a different relationship고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 protect a different relationship고 싶은가?",
+    "phenomenon": "Grant Panic",
+    "setting": "ethics audit",
+    "a": {
+      "label": "Defend carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Defend aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the ethics audit",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "058-defend-the-lab-myth",
+    "n": 58,
+    "name": "Defend the Lab Myth",
+    "axis": "World",
+    "hook": "midnight deadline 상황에서 turn a tiny fly result into world response하는 2분 루프.",
+    "motive": "Macro anticipation: 플레이어가 turn a tiny fly result into world response하면서 see the next social ripple고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 see the next social ripple고 싶은가?",
+    "phenomenon": "Lab Myth",
+    "setting": "midnight deadline",
+    "a": {
+      "label": "Defend carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Defend aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the midnight deadline",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "059-defend-the-courtship-disaster",
+    "n": 59,
+    "name": "Defend the Courtship Disaster",
+    "axis": "Humor",
+    "hook": "ethics audit 상황에서 produce absurd lab stories하는 2분 루프.",
+    "motive": "Surprise/comedy: 플레이어가 produce absurd lab stories하면서 discover a funnier failure고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 discover a funnier failure고 싶은가?",
+    "phenomenon": "Courtship Disaster",
+    "setting": "ethics audit",
+    "a": {
+      "label": "Defend carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Defend aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the ethics audit",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "060-defend-the-reviewer-trap",
+    "n": 60,
+    "name": "Defend the Reviewer Trap",
+    "axis": "Craft",
+    "hook": "midnight deadline 상황에서 assemble a satisfying final paper artifact하는 2분 루프.",
+    "motive": "Completion: 플레이어가 assemble a satisfying final paper artifact하면서 polish a cleaner final object고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 polish a cleaner final object고 싶은가?",
+    "phenomenon": "Reviewer Trap",
+    "setting": "midnight deadline",
+    "a": {
+      "label": "Defend carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Defend aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the midnight deadline",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "061-hype-the-data-ghost",
+    "n": 61,
+    "name": "Hype the Data Ghost",
+    "axis": "Discovery",
+    "hook": "ethics audit 상황에서 reveal an unknown fly behavior하는 2분 루프.",
+    "motive": "Curiosity: 플레이어가 reveal an unknown fly behavior하면서 try another trait combination고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 try another trait combination고 싶은가?",
+    "phenomenon": "Data Ghost",
+    "setting": "ethics audit",
+    "a": {
+      "label": "Hype carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Hype aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the ethics audit",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "062-hype-the-false-memory",
+    "n": 62,
+    "name": "Hype the False Memory",
+    "axis": "Catalog",
+    "hook": "midnight deadline 상황에서 fill a hidden phenomenon catalog하는 2분 루프.",
+    "motive": "Collection: 플레이어가 fill a hidden phenomenon catalog하면서 unlock one more ??? slot고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 unlock one more ??? slot고 싶은가?",
+    "phenomenon": "False Memory",
+    "setting": "midnight deadline",
+    "a": {
+      "label": "Hype carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Hype aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the midnight deadline",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "063-hype-the-foraging-spiral",
+    "n": 63,
+    "name": "Hype the Foraging Spiral",
+    "axis": "Reviewer",
+    "hook": "ethics audit 상황에서 counter Reviewer #2 attacks하는 2분 루프.",
+    "motive": "Competence: 플레이어가 counter Reviewer #2 attacks하면서 solve a smarter rebuttal고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 solve a smarter rebuttal고 싶은가?",
+    "phenomenon": "Foraging Spiral",
+    "setting": "ethics audit",
+    "a": {
+      "label": "Hype carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Hype aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the ethics audit",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "064-hype-the-data-ghost",
+    "n": 64,
+    "name": "Hype the Data Ghost",
+    "axis": "Figure",
+    "hook": "midnight deadline 상황에서 frame ambiguous data into a claim하는 2분 루프.",
+    "motive": "Autonomy: 플레이어가 frame ambiguous data into a claim하면서 try a different scientific identity고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 try a different scientific identity고 싶은가?",
+    "phenomenon": "Data Ghost",
+    "setting": "midnight deadline",
+    "a": {
+      "label": "Hype carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Hype aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the midnight deadline",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "065-hype-the-false-memory",
+    "n": 65,
+    "name": "Hype the False Memory",
+    "axis": "Spread",
+    "hook": "ethics audit 상황에서 watch behavior/hype spread outward하는 2분 루프.",
+    "motive": "Power fantasy: 플레이어가 watch behavior/hype spread outward하면서 make a bigger systemic reaction고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 make a bigger systemic reaction고 싶은가?",
+    "phenomenon": "False Memory",
+    "setting": "ethics audit",
+    "a": {
+      "label": "Hype carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Hype aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the ethics audit",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "066-hype-the-foraging-spiral",
+    "n": 66,
+    "name": "Hype the Foraging Spiral",
+    "axis": "Survival",
+    "hook": "midnight deadline 상황에서 survive lab disasters before deadline하는 2분 루프.",
+    "motive": "Tension/recovery: 플레이어가 survive lab disasters before deadline하면서 recover from a different disaster고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 recover from a different disaster고 싶은가?",
+    "phenomenon": "Foraging Spiral",
+    "setting": "midnight deadline",
+    "a": {
+      "label": "Hype carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Hype aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the midnight deadline",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "067-hype-the-fly-riot",
+    "n": 67,
+    "name": "Hype the Fly Riot",
+    "axis": "Sandbox",
+    "hook": "replication race 상황에서 poke the assay chamber and observe weird motion하는 2분 루프.",
+    "motive": "Toy curiosity: 플레이어가 poke the assay chamber and observe weird motion하면서 press another stimulus고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 press another stimulus고 싶은가?",
+    "phenomenon": "Fly Riot",
+    "setting": "replication race",
+    "a": {
+      "label": "Hype carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Hype aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the replication race",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "068-hype-the-swarm-dance",
+    "n": 68,
+    "name": "Hype the Swarm Dance",
+    "axis": "Economy",
+    "hook": "angry PI email 상황에서 trade credibility for funding and reach하는 2분 루프.",
+    "motive": "Greed/risk: 플레이어가 trade credibility for funding and reach하면서 risk a larger grant promise고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 risk a larger grant promise고 싶은가?",
+    "phenomenon": "Swarm Dance",
+    "setting": "angry PI email",
+    "a": {
+      "label": "Hype carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Hype aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the angry PI email",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "069-hype-the-wall-parade",
+    "n": 69,
+    "name": "Hype the Wall Parade",
+    "axis": "Roguelite",
+    "hook": "replication race 상황에서 adapt to a random paper-run modifier하는 2분 루프.",
+    "motive": "Replay/mastery: 플레이어가 adapt to a random paper-run modifier하면서 reroll and build differently고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 reroll and build differently고 싶은가?",
+    "phenomenon": "Wall Parade",
+    "setting": "replication race",
+    "a": {
+      "label": "Hype carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Hype aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the replication race",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "070-hype-the-grant-panic",
+    "n": 70,
+    "name": "Hype the Grant Panic",
+    "axis": "Deck",
+    "hook": "angry PI email 상황에서 draft stock/protocol/reviewer cards하는 2분 루프.",
+    "motive": "Synergy mastery: 플레이어가 draft stock/protocol/reviewer cards하면서 find a stronger combo고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 find a stronger combo고 싶은가?",
+    "phenomenon": "Grant Panic",
+    "setting": "angry PI email",
+    "a": {
+      "label": "Hype carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Hype aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the angry PI email",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "071-hype-the-swarm-dance",
+    "n": 71,
+    "name": "Hype the Swarm Dance",
+    "axis": "Roulette",
+    "hook": "replication race 상황에서 submit before knowing the reviewer attack하는 2분 루프.",
+    "motive": "Risk anticipation: 플레이어가 submit before knowing the reviewer attack하면서 push a stronger claim고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 push a stronger claim고 싶은가?",
+    "phenomenon": "Swarm Dance",
+    "setting": "replication race",
+    "a": {
+      "label": "Hype carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Hype aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the replication race",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "072-hype-the-wall-parade",
+    "n": 72,
+    "name": "Hype the Wall Parade",
+    "axis": "Automation",
+    "hook": "angry PI email 상황에서 remove bottlenecks from a lab pipeline하는 2분 루프.",
+    "motive": "Optimization: 플레이어가 remove bottlenecks from a lab pipeline하면서 optimize the next bottleneck고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 optimize the next bottleneck고 싶은가?",
+    "phenomenon": "Wall Parade",
+    "setting": "angry PI email",
+    "a": {
+      "label": "Hype carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Hype aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the angry PI email",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "073-hype-the-grant-panic",
+    "n": 73,
+    "name": "Hype the Grant Panic",
+    "axis": "Email",
+    "hook": "replication race 상황에서 choose who to disappoint in lab politics하는 2분 루프.",
+    "motive": "Social pressure: 플레이어가 choose who to disappoint in lab politics하면서 triage a different message first고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 triage a different message first고 싶은가?",
+    "phenomenon": "Grant Panic",
+    "setting": "replication race",
+    "a": {
+      "label": "Hype carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Hype aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the replication race",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "074-hype-the-lab-myth",
+    "n": 74,
+    "name": "Hype the Lab Myth",
+    "axis": "Arcade",
+    "hook": "angry PI email 상황에서 use timing/attention to improve assay data하는 2분 루프.",
+    "motive": "Skill competence: 플레이어가 use timing/attention to improve assay data하면서 master a cleaner trace고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 master a cleaner trace고 싶은가?",
+    "phenomenon": "Lab Myth",
+    "setting": "angry PI email",
+    "a": {
+      "label": "Hype carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Hype aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the angry PI email",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "075-hype-the-courtship-disaster",
+    "n": 75,
+    "name": "Hype the Courtship Disaster",
+    "axis": "Claim",
+    "hook": "replication race 상황에서 tune claim strength between boring and scandal하는 2분 루프.",
+    "motive": "Tuning mastery: 플레이어가 tune claim strength between boring and scandal하면서 find the sweet spot고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 find the sweet spot고 싶은가?",
+    "phenomenon": "Courtship Disaster",
+    "setting": "replication race",
+    "a": {
+      "label": "Hype carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Hype aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the replication race",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "076-hype-the-reviewer-trap",
+    "n": 76,
+    "name": "Hype the Reviewer Trap",
+    "axis": "Ethics",
+    "hook": "angry PI email 상황에서 balance discovery against suspicious methods하는 2분 루프.",
+    "motive": "Moral tension: 플레이어가 balance discovery against suspicious methods하면서 choose a cleaner or darker path고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 choose a cleaner or darker path고 싶은가?",
+    "phenomenon": "Reviewer Trap",
+    "setting": "angry PI email",
+    "a": {
+      "label": "Hype carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Hype aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the angry PI email",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "077-hype-the-data-ghost",
+    "n": 77,
+    "name": "Hype the Data Ghost",
+    "axis": "Mentor",
+    "hook": "replication race 상황에서 manage PI/postdoc/student expectations하는 2분 루프.",
+    "motive": "Relatedness: 플레이어가 manage PI/postdoc/student expectations하면서 protect a different relationship고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 protect a different relationship고 싶은가?",
+    "phenomenon": "Data Ghost",
+    "setting": "replication race",
+    "a": {
+      "label": "Hype carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Hype aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the replication race",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "078-hype-the-courtship-disaster",
+    "n": 78,
+    "name": "Hype the Courtship Disaster",
+    "axis": "World",
+    "hook": "preprint storm 상황에서 turn a tiny fly result into world response하는 2분 루프.",
+    "motive": "Macro anticipation: 플레이어가 turn a tiny fly result into world response하면서 see the next social ripple고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 see the next social ripple고 싶은가?",
+    "phenomenon": "Courtship Disaster",
+    "setting": "preprint storm",
+    "a": {
+      "label": "Hype carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Hype aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the preprint storm",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "079-hype-the-reviewer-trap",
+    "n": 79,
+    "name": "Hype the Reviewer Trap",
+    "axis": "Humor",
+    "hook": "funding review 상황에서 produce absurd lab stories하는 2분 루프.",
+    "motive": "Surprise/comedy: 플레이어가 produce absurd lab stories하면서 discover a funnier failure고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 discover a funnier failure고 싶은가?",
+    "phenomenon": "Reviewer Trap",
+    "setting": "funding review",
+    "a": {
+      "label": "Hype carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Hype aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the funding review",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "080-hype-the-data-ghost",
+    "n": 80,
+    "name": "Hype the Data Ghost",
+    "axis": "Craft",
+    "hook": "preprint storm 상황에서 assemble a satisfying final paper artifact하는 2분 루프.",
+    "motive": "Completion: 플레이어가 assemble a satisfying final paper artifact하면서 polish a cleaner final object고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 polish a cleaner final object고 싶은가?",
+    "phenomenon": "Data Ghost",
+    "setting": "preprint storm",
+    "a": {
+      "label": "Hype carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Hype aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the preprint storm",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "081-replicate-the-false-memory",
+    "n": 81,
+    "name": "Replicate the False Memory",
+    "axis": "Discovery",
+    "hook": "funding review 상황에서 reveal an unknown fly behavior하는 2분 루프.",
+    "motive": "Curiosity: 플레이어가 reveal an unknown fly behavior하면서 try another trait combination고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 try another trait combination고 싶은가?",
+    "phenomenon": "False Memory",
+    "setting": "funding review",
+    "a": {
+      "label": "Replicate carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Replicate aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the funding review",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "082-replicate-the-foraging-spiral",
+    "n": 82,
+    "name": "Replicate the Foraging Spiral",
+    "axis": "Catalog",
+    "hook": "preprint storm 상황에서 fill a hidden phenomenon catalog하는 2분 루프.",
+    "motive": "Collection: 플레이어가 fill a hidden phenomenon catalog하면서 unlock one more ??? slot고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 unlock one more ??? slot고 싶은가?",
+    "phenomenon": "Foraging Spiral",
+    "setting": "preprint storm",
+    "a": {
+      "label": "Replicate carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Replicate aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the preprint storm",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "083-replicate-the-fly-riot",
+    "n": 83,
+    "name": "Replicate the Fly Riot",
+    "axis": "Reviewer",
+    "hook": "funding review 상황에서 counter Reviewer #2 attacks하는 2분 루프.",
+    "motive": "Competence: 플레이어가 counter Reviewer #2 attacks하면서 solve a smarter rebuttal고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 solve a smarter rebuttal고 싶은가?",
+    "phenomenon": "Fly Riot",
+    "setting": "funding review",
+    "a": {
+      "label": "Replicate carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Replicate aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the funding review",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "084-replicate-the-swarm-dance",
+    "n": 84,
+    "name": "Replicate the Swarm Dance",
+    "axis": "Figure",
+    "hook": "preprint storm 상황에서 frame ambiguous data into a claim하는 2분 루프.",
+    "motive": "Autonomy: 플레이어가 frame ambiguous data into a claim하면서 try a different scientific identity고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 try a different scientific identity고 싶은가?",
+    "phenomenon": "Swarm Dance",
+    "setting": "preprint storm",
+    "a": {
+      "label": "Replicate carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Replicate aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the preprint storm",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "085-replicate-the-foraging-spiral",
+    "n": 85,
+    "name": "Replicate the Foraging Spiral",
+    "axis": "Spread",
+    "hook": "funding review 상황에서 watch behavior/hype spread outward하는 2분 루프.",
+    "motive": "Power fantasy: 플레이어가 watch behavior/hype spread outward하면서 make a bigger systemic reaction고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 make a bigger systemic reaction고 싶은가?",
+    "phenomenon": "Foraging Spiral",
+    "setting": "funding review",
+    "a": {
+      "label": "Replicate carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Replicate aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the funding review",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "086-replicate-the-fly-riot",
+    "n": 86,
+    "name": "Replicate the Fly Riot",
+    "axis": "Survival",
+    "hook": "preprint storm 상황에서 survive lab disasters before deadline하는 2분 루프.",
+    "motive": "Tension/recovery: 플레이어가 survive lab disasters before deadline하면서 recover from a different disaster고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 recover from a different disaster고 싶은가?",
+    "phenomenon": "Fly Riot",
+    "setting": "preprint storm",
+    "a": {
+      "label": "Replicate carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Replicate aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the preprint storm",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "087-replicate-the-swarm-dance",
+    "n": 87,
+    "name": "Replicate the Swarm Dance",
+    "axis": "Sandbox",
+    "hook": "funding review 상황에서 poke the assay chamber and observe weird motion하는 2분 루프.",
+    "motive": "Toy curiosity: 플레이어가 poke the assay chamber and observe weird motion하면서 press another stimulus고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 press another stimulus고 싶은가?",
+    "phenomenon": "Swarm Dance",
+    "setting": "funding review",
+    "a": {
+      "label": "Replicate carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Replicate aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the funding review",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "088-replicate-the-wall-parade",
+    "n": 88,
+    "name": "Replicate the Wall Parade",
+    "axis": "Economy",
+    "hook": "preprint storm 상황에서 trade credibility for funding and reach하는 2분 루프.",
+    "motive": "Greed/risk: 플레이어가 trade credibility for funding and reach하면서 risk a larger grant promise고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 risk a larger grant promise고 싶은가?",
+    "phenomenon": "Wall Parade",
+    "setting": "preprint storm",
+    "a": {
+      "label": "Replicate carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Replicate aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the preprint storm",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "089-replicate-the-grant-panic",
+    "n": 89,
+    "name": "Replicate the Grant Panic",
+    "axis": "Roguelite",
+    "hook": "stock-room collapse 상황에서 adapt to a random paper-run modifier하는 2분 루프.",
+    "motive": "Replay/mastery: 플레이어가 adapt to a random paper-run modifier하면서 reroll and build differently고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 reroll and build differently고 싶은가?",
+    "phenomenon": "Grant Panic",
+    "setting": "stock-room collapse",
+    "a": {
+      "label": "Replicate carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Replicate aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the stock-room collapse",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "090-replicate-the-lab-myth",
+    "n": 90,
+    "name": "Replicate the Lab Myth",
+    "axis": "Deck",
+    "hook": "broken incubator 상황에서 draft stock/protocol/reviewer cards하는 2분 루프.",
+    "motive": "Synergy mastery: 플레이어가 draft stock/protocol/reviewer cards하면서 find a stronger combo고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 find a stronger combo고 싶은가?",
+    "phenomenon": "Lab Myth",
+    "setting": "broken incubator",
+    "a": {
+      "label": "Replicate carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Replicate aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the broken incubator",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "091-replicate-the-courtship-disaster",
+    "n": 91,
+    "name": "Replicate the Courtship Disaster",
+    "axis": "Roulette",
+    "hook": "stock-room collapse 상황에서 submit before knowing the reviewer attack하는 2분 루프.",
+    "motive": "Risk anticipation: 플레이어가 submit before knowing the reviewer attack하면서 push a stronger claim고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 push a stronger claim고 싶은가?",
+    "phenomenon": "Courtship Disaster",
+    "setting": "stock-room collapse",
+    "a": {
+      "label": "Replicate carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Replicate aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the stock-room collapse",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "092-replicate-the-grant-panic",
+    "n": 92,
+    "name": "Replicate the Grant Panic",
+    "axis": "Automation",
+    "hook": "broken incubator 상황에서 remove bottlenecks from a lab pipeline하는 2분 루프.",
+    "motive": "Optimization: 플레이어가 remove bottlenecks from a lab pipeline하면서 optimize the next bottleneck고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 optimize the next bottleneck고 싶은가?",
+    "phenomenon": "Grant Panic",
+    "setting": "broken incubator",
+    "a": {
+      "label": "Replicate carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Replicate aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the broken incubator",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "093-replicate-the-lab-myth",
+    "n": 93,
+    "name": "Replicate the Lab Myth",
+    "axis": "Email",
+    "hook": "stock-room collapse 상황에서 choose who to disappoint in lab politics하는 2분 루프.",
+    "motive": "Social pressure: 플레이어가 choose who to disappoint in lab politics하면서 triage a different message first고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 triage a different message first고 싶은가?",
+    "phenomenon": "Lab Myth",
+    "setting": "stock-room collapse",
+    "a": {
+      "label": "Replicate carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Replicate aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the stock-room collapse",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "094-replicate-the-courtship-disaster",
+    "n": 94,
+    "name": "Replicate the Courtship Disaster",
+    "axis": "Arcade",
+    "hook": "broken incubator 상황에서 use timing/attention to improve assay data하는 2분 루프.",
+    "motive": "Skill competence: 플레이어가 use timing/attention to improve assay data하면서 master a cleaner trace고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 master a cleaner trace고 싶은가?",
+    "phenomenon": "Courtship Disaster",
+    "setting": "broken incubator",
+    "a": {
+      "label": "Replicate carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Replicate aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the broken incubator",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "095-replicate-the-reviewer-trap",
+    "n": 95,
+    "name": "Replicate the Reviewer Trap",
+    "axis": "Claim",
+    "hook": "stock-room collapse 상황에서 tune claim strength between boring and scandal하는 2분 루프.",
+    "motive": "Tuning mastery: 플레이어가 tune claim strength between boring and scandal하면서 find the sweet spot고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 find the sweet spot고 싶은가?",
+    "phenomenon": "Reviewer Trap",
+    "setting": "stock-room collapse",
+    "a": {
+      "label": "Replicate carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Replicate aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the stock-room collapse",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "096-replicate-the-data-ghost",
+    "n": 96,
+    "name": "Replicate the Data Ghost",
+    "axis": "Ethics",
+    "hook": "broken incubator 상황에서 balance discovery against suspicious methods하는 2분 루프.",
+    "motive": "Moral tension: 플레이어가 balance discovery against suspicious methods하면서 choose a cleaner or darker path고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 choose a cleaner or darker path고 싶은가?",
+    "phenomenon": "Data Ghost",
+    "setting": "broken incubator",
+    "a": {
+      "label": "Replicate carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Replicate aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the broken incubator",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "097-replicate-the-false-memory",
+    "n": 97,
+    "name": "Replicate the False Memory",
+    "axis": "Mentor",
+    "hook": "stock-room collapse 상황에서 manage PI/postdoc/student expectations하는 2분 루프.",
+    "motive": "Relatedness: 플레이어가 manage PI/postdoc/student expectations하면서 protect a different relationship고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 protect a different relationship고 싶은가?",
+    "phenomenon": "False Memory",
+    "setting": "stock-room collapse",
+    "a": {
+      "label": "Replicate carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Replicate aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the stock-room collapse",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "098-replicate-the-foraging-spiral",
+    "n": 98,
+    "name": "Replicate the Foraging Spiral",
+    "axis": "World",
+    "hook": "broken incubator 상황에서 turn a tiny fly result into world response하는 2분 루프.",
+    "motive": "Macro anticipation: 플레이어가 turn a tiny fly result into world response하면서 see the next social ripple고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 see the next social ripple고 싶은가?",
+    "phenomenon": "Foraging Spiral",
+    "setting": "broken incubator",
+    "a": {
+      "label": "Replicate carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Replicate aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the broken incubator",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "099-replicate-the-data-ghost",
+    "n": 99,
+    "name": "Replicate the Data Ghost",
+    "axis": "Humor",
+    "hook": "stock-room collapse 상황에서 produce absurd lab stories하는 2분 루프.",
+    "motive": "Surprise/comedy: 플레이어가 produce absurd lab stories하면서 discover a funnier failure고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 discover a funnier failure고 싶은가?",
+    "phenomenon": "Data Ghost",
+    "setting": "stock-room collapse",
+    "a": {
+      "label": "Replicate carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Replicate aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the stock-room collapse",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "100-replicate-the-false-memory",
+    "n": 100,
+    "name": "Replicate the False Memory",
+    "axis": "Craft",
+    "hook": "conference demo 상황에서 assemble a satisfying final paper artifact하는 2분 루프.",
+    "motive": "Completion: 플레이어가 assemble a satisfying final paper artifact하면서 polish a cleaner final object고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 polish a cleaner final object고 싶은가?",
+    "phenomenon": "False Memory",
+    "setting": "conference demo",
+    "a": {
+      "label": "Replicate carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Replicate aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the conference demo",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "101-contain-the-foraging-spiral",
+    "n": 101,
+    "name": "Contain the Foraging Spiral",
+    "axis": "Discovery",
+    "hook": "viral lab Slack 상황에서 reveal an unknown fly behavior하는 2분 루프.",
+    "motive": "Curiosity: 플레이어가 reveal an unknown fly behavior하면서 try another trait combination고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 try another trait combination고 싶은가?",
+    "phenomenon": "Foraging Spiral",
+    "setting": "viral lab Slack",
+    "a": {
+      "label": "Contain carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Contain aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the viral lab Slack",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "102-contain-the-fly-riot",
+    "n": 102,
+    "name": "Contain the Fly Riot",
+    "axis": "Catalog",
+    "hook": "conference demo 상황에서 fill a hidden phenomenon catalog하는 2분 루프.",
+    "motive": "Collection: 플레이어가 fill a hidden phenomenon catalog하면서 unlock one more ??? slot고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 unlock one more ??? slot고 싶은가?",
+    "phenomenon": "Fly Riot",
+    "setting": "conference demo",
+    "a": {
+      "label": "Contain carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Contain aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the conference demo",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "103-contain-the-swarm-dance",
+    "n": 103,
+    "name": "Contain the Swarm Dance",
+    "axis": "Reviewer",
+    "hook": "viral lab Slack 상황에서 counter Reviewer #2 attacks하는 2분 루프.",
+    "motive": "Competence: 플레이어가 counter Reviewer #2 attacks하면서 solve a smarter rebuttal고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 solve a smarter rebuttal고 싶은가?",
+    "phenomenon": "Swarm Dance",
+    "setting": "viral lab Slack",
+    "a": {
+      "label": "Contain carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Contain aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the viral lab Slack",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "104-contain-the-wall-parade",
+    "n": 104,
+    "name": "Contain the Wall Parade",
+    "axis": "Figure",
+    "hook": "conference demo 상황에서 frame ambiguous data into a claim하는 2분 루프.",
+    "motive": "Autonomy: 플레이어가 frame ambiguous data into a claim하면서 try a different scientific identity고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 try a different scientific identity고 싶은가?",
+    "phenomenon": "Wall Parade",
+    "setting": "conference demo",
+    "a": {
+      "label": "Contain carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Contain aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the conference demo",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "105-contain-the-grant-panic",
+    "n": 105,
+    "name": "Contain the Grant Panic",
+    "axis": "Spread",
+    "hook": "viral lab Slack 상황에서 watch behavior/hype spread outward하는 2분 루프.",
+    "motive": "Power fantasy: 플레이어가 watch behavior/hype spread outward하면서 make a bigger systemic reaction고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 make a bigger systemic reaction고 싶은가?",
+    "phenomenon": "Grant Panic",
+    "setting": "viral lab Slack",
+    "a": {
+      "label": "Contain carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Contain aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the viral lab Slack",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "106-contain-the-swarm-dance",
+    "n": 106,
+    "name": "Contain the Swarm Dance",
+    "axis": "Survival",
+    "hook": "conference demo 상황에서 survive lab disasters before deadline하는 2분 루프.",
+    "motive": "Tension/recovery: 플레이어가 survive lab disasters before deadline하면서 recover from a different disaster고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 recover from a different disaster고 싶은가?",
+    "phenomenon": "Swarm Dance",
+    "setting": "conference demo",
+    "a": {
+      "label": "Contain carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Contain aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the conference demo",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "107-contain-the-wall-parade",
+    "n": 107,
+    "name": "Contain the Wall Parade",
+    "axis": "Sandbox",
+    "hook": "viral lab Slack 상황에서 poke the assay chamber and observe weird motion하는 2분 루프.",
+    "motive": "Toy curiosity: 플레이어가 poke the assay chamber and observe weird motion하면서 press another stimulus고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 press another stimulus고 싶은가?",
+    "phenomenon": "Wall Parade",
+    "setting": "viral lab Slack",
+    "a": {
+      "label": "Contain carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Contain aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the viral lab Slack",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "108-contain-the-grant-panic",
+    "n": 108,
+    "name": "Contain the Grant Panic",
+    "axis": "Economy",
+    "hook": "conference demo 상황에서 trade credibility for funding and reach하는 2분 루프.",
+    "motive": "Greed/risk: 플레이어가 trade credibility for funding and reach하면서 risk a larger grant promise고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 risk a larger grant promise고 싶은가?",
+    "phenomenon": "Grant Panic",
+    "setting": "conference demo",
+    "a": {
+      "label": "Contain carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Contain aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the conference demo",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "109-contain-the-lab-myth",
+    "n": 109,
+    "name": "Contain the Lab Myth",
+    "axis": "Roguelite",
+    "hook": "viral lab Slack 상황에서 adapt to a random paper-run modifier하는 2분 루프.",
+    "motive": "Replay/mastery: 플레이어가 adapt to a random paper-run modifier하면서 reroll and build differently고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 reroll and build differently고 싶은가?",
+    "phenomenon": "Lab Myth",
+    "setting": "viral lab Slack",
+    "a": {
+      "label": "Contain carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Contain aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the viral lab Slack",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "110-contain-the-courtship-disaster",
+    "n": 110,
+    "name": "Contain the Courtship Disaster",
+    "axis": "Deck",
+    "hook": "conference demo 상황에서 draft stock/protocol/reviewer cards하는 2분 루프.",
+    "motive": "Synergy mastery: 플레이어가 draft stock/protocol/reviewer cards하면서 find a stronger combo고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 find a stronger combo고 싶은가?",
+    "phenomenon": "Courtship Disaster",
+    "setting": "conference demo",
+    "a": {
+      "label": "Contain carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Contain aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the conference demo",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "111-contain-the-reviewer-trap",
+    "n": 111,
+    "name": "Contain the Reviewer Trap",
+    "axis": "Roulette",
+    "hook": "midnight deadline 상황에서 submit before knowing the reviewer attack하는 2분 루프.",
+    "motive": "Risk anticipation: 플레이어가 submit before knowing the reviewer attack하면서 push a stronger claim고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 push a stronger claim고 싶은가?",
+    "phenomenon": "Reviewer Trap",
+    "setting": "midnight deadline",
+    "a": {
+      "label": "Contain carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Contain aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the midnight deadline",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "112-contain-the-data-ghost",
+    "n": 112,
+    "name": "Contain the Data Ghost",
+    "axis": "Automation",
+    "hook": "ethics audit 상황에서 remove bottlenecks from a lab pipeline하는 2분 루프.",
+    "motive": "Optimization: 플레이어가 remove bottlenecks from a lab pipeline하면서 optimize the next bottleneck고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 optimize the next bottleneck고 싶은가?",
+    "phenomenon": "Data Ghost",
+    "setting": "ethics audit",
+    "a": {
+      "label": "Contain carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Contain aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the ethics audit",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "113-contain-the-courtship-disaster",
+    "n": 113,
+    "name": "Contain the Courtship Disaster",
+    "axis": "Email",
+    "hook": "midnight deadline 상황에서 choose who to disappoint in lab politics하는 2분 루프.",
+    "motive": "Social pressure: 플레이어가 choose who to disappoint in lab politics하면서 triage a different message first고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 triage a different message first고 싶은가?",
+    "phenomenon": "Courtship Disaster",
+    "setting": "midnight deadline",
+    "a": {
+      "label": "Contain carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Contain aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the midnight deadline",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "114-contain-the-reviewer-trap",
+    "n": 114,
+    "name": "Contain the Reviewer Trap",
+    "axis": "Arcade",
+    "hook": "ethics audit 상황에서 use timing/attention to improve assay data하는 2분 루프.",
+    "motive": "Skill competence: 플레이어가 use timing/attention to improve assay data하면서 master a cleaner trace고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 master a cleaner trace고 싶은가?",
+    "phenomenon": "Reviewer Trap",
+    "setting": "ethics audit",
+    "a": {
+      "label": "Contain carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Contain aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the ethics audit",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "115-contain-the-data-ghost",
+    "n": 115,
+    "name": "Contain the Data Ghost",
+    "axis": "Claim",
+    "hook": "midnight deadline 상황에서 tune claim strength between boring and scandal하는 2분 루프.",
+    "motive": "Tuning mastery: 플레이어가 tune claim strength between boring and scandal하면서 find the sweet spot고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 find the sweet spot고 싶은가?",
+    "phenomenon": "Data Ghost",
+    "setting": "midnight deadline",
+    "a": {
+      "label": "Contain carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Contain aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the midnight deadline",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "116-contain-the-false-memory",
+    "n": 116,
+    "name": "Contain the False Memory",
+    "axis": "Ethics",
+    "hook": "ethics audit 상황에서 balance discovery against suspicious methods하는 2분 루프.",
+    "motive": "Moral tension: 플레이어가 balance discovery against suspicious methods하면서 choose a cleaner or darker path고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 choose a cleaner or darker path고 싶은가?",
+    "phenomenon": "False Memory",
+    "setting": "ethics audit",
+    "a": {
+      "label": "Contain carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Contain aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the ethics audit",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "117-contain-the-foraging-spiral",
+    "n": 117,
+    "name": "Contain the Foraging Spiral",
+    "axis": "Mentor",
+    "hook": "midnight deadline 상황에서 manage PI/postdoc/student expectations하는 2분 루프.",
+    "motive": "Relatedness: 플레이어가 manage PI/postdoc/student expectations하면서 protect a different relationship고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 protect a different relationship고 싶은가?",
+    "phenomenon": "Foraging Spiral",
+    "setting": "midnight deadline",
+    "a": {
+      "label": "Contain carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Contain aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the midnight deadline",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "118-contain-the-fly-riot",
+    "n": 118,
+    "name": "Contain the Fly Riot",
+    "axis": "World",
+    "hook": "ethics audit 상황에서 turn a tiny fly result into world response하는 2분 루프.",
+    "motive": "Macro anticipation: 플레이어가 turn a tiny fly result into world response하면서 see the next social ripple고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 see the next social ripple고 싶은가?",
+    "phenomenon": "Fly Riot",
+    "setting": "ethics audit",
+    "a": {
+      "label": "Contain carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Contain aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the ethics audit",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "119-contain-the-swarm-dance",
+    "n": 119,
+    "name": "Contain the Swarm Dance",
+    "axis": "Humor",
+    "hook": "midnight deadline 상황에서 produce absurd lab stories하는 2분 루프.",
+    "motive": "Surprise/comedy: 플레이어가 produce absurd lab stories하면서 discover a funnier failure고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 discover a funnier failure고 싶은가?",
+    "phenomenon": "Swarm Dance",
+    "setting": "midnight deadline",
+    "a": {
+      "label": "Contain carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Contain aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the midnight deadline",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "120-contain-the-foraging-spiral",
+    "n": 120,
+    "name": "Contain the Foraging Spiral",
+    "axis": "Craft",
+    "hook": "ethics audit 상황에서 assemble a satisfying final paper artifact하는 2분 루프.",
+    "motive": "Completion: 플레이어가 assemble a satisfying final paper artifact하면서 polish a cleaner final object고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 polish a cleaner final object고 싶은가?",
+    "phenomenon": "Foraging Spiral",
+    "setting": "ethics audit",
+    "a": {
+      "label": "Contain carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Contain aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the ethics audit",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "121-exploit-the-fly-riot",
+    "n": 121,
+    "name": "Exploit the Fly Riot",
+    "axis": "Discovery",
+    "hook": "midnight deadline 상황에서 reveal an unknown fly behavior하는 2분 루프.",
+    "motive": "Curiosity: 플레이어가 reveal an unknown fly behavior하면서 try another trait combination고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 try another trait combination고 싶은가?",
+    "phenomenon": "Fly Riot",
+    "setting": "midnight deadline",
+    "a": {
+      "label": "Exploit carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Exploit aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the midnight deadline",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "122-exploit-the-swarm-dance",
+    "n": 122,
+    "name": "Exploit the Swarm Dance",
+    "axis": "Catalog",
+    "hook": "replication race 상황에서 fill a hidden phenomenon catalog하는 2분 루프.",
+    "motive": "Collection: 플레이어가 fill a hidden phenomenon catalog하면서 unlock one more ??? slot고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 unlock one more ??? slot고 싶은가?",
+    "phenomenon": "Swarm Dance",
+    "setting": "replication race",
+    "a": {
+      "label": "Exploit carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Exploit aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the replication race",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "123-exploit-the-wall-parade",
+    "n": 123,
+    "name": "Exploit the Wall Parade",
+    "axis": "Reviewer",
+    "hook": "angry PI email 상황에서 counter Reviewer #2 attacks하는 2분 루프.",
+    "motive": "Competence: 플레이어가 counter Reviewer #2 attacks하면서 solve a smarter rebuttal고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 solve a smarter rebuttal고 싶은가?",
+    "phenomenon": "Wall Parade",
+    "setting": "angry PI email",
+    "a": {
+      "label": "Exploit carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Exploit aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the angry PI email",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "124-exploit-the-grant-panic",
+    "n": 124,
+    "name": "Exploit the Grant Panic",
+    "axis": "Figure",
+    "hook": "replication race 상황에서 frame ambiguous data into a claim하는 2분 루프.",
+    "motive": "Autonomy: 플레이어가 frame ambiguous data into a claim하면서 try a different scientific identity고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 try a different scientific identity고 싶은가?",
+    "phenomenon": "Grant Panic",
+    "setting": "replication race",
+    "a": {
+      "label": "Exploit carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Exploit aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the replication race",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "125-exploit-the-lab-myth",
+    "n": 125,
+    "name": "Exploit the Lab Myth",
+    "axis": "Spread",
+    "hook": "angry PI email 상황에서 watch behavior/hype spread outward하는 2분 루프.",
+    "motive": "Power fantasy: 플레이어가 watch behavior/hype spread outward하면서 make a bigger systemic reaction고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 make a bigger systemic reaction고 싶은가?",
+    "phenomenon": "Lab Myth",
+    "setting": "angry PI email",
+    "a": {
+      "label": "Exploit carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Exploit aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the angry PI email",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "126-exploit-the-courtship-disaster",
+    "n": 126,
+    "name": "Exploit the Courtship Disaster",
+    "axis": "Survival",
+    "hook": "replication race 상황에서 survive lab disasters before deadline하는 2분 루프.",
+    "motive": "Tension/recovery: 플레이어가 survive lab disasters before deadline하면서 recover from a different disaster고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 recover from a different disaster고 싶은가?",
+    "phenomenon": "Courtship Disaster",
+    "setting": "replication race",
+    "a": {
+      "label": "Exploit carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Exploit aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the replication race",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "127-exploit-the-grant-panic",
+    "n": 127,
+    "name": "Exploit the Grant Panic",
+    "axis": "Sandbox",
+    "hook": "angry PI email 상황에서 poke the assay chamber and observe weird motion하는 2분 루프.",
+    "motive": "Toy curiosity: 플레이어가 poke the assay chamber and observe weird motion하면서 press another stimulus고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 press another stimulus고 싶은가?",
+    "phenomenon": "Grant Panic",
+    "setting": "angry PI email",
+    "a": {
+      "label": "Exploit carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Exploit aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the angry PI email",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "128-exploit-the-lab-myth",
+    "n": 128,
+    "name": "Exploit the Lab Myth",
+    "axis": "Economy",
+    "hook": "replication race 상황에서 trade credibility for funding and reach하는 2분 루프.",
+    "motive": "Greed/risk: 플레이어가 trade credibility for funding and reach하면서 risk a larger grant promise고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 risk a larger grant promise고 싶은가?",
+    "phenomenon": "Lab Myth",
+    "setting": "replication race",
+    "a": {
+      "label": "Exploit carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Exploit aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the replication race",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "129-exploit-the-courtship-disaster",
+    "n": 129,
+    "name": "Exploit the Courtship Disaster",
+    "axis": "Roguelite",
+    "hook": "angry PI email 상황에서 adapt to a random paper-run modifier하는 2분 루프.",
+    "motive": "Replay/mastery: 플레이어가 adapt to a random paper-run modifier하면서 reroll and build differently고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 reroll and build differently고 싶은가?",
+    "phenomenon": "Courtship Disaster",
+    "setting": "angry PI email",
+    "a": {
+      "label": "Exploit carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Exploit aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the angry PI email",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "130-exploit-the-reviewer-trap",
+    "n": 130,
+    "name": "Exploit the Reviewer Trap",
+    "axis": "Deck",
+    "hook": "replication race 상황에서 draft stock/protocol/reviewer cards하는 2분 루프.",
+    "motive": "Synergy mastery: 플레이어가 draft stock/protocol/reviewer cards하면서 find a stronger combo고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 find a stronger combo고 싶은가?",
+    "phenomenon": "Reviewer Trap",
+    "setting": "replication race",
+    "a": {
+      "label": "Exploit carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Exploit aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the replication race",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "131-exploit-the-data-ghost",
+    "n": 131,
+    "name": "Exploit the Data Ghost",
+    "axis": "Roulette",
+    "hook": "angry PI email 상황에서 submit before knowing the reviewer attack하는 2분 루프.",
+    "motive": "Risk anticipation: 플레이어가 submit before knowing the reviewer attack하면서 push a stronger claim고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 push a stronger claim고 싶은가?",
+    "phenomenon": "Data Ghost",
+    "setting": "angry PI email",
+    "a": {
+      "label": "Exploit carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Exploit aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the angry PI email",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "132-exploit-the-false-memory",
+    "n": 132,
+    "name": "Exploit the False Memory",
+    "axis": "Automation",
+    "hook": "replication race 상황에서 remove bottlenecks from a lab pipeline하는 2분 루프.",
+    "motive": "Optimization: 플레이어가 remove bottlenecks from a lab pipeline하면서 optimize the next bottleneck고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 optimize the next bottleneck고 싶은가?",
+    "phenomenon": "False Memory",
+    "setting": "replication race",
+    "a": {
+      "label": "Exploit carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Exploit aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the replication race",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "133-exploit-the-foraging-spiral",
+    "n": 133,
+    "name": "Exploit the Foraging Spiral",
+    "axis": "Email",
+    "hook": "preprint storm 상황에서 choose who to disappoint in lab politics하는 2분 루프.",
+    "motive": "Social pressure: 플레이어가 choose who to disappoint in lab politics하면서 triage a different message first고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 triage a different message first고 싶은가?",
+    "phenomenon": "Foraging Spiral",
+    "setting": "preprint storm",
+    "a": {
+      "label": "Exploit carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Exploit aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the preprint storm",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "134-exploit-the-data-ghost",
+    "n": 134,
+    "name": "Exploit the Data Ghost",
+    "axis": "Arcade",
+    "hook": "funding review 상황에서 use timing/attention to improve assay data하는 2분 루프.",
+    "motive": "Skill competence: 플레이어가 use timing/attention to improve assay data하면서 master a cleaner trace고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 master a cleaner trace고 싶은가?",
+    "phenomenon": "Data Ghost",
+    "setting": "funding review",
+    "a": {
+      "label": "Exploit carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Exploit aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the funding review",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "135-exploit-the-false-memory",
+    "n": 135,
+    "name": "Exploit the False Memory",
+    "axis": "Claim",
+    "hook": "preprint storm 상황에서 tune claim strength between boring and scandal하는 2분 루프.",
+    "motive": "Tuning mastery: 플레이어가 tune claim strength between boring and scandal하면서 find the sweet spot고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 find the sweet spot고 싶은가?",
+    "phenomenon": "False Memory",
+    "setting": "preprint storm",
+    "a": {
+      "label": "Exploit carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Exploit aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the preprint storm",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "136-exploit-the-foraging-spiral",
+    "n": 136,
+    "name": "Exploit the Foraging Spiral",
+    "axis": "Ethics",
+    "hook": "funding review 상황에서 balance discovery against suspicious methods하는 2분 루프.",
+    "motive": "Moral tension: 플레이어가 balance discovery against suspicious methods하면서 choose a cleaner or darker path고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 choose a cleaner or darker path고 싶은가?",
+    "phenomenon": "Foraging Spiral",
+    "setting": "funding review",
+    "a": {
+      "label": "Exploit carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Exploit aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the funding review",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "137-exploit-the-fly-riot",
+    "n": 137,
+    "name": "Exploit the Fly Riot",
+    "axis": "Mentor",
+    "hook": "preprint storm 상황에서 manage PI/postdoc/student expectations하는 2분 루프.",
+    "motive": "Relatedness: 플레이어가 manage PI/postdoc/student expectations하면서 protect a different relationship고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 protect a different relationship고 싶은가?",
+    "phenomenon": "Fly Riot",
+    "setting": "preprint storm",
+    "a": {
+      "label": "Exploit carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Exploit aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the preprint storm",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "138-exploit-the-swarm-dance",
+    "n": 138,
+    "name": "Exploit the Swarm Dance",
+    "axis": "World",
+    "hook": "funding review 상황에서 turn a tiny fly result into world response하는 2분 루프.",
+    "motive": "Macro anticipation: 플레이어가 turn a tiny fly result into world response하면서 see the next social ripple고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 see the next social ripple고 싶은가?",
+    "phenomenon": "Swarm Dance",
+    "setting": "funding review",
+    "a": {
+      "label": "Exploit carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Exploit aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the funding review",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "139-exploit-the-wall-parade",
+    "n": 139,
+    "name": "Exploit the Wall Parade",
+    "axis": "Humor",
+    "hook": "preprint storm 상황에서 produce absurd lab stories하는 2분 루프.",
+    "motive": "Surprise/comedy: 플레이어가 produce absurd lab stories하면서 discover a funnier failure고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 discover a funnier failure고 싶은가?",
+    "phenomenon": "Wall Parade",
+    "setting": "preprint storm",
+    "a": {
+      "label": "Exploit carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Exploit aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the preprint storm",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "140-exploit-the-grant-panic",
+    "n": 140,
+    "name": "Exploit the Grant Panic",
+    "axis": "Craft",
+    "hook": "funding review 상황에서 assemble a satisfying final paper artifact하는 2분 루프.",
+    "motive": "Completion: 플레이어가 assemble a satisfying final paper artifact하면서 polish a cleaner final object고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 polish a cleaner final object고 싶은가?",
+    "phenomenon": "Grant Panic",
+    "setting": "funding review",
+    "a": {
+      "label": "Exploit carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Exploit aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the funding review",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "141-automate-the-swarm-dance",
+    "n": 141,
+    "name": "Automate the Swarm Dance",
+    "axis": "Discovery",
+    "hook": "preprint storm 상황에서 reveal an unknown fly behavior하는 2분 루프.",
+    "motive": "Curiosity: 플레이어가 reveal an unknown fly behavior하면서 try another trait combination고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 try another trait combination고 싶은가?",
+    "phenomenon": "Swarm Dance",
+    "setting": "preprint storm",
+    "a": {
+      "label": "Automate carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Automate aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the preprint storm",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "142-automate-the-wall-parade",
+    "n": 142,
+    "name": "Automate the Wall Parade",
+    "axis": "Catalog",
+    "hook": "funding review 상황에서 fill a hidden phenomenon catalog하는 2분 루프.",
+    "motive": "Collection: 플레이어가 fill a hidden phenomenon catalog하면서 unlock one more ??? slot고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 unlock one more ??? slot고 싶은가?",
+    "phenomenon": "Wall Parade",
+    "setting": "funding review",
+    "a": {
+      "label": "Automate carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Automate aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the funding review",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "143-automate-the-grant-panic",
+    "n": 143,
+    "name": "Automate the Grant Panic",
+    "axis": "Reviewer",
+    "hook": "preprint storm 상황에서 counter Reviewer #2 attacks하는 2분 루프.",
+    "motive": "Competence: 플레이어가 counter Reviewer #2 attacks하면서 solve a smarter rebuttal고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 solve a smarter rebuttal고 싶은가?",
+    "phenomenon": "Grant Panic",
+    "setting": "preprint storm",
+    "a": {
+      "label": "Automate carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Automate aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the preprint storm",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "144-automate-the-lab-myth",
+    "n": 144,
+    "name": "Automate the Lab Myth",
+    "axis": "Figure",
+    "hook": "stock-room collapse 상황에서 frame ambiguous data into a claim하는 2분 루프.",
+    "motive": "Autonomy: 플레이어가 frame ambiguous data into a claim하면서 try a different scientific identity고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 try a different scientific identity고 싶은가?",
+    "phenomenon": "Lab Myth",
+    "setting": "stock-room collapse",
+    "a": {
+      "label": "Automate carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Automate aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the stock-room collapse",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "145-automate-the-courtship-disaster",
+    "n": 145,
+    "name": "Automate the Courtship Disaster",
+    "axis": "Spread",
+    "hook": "broken incubator 상황에서 watch behavior/hype spread outward하는 2분 루프.",
+    "motive": "Power fantasy: 플레이어가 watch behavior/hype spread outward하면서 make a bigger systemic reaction고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 make a bigger systemic reaction고 싶은가?",
+    "phenomenon": "Courtship Disaster",
+    "setting": "broken incubator",
+    "a": {
+      "label": "Automate carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Automate aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the broken incubator",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "146-automate-the-reviewer-trap",
+    "n": 146,
+    "name": "Automate the Reviewer Trap",
+    "axis": "Survival",
+    "hook": "stock-room collapse 상황에서 survive lab disasters before deadline하는 2분 루프.",
+    "motive": "Tension/recovery: 플레이어가 survive lab disasters before deadline하면서 recover from a different disaster고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 recover from a different disaster고 싶은가?",
+    "phenomenon": "Reviewer Trap",
+    "setting": "stock-room collapse",
+    "a": {
+      "label": "Automate carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Automate aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the stock-room collapse",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "147-automate-the-data-ghost",
+    "n": 147,
+    "name": "Automate the Data Ghost",
+    "axis": "Sandbox",
+    "hook": "broken incubator 상황에서 poke the assay chamber and observe weird motion하는 2분 루프.",
+    "motive": "Toy curiosity: 플레이어가 poke the assay chamber and observe weird motion하면서 press another stimulus고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 press another stimulus고 싶은가?",
+    "phenomenon": "Data Ghost",
+    "setting": "broken incubator",
+    "a": {
+      "label": "Automate carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Automate aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the broken incubator",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "148-automate-the-courtship-disaster",
+    "n": 148,
+    "name": "Automate the Courtship Disaster",
+    "axis": "Economy",
+    "hook": "stock-room collapse 상황에서 trade credibility for funding and reach하는 2분 루프.",
+    "motive": "Greed/risk: 플레이어가 trade credibility for funding and reach하면서 risk a larger grant promise고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 risk a larger grant promise고 싶은가?",
+    "phenomenon": "Courtship Disaster",
+    "setting": "stock-room collapse",
+    "a": {
+      "label": "Automate carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Automate aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the stock-room collapse",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "149-automate-the-reviewer-trap",
+    "n": 149,
+    "name": "Automate the Reviewer Trap",
+    "axis": "Roguelite",
+    "hook": "broken incubator 상황에서 adapt to a random paper-run modifier하는 2분 루프.",
+    "motive": "Replay/mastery: 플레이어가 adapt to a random paper-run modifier하면서 reroll and build differently고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 reroll and build differently고 싶은가?",
+    "phenomenon": "Reviewer Trap",
+    "setting": "broken incubator",
+    "a": {
+      "label": "Automate carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Automate aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the broken incubator",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "150-automate-the-data-ghost",
+    "n": 150,
+    "name": "Automate the Data Ghost",
+    "axis": "Deck",
+    "hook": "stock-room collapse 상황에서 draft stock/protocol/reviewer cards하는 2분 루프.",
+    "motive": "Synergy mastery: 플레이어가 draft stock/protocol/reviewer cards하면서 find a stronger combo고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 find a stronger combo고 싶은가?",
+    "phenomenon": "Data Ghost",
+    "setting": "stock-room collapse",
+    "a": {
+      "label": "Automate carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Automate aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the stock-room collapse",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "151-automate-the-false-memory",
+    "n": 151,
+    "name": "Automate the False Memory",
+    "axis": "Roulette",
+    "hook": "broken incubator 상황에서 submit before knowing the reviewer attack하는 2분 루프.",
+    "motive": "Risk anticipation: 플레이어가 submit before knowing the reviewer attack하면서 push a stronger claim고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 push a stronger claim고 싶은가?",
+    "phenomenon": "False Memory",
+    "setting": "broken incubator",
+    "a": {
+      "label": "Automate carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Automate aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the broken incubator",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "152-automate-the-foraging-spiral",
+    "n": 152,
+    "name": "Automate the Foraging Spiral",
+    "axis": "Automation",
+    "hook": "stock-room collapse 상황에서 remove bottlenecks from a lab pipeline하는 2분 루프.",
+    "motive": "Optimization: 플레이어가 remove bottlenecks from a lab pipeline하면서 optimize the next bottleneck고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 optimize the next bottleneck고 싶은가?",
+    "phenomenon": "Foraging Spiral",
+    "setting": "stock-room collapse",
+    "a": {
+      "label": "Automate carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Automate aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the stock-room collapse",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "153-automate-the-fly-riot",
+    "n": 153,
+    "name": "Automate the Fly Riot",
+    "axis": "Email",
+    "hook": "broken incubator 상황에서 choose who to disappoint in lab politics하는 2분 루프.",
+    "motive": "Social pressure: 플레이어가 choose who to disappoint in lab politics하면서 triage a different message first고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 triage a different message first고 싶은가?",
+    "phenomenon": "Fly Riot",
+    "setting": "broken incubator",
+    "a": {
+      "label": "Automate carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Automate aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the broken incubator",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "154-automate-the-swarm-dance",
+    "n": 154,
+    "name": "Automate the Swarm Dance",
+    "axis": "Arcade",
+    "hook": "stock-room collapse 상황에서 use timing/attention to improve assay data하는 2분 루프.",
+    "motive": "Skill competence: 플레이어가 use timing/attention to improve assay data하면서 master a cleaner trace고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 master a cleaner trace고 싶은가?",
+    "phenomenon": "Swarm Dance",
+    "setting": "stock-room collapse",
+    "a": {
+      "label": "Automate carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Automate aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the stock-room collapse",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "155-automate-the-foraging-spiral",
+    "n": 155,
+    "name": "Automate the Foraging Spiral",
+    "axis": "Claim",
+    "hook": "conference demo 상황에서 tune claim strength between boring and scandal하는 2분 루프.",
+    "motive": "Tuning mastery: 플레이어가 tune claim strength between boring and scandal하면서 find the sweet spot고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 find the sweet spot고 싶은가?",
+    "phenomenon": "Foraging Spiral",
+    "setting": "conference demo",
+    "a": {
+      "label": "Automate carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Automate aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the conference demo",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "156-automate-the-fly-riot",
+    "n": 156,
+    "name": "Automate the Fly Riot",
+    "axis": "Ethics",
+    "hook": "viral lab Slack 상황에서 balance discovery against suspicious methods하는 2분 루프.",
+    "motive": "Moral tension: 플레이어가 balance discovery against suspicious methods하면서 choose a cleaner or darker path고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 choose a cleaner or darker path고 싶은가?",
+    "phenomenon": "Fly Riot",
+    "setting": "viral lab Slack",
+    "a": {
+      "label": "Automate carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Automate aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the viral lab Slack",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "157-automate-the-swarm-dance",
+    "n": 157,
+    "name": "Automate the Swarm Dance",
+    "axis": "Mentor",
+    "hook": "conference demo 상황에서 manage PI/postdoc/student expectations하는 2분 루프.",
+    "motive": "Relatedness: 플레이어가 manage PI/postdoc/student expectations하면서 protect a different relationship고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 protect a different relationship고 싶은가?",
+    "phenomenon": "Swarm Dance",
+    "setting": "conference demo",
+    "a": {
+      "label": "Automate carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Automate aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the conference demo",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "158-automate-the-wall-parade",
+    "n": 158,
+    "name": "Automate the Wall Parade",
+    "axis": "World",
+    "hook": "viral lab Slack 상황에서 turn a tiny fly result into world response하는 2분 루프.",
+    "motive": "Macro anticipation: 플레이어가 turn a tiny fly result into world response하면서 see the next social ripple고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 see the next social ripple고 싶은가?",
+    "phenomenon": "Wall Parade",
+    "setting": "viral lab Slack",
+    "a": {
+      "label": "Automate carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Automate aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the viral lab Slack",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "159-automate-the-grant-panic",
+    "n": 159,
+    "name": "Automate the Grant Panic",
+    "axis": "Humor",
+    "hook": "conference demo 상황에서 produce absurd lab stories하는 2분 루프.",
+    "motive": "Surprise/comedy: 플레이어가 produce absurd lab stories하면서 discover a funnier failure고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 discover a funnier failure고 싶은가?",
+    "phenomenon": "Grant Panic",
+    "setting": "conference demo",
+    "a": {
+      "label": "Automate carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Automate aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the conference demo",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "160-automate-the-lab-myth",
+    "n": 160,
+    "name": "Automate the Lab Myth",
+    "axis": "Craft",
+    "hook": "viral lab Slack 상황에서 assemble a satisfying final paper artifact하는 2분 루프.",
+    "motive": "Completion: 플레이어가 assemble a satisfying final paper artifact하면서 polish a cleaner final object고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 polish a cleaner final object고 싶은가?",
+    "phenomenon": "Lab Myth",
+    "setting": "viral lab Slack",
+    "a": {
+      "label": "Automate carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Automate aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the viral lab Slack",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "161-spin-the-courtship-disaster",
+    "n": 161,
+    "name": "Spin the Courtship Disaster",
+    "axis": "Discovery",
+    "hook": "conference demo 상황에서 reveal an unknown fly behavior하는 2분 루프.",
+    "motive": "Curiosity: 플레이어가 reveal an unknown fly behavior하면서 try another trait combination고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 try another trait combination고 싶은가?",
+    "phenomenon": "Courtship Disaster",
+    "setting": "conference demo",
+    "a": {
+      "label": "Spin carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Spin aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the conference demo",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "162-spin-the-grant-panic",
+    "n": 162,
+    "name": "Spin the Grant Panic",
+    "axis": "Catalog",
+    "hook": "viral lab Slack 상황에서 fill a hidden phenomenon catalog하는 2분 루프.",
+    "motive": "Collection: 플레이어가 fill a hidden phenomenon catalog하면서 unlock one more ??? slot고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 unlock one more ??? slot고 싶은가?",
+    "phenomenon": "Grant Panic",
+    "setting": "viral lab Slack",
+    "a": {
+      "label": "Spin carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Spin aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the viral lab Slack",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "163-spin-the-lab-myth",
+    "n": 163,
+    "name": "Spin the Lab Myth",
+    "axis": "Reviewer",
+    "hook": "conference demo 상황에서 counter Reviewer #2 attacks하는 2분 루프.",
+    "motive": "Competence: 플레이어가 counter Reviewer #2 attacks하면서 solve a smarter rebuttal고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 solve a smarter rebuttal고 싶은가?",
+    "phenomenon": "Lab Myth",
+    "setting": "conference demo",
+    "a": {
+      "label": "Spin carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Spin aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the conference demo",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "164-spin-the-courtship-disaster",
+    "n": 164,
+    "name": "Spin the Courtship Disaster",
+    "axis": "Figure",
+    "hook": "viral lab Slack 상황에서 frame ambiguous data into a claim하는 2분 루프.",
+    "motive": "Autonomy: 플레이어가 frame ambiguous data into a claim하면서 try a different scientific identity고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 try a different scientific identity고 싶은가?",
+    "phenomenon": "Courtship Disaster",
+    "setting": "viral lab Slack",
+    "a": {
+      "label": "Spin carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Spin aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the viral lab Slack",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "165-spin-the-reviewer-trap",
+    "n": 165,
+    "name": "Spin the Reviewer Trap",
+    "axis": "Spread",
+    "hook": "conference demo 상황에서 watch behavior/hype spread outward하는 2분 루프.",
+    "motive": "Power fantasy: 플레이어가 watch behavior/hype spread outward하면서 make a bigger systemic reaction고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 make a bigger systemic reaction고 싶은가?",
+    "phenomenon": "Reviewer Trap",
+    "setting": "conference demo",
+    "a": {
+      "label": "Spin carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Spin aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the conference demo",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "166-spin-the-data-ghost",
+    "n": 166,
+    "name": "Spin the Data Ghost",
+    "axis": "Survival",
+    "hook": "midnight deadline 상황에서 survive lab disasters before deadline하는 2분 루프.",
+    "motive": "Tension/recovery: 플레이어가 survive lab disasters before deadline하면서 recover from a different disaster고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 recover from a different disaster고 싶은가?",
+    "phenomenon": "Data Ghost",
+    "setting": "midnight deadline",
+    "a": {
+      "label": "Spin carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Spin aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the midnight deadline",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "167-spin-the-false-memory",
+    "n": 167,
+    "name": "Spin the False Memory",
+    "axis": "Sandbox",
+    "hook": "ethics audit 상황에서 poke the assay chamber and observe weird motion하는 2분 루프.",
+    "motive": "Toy curiosity: 플레이어가 poke the assay chamber and observe weird motion하면서 press another stimulus고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 press another stimulus고 싶은가?",
+    "phenomenon": "False Memory",
+    "setting": "ethics audit",
+    "a": {
+      "label": "Spin carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Spin aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the ethics audit",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "168-spin-the-foraging-spiral",
+    "n": 168,
+    "name": "Spin the Foraging Spiral",
+    "axis": "Economy",
+    "hook": "midnight deadline 상황에서 trade credibility for funding and reach하는 2분 루프.",
+    "motive": "Greed/risk: 플레이어가 trade credibility for funding and reach하면서 risk a larger grant promise고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 risk a larger grant promise고 싶은가?",
+    "phenomenon": "Foraging Spiral",
+    "setting": "midnight deadline",
+    "a": {
+      "label": "Spin carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Spin aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the midnight deadline",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "169-spin-the-data-ghost",
+    "n": 169,
+    "name": "Spin the Data Ghost",
+    "axis": "Roguelite",
+    "hook": "ethics audit 상황에서 adapt to a random paper-run modifier하는 2분 루프.",
+    "motive": "Replay/mastery: 플레이어가 adapt to a random paper-run modifier하면서 reroll and build differently고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 reroll and build differently고 싶은가?",
+    "phenomenon": "Data Ghost",
+    "setting": "ethics audit",
+    "a": {
+      "label": "Spin carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Spin aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the ethics audit",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "170-spin-the-false-memory",
+    "n": 170,
+    "name": "Spin the False Memory",
+    "axis": "Deck",
+    "hook": "midnight deadline 상황에서 draft stock/protocol/reviewer cards하는 2분 루프.",
+    "motive": "Synergy mastery: 플레이어가 draft stock/protocol/reviewer cards하면서 find a stronger combo고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 find a stronger combo고 싶은가?",
+    "phenomenon": "False Memory",
+    "setting": "midnight deadline",
+    "a": {
+      "label": "Spin carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Spin aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the midnight deadline",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "171-spin-the-foraging-spiral",
+    "n": 171,
+    "name": "Spin the Foraging Spiral",
+    "axis": "Roulette",
+    "hook": "ethics audit 상황에서 submit before knowing the reviewer attack하는 2분 루프.",
+    "motive": "Risk anticipation: 플레이어가 submit before knowing the reviewer attack하면서 push a stronger claim고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 push a stronger claim고 싶은가?",
+    "phenomenon": "Foraging Spiral",
+    "setting": "ethics audit",
+    "a": {
+      "label": "Spin carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Spin aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the ethics audit",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "172-spin-the-fly-riot",
+    "n": 172,
+    "name": "Spin the Fly Riot",
+    "axis": "Automation",
+    "hook": "midnight deadline 상황에서 remove bottlenecks from a lab pipeline하는 2분 루프.",
+    "motive": "Optimization: 플레이어가 remove bottlenecks from a lab pipeline하면서 optimize the next bottleneck고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 optimize the next bottleneck고 싶은가?",
+    "phenomenon": "Fly Riot",
+    "setting": "midnight deadline",
+    "a": {
+      "label": "Spin carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Spin aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the midnight deadline",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "173-spin-the-swarm-dance",
+    "n": 173,
+    "name": "Spin the Swarm Dance",
+    "axis": "Email",
+    "hook": "ethics audit 상황에서 choose who to disappoint in lab politics하는 2분 루프.",
+    "motive": "Social pressure: 플레이어가 choose who to disappoint in lab politics하면서 triage a different message first고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 triage a different message first고 싶은가?",
+    "phenomenon": "Swarm Dance",
+    "setting": "ethics audit",
+    "a": {
+      "label": "Spin carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Spin aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the ethics audit",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "174-spin-the-wall-parade",
+    "n": 174,
+    "name": "Spin the Wall Parade",
+    "axis": "Arcade",
+    "hook": "midnight deadline 상황에서 use timing/attention to improve assay data하는 2분 루프.",
+    "motive": "Skill competence: 플레이어가 use timing/attention to improve assay data하면서 master a cleaner trace고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 master a cleaner trace고 싶은가?",
+    "phenomenon": "Wall Parade",
+    "setting": "midnight deadline",
+    "a": {
+      "label": "Spin carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Spin aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the midnight deadline",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "175-spin-the-grant-panic",
+    "n": 175,
+    "name": "Spin the Grant Panic",
+    "axis": "Claim",
+    "hook": "ethics audit 상황에서 tune claim strength between boring and scandal하는 2분 루프.",
+    "motive": "Tuning mastery: 플레이어가 tune claim strength between boring and scandal하면서 find the sweet spot고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 find the sweet spot고 싶은가?",
+    "phenomenon": "Grant Panic",
+    "setting": "ethics audit",
+    "a": {
+      "label": "Spin carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Spin aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the ethics audit",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "176-spin-the-swarm-dance",
+    "n": 176,
+    "name": "Spin the Swarm Dance",
+    "axis": "Ethics",
+    "hook": "midnight deadline 상황에서 balance discovery against suspicious methods하는 2분 루프.",
+    "motive": "Moral tension: 플레이어가 balance discovery against suspicious methods하면서 choose a cleaner or darker path고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 choose a cleaner or darker path고 싶은가?",
+    "phenomenon": "Swarm Dance",
+    "setting": "midnight deadline",
+    "a": {
+      "label": "Spin carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Spin aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the midnight deadline",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "177-spin-the-wall-parade",
+    "n": 177,
+    "name": "Spin the Wall Parade",
+    "axis": "Mentor",
+    "hook": "replication race 상황에서 manage PI/postdoc/student expectations하는 2분 루프.",
+    "motive": "Relatedness: 플레이어가 manage PI/postdoc/student expectations하면서 protect a different relationship고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 protect a different relationship고 싶은가?",
+    "phenomenon": "Wall Parade",
+    "setting": "replication race",
+    "a": {
+      "label": "Spin carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Spin aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the replication race",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "178-spin-the-grant-panic",
+    "n": 178,
+    "name": "Spin the Grant Panic",
+    "axis": "World",
+    "hook": "angry PI email 상황에서 turn a tiny fly result into world response하는 2분 루프.",
+    "motive": "Macro anticipation: 플레이어가 turn a tiny fly result into world response하면서 see the next social ripple고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 see the next social ripple고 싶은가?",
+    "phenomenon": "Grant Panic",
+    "setting": "angry PI email",
+    "a": {
+      "label": "Spin carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Spin aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the angry PI email",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "179-spin-the-lab-myth",
+    "n": 179,
+    "name": "Spin the Lab Myth",
+    "axis": "Humor",
+    "hook": "replication race 상황에서 produce absurd lab stories하는 2분 루프.",
+    "motive": "Surprise/comedy: 플레이어가 produce absurd lab stories하면서 discover a funnier failure고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 discover a funnier failure고 싶은가?",
+    "phenomenon": "Lab Myth",
+    "setting": "replication race",
+    "a": {
+      "label": "Spin carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Spin aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the replication race",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "180-spin-the-courtship-disaster",
+    "n": 180,
+    "name": "Spin the Courtship Disaster",
+    "axis": "Craft",
+    "hook": "angry PI email 상황에서 assemble a satisfying final paper artifact하는 2분 루프.",
+    "motive": "Completion: 플레이어가 assemble a satisfying final paper artifact하면서 polish a cleaner final object고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 polish a cleaner final object고 싶은가?",
+    "phenomenon": "Courtship Disaster",
+    "setting": "angry PI email",
+    "a": {
+      "label": "Spin carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Spin aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the angry PI email",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "181-collect-the-reviewer-trap",
+    "n": 181,
+    "name": "Collect the Reviewer Trap",
+    "axis": "Discovery",
+    "hook": "replication race 상황에서 reveal an unknown fly behavior하는 2분 루프.",
+    "motive": "Curiosity: 플레이어가 reveal an unknown fly behavior하면서 try another trait combination고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 try another trait combination고 싶은가?",
+    "phenomenon": "Reviewer Trap",
+    "setting": "replication race",
+    "a": {
+      "label": "Collect carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Collect aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the replication race",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "182-collect-the-data-ghost",
+    "n": 182,
+    "name": "Collect the Data Ghost",
+    "axis": "Catalog",
+    "hook": "angry PI email 상황에서 fill a hidden phenomenon catalog하는 2분 루프.",
+    "motive": "Collection: 플레이어가 fill a hidden phenomenon catalog하면서 unlock one more ??? slot고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 unlock one more ??? slot고 싶은가?",
+    "phenomenon": "Data Ghost",
+    "setting": "angry PI email",
+    "a": {
+      "label": "Collect carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Collect aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the angry PI email",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "183-collect-the-courtship-disaster",
+    "n": 183,
+    "name": "Collect the Courtship Disaster",
+    "axis": "Reviewer",
+    "hook": "replication race 상황에서 counter Reviewer #2 attacks하는 2분 루프.",
+    "motive": "Competence: 플레이어가 counter Reviewer #2 attacks하면서 solve a smarter rebuttal고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 solve a smarter rebuttal고 싶은가?",
+    "phenomenon": "Courtship Disaster",
+    "setting": "replication race",
+    "a": {
+      "label": "Collect carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Collect aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the replication race",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "184-collect-the-reviewer-trap",
+    "n": 184,
+    "name": "Collect the Reviewer Trap",
+    "axis": "Figure",
+    "hook": "angry PI email 상황에서 frame ambiguous data into a claim하는 2분 루프.",
+    "motive": "Autonomy: 플레이어가 frame ambiguous data into a claim하면서 try a different scientific identity고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 try a different scientific identity고 싶은가?",
+    "phenomenon": "Reviewer Trap",
+    "setting": "angry PI email",
+    "a": {
+      "label": "Collect carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Collect aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the angry PI email",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "185-collect-the-data-ghost",
+    "n": 185,
+    "name": "Collect the Data Ghost",
+    "axis": "Spread",
+    "hook": "replication race 상황에서 watch behavior/hype spread outward하는 2분 루프.",
+    "motive": "Power fantasy: 플레이어가 watch behavior/hype spread outward하면서 make a bigger systemic reaction고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 make a bigger systemic reaction고 싶은가?",
+    "phenomenon": "Data Ghost",
+    "setting": "replication race",
+    "a": {
+      "label": "Collect carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Collect aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the replication race",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "186-collect-the-false-memory",
+    "n": 186,
+    "name": "Collect the False Memory",
+    "axis": "Survival",
+    "hook": "angry PI email 상황에서 survive lab disasters before deadline하는 2분 루프.",
+    "motive": "Tension/recovery: 플레이어가 survive lab disasters before deadline하면서 recover from a different disaster고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 recover from a different disaster고 싶은가?",
+    "phenomenon": "False Memory",
+    "setting": "angry PI email",
+    "a": {
+      "label": "Collect carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Collect aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the angry PI email",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "187-collect-the-foraging-spiral",
+    "n": 187,
+    "name": "Collect the Foraging Spiral",
+    "axis": "Sandbox",
+    "hook": "replication race 상황에서 poke the assay chamber and observe weird motion하는 2분 루프.",
+    "motive": "Toy curiosity: 플레이어가 poke the assay chamber and observe weird motion하면서 press another stimulus고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 press another stimulus고 싶은가?",
+    "phenomenon": "Foraging Spiral",
+    "setting": "replication race",
+    "a": {
+      "label": "Collect carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Collect aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the replication race",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "188-collect-the-fly-riot",
+    "n": 188,
+    "name": "Collect the Fly Riot",
+    "axis": "Economy",
+    "hook": "preprint storm 상황에서 trade credibility for funding and reach하는 2분 루프.",
+    "motive": "Greed/risk: 플레이어가 trade credibility for funding and reach하면서 risk a larger grant promise고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 risk a larger grant promise고 싶은가?",
+    "phenomenon": "Fly Riot",
+    "setting": "preprint storm",
+    "a": {
+      "label": "Collect carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Collect aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the preprint storm",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "189-collect-the-swarm-dance",
+    "n": 189,
+    "name": "Collect the Swarm Dance",
+    "axis": "Roguelite",
+    "hook": "funding review 상황에서 adapt to a random paper-run modifier하는 2분 루프.",
+    "motive": "Replay/mastery: 플레이어가 adapt to a random paper-run modifier하면서 reroll and build differently고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 reroll and build differently고 싶은가?",
+    "phenomenon": "Swarm Dance",
+    "setting": "funding review",
+    "a": {
+      "label": "Collect carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Collect aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the funding review",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "190-collect-the-foraging-spiral",
+    "n": 190,
+    "name": "Collect the Foraging Spiral",
+    "axis": "Deck",
+    "hook": "preprint storm 상황에서 draft stock/protocol/reviewer cards하는 2분 루프.",
+    "motive": "Synergy mastery: 플레이어가 draft stock/protocol/reviewer cards하면서 find a stronger combo고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 find a stronger combo고 싶은가?",
+    "phenomenon": "Foraging Spiral",
+    "setting": "preprint storm",
+    "a": {
+      "label": "Collect carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Collect aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the preprint storm",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "191-collect-the-fly-riot",
+    "n": 191,
+    "name": "Collect the Fly Riot",
+    "axis": "Roulette",
+    "hook": "funding review 상황에서 submit before knowing the reviewer attack하는 2분 루프.",
+    "motive": "Risk anticipation: 플레이어가 submit before knowing the reviewer attack하면서 push a stronger claim고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 push a stronger claim고 싶은가?",
+    "phenomenon": "Fly Riot",
+    "setting": "funding review",
+    "a": {
+      "label": "Collect carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Collect aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the funding review",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "192-collect-the-swarm-dance",
+    "n": 192,
+    "name": "Collect the Swarm Dance",
+    "axis": "Automation",
+    "hook": "preprint storm 상황에서 remove bottlenecks from a lab pipeline하는 2분 루프.",
+    "motive": "Optimization: 플레이어가 remove bottlenecks from a lab pipeline하면서 optimize the next bottleneck고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 optimize the next bottleneck고 싶은가?",
+    "phenomenon": "Swarm Dance",
+    "setting": "preprint storm",
+    "a": {
+      "label": "Collect carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Collect aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the preprint storm",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "193-collect-the-wall-parade",
+    "n": 193,
+    "name": "Collect the Wall Parade",
+    "axis": "Email",
+    "hook": "funding review 상황에서 choose who to disappoint in lab politics하는 2분 루프.",
+    "motive": "Social pressure: 플레이어가 choose who to disappoint in lab politics하면서 triage a different message first고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 triage a different message first고 싶은가?",
+    "phenomenon": "Wall Parade",
+    "setting": "funding review",
+    "a": {
+      "label": "Collect carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Collect aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the funding review",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "194-collect-the-grant-panic",
+    "n": 194,
+    "name": "Collect the Grant Panic",
+    "axis": "Arcade",
+    "hook": "preprint storm 상황에서 use timing/attention to improve assay data하는 2분 루프.",
+    "motive": "Skill competence: 플레이어가 use timing/attention to improve assay data하면서 master a cleaner trace고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 master a cleaner trace고 싶은가?",
+    "phenomenon": "Grant Panic",
+    "setting": "preprint storm",
+    "a": {
+      "label": "Collect carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Collect aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the preprint storm",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "195-collect-the-lab-myth",
+    "n": 195,
+    "name": "Collect the Lab Myth",
+    "axis": "Claim",
+    "hook": "funding review 상황에서 tune claim strength between boring and scandal하는 2분 루프.",
+    "motive": "Tuning mastery: 플레이어가 tune claim strength between boring and scandal하면서 find the sweet spot고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 find the sweet spot고 싶은가?",
+    "phenomenon": "Lab Myth",
+    "setting": "funding review",
+    "a": {
+      "label": "Collect carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Collect aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the funding review",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "196-collect-the-courtship-disaster",
+    "n": 196,
+    "name": "Collect the Courtship Disaster",
+    "axis": "Ethics",
+    "hook": "preprint storm 상황에서 balance discovery against suspicious methods하는 2분 루프.",
+    "motive": "Moral tension: 플레이어가 balance discovery against suspicious methods하면서 choose a cleaner or darker path고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 choose a cleaner or darker path고 싶은가?",
+    "phenomenon": "Courtship Disaster",
+    "setting": "preprint storm",
+    "a": {
+      "label": "Collect carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Collect aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the preprint storm",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "197-collect-the-grant-panic",
+    "n": 197,
+    "name": "Collect the Grant Panic",
+    "axis": "Mentor",
+    "hook": "funding review 상황에서 manage PI/postdoc/student expectations하는 2분 루프.",
+    "motive": "Relatedness: 플레이어가 manage PI/postdoc/student expectations하면서 protect a different relationship고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 protect a different relationship고 싶은가?",
+    "phenomenon": "Grant Panic",
+    "setting": "funding review",
+    "a": {
+      "label": "Collect carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Collect aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the funding review",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "198-collect-the-lab-myth",
+    "n": 198,
+    "name": "Collect the Lab Myth",
+    "axis": "World",
+    "hook": "preprint storm 상황에서 turn a tiny fly result into world response하는 2분 루프.",
+    "motive": "Macro anticipation: 플레이어가 turn a tiny fly result into world response하면서 see the next social ripple고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 see the next social ripple고 싶은가?",
+    "phenomenon": "Lab Myth",
+    "setting": "preprint storm",
+    "a": {
+      "label": "Collect carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Collect aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the preprint storm",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "199-collect-the-courtship-disaster",
+    "n": 199,
+    "name": "Collect the Courtship Disaster",
+    "axis": "Humor",
+    "hook": "stock-room collapse 상황에서 produce absurd lab stories하는 2분 루프.",
+    "motive": "Surprise/comedy: 플레이어가 produce absurd lab stories하면서 discover a funnier failure고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 discover a funnier failure고 싶은가?",
+    "phenomenon": "Courtship Disaster",
+    "setting": "stock-room collapse",
+    "a": {
+      "label": "Collect carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Collect aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the stock-room collapse",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  },
+  {
+    "id": "200-collect-the-reviewer-trap",
+    "n": 200,
+    "name": "Collect the Reviewer Trap",
+    "axis": "Craft",
+    "hook": "broken incubator 상황에서 assemble a satisfying final paper artifact하는 2분 루프.",
+    "motive": "Completion: 플레이어가 assemble a satisfying final paper artifact하면서 polish a cleaner final object고 싶게 만드는지 검증한다.",
+    "test": "플레이 후 정말로 polish a cleaner final object고 싶은가?",
+    "phenomenon": "Reviewer Trap",
+    "setting": "broken incubator",
+    "a": {
+      "label": "Collect carefully",
+      "effect": "Evidence/Credibility +, Hype -",
+      "ev": 25,
+      "cred": 20,
+      "hype": -5,
+      "susp": -5
+    },
+    "b": {
+      "label": "Collect aggressively",
+      "effect": "Weird/Hype +, Suspicion +",
+      "weird": 25,
+      "hype": 25,
+      "susp": 20
+    },
+    "c": {
+      "label": "Risk the broken incubator",
+      "effect": "High payoff, high scandal risk",
+      "score": 35,
+      "hype": 35,
+      "susp": 35
+    }
+  }
+]

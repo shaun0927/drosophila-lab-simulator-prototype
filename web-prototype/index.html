@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Drosophila Lab Simulator: Publish or Perish</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="app">
+    <header class="topbar">
+      <div>
+        <h1>Drosophila Lab Simulator</h1>
+        <p>Publish or Perish — decision-grade browser prototype</p>
+      </div>
+      <div id="stats" class="stats"></div>
+    </header>
+
+    <section class="layout">
+      <section class="panel main-panel">
+        <div id="stage"></div>
+        <div id="choices" class="choices"></div>
+      </section>
+
+      <aside class="panel side-panel">
+        <h2>Live Assay Chamber</h2>
+        <canvas id="chamber" width="520" height="330"></canvas>
+        <h2>Lab Log</h2>
+        <div id="log" class="log"></div>
+      </aside>
+    </section>
+
+    <footer class="footer">
+      Core question: make the phenomenon more believable, or more sensational?
+    </footer>
+  </main>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

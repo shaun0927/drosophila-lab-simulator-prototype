@@ -11,6 +11,8 @@ A browser prototype repo for exploring a competition concept: engineer absurd Dr
 
 These are intentionally tiny playable loop tests. The goal is not polish; the goal is to decide which fun engine is worth developing into the competition build.
 
+Each candidate now shows a **motivation hypothesis** and a **judge-this question** so it is easier to evaluate from a motivation-psychology perspective. Evaluation guide: [`micro-prototypes/evaluation-guide.md`](micro-prototypes/evaluation-guide.md)
+
 1. [Discover & Publish](https://shaun0927.github.io/drosophila-lab-simulator-prototype/micro-prototypes/prototype.html?id=01-discover-publish)
 2. [Phenomenon Catalog Collector](https://shaun0927.github.io/drosophila-lab-simulator-prototype/micro-prototypes/prototype.html?id=02-phenomenon-catalog)
 3. [Reviewer Boss Battle](https://shaun0927.github.io/drosophila-lab-simulator-prototype/micro-prototypes/prototype.html?id=03-reviewer-battle)

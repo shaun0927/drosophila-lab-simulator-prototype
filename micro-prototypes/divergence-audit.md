@@ -2,7 +2,7 @@
 
 ## Latest verdict
 
-Junghwan asked for an even wider divergence pass after the 50-family board. I regenerated the board again to avoid the feeling of a neat grid and to make each entry function more like an individual ideation prompt.
+Junghwan asked that each of the 200 candidates become even more different, not just broader as a matrix. I regenerated the board again so the titles, pressures, genre frames, and emotional engines are more distinct at scan time.
 
 ## Current divergence structure
 
@@ -10,65 +10,65 @@ The current board contains:
 
 - 200 candidates
 - 200 unique names
-- 200 singleton ideation axes
-- 200 genre/setting frames
-- 40 broad base frames × 5 pressure twists, then singletonized for evaluation
+- 200 visible singleton axes
+- 50 broad base mechanics
+- 4 differently named challenge archetypes per mechanic:
+  - Cold Open
+  - Crisis Variant
+  - Forbidden Variant
+  - Codex Variant
 
-Each item keeps a `base_family` for filtering, but its visible `axis` is now the candidate itself. This is intentional: the board should be scanned as 200 separate prompts, not as a filled matrix.
+Unlike the previous pass, candidate names no longer mostly read as repeated `Base: Twist` suffixes. The name shapes vary:
 
-## What changed from the previous pass
+- `Base`
+- `Base Under <Crisis>`
+- `The Forbidden <Base>`
+- `Codex Co-Pilot: <Base>`
 
-Previous pass:
+This makes scanning the 200 feel more like browsing distinct pitches instead of a filled grid.
 
-- 50 families × 4 variants
-- much broader than earlier versions
-- still visibly systematic
-
-Current pass:
-
-- 40 very different base frames
-- 5 pressure twists: Deadline Cut, Public Demo, Ethics Audit, Replication Race, AI-Collab Mode
-- each candidate promoted to singleton axis
-- stronger genre spread: detective, rhythm, courtroom, ecology, heist, logistics, horror, tarot, one-button, citation network, teaching sim, dream sandbox, bureaucracy, diplomacy, forecast, incremental, etc.
-
-## Example candidates
+## Examples of distinct prompts
 
 - Discover & Publish: Wide Divergence Baseline
-- Optogenetic DJ: Public Demo
-- Reviewer #2 Tower Defense: Replication Race
-- Fly Courtroom Cross-Exam: Ethics Audit
-- Stock Room Sokoban: Deadline Cut
-- Citation Mutation Network: AI-Collab Mode
-- Reviewer Dating Sim: Public Demo
-- One Button Submit Panic: Replication Race
-- Grant Tarot Roguelite: AI-Collab Mode
+- Optogenetic Rhythm Lab Under Funding Review
+- The Forbidden Vial Label Liar
+- Codex Co-Pilot: Reviewer Tower Defense
+- Peer Review Poker
+- Fly Courtroom Under Ethics Audit
+- Stockroom Sokoban Under Viral Slack
+- The Forbidden Incubator Weather
+- Fly Cult Ritual
+- Coffee Machine Colony Under Preprint Storm
+- The Forbidden Grant Heist
+- Codex Co-Pilot: Methods Madlibs
+- Citation Mutation
+- The Forbidden Lab Slack Rumor Mill
+- Codex Co-Pilot: Undergrad Boss Fight
+- Fly Dream Cartographer
+- Preprint Speedrun Under Replication Race
+- The Forbidden Replication Ghost Hunt
+- Codex Co-Pilot: Phenotype Market
+- Lab Safety Papers Please
+- Reviewer #2 Kaiju
+- Codex Co-Pilot: Courtship Ecology Garden
 
-## Why this is wider
+## Why this is more divergent
 
-The board no longer mainly asks “which variant of the same lab sim is best?” It now asks:
+The board now varies along all of these dimensions:
 
-- Is this a mystery game?
-- A toybox?
-- A social sim?
-- A courtroom game?
-- A logistics game?
-- A horror containment game?
-- A rhythm game?
-- A one-button tension game?
-- A network strategy game?
-- A Codex co-creation game?
-
-That makes it more useful for genuine ideation.
+- player action: argue, route, time, inspect, bluff, forecast, teach, hide, draw, trade, fight, cook, detect, rhythm-match
+- genre frame: detective, rhythm, memory, tower defense, poker, courtroom, sokoban, forecasting, cult sim, colony chaos, heist, language puzzle, dungeon crawl, network strategy, social sim, teaching sim, speedrun, ghost hunt, market speculation, bureaucracy, ecology tycoon, escape room, recipe craft, performance, dating parody, one-button arcade, horror containment, perception puzzle, tarot roguelite
+- pressure: tutorial cold open, crisis, forbidden temptation, AI-collaboration
+- emotional engine: curiosity, mastery, social pressure, dread, comedy, power fantasy, optimization, risk anticipation, moral tension
 
 ## Current verdict
 
-This is the broadest ideation board so far. It is suitable for divergent scanning and top-candidate selection.
+This is the strongest divergence board so far. It should now be used for selection instead of further raw expansion.
 
 Recommended next step:
 
-1. Scan all 200 by title and hook only.
-2. Mark any that produce immediate curiosity, even if impractical.
-3. Keep 40.
-4. Play those 40.
-5. Keep 10.
-6. Build bespoke prototypes for 3.
+1. Read titles/hooks only and mark 40 that create immediate curiosity.
+2. Play those 40 quickly.
+3. Score by curiosity, tension, payoff, replay desire, feasibility, presentation.
+4. Keep 10.
+5. Build bespoke prototypes for 3.

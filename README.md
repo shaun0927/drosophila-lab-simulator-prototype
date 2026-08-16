@@ -7,6 +7,8 @@ A browser prototype repo for exploring a competition concept: engineer absurd Dr
 - Main stable prototype: https://shaun0927.github.io/drosophila-lab-simulator-prototype/
 - 15-loop playtest index: https://shaun0927.github.io/drosophila-lab-simulator-prototype/micro-prototypes/
 - 200-idea playtest index: https://shaun0927.github.io/drosophila-lab-simulator-prototype/micro-prototypes/ideas200.html
+- 200-idea selection workbench: https://shaun0927.github.io/drosophila-lab-simulator-prototype/micro-prototypes/workbench.html
+- Prototyping strategy: https://shaun0927.github.io/drosophila-lab-simulator-prototype/micro-prototypes/prototyping-plan.md
 
 ## 15 core loop micro-prototypes
 

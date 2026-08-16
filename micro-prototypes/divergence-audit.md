@@ -2,7 +2,7 @@
 
 ## Latest verdict
 
-The earlier regenerated set of 25 families × 8 variants was better than the first attempt, but Junghwan asked for a still stronger divergence pass. I regenerated again with a wider ideation structure.
+Junghwan asked for an even wider divergence pass after the 50-family board. I regenerated the board again to avoid the feeling of a neat grid and to make each entry function more like an individual ideation prompt.
 
 ## Current divergence structure
 
@@ -10,79 +10,65 @@ The current board contains:
 
 - 200 candidates
 - 200 unique names
-- 50 distinct loop families
-- 50 genre/motivation frames
-- 4 variants per family
+- 200 singleton ideation axes
+- 200 genre/setting frames
+- 40 broad base frames × 5 pressure twists, then singletonized for evaluation
 
-This is more ideation-ready than the earlier grids because it spans very different forms of play rather than repeatedly permuting the same verbs and objects.
+Each item keeps a `base_family` for filtering, but its visible `axis` is now the candidate itself. This is intentional: the board should be scanned as 200 separate prompts, not as a filled matrix.
 
-## Family coverage
+## What changed from the previous pass
 
-The 50 families now include, among others:
+Previous pass:
 
-- Hidden Trait Discovery
-- Behavior Atlas
-- Reviewer Tactics
-- Claim Strength Slider
-- Figure Assembly
-- Lab Triage
-- Fly-Room Ecology
-- Behavior Pandemic
-- Assay Toybox
-- Stock Deckbuilder
-- Grant Tycoon
-- Lab Automation
-- PI Relationship Web
-- Skill Assay
-- Ethics Temptation
-- Replication Race
-- Conference Stage
-- Preprint Social Network
-- Mentor Drama
-- Weird Failure Comedy
-- Protocol Deduction
-- Data Ghost Mystery
-- Fly Colony Civilization
-- Journal Ladder
-- Codex Lab Assistant
-- Stock Room Memory Palace
-- Reviewer Courtroom
-- Grant Heist
-- Fly Noir Investigation
-- Lab Cooking Show
-- Vial Logistics Rush
-- Behavioral Stock Market
-- Evolution Draft
-- Micrograph Spot-the-Difference
-- Lab Horror Containment
-- Academic Email Roguelike
-- Method Section Madlibs
-- Fly Courtship Rhythm
-- Lab Bench Escape Room
-- Citation Infection
-- Reviewer Dating Sim
-- Grant Tarot
-- Undergrad Training Sim
-- Fly Dream Lab
-- Lab Safety Bureaucracy
-- Multi-Lab Diplomacy
-- Behavioral Weather Forecast
-- Reviewer #2 Kaiju
-- Paperclip-to-Paper
-- One-Button Publish Panic
+- 50 families × 4 variants
+- much broader than earlier versions
+- still visibly systematic
 
-## Why this is better
+Current pass:
 
-The board now spans discovery, catalog completion, argument combat, claim tuning, artifact craft, survival triage, ecosystem simulation, macro spread, sandbox toy play, deckbuilding, tycoon economy, automation, social sim, arcade skill, ethics temptation, race pressure, stage performance, social media dynamics, narrative drama, absurd comedy, deduction, mystery, colony emergence, rank progression, AI collaboration, spatial memory, courtroom rhetoric, heist planning, noir investigation, cooking/recipe craft, logistics, speculation, drafting, perception puzzles, horror containment, email roguelike, language puzzle, rhythm, escape room, citation-network strategy, dating-sim parody, tarot roguelite, teaching sim, surreal dream sandbox, bureaucracy satire, diplomacy, forecasting, boss spectacle, incremental, and one-button tension.
+- 40 very different base frames
+- 5 pressure twists: Deadline Cut, Public Demo, Ethics Audit, Replication Race, AI-Collab Mode
+- each candidate promoted to singleton axis
+- stronger genre spread: detective, rhythm, courtroom, ecology, heist, logistics, horror, tarot, one-button, citation network, teaching sim, dream sandbox, bureaucracy, diplomacy, forecast, incremental, etc.
+
+## Example candidates
+
+- Discover & Publish: Wide Divergence Baseline
+- Optogenetic DJ: Public Demo
+- Reviewer #2 Tower Defense: Replication Race
+- Fly Courtroom Cross-Exam: Ethics Audit
+- Stock Room Sokoban: Deadline Cut
+- Citation Mutation Network: AI-Collab Mode
+- Reviewer Dating Sim: Public Demo
+- One Button Submit Panic: Replication Race
+- Grant Tarot Roguelite: AI-Collab Mode
+
+## Why this is wider
+
+The board no longer mainly asks “which variant of the same lab sim is best?” It now asks:
+
+- Is this a mystery game?
+- A toybox?
+- A social sim?
+- A courtroom game?
+- A logistics game?
+- A horror containment game?
+- A rhythm game?
+- A one-button tension game?
+- A network strategy game?
+- A Codex co-creation game?
+
+That makes it more useful for genuine ideation.
 
 ## Current verdict
 
-This version is now a genuinely broader ideation board. It is still not 200 bespoke finished games, but it is suitable for selecting promising fun engines.
+This is the broadest ideation board so far. It is suitable for divergent scanning and top-candidate selection.
 
 Recommended next step:
 
-1. Filter/read all 200 by title and hook.
-2. Mark 30 that produce immediate curiosity.
-3. Play those 30.
-4. Keep 10.
-5. Build bespoke prototypes for 3.
+1. Scan all 200 by title and hook only.
+2. Mark any that produce immediate curiosity, even if impractical.
+3. Keep 40.
+4. Play those 40.
+5. Keep 10.
+6. Build bespoke prototypes for 3.

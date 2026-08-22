@@ -279,6 +279,7 @@ function compareGameDataStatus(gameData, counts) {
   assert(evidence.livedDesignChange.required === 1, 'data.js livedDesignChange required count must stay 1 unless #27 is explicitly re-scoped');
   assert(evidence.playerSessions.accepted === counts.playerAccepted, 'data.js playerSessions accepted count must match ledger');
   assert(evidence.playerSessions.required === 3, 'data.js playerSessions required count must stay 3 unless #33 is explicitly re-scoped');
+  assert(evidence.playerRouteCoverage || !evidence.followUpIssues, 'data.js externalEvidence must include playerRouteCoverage when using the current follow-up gate status model');
   if (evidence.playerRouteCoverage) {
     assert(evidence.playerRouteCoverage.accepted === counts.playerRouteCoverageAccepted, 'data.js playerRouteCoverage accepted count must match ledger route coverage');
     assert(evidence.playerRouteCoverage.required === 3, 'data.js playerRouteCoverage required count must stay 3 unless #33 is explicitly re-scoped');

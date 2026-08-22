@@ -799,6 +799,7 @@ try {
         livedDesignChange: {accepted: 0, required: 1},
         playerSessions: {accepted: 0, required: 3},
         smeReviews: {accepted: 0, required: 1},
+        playerRouteCoverage: {accepted: 0, required: 3},
         followUpIssues: {accepted: 1, required: 'As needed'}
       }
     }
@@ -809,6 +810,31 @@ try {
     throw error;
   }
   console.log('bad fixture rejected: data.js follow-up count does not match ledger');
+}
+
+try {
+  validateExternalEvidence({
+    ledger: baseLedger,
+    validationResults: pendingValidationResults,
+    experienceMap: pendingExperienceMap,
+    progressAudit: pendingProgressAudit,
+    goalAudit: pendingGoalAudit,
+    gameData: {
+      externalEvidence: {
+        livedRows: {accepted: 0, required: 5},
+        livedDesignChange: {accepted: 0, required: 1},
+        playerSessions: {accepted: 0, required: 3},
+        smeReviews: {accepted: 0, required: 1},
+        followUpIssues: {accepted: 0, required: 'As needed'}
+      }
+    }
+  });
+  throw new Error('data.js missing route coverage fixture should have failed');
+} catch (error) {
+  if (!error.message.includes('data.js externalEvidence must include playerRouteCoverage')) {
+    throw error;
+  }
+  console.log('bad fixture rejected: data.js missing route coverage gate');
 }
 
 try {

@@ -8,6 +8,8 @@ Implementation PR: https://github.com/shaun0927/drosophila-lab-simulator-prototy
 
 CI guardrail: `.github/workflows/web-prototype-smoke.yml` runs JavaScript syntax checks and `node web-prototype/smoke-tests.js` on pull requests and pushes.
 
+Status guardrail: `node tools/r-series-status-check.js` verifies that required R-series artifacts, validation packets, screenshot evidence, external blocker language, and parked-issue drift guardrails are still present.
+
 Open-issue triage: [`open-issue-triage-2026-08-22.md`](open-issue-triage-2026-08-22.md) classifies the older Unity/phenomenon-first issues so they do not steer the current R-series browser slice by accident.
 
 ## Current implementation status
@@ -32,6 +34,7 @@ node --check web-prototype/app.js
 node --check web-prototype/data.js
 node --check web-prototype/smoke-tests.js
 node web-prototype/smoke-tests.js
+node tools/r-series-status-check.js
 ```
 
 Smoke checks run with a DOM stub:
@@ -55,6 +58,7 @@ screenshot proxy passed: objective strip visible on desktop/mobile clean fixture
 screenshot proxy passed: objective strip and repair plan visible on desktop/mobile clean fixture
 screenshot proxy passed: validation packet visible on desktop/mobile without legacy drift
 screenshot proxy passed: lived-experience packet visible on desktop/mobile without legacy drift
+r-series status check passed: artifacts present, packets wired, external blockers preserved, parked scope guarded
 ```
 
 ## Drift audit
@@ -92,10 +96,11 @@ The remaining work is not blocked, but it must stay sequenced:
 ## Next iteration checklist
 
 1. Run `node web-prototype/smoke-tests.js` after every change.
-2. Perform browser visual QA on the Procedure Lab route.
-3. Run player/SME validation and record results in `docs/fly-lab-validation-results.md`.
-4. Open follow-up issues for validation failures.
-5. Keep parked Unity/old-loop issues out of current implementation unless they are rewritten against the R-series contract.
+2. Run `node tools/r-series-status-check.js` after scope, doc, issue, or packet changes.
+3. Perform browser visual QA on the Procedure Lab route.
+4. Run player/SME validation and record results in `docs/fly-lab-validation-results.md`.
+5. Open follow-up issues for validation failures.
+6. Keep parked Unity/old-loop issues out of current implementation unless they are rewritten against the R-series contract.
 
 ## Do not do next
 

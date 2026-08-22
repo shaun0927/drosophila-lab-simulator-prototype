@@ -27,3 +27,6 @@ jobs:
 
       - name: Run fly-lab smoke tests
         run: node web-prototype/smoke-tests.js
+
+      - name: Check R-series status artifacts
+        run: node tools/r-series-status-check.js

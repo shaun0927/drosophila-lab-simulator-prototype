@@ -1,0 +1,73 @@
+name: Fly-lab validation finding
+description: Convert a player or SME validation result into a scoped fix/cut issue.
+title: "R7 validation finding: "
+labels:
+  - validation
+  - drift-guardrail
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this after running `docs/fly-lab-validation-runbook.md`.
+        Do not file broad redesign wishes here. Each issue should fix or cut one observed validation failure.
+  - type: dropdown
+    id: source
+    attributes:
+      label: Finding source
+      options:
+        - Player session
+        - SME review
+        - Browser QA
+        - Smoke test
+    validations:
+      required: true
+  - type: dropdown
+    id: route
+    attributes:
+      label: Route or fixture
+      options:
+        - First-run route
+        - clean fixture
+        - dirty fixture
+        - missing-control fixture
+        - other
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Observed evidence
+      description: Quote the player/SME or describe the failed check.
+    validations:
+      required: true
+  - type: textarea
+    id: affected_mechanic
+    attributes:
+      label: Affected mechanic
+      description: Name the exact mechanic, record field, UI element, or reviewer rule.
+    validations:
+      required: true
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options:
+        - Cut or redesign before #33 can close
+        - Fix before #33 can close
+        - Follow-up polish after #33
+    validations:
+      required: true
+  - type: textarea
+    id: approach
+    attributes:
+      label: Proposed fix or cut
+      description: Keep the scope to the affected mechanic. Include an explicit non-goal.
+    validations:
+      required: true
+  - type: textarea
+    id: verification
+    attributes:
+      label: Verification method
+      description: How will we prove the fix addressed this specific finding?
+    validations:
+      required: true

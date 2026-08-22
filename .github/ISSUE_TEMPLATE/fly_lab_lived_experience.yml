@@ -1,0 +1,63 @@
+name: Fly-lab lived experience entry
+description: Capture a user-provenance lab incident for R1 without turning it into arbitrary content.
+title: "R1 lived experience: "
+labels:
+  - validation
+  - needs-user-input
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this when adding firsthand, observed, or secondhand fly-lab experience to close #27.
+        Keep it concrete. The goal is to convert real lab friction into game verbs, failure modes, delayed consequences, and SME risks.
+  - type: dropdown
+    id: provenance
+    attributes:
+      label: Provenance
+      options:
+        - Firsthand
+        - Observed
+        - Secondhand
+        - User explicitly has no relevant experience to add
+    validations:
+      required: true
+  - type: textarea
+    id: incident
+    attributes:
+      label: Concrete incident
+      description: What actually happened in lab terms?
+    validations:
+      required: true
+  - type: textarea
+    id: game_verb
+    attributes:
+      label: Game verb
+      description: What should the player do because of this incident?
+    validations:
+      required: true
+  - type: textarea
+    id: failure_consequence
+    attributes:
+      label: Failure mode and delayed consequence
+      description: What can go wrong, and how should it matter later?
+    validations:
+      required: true
+  - type: textarea
+    id: comedy_boundary
+    attributes:
+      label: Comedy source and boundary
+      description: What is funny because it is real, and what should not be joked about?
+  - type: textarea
+    id: sme_risk
+    attributes:
+      label: SME risk
+      description: What could be scientifically misleading if simplified badly?
+    validations:
+      required: true
+  - type: textarea
+    id: map_update
+    attributes:
+      label: Proposed update to docs/fly-lab-experience-map.md
+      description: Paste the event-table row or note that this should not be included.
+    validations:
+      required: true

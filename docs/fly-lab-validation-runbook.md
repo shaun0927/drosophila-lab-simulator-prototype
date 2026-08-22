@@ -108,6 +108,8 @@ Each follow-up issue must include:
 - verification method
 - explicit non-goal
 
+Use `.github/ISSUE_TEMPLATE/fly_lab_validation_finding.yml` for these follow-up issues.
+
 ## Results Recording
 
 Record results in `docs/fly-lab-validation-results.md` under a dated section:

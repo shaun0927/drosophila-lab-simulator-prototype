@@ -160,3 +160,5 @@ After the interview, convert answers into the table below and then copy accepted
 - at least 5 rows in the event map have user/lived-experience provenance, or the user explicitly says they have no relevant firsthand/observed experience to add
 - any arbitrary phenomenon not supported by source or lived experience remains excluded from the first slice
 - at least one response updates the design, guardrails, or SME risk column
+
+If a response should become a tracked task instead of a direct document edit, open a new issue using `.github/ISSUE_TEMPLATE/fly_lab_lived_experience.yml`.

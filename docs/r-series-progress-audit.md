@@ -131,6 +131,7 @@ The current implementation stays aligned with the parent contract because:
 - `?validation=status`, `web-prototype/data.js`, and `node tools/external-evidence-check.js` expose and validate #33 route/fixture coverage so the in-app status cannot claim closure readiness from player-session count alone
 - `node tools/external-evidence-check.js` rejects `Fix` or `Cut` player/SME evidence rows unless they link a concrete follow-up issue before counting
 - `node tools/r-series-status-check.js` uses ledger counts to accept either zero-evidence pending language or partial-evidence in-progress language, so status guardrails do not block real validation progress
+- `node tools/external-evidence-check.js` requires all-thresholds-met fixtures to move status docs to `External evidence ready for closure review`, `User lived-experience pass: ready for closure review`, `#27 and #33 evidence thresholds met`, and `Ready for final closure audit`
 - `node tools/issue-template-contract-check.js` prevents #27/#33 follow-up issue forms from losing required implementation-contract fields before evidence becomes work
 
 ## Why the full goal is not complete yet

@@ -432,6 +432,13 @@ function requirePendingStatusDocs({ counts, validationResults, experienceMap, pr
   const needsValidationEvidence = counts.playerAccepted < 3 || counts.smeAccepted < 1;
   const hasAnyLivedEvidence = counts.livedAccepted > 0 || counts.designAccepted > 0;
   const hasAnyValidationEvidence = counts.playerAccepted > 0 || counts.smeAccepted > 0;
+  const evidenceReadyForClosureReview = (
+    counts.livedAccepted >= 5 &&
+    counts.designAccepted >= 1 &&
+    counts.playerAccepted >= 3 &&
+    counts.playerRouteCoverageAccepted >= 3 &&
+    counts.smeAccepted >= 1
+  );
 
   if (needsLivedEvidence) {
     if (hasAnyLivedEvidence) {
@@ -456,6 +463,14 @@ function requirePendingStatusDocs({ counts, validationResults, experienceMap, pr
   if (needsLivedEvidence || needsValidationEvidence) {
     requireText(progressAudit, '#27 and #33 require external/user evidence', 'progress audit');
     requireText(goalAudit, 'Do not mark the thread goal complete', 'goal audit');
+  }
+
+  if (evidenceReadyForClosureReview) {
+    requireText(validationResults, 'External evidence ready for closure review', 'validation results');
+    requireText(experienceMap, 'User lived-experience pass: ready for closure review', 'experience map');
+    requireText(progressAudit, '#27 and #33 evidence thresholds met', 'progress audit');
+    requireText(goalAudit, 'Ready for final closure audit', 'goal audit');
+    assert(!goalAudit.includes('Do not mark the thread goal complete'), 'goal audit must not preserve not-complete decision after all evidence thresholds are met');
   }
 }
 

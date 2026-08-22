@@ -147,6 +147,58 @@ const matchingGameData = {
     smeReviews: {accepted: 0, required: 1}
   }
 };
+const fullEvidenceLedger = baseLedger
+  .replace('| Lived-experience event rows with user or observed-lab provenance | 5 | 0 | Pending collection | #27 |', '| Lived-experience event rows with user or observed-lab provenance | 5 | 5 | Ready for closure review | #27 |')
+  .replace('| Lived-experience answer that changes a mechanic, guardrail, or SME risk | 1 | 0 | Pending collection | #27 |', '| Lived-experience answer that changes a mechanic, guardrail, or SME risk | 1 | 1 | Ready for closure review | #27 |')
+  .replace('| Fresh-player first-run sessions | 3 | 0 | Pending execution | #33 |', '| Fresh-player first-run sessions | 3 | 3 | Ready for closure review | #33 |')
+  .replace('| SME or biology-aware review | 1 | 0 | Pending execution | #33 |', '| SME or biology-aware review | 1 | 1 | Ready for closure review | #33 |')
+  .replace('| LE-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | No |', '| LE-01 | firsthand | vial flip | label vial | timing | stale vial | bad cross | mechanic change | Yes |')
+  .replace('| LE-02 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | No |', '| LE-02 | firsthand | label mistake | relabel vial | traceability | weak label | reviewer attack | explicit exclusion | Yes |')
+  .replace('| LE-03 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | No |', '| LE-03 | observed lab work | CO2 sort | stop anesthesia | timing | overexposure | assay caveat | explicit exclusion | Yes |')
+  .replace('| LE-04 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | No |', '| LE-04 | observed lab work | control setup | pair control | comparison | missing control | weak claim | explicit exclusion | Yes |')
+  .replace('| LE-05 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | No |', '| LE-05 | firsthand | notebook review | cite record | traceability | vague record | reviewer attack | explicit exclusion | Yes |')
+  .replace('| P-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending |', '| P-01 | 2026-08-22 | clean fixture | Yes | defend record | no attack | preserve controls | Pass | none |')
+  .replace('| P-02 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending |', '| P-02 | 2026-08-22 | dirty fixture | Yes | defend record | bad CO2 | reduce exposure | Pass | none |')
+  .replace('| P-03 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending |', '| P-03 | 2026-08-22 | missing-control fixture | Yes | defend record | missing control | add control | Pass | none |')
+  .replace('| SME-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending |', '| SME-01 | 2026-08-22 | genetics TA | Accurate enough | Acceptable simplification | Acceptable simplification | Accurate enough | Accurate enough | Pass | none |');
+const fullEvidenceValidationResults = [
+  'External evidence ready for closure review.',
+  '## Validation Run 2026-08-22',
+  '| Player | Route | Goal phrase | Failure-cause phrase | Second-run repair phrase | Result | Notes |',
+  '| P-01 | clean fixture | defend record | no attack | preserve controls | Pass | raw notes linked |',
+  '| P-02 | dirty fixture | defend record | bad CO2 | reduce exposure | Pass | raw notes linked |',
+  '| P-03 | missing-control fixture | defend record | missing control | add control | Pass | raw notes linked |',
+  '| Review id | Fixtures reviewed | Stock/vial/calendar | Virgin/cross timing | CO2/sorting | Negative geotaxis | Record/reviewer logic | Result | Notes |',
+  '| SME-01 | ?fixture=clean, ?fixture=dirty, ?fixture=missing-control | Accurate enough | Acceptable simplification | Acceptable simplification | Accurate enough | Accurate enough | Pass | none |'
+].join('\n');
+const fullEvidenceExperienceMap = [
+  'User lived-experience pass: ready for closure review.',
+  '| LE-01 | firsthand | vial flip | label vial | timing | stale vial | bad cross | mechanic change |',
+  '| LE-02 | firsthand | label mistake | relabel vial | traceability | weak label | reviewer attack | explicit exclusion |',
+  '| LE-03 | observed lab work | CO2 sort | stop anesthesia | timing | overexposure | assay caveat | explicit exclusion |',
+  '| LE-04 | observed lab work | control setup | pair control | comparison | missing control | weak claim | explicit exclusion |',
+  '| LE-05 | firsthand | notebook review | cite record | traceability | vague record | reviewer attack | explicit exclusion |'
+].join('\n');
+const readyProgressAudit = [
+  '| #27 R1 Experience map | Ready for closure review | Evidence | Remaining gap |',
+  '| #33 R7 Vertical slice validation | Ready for closure review | Evidence | Remaining gap |',
+  '#27 and #33 evidence thresholds met'
+].join('\n');
+const readyGoalAudit = [
+  '## Current Decision',
+  'Ready for final closure audit.',
+  'All external evidence thresholds are met; run the final issue and goal closure review before marking complete.'
+].join('\n');
+const fullEvidenceGameData = {
+  externalEvidence: {
+    livedRows: {accepted: 5, required: 5},
+    livedDesignChange: {accepted: 1, required: 1},
+    playerSessions: {accepted: 3, required: 3},
+    playerRouteCoverage: {accepted: 3, required: 3},
+    smeReviews: {accepted: 1, required: 1},
+    followUpIssues: {accepted: 0, required: 'As needed'}
+  }
+};
 
 function expectPass(name, ledger = baseLedger) {
   validateExternalEvidence({
@@ -201,6 +253,29 @@ function expectFailWith(name, options, messagePart) {
 }
 
 expectPass('current pending ledger');
+
+validateExternalEvidence({
+  ledger: fullEvidenceLedger,
+  validationResults: fullEvidenceValidationResults,
+  experienceMap: fullEvidenceExperienceMap,
+  progressAudit: readyProgressAudit,
+  goalAudit: readyGoalAudit,
+  gameData: fullEvidenceGameData
+});
+console.log('pass fixture accepted: all evidence ready for closure review');
+
+expectFailWith(
+  'all evidence met with stale goal audit',
+  {
+    ledger: fullEvidenceLedger,
+    validationResults: fullEvidenceValidationResults,
+    experienceMap: fullEvidenceExperienceMap,
+    progressAudit: readyProgressAudit,
+    goalAudit: pendingGoalAudit,
+    gameData: fullEvidenceGameData
+  },
+  'goal audit missing required pending-evidence text: Ready for final closure audit'
+);
 
 validateExternalEvidence({
   ledger: baseLedger

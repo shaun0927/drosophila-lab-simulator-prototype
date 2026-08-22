@@ -93,6 +93,8 @@ function testCleanPath() {
   ctx.runNegativeGeotaxis('B-01', true, 12);
   ctx.chooseClaim('A-01', 'sensational');
   assert(el('stage').innerHTML.includes('climbing assay does not establish'), 'clean sensational path should trigger overclaim');
+  assert(el('stage').innerHTML.includes('Next-run repair plan'), 'reviewer debrief repair plan missing');
+  assert(el('stage').innerHTML.includes('Keep the claim to a climbing phenotype'), 'overclaim path should suggest claim repair');
 }
 
 function testDirtyPath() {
@@ -110,6 +112,7 @@ function testDirtyPath() {
   assert(el('stage').innerHTML.includes('assay-plot'), 'assay plot missing');
   ctx.chooseClaim('A-01', 'conservative');
   assert(el('stage').innerHTML.includes('CO2 exposure is a behavioral confound'), 'dirty path should trigger CO2 attack');
+  assert(el('stage').innerHTML.includes('Stop CO2 earlier'), 'dirty path should suggest CO2 repair');
 }
 
 function testMissingControlPath() {
@@ -120,6 +123,7 @@ function testMissingControlPath() {
   assert(el('stage').innerHTML.includes('assay-plot'), 'missing-control assay plot missing');
   ctx.chooseClaim('A-01', 'mechanistic');
   assert(el('stage').innerHTML.includes('Without the control group'), 'missing-control path should trigger control attack');
+  assert(el('stage').innerHTML.includes('Rerun the assay with a matched control group'), 'missing-control path should suggest control repair');
 }
 
 function testLegacyRoute() {
@@ -132,13 +136,16 @@ function testUrlFixtures() {
   let booted = boot('?fixture=clean');
   assert(booted.el('stage').innerHTML.includes('climbing assay does not establish'), 'clean URL fixture missing overclaim review');
   assert(booted.el('stage').innerHTML.includes('Reviewer vulnerability'), 'clean URL fixture missing objective strip');
+  assert(booted.el('stage').innerHTML.includes('Keep the claim to a climbing phenotype'), 'clean URL fixture missing repair plan');
   assert(!booted.el('stage').innerHTML.includes('Light-Induced Swarm Dance'), 'clean URL fixture drifted into legacy phenomenon copy');
   booted = boot('?fixture=dirty');
   assert(booted.el('stage').innerHTML.includes('CO2 exposure is a behavioral confound'), 'dirty URL fixture missing CO2 review');
   assert(booted.el('stage').innerHTML.includes('Reviewer vulnerability'), 'dirty URL fixture missing objective strip');
+  assert(booted.el('stage').innerHTML.includes('Stop CO2 earlier'), 'dirty URL fixture missing repair plan');
   booted = boot('?fixture=missing-control');
   assert(booted.el('stage').innerHTML.includes('Without the control group'), 'missing-control URL fixture missing control review');
   assert(booted.el('stage').innerHTML.includes('Reviewer vulnerability'), 'missing-control URL fixture missing objective strip');
+  assert(booted.el('stage').innerHTML.includes('Rerun the assay with a matched control group'), 'missing-control URL fixture missing repair plan');
 }
 
 testR2R3();
@@ -148,4 +155,4 @@ testMissingControlPath();
 testLegacyRoute();
 testUrlFixtures();
 
-console.log('fly-lab smoke passed: R2/R3, objective strip, clean, dirty, missing-control, URL fixtures, legacy route');
+console.log('fly-lab smoke passed: R2/R3, objective strip, reviewer repair plans, clean, dirty, missing-control, URL fixtures, legacy route');

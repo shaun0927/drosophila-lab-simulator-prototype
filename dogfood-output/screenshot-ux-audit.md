@@ -27,6 +27,7 @@ Latest replacement screenshots:
 | Procedure route still showed `Live Assay Chamber` and `No mutant line yet` in the right panel | `desktop-clean.png`, `mobile-clean.png` | Drift: the UI told players they were still in the old phenomenon-first prototype while using Procedure Lab | Fixed |
 | Footer still asked `make the phenomenon more believable, or more sensational?` in Procedure Lab | `desktop-clean.png`, `mobile-clean.png` | Drift: the bottom-line question contradicted the R-series notebook/evidence thesis | Fixed |
 | Procedure route listed systems before telling the player what judgment mattered now | `desktop-clean.png`, `mobile-clean.png` | First-run risk: players could see many lab controls without understanding the current objective, next action, record risk, or reviewer vulnerability | Fixed with objective strip |
+| Reviewer result explained the weakness but did not clearly convert it into a second-run action | `desktop-clean.png`, `mobile-clean.png` | #33 comprehension risk: players might understand the attack quote without knowing what to repair next | Fixed with next-run repair plan |
 | Procedure route screenshots are long on mobile | `mobile-clean.png`, `mobile-dirty.png`, `mobile-missing-control.png` | Usability risk for real first-run validation; not a functional blocker | Keep as #33 player-validation watch item |
 | Lab Record View canvas labels are small and dense | `desktop-clean-after-record-view.png` | Polish/readability risk; not a scientific drift issue | Keep as later polish unless players miss the record summary |
 
@@ -46,6 +47,12 @@ Added Procedure Lab objective strip:
 - record risk: latest vial, batch, assay, or reviewer weakness
 - reviewer vulnerability: the likely critique attached to the current record state
 
+Added Reviewer #2 repair plan:
+
+- each reviewer finding maps to three concrete next-run corrections
+- clean, dirty CO2, and missing-control fixtures verify different repair guidance
+- repair text stays attached to evidence refs instead of introducing new phenomena or jokes
+
 ## Verification
 
 Commands run:
@@ -62,6 +69,7 @@ Browser assertion:
 ```text
 browser smoke passed: procedure route uses Lab Record View and notebook footer
 screenshot proxy passed: objective strip visible on desktop/mobile clean fixture
+screenshot proxy passed: objective strip and repair plan visible on desktop/mobile clean fixture
 ```
 
 ## Remaining Limits

@@ -19,7 +19,7 @@ CI guardrail: `.github/workflows/web-prototype-smoke.yml` runs JavaScript syntax
 | #30 R4 CO2 bench/sorting | Closed | Procedure Lab has CO2 bench sorting, specimen pad cards, specimen zones, exposure meter, batch records, purity, ambiguity, confidence, and caveats; browser QA passed; merged via PR #34; main CI green | SME visual-tell and player bench-feel validation continue under #33 |
 | #31 R5 Negative geotaxis assay | Closed | Batch records produce assay records with n, control, mean climb score, variance, confidence, caveats, and mini-plot bars; merged via PR #34; main CI green | SME scoring-abstraction and player readability validation continue under #33 |
 | #32 R6 Figure/reviewer rewrite | Closed | Figure summary uses ExperimentRecord aggregation; reviewer findings inspect lineage, missing control, low n, CO2, ambiguity, and overclaim; URL fixtures cover representative paths; merged via PR #34; main CI green | Broader player/SME validation continues under #33 |
-| #33 R7 Vertical slice validation | Open, proxy-audited and ready for external validation | `web-prototype/smoke-tests.js`, URL fixtures, browser QA, objective strip screenshots, `docs/fly-lab-playtest-sheet.md`, `docs/fly-lab-sme-validation-sheet.md`, `docs/fly-lab-validation-runbook.md`, `docs/fly-lab-validation-results.md`, and `.github/ISSUE_TEMPLATE/fly_lab_validation_finding.yml` | External player/SME validation has not been run, so #33 cannot close |
+| #33 R7 Vertical slice validation | Open, proxy-audited and ready for external validation | `web-prototype/smoke-tests.js`, URL fixtures, browser QA, objective strip screenshots, Reviewer #2 repair-plan checks, `docs/fly-lab-playtest-sheet.md`, `docs/fly-lab-sme-validation-sheet.md`, `docs/fly-lab-validation-runbook.md`, `docs/fly-lab-validation-results.md`, and `.github/ISSUE_TEMPLATE/fly_lab_validation_finding.yml` | External player/SME validation has not been run, so #33 cannot close |
 
 ## Verification run
 
@@ -41,7 +41,7 @@ R3 smoke passed: clear, window, collect, select males, set cross, scoring calend
 legacy route smoke passed: old publication prototype still reaches phenomenon screen
 R4/R5 smoke passed: CO2 sorting, batch caveats, assay records, control/n caveats
 R6 smoke passed: reviewer attacks record caveats and claim strength with evidence refs
-fly-lab smoke passed: R2/R3, objective strip, clean, dirty, missing-control, URL fixtures, legacy route
+fly-lab smoke passed: R2/R3, objective strip, reviewer repair plans, clean, dirty, missing-control, URL fixtures, legacy route
 browser smoke passed: file URL Procedure Lab renders and sorting click registers
 browser smoke passed: specimen pad renders and sorting click registers
 browser smoke passed: assay mini-plot renders after controlled run
@@ -50,6 +50,7 @@ responsive browser QA passed: desktop/mobile fixtures render without horizontal 
 main CI passed: Web prototype smoke run https://github.com/shaun0927/drosophila-lab-simulator-prototype/actions/runs/32563843521
 screenshot UX audit passed after fixing Procedure Lab chrome drift: `dogfood-output/screenshot-ux-audit.md`
 screenshot proxy passed: objective strip visible on desktop/mobile clean fixture
+screenshot proxy passed: objective strip and repair plan visible on desktop/mobile clean fixture
 ```
 
 ## Drift audit
@@ -69,6 +70,7 @@ The current implementation stays aligned with the parent contract because:
 - clean, dirty, and missing-control validation paths are reproducible through URL fixtures
 - Procedure Lab chrome now uses `Lab Record View` and `can the notebook defend the claim?` instead of old phenomenon-first chamber/footer language
 - Procedure Lab first screen now exposes current goal, next action, record risk, and reviewer vulnerability before the dense system list
+- Reviewer #2 results now include next-run repair plans tied to the attacked record weakness, so the validation slice tests whether failure can teach a better second run
 
 ## Why the full goal is not complete yet
 

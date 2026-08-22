@@ -24,7 +24,7 @@ node web-prototype/smoke-tests.js
 Expected result:
 
 ```text
-fly-lab smoke passed: R2/R3, objective strip, clean, dirty, missing-control, URL fixtures, legacy route
+fly-lab smoke passed: R2/R3, objective strip, reviewer repair plans, clean, dirty, missing-control, URL fixtures, legacy route
 browser smoke passed: specimen pad renders and sorting click registers
 browser smoke passed: assay mini-plot renders after controlled run
 browser smoke passed: clean/dirty/missing-control URL fixtures load expected reviewer findings
@@ -32,6 +32,7 @@ responsive browser QA passed: desktop/mobile fixtures render without horizontal 
 main CI passed: Web prototype smoke run https://github.com/shaun0927/drosophila-lab-simulator-prototype/actions/runs/32563843521
 screenshot UX audit passed after fixing Procedure Lab chrome drift: `dogfood-output/screenshot-ux-audit.md`
 screenshot proxy passed: objective strip visible on desktop/mobile clean fixture
+screenshot proxy passed: objective strip and repair plan visible on desktop/mobile clean fixture
 ```
 
 Reusable validation URLs:
@@ -42,9 +43,9 @@ Reusable validation URLs:
 
 ## Why this is not sufficient for #33
 
-The smoke harness and browser checks prove that the route mechanics can execute, clean/dirty/missing-control paths produce different reviewer findings, reusable URL fixtures load those paths, the specimen pad renders, sorting clicks register, the assay mini-plot appears after a controlled run, and desktop/mobile fixture pages do not horizontally overflow. They do not prove that a fresh player understands the route, that the procedure feels good, or that a biology-aware reviewer accepts the simplifications.
+The smoke harness and browser checks prove that the route mechanics can execute, clean/dirty/missing-control paths produce different reviewer findings and next-run repair plans, reusable URL fixtures load those paths, the specimen pad renders, sorting clicks register, the assay mini-plot appears after a controlled run, and desktop/mobile fixture pages do not horizontally overflow. They do not prove that a fresh player understands the route, that the procedure feels good, or that a biology-aware reviewer accepts the simplifications.
 
-The screenshot UX audit also caught and fixed visible drift where Procedure Lab still used the old `Live Assay Chamber` and phenomenon-first footer language. A later screenshot pass added an objective strip for current goal, next action, record risk, and reviewer vulnerability after the first screen still read like a system list. This remains proxy evidence only, not a replacement for player or SME validation.
+The screenshot UX audit also caught and fixed visible drift where Procedure Lab still used the old `Live Assay Chamber` and phenomenon-first footer language. Later screenshot passes added an objective strip for current goal, next action, record risk, and reviewer vulnerability, then added a Reviewer #2 next-run repair plan after the result card still risked ending at explanation rather than player improvement. This remains proxy evidence only, not a replacement for player or SME validation.
 
 ## Pending validation
 

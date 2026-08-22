@@ -270,6 +270,19 @@ function reviewerFinding(record){
   if(record.claimStrength==='mechanistic') return {id:'overclaim_mechanism', severity:'minor', evidenceRef:record.assay.id, quote:'The phenotype is plausible, but the mechanism is still mostly a drawing.', why:'The record supports a behavior difference better than a mechanism.'};
   return {id:'clean_record', severity:'minor', evidenceRef:record.assay.id, quote:'This is annoyingly defensible. I still want one independent repeat.', why:'The record has control, usable n, and no dominant procedural caveat.'};
 }
+function repairPlanForFinding(id){
+  const plans = {
+    weak_lineage:['Relabel or flip the source vial before using it again.','Use a source with stronger lineage confidence for the next batch.','Keep the claim conservative until the cross history is traceable.'],
+    missing_control:['Rerun the assay with a matched control group.','Keep n at 10 or higher so the control actually helps.','Do not choose a mechanistic or sensational claim from a no-control assay.'],
+    low_n:['Sort enough target flies before starting the assay.','Rerun negative geotaxis with n=12 when the batch supports it.','Treat small-n results as notebook warnings, not figure claims.'],
+    co2_exposure:['Stop CO2 earlier and accept more difficult sorting.','Let the batch recover before behavior scoring in a later slice.','Use a clean batch if the next claim depends on locomotion.'],
+    ambiguous_batch:['Inspect ambiguous specimens instead of target-sorting them by default.','Finish a smaller but cleaner batch if visual tells are uncertain.','Expect genotype and sex ambiguity to weaken every later assay.'],
+    overclaim_sensational:['Keep the claim to a climbing phenotype.','Add a second assay before using broad behavior language.','Let the record decide the title, not the most exciting interpretation.'],
+    overclaim_mechanism:['Use behavior wording unless a mechanism assay exists.','Add a follow-up mechanism-specific experiment before invoking circuitry.','Keep Reviewer #2 focused on evidence refs rather than title ambition.'],
+    clean_record:['Repeat independently before raising claim strength.','Preserve this record as the comparison target for dirty runs.','Look for the next weakest link instead of adding spectacle.']
+  };
+  return plans[id] || ['Repeat the run and remove the strongest record caveat first.'];
+}
 function chooseClaim(assayId, claimStrength){
   const record = buildExperimentRecord(assayId, claimStrength);
   const finding = reviewerFinding(record);
@@ -400,7 +413,8 @@ function assayPlot(a){
 function figureReviewHtml(){
   const assayButtons = S.lab.assayRecords.map(a=>`<div class="record-card"><b>${a.id}</b> confidence ${a.confidence}%, caveats ${a.caveats.join(', ')||'none'}<div class="mini-actions"><button onclick="chooseClaim('${a.id}','conservative')">Conservative claim</button><button onclick="chooseClaim('${a.id}','mechanistic')">Mechanistic claim</button><button onclick="chooseClaim('${a.id}','sensational')">Sensational claim</button></div></div>`).join('') || '<p>No assay record available for review.</p>';
   const review = S.lab.figureReview;
-  const result = review ? `<div class="record-card"><h3>Reviewer #2 finding</h3><p><b>${review.finding.severity.toUpperCase()}:</b> ${review.finding.quote}</p><p><b>Evidence ref:</b> ${review.finding.evidenceRef}<br><b>Why this happened:</b> ${review.finding.why}</p><p><b>Claim:</b> ${review.record.claimStrength}<br><b>Assay:</b> ${review.record.assay.id}, n=${review.record.assay.n}, control=${review.record.assay.controlPresent?'yes':'no'}, confidence=${review.record.assay.confidence}%</p></div>` : '';
+  const repair = review ? repairPlanForFinding(review.finding.id).map(step=>`<li>${step}</li>`).join('') : '';
+  const result = review ? `<div class="record-card"><h3>Reviewer #2 finding</h3><p><b>${review.finding.severity.toUpperCase()}:</b> ${review.finding.quote}</p><p><b>Evidence ref:</b> ${review.finding.evidenceRef}<br><b>Why this happened:</b> ${review.finding.why}</p><p><b>Claim:</b> ${review.record.claimStrength}<br><b>Assay:</b> ${review.record.assay.id}, n=${review.record.assay.n}, control=${review.record.assay.controlPresent?'yes':'no'}, confidence=${review.record.assay.confidence}%</p><div class="repair-plan"><b>Next-run repair plan</b><ol>${repair}</ol></div></div>` : '';
   return `<section class="planner"><h3>Figure summary and reviewer</h3><p>Choose claim strength from an assay record. Reviewer #2 reads lineage, batch, control, n, CO2, and ambiguity before attacking one primary weakness.</p>${assayButtons}${result}</section>`;
 }
 function traits(){

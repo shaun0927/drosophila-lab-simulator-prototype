@@ -27,6 +27,10 @@
 .bar-row i{display:block;height:100%;background:#9fdc61}
 .bad-bar i{background:#ff8f6b}
 .assay-plot p{margin:8px 0 0;color:#bcb4a4;font-size:13px}
+.repair-plan{border-top:1px solid #26324a;margin-top:10px;padding-top:9px}
+.repair-plan>b{display:block;color:#9bd8ff;margin-bottom:6px}
+.repair-plan ol{margin:0;padding-left:18px;color:#d8e6ff}
+.repair-plan li{margin:4px 0;font-size:13px;line-height:1.35}
 @media(max-width:600px){
   #app{padding:10px}
   .panel{padding:12px}

@@ -18,8 +18,13 @@ window.GAME_DATA = {
     {name:'Midnight Wall Parade', tags:['sleep','wall'], ev:25, weird:65, cred:42, hype:30, susp:12, visual:'sleep-deprived flies march across the chamber wall', weakness:'sample'},
     {name:'Phototactic Courtship Disaster', tags:['light','courtship'], ev:20, weird:85, cred:30, hype:55, susp:30, visual:'blue light turns courtship into a lab safety incident', weakness:'ethics'}
   ],
-  fallback: {name:'Ambiguous Locomotor Weirdness', ev:15, weird:55, cred:30, hype:20, susp:10, visual:'flies move just oddly enough to tempt a bad abstract', weakness:'sample'}
-  ,
+  fallback: {name:'Ambiguous Locomotor Weirdness', ev:15, weird:55, cred:30, hype:20, susp:10, visual:'flies move just oddly enough to tempt a bad abstract', weakness:'sample'},
+  externalEvidence: {
+    livedRows: {accepted:0, required:5},
+    livedDesignChange: {accepted:0, required:1},
+    playerSessions: {accepted:0, required:3},
+    smeReviews: {accepted:0, required:1}
+  },
   lab: {
     stocks: [
       {id:'cs', name:'Canton-S', genotype:'wild-type reference stock', marker:'none', backupCount:1, trust:92},

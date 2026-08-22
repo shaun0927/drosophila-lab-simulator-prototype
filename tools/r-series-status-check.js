@@ -83,6 +83,8 @@ const textChecks = [
   ['web-prototype/app.js', '?validation=status'],
   ['web-prototype/app.js', '?validation=capture'],
   ['web-prototype/app.js', 'Not complete: external evidence missing'],
+  ['web-prototype/data.js', 'externalEvidence'],
+  ['web-prototype/data.js', 'playerSessions: {accepted:0, required:3}'],
   ['web-prototype/app.js', '?validation=lived'],
   ['web-prototype/app.js', 'Do not count screenshots, smoke tests, or implementer walkthroughs as external evidence'],
   ['web-prototype/app.js', 'Unsupported arbitrary phenomena stay excluded from the first slice'],
@@ -92,7 +94,9 @@ const textChecks = [
   ['web-prototype/smoke-tests.js', 'testLivedExperiencePacket'],
   ['web-prototype/smoke-tests.js', 'validation/status/capture packets'],
   ['tools/external-evidence-check.js', 'external evidence ledger check passed'],
+  ['tools/external-evidence-check.js', 'data.js playerSessions accepted count must match ledger'],
   ['tools/external-evidence-check.test.js', 'external evidence checker self-test passed'],
+  ['tools/external-evidence-check.test.js', 'data.js count does not match ledger'],
   ['tools/external-evidence-check.test.js', 'bad fixture rejected']
 ];
 

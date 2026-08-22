@@ -33,22 +33,32 @@ Not acceptable as #33 player closure evidence:
 
 const pendingValidationResults = 'No external player or SME validation has been run yet';
 const pendingExperienceMap = 'User lived-experience pass: pending user input';
+const matchingGameData = {
+  externalEvidence: {
+    livedRows: {accepted: 0, required: 5},
+    livedDesignChange: {accepted: 0, required: 1},
+    playerSessions: {accepted: 0, required: 3},
+    smeReviews: {accepted: 0, required: 1}
+  }
+};
 
 function expectPass(name, ledger = baseLedger) {
   validateExternalEvidence({
     ledger,
     validationResults: pendingValidationResults,
-    experienceMap: pendingExperienceMap
+    experienceMap: pendingExperienceMap,
+    gameData: matchingGameData
   });
   console.log(`pass fixture accepted: ${name}`);
 }
 
-function expectFail(name, ledger, messagePart) {
+function expectFail(name, ledger, messagePart, gameData = matchingGameData) {
   try {
     validateExternalEvidence({
       ledger,
       validationResults: pendingValidationResults,
-      experienceMap: pendingExperienceMap
+      experienceMap: pendingExperienceMap,
+      gameData
     });
   } catch (error) {
     if (!error.message.includes(messagePart)) {
@@ -79,7 +89,15 @@ expectFail(
   baseLedger
     .replace('| Fresh-player first-run sessions | 3 | 0 | Pending execution | #33 |', '| Fresh-player first-run sessions | 3 | 1 | Pending execution | #33 |')
     .replace('| P-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending |', '| P-01 | 2026-08-22 | default | Yes | defend record | bad CO2 | reduce exposure | Pass | none |'),
-  '#33 player count cannot increase while validation results say no external validation has run'
+  '#33 player count cannot increase while validation results say no external validation has run',
+  {
+    externalEvidence: {
+      livedRows: {accepted: 0, required: 5},
+      livedDesignChange: {accepted: 0, required: 1},
+      playerSessions: {accepted: 1, required: 3},
+      smeReviews: {accepted: 0, required: 1}
+    }
+  }
 );
 
 expectFail(
@@ -87,7 +105,15 @@ expectFail(
   baseLedger
     .replace('| Lived-experience event rows with user or observed-lab provenance | 5 | 0 | Pending collection | #27 |', '| Lived-experience event rows with user or observed-lab provenance | 5 | 1 | Pending collection | #27 |')
     .replace('| LE-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | No |', '| LE-01 | firsthand | vial flip | label vial | timing | stale vial | bad cross | mechanic change | Yes |'),
-  '#27 accepted count cannot increase while the experience map still says user input is pending'
+  '#27 accepted count cannot increase while the experience map still says user input is pending',
+  {
+    externalEvidence: {
+      livedRows: {accepted: 1, required: 5},
+      livedDesignChange: {accepted: 0, required: 1},
+      playerSessions: {accepted: 0, required: 3},
+      smeReviews: {accepted: 0, required: 1}
+    }
+  }
 );
 
 expectFail(
@@ -95,5 +121,27 @@ expectFail(
   baseLedger.replace('| LE-05 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | No |\n', ''),
   'missing external evidence intake row: LE-05'
 );
+
+try {
+  validateExternalEvidence({
+    ledger: baseLedger,
+    validationResults: pendingValidationResults,
+    experienceMap: pendingExperienceMap,
+    gameData: {
+      externalEvidence: {
+        livedRows: {accepted: 1, required: 5},
+        livedDesignChange: {accepted: 0, required: 1},
+        playerSessions: {accepted: 0, required: 3},
+        smeReviews: {accepted: 0, required: 1}
+      }
+    }
+  });
+  throw new Error('data.js mismatch fixture should have failed');
+} catch (error) {
+  if (!error.message.includes('data.js livedRows accepted count must match ledger')) {
+    throw error;
+  }
+  console.log('bad fixture rejected: data.js count does not match ledger');
+}
 
 console.log('external evidence checker self-test passed');

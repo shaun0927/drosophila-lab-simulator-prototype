@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const vm = require('vm');
 
 function read(rel) {
   return fs.readFileSync(path.join(process.cwd(), rel), 'utf8');
@@ -54,7 +55,28 @@ function rowsPresent(markdown, idPrefix, expected) {
   }
 }
 
-function validateExternalEvidence({ ledger, validationResults, experienceMap }) {
+function loadGameData() {
+  const context = { window: {} };
+  vm.createContext(context);
+  vm.runInContext(read('web-prototype/data.js'), context);
+  return context.window.GAME_DATA;
+}
+
+function compareGameDataStatus(gameData, counts) {
+  if (!gameData) return;
+  const evidence = gameData.externalEvidence;
+  assert(evidence, 'web-prototype/data.js missing externalEvidence status');
+  assert(evidence.livedRows.accepted === counts.livedAccepted, 'data.js livedRows accepted count must match ledger');
+  assert(evidence.livedRows.required === 5, 'data.js livedRows required count must stay 5 unless #27 is explicitly re-scoped');
+  assert(evidence.livedDesignChange.accepted === counts.designAccepted, 'data.js livedDesignChange accepted count must match ledger');
+  assert(evidence.livedDesignChange.required === 1, 'data.js livedDesignChange required count must stay 1 unless #27 is explicitly re-scoped');
+  assert(evidence.playerSessions.accepted === counts.playerAccepted, 'data.js playerSessions accepted count must match ledger');
+  assert(evidence.playerSessions.required === 3, 'data.js playerSessions required count must stay 3 unless #33 is explicitly re-scoped');
+  assert(evidence.smeReviews.accepted === counts.smeAccepted, 'data.js smeReviews accepted count must match ledger');
+  assert(evidence.smeReviews.required === 1, 'data.js smeReviews required count must stay 1 unless #33 is explicitly re-scoped');
+}
+
+function validateExternalEvidence({ ledger, validationResults, experienceMap, gameData }) {
   const rows = currentStatusRows(ledger);
   const livedRows = rows.get('Lived-experience event rows with user or observed-lab provenance');
   const designChange = rows.get('Lived-experience answer that changes a mechanic, guardrail, or SME risk');
@@ -86,6 +108,7 @@ function validateExternalEvidence({ ledger, validationResults, experienceMap }) 
   assert(tableAcceptedCount(ledger, 'P', 7) === playerAccepted, '#33 player accepted count must match decided player rows');
   assert(tableAcceptedCount(ledger, 'SME', 8) === smeAccepted, '#33 SME accepted count must match decided SME rows');
   assert(designAccepted <= livedAccepted, '#27 design-change accepted count cannot exceed accepted lived-experience rows');
+  compareGameDataStatus(gameData, {livedAccepted, designAccepted, playerAccepted, smeAccepted});
 
   if (experienceMap.includes('User lived-experience pass: pending user input')) {
     assert(livedAccepted === 0, '#27 accepted count cannot increase while the experience map still says user input is pending');
@@ -104,7 +127,8 @@ function runCli() {
   validateExternalEvidence({
     ledger: read('docs/fly-lab-external-evidence-ledger.md'),
     validationResults: read('docs/fly-lab-validation-results.md'),
-    experienceMap: read('docs/fly-lab-experience-map.md')
+    experienceMap: read('docs/fly-lab-experience-map.md'),
+    gameData: loadGameData()
   });
   console.log('external evidence ledger check passed: counts match intake rows and pending blockers are consistent');
 }

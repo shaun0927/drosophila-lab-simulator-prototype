@@ -8,6 +8,8 @@ Implementation PR: https://github.com/shaun0927/drosophila-lab-simulator-prototy
 
 CI guardrail: `.github/workflows/web-prototype-smoke.yml` runs JavaScript syntax checks and `node web-prototype/smoke-tests.js` on pull requests and pushes.
 
+Open-issue triage: [`open-issue-triage-2026-08-22.md`](open-issue-triage-2026-08-22.md) classifies the older Unity/phenomenon-first issues so they do not steer the current R-series browser slice by accident.
+
 ## Current implementation status
 
 | Issue | Status | Evidence | Remaining gap |
@@ -74,7 +76,7 @@ The current implementation stays aligned with the parent contract because:
 
 ## Why the full goal is not complete yet
 
-The full objective asks for all R-series issues to be worked through, verified, analyzed, improved, and repeated without drift. R0 and R2-R6 are now closed because implementation, smoke coverage, browser QA where relevant, merge, and main CI evidence are sufficient for their scoped DoD. The full goal is still not complete because #27 and #33 require external/user evidence that has not been collected.
+The full objective asks for all issues to be worked through, verified, analyzed, improved, and repeated without drift. R0 and R2-R6 are now closed because implementation, smoke coverage, browser QA where relevant, merge, and main CI evidence are sufficient for their scoped DoD. Older non-R issues have been classified in the open-issue triage doc; #1-#3 are superseded planning artifacts, and #4/#5/#7/#9/#10-#25 are parked Unity/old-loop backlog unless explicitly reactivated. The full goal is still not complete because #27 and #33 require external/user evidence that has not been collected.
 
 The remaining work is not blocked, but it must stay sequenced:
 
@@ -89,6 +91,7 @@ The remaining work is not blocked, but it must stay sequenced:
 2. Perform browser visual QA on the Procedure Lab route.
 3. Run player/SME validation and record results in `docs/fly-lab-validation-results.md`.
 4. Open follow-up issues for validation failures.
+5. Keep parked Unity/old-loop issues out of current implementation unless they are rewritten against the R-series contract.
 
 ## Do not do next
 
@@ -96,3 +99,4 @@ The remaining work is not blocked, but it must stay sequenced:
 - Do not build a full Mendelian solver before the one-cross loop is validated.
 - Do not polish reviewer jokes before R5 records exist.
 - Do not close #27 until user lived-experience answers are reflected.
+- Do not use parked Unity/old-loop issues as active scope for the browser Procedure Lab slice.

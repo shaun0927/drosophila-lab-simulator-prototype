@@ -1,6 +1,6 @@
 # Drosophila Lab Simulator: Publish or Perish
 
-A browser prototype repo for exploring a Drosophila lab game. The current playable build still reflects the original publication-satire prototype: engineer absurd neural traits, discover bizarre behavior, package it as a suspiciously publishable figure, survive Reviewer #2, and submit before midnight.
+A browser prototype repo for exploring a Drosophila lab game. The current playable build opens with the R-series Procedure Lab route: protect stocks, manage vial age and labels, sort flies under CO2, run a simplified assay, and let Reviewer #2 attack the experiment record. The original publication-satire loop remains available as a historical route.
 
 The R-series implementation direction now shifts the core game toward real fly-lab procedure: plan crosses, protect stocks, collect the right flies, run messy assays, and make claims that survive the experiment record. See [`docs/fly-lab-product-thesis.md`](docs/fly-lab-product-thesis.md).
 
@@ -47,6 +47,7 @@ The player repeatedly chooses whether to make the phenomenon more believable or 
 - `docs/fly-lab-experience-map.md` — R-series source-backed UX incident map for stock, cross, sorting, and assay work.
 - `docs/fly-lab-lived-experience-response-form.md` — User response form for closing the remaining lived-experience gap in R1.
 - `docs/r-series-progress-audit.md` — Current completion, verification, drift, and remaining-work audit for R0-R7.
+- `docs/open-issue-triage-2026-08-22.md` — Current open-issue classification so old Unity/phenomenon work does not steer R-series implementation by accident.
 - `docs/fly-lab-playtest-sheet.md` — R7 player validation script.
 - `docs/fly-lab-sme-validation-sheet.md` — R7 biology-aware validation rubric.
 - `docs/fly-lab-validation-runbook.md` — Step-by-step protocol for player/SME validation and follow-up issue creation.

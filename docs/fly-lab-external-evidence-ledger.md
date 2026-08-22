@@ -124,11 +124,12 @@ Not acceptable as #33 SME closure evidence:
 4. Every accepted player id in `docs/fly-lab-validation-results.md` repeats the ledger route/fixture, goal phrase, failure-cause phrase, and second-run repair phrase.
 5. The accepted SME review id references clean, dirty, and missing-control fixture coverage in `docs/fly-lab-validation-results.md`.
 6. Every accepted SME review id in `docs/fly-lab-validation-results.md` repeats the ledger stock/vial/calendar, virgin/cross timing, CO2/sorting, negative geotaxis, and record/reviewer logic ratings.
-7. Every serious player comprehension failure has a fix/cut decision with a resolved or accepted-non-blocking follow-up disposition.
-8. Every misleading or unsafe SME mark has a linked fix/cut issue with a resolved or accepted-non-blocking follow-up disposition.
-9. `docs/fly-lab-validation-results.md` summarizes the result, including every counted Fix/Cut follow-up issue reference and disposition.
-10. `node web-prototype/smoke-tests.js` passes after any resulting implementation change.
-11. `node tools/r-series-status-check.js` passes after the ledger and status docs are updated.
+7. Every accepted player or SME result row in `docs/fly-lab-validation-results.md` repeats the ledger decision and any Fix/Cut follow-up issue reference plus disposition.
+8. Every serious player comprehension failure has a fix/cut decision with a resolved or accepted-non-blocking follow-up disposition.
+9. Every misleading or unsafe SME mark has a linked fix/cut issue with a resolved or accepted-non-blocking follow-up disposition.
+10. `docs/fly-lab-validation-results.md` summarizes the result, including every counted Fix/Cut follow-up issue reference and disposition.
+11. `node web-prototype/smoke-tests.js` passes after any resulting implementation change.
+12. `node tools/r-series-status-check.js` passes after the ledger and status docs are updated.
 
 ## Drift Checks Before Accepting Evidence
 

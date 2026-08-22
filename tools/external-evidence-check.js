@@ -159,6 +159,19 @@ function requirePlayerPhrasesMatchResults(ledger, validationResults) {
   }
 }
 
+function requirePlayerDecisionMatchesResults(ledger, validationResults) {
+  for (const row of acceptedRows(ledger, 'P', 7)) {
+    const id = row[0];
+    const decision = row[7];
+    const followUp = row[8];
+    const resultText = validationResults.split(/\r?\n/).filter(line => line.includes(id)).join('\n');
+    assert(resultText.includes(decision), `${id} accepted player decision must match validation results`);
+    if (/^(Fix|Cut)$/i.test(decision)) {
+      assert(resultText.includes(followUp), `${id} accepted player follow-up issue must match validation results`);
+    }
+  }
+}
+
 function requireSmeFixtureCoverage(ledger, validationResults, smeAccepted) {
   if (smeAccepted < 1) return;
   const requiredFixtures = [
@@ -191,6 +204,19 @@ function requireSmeRatingsMatchResults(ledger, validationResults) {
     ];
     for (const [message, expected, actual] of ratingChecks) {
       assert(actual === expected, `${id} ${message}`);
+    }
+  }
+}
+
+function requireSmeDecisionMatchesResults(ledger, validationResults) {
+  for (const row of acceptedRows(ledger, 'SME', 8)) {
+    const id = row[0];
+    const decision = row[8];
+    const followUp = row[9];
+    const resultText = validationResults.split(/\r?\n/).filter(line => line.includes(id)).join('\n');
+    assert(resultText.includes(decision), `${id} accepted SME decision must match validation results`);
+    if (/^(Fix|Cut)$/i.test(decision)) {
+      assert(resultText.includes(followUp), `${id} accepted SME follow-up issue must match validation results`);
     }
   }
 }
@@ -501,8 +527,10 @@ function validateExternalEvidence({ ledger, validationResults, experienceMap, pr
   requireFollowUpReferencesInResults(ledger, validationResults);
   requirePlayerRouteMatchesResults(ledger, validationResults);
   requirePlayerPhrasesMatchResults(ledger, validationResults);
+  requirePlayerDecisionMatchesResults(ledger, validationResults);
   requireSmeFixtureCoverage(ledger, validationResults, smeAccepted);
   requireSmeRatingsMatchResults(ledger, validationResults);
+  requireSmeDecisionMatchesResults(ledger, validationResults);
   requirePendingStatusDocs({counts, validationResults, experienceMap, progressAudit, goalAudit});
 
   assert(ledger.includes('Do not treat screenshots as player, SME, or lived-experience evidence') || ledger.includes('screenshots of the route'), 'ledger must reject screenshot-only closure evidence');

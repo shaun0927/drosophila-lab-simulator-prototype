@@ -82,4 +82,5 @@ The screenshot UX audit also caught and fixed visible drift where Procedure Lab 
 - [ ] Accepted SME review rows repeat the same five core ratings as the ledger.
 - [ ] Follow-up issues for any misleading core mechanic.
 - [ ] Counted Fix/Cut follow-up issue references and dispositions summarized here before ledger counts increase.
+- [ ] Accepted player and SME result rows repeat the same ledger decision and any Fix/Cut follow-up issue reference plus disposition.
 - [ ] External evidence ledger updated with accepted counts.

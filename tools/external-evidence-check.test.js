@@ -75,6 +75,12 @@ const partialValidationResultsWithPhraseMismatch = [
   '| Player | Route | Goal phrase | Failure-cause phrase | Second-run repair phrase | Result | Notes |',
   '| P-01 | clean fixture | defend record | random luck | preserve controls | Pass | raw notes linked |'
 ].join('\n');
+const partialValidationResultsWithDecisionMismatch = [
+  'External validation in progress.',
+  '## Validation Run 2026-08-22',
+  '| Player | Route | Goal phrase | Failure-cause phrase | Second-run repair phrase | Result | Notes |',
+  '| P-01 | default | defend record | random luck | add control | Pass | #44 resolved |'
+].join('\n');
 const partialSmeValidationResultsWithFixtures = [
   'External validation in progress.',
   '## Validation Run 2026-08-22',
@@ -99,6 +105,12 @@ const partialSmeValidationResultsWithRatingMismatch = [
   '## Validation Run 2026-08-22',
   '| Review id | Fixtures reviewed | Stock/vial/calendar | Virgin/cross timing | CO2/sorting | Negative geotaxis | Record/reviewer logic | Result | Notes |',
   '| SME-01 | ?fixture=clean, ?fixture=dirty, ?fixture=missing-control | Accurate enough | Acceptable simplification | Misleading | Accurate enough | Accurate enough | Fix | #44 resolved |'
+].join('\n');
+const partialSmeValidationResultsWithDecisionMismatch = [
+  'External validation in progress.',
+  '## Validation Run 2026-08-22',
+  '| Review id | Fixtures reviewed | Stock/vial/calendar | Virgin/cross timing | CO2/sorting | Negative geotaxis | Record/reviewer logic | Result | Notes |',
+  '| SME-01 | ?fixture=clean, ?fixture=dirty, ?fixture=missing-control | Accurate enough | Acceptable simplification | Misleading | Accurate enough | Accurate enough | Pass | #44 resolved |'
 ].join('\n');
 const fullRouteCoverageValidationResults = [
   'External validation in progress.',
@@ -450,6 +462,27 @@ expectFailWith(
 );
 
 expectFailWith(
+  'accepted player decision mismatch in validation results',
+  {
+    ledger: baseLedger
+      .replace('| Fresh-player first-run sessions | 3 | 0 | Pending execution | #33 |', '| Fresh-player first-run sessions | 3 | 1 | In progress | #33 |')
+      .replace('| Follow-up fix/cut issues for failed external criteria | As needed | 0 | Pending external findings | #33 |', '| Follow-up fix/cut issues for failed external criteria | As needed | 1 | In progress | #33 |')
+      .replace('| P-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending |', '| P-01 | 2026-08-22 | default | Yes | defend record | random luck | add control | Fix | #44 resolved |'),
+    validationResults: partialValidationResultsWithDecisionMismatch,
+    experienceMap: pendingExperienceMap,
+    gameData: {
+      externalEvidence: {
+        livedRows: {accepted: 0, required: 5},
+        livedDesignChange: {accepted: 0, required: 1},
+        playerSessions: {accepted: 1, required: 3},
+        smeReviews: {accepted: 0, required: 1}
+      }
+    }
+  },
+  'P-01 accepted player decision must match validation results'
+);
+
+expectFailWith(
   'accepted SME row missing from validation results',
   {
     ledger: baseLedger
@@ -546,6 +579,27 @@ expectFailWith(
     }
   },
   'SME-01 accepted SME CO2/sorting rating must match validation results'
+);
+
+expectFailWith(
+  'accepted SME decision mismatch in validation results',
+  {
+    ledger: baseLedger
+      .replace('| SME or biology-aware review | 1 | 0 | Pending execution | #33 |', '| SME or biology-aware review | 1 | 1 | In progress | #33 |')
+      .replace('| Follow-up fix/cut issues for failed external criteria | As needed | 0 | Pending external findings | #33 |', '| Follow-up fix/cut issues for failed external criteria | As needed | 1 | In progress | #33 |')
+      .replace('| SME-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending |', '| SME-01 | 2026-08-22 | genetics TA | Accurate enough | Acceptable simplification | Misleading | Accurate enough | Accurate enough | Fix | #44 resolved |'),
+    validationResults: partialSmeValidationResultsWithDecisionMismatch,
+    experienceMap: pendingExperienceMap,
+    gameData: {
+      externalEvidence: {
+        livedRows: {accepted: 0, required: 5},
+        livedDesignChange: {accepted: 0, required: 1},
+        playerSessions: {accepted: 0, required: 3},
+        smeReviews: {accepted: 1, required: 1}
+      }
+    }
+  },
+  'SME-01 accepted SME decision must match validation results'
 );
 
 expectFail(

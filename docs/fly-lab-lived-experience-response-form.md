@@ -147,7 +147,7 @@ Representable friction:
 
 ## Event Conversion Table
 
-After the interview, convert answers into the table below and then copy accepted rows into `docs/fly-lab-experience-map.md`.
+After the interview, convert answers into the table below and then copy accepted rows into `docs/fly-lab-experience-map.md`. The accepted `LE-*` row in the experience map must repeat the same provenance, procedure event, game verb, player skill, failure mode, delayed consequence, and design effect recorded in `docs/fly-lab-external-evidence-ledger.md`.
 
 | Source | Procedure event | game verb | player skill | failure mode | delayed consequence | comedy source | SME risk | Include in slice? |
 |---|---|---|---|---|---|---|---|---|

@@ -110,6 +110,7 @@ The current implementation stays aligned with the parent contract because:
 - `node tools/external-evidence-check.js` rejects player Pass rows unless the player completed one run within 5 minutes
 - `node tools/external-evidence-check.js` rejects SME Pass rows when any core mechanic is rated Misleading or Unsafe/ethically wrong
 - `node tools/external-evidence-check.js` requires every accepted LE row id to appear in the experience map and every accepted P/SME row id to appear in validation results
+- `node tools/external-evidence-check.js` requires each accepted #27 lived-experience row in the ledger to match the same LE id in `docs/fly-lab-experience-map.md`
 - `node tools/external-evidence-check.js` requires Fix/Cut follow-up fields to contain a concrete GitHub issue reference
 - `node tools/external-evidence-check.js` rejects Fix/Cut follow-up references that point back to #27 or #33
 - `node tools/external-evidence-check.js` rejects Fix/Cut follow-up evidence unless the follow-up field says `resolved` or `accepted non-blocking`, so opening an issue alone cannot close #33

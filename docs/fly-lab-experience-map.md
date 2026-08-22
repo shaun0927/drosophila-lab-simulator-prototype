@@ -10,6 +10,8 @@ User lived-experience pass: pending user input. Do not treat the personal-experi
 
 Use [`fly-lab-lived-experience-response-form.md`](fly-lab-lived-experience-response-form.md) to collect the remaining user-provenance answers required to close #27.
 
+Accepted `LE-*` rows copied from [`fly-lab-external-evidence-ledger.md`](fly-lab-external-evidence-ledger.md) must repeat the same provenance, procedure event, game verb, player skill, failure mode, delayed consequence, and design effect in this map before the row can count.
+
 ## Interview prompts for lived experience
 
 Ask these before locking final micro-interactions:

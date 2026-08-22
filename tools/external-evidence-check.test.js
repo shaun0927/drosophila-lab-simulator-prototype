@@ -113,9 +113,19 @@ const partialExperienceMap = [
   'Accepted lived-experience rows are being transferred from the evidence ledger.',
   '| LE-01 | firsthand | vial flip | label vial | timing | stale vial | bad cross | explicit exclusion |'
 ].join('\n');
+const partialExperienceMapWithDesignChange = [
+  'User lived-experience pass: in progress.',
+  'Accepted lived-experience rows are being transferred from the evidence ledger.',
+  '| LE-01 | firsthand | vial flip | label vial | timing | stale vial | bad cross | mechanic change |'
+].join('\n');
 const partialExperienceMapWithoutId = [
   'User lived-experience pass: in progress.',
   'Accepted lived-experience rows are being transferred from the evidence ledger.'
+].join('\n');
+const partialExperienceMapWithFieldMismatch = [
+  'User lived-experience pass: in progress.',
+  'Accepted lived-experience rows are being transferred from the evidence ledger.',
+  '| LE-01 | firsthand | vial flip | label vial | timing | moldy food | bad cross | explicit exclusion |'
 ].join('\n');
 const matchingGameData = {
   externalEvidence: {
@@ -360,6 +370,26 @@ expectFailWith(
 );
 
 expectFailWith(
+  'accepted LE row field mismatch in experience map',
+  {
+    ledger: baseLedger
+      .replace('| Lived-experience event rows with user or observed-lab provenance | 5 | 0 | Pending collection | #27 |', '| Lived-experience event rows with user or observed-lab provenance | 5 | 1 | In progress | #27 |')
+      .replace('| LE-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | No |', '| LE-01 | firsthand | vial flip | label vial | timing | stale vial | bad cross | explicit exclusion | Yes |'),
+    validationResults: pendingValidationResults,
+    experienceMap: partialExperienceMapWithFieldMismatch,
+    gameData: {
+      externalEvidence: {
+        livedRows: {accepted: 1, required: 5},
+        livedDesignChange: {accepted: 0, required: 1},
+        playerSessions: {accepted: 0, required: 3},
+        smeReviews: {accepted: 0, required: 1}
+      }
+    }
+  },
+  'LE-01 accepted lived-experience failure mode must match the experience map'
+);
+
+expectFailWith(
   'accepted player row missing from validation results',
   {
     ledger: baseLedger
@@ -547,7 +577,7 @@ validateExternalEvidence({
     .replace('| Lived-experience answer that changes a mechanic, guardrail, or SME risk | 1 | 0 | Pending collection | #27 |', '| Lived-experience answer that changes a mechanic, guardrail, or SME risk | 1 | 1 | In progress | #27 |')
     .replace('| LE-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | No |', '| LE-01 | firsthand | vial flip | label vial | timing | stale vial | bad cross | mechanic change | Yes |'),
   validationResults: pendingValidationResults,
-  experienceMap: partialExperienceMap,
+  experienceMap: partialExperienceMapWithDesignChange,
   progressAudit: pendingProgressAudit,
   goalAudit: pendingGoalAudit,
   gameData: {

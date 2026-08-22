@@ -110,6 +110,25 @@ function requireAcceptedEvidenceReferences({ ledger, validationResults, experien
   }
 }
 
+function requireLivedExperienceFieldsMatchMap(ledger, experienceMap) {
+  for (const row of acceptedRows(ledger, 'LE', 8)) {
+    const id = row[0];
+    const mapText = experienceMap.split(/\r?\n/).filter(line => line.includes(id)).join('\n').toLowerCase();
+    const requiredFields = [
+      [row[1], 'accepted lived-experience provenance must match the experience map'],
+      [row[2], 'accepted lived-experience procedure event must match the experience map'],
+      [row[3], 'accepted lived-experience game verb must match the experience map'],
+      [row[4], 'accepted lived-experience player skill must match the experience map'],
+      [row[5], 'accepted lived-experience failure mode must match the experience map'],
+      [row[6], 'accepted lived-experience delayed consequence must match the experience map'],
+      [row[7], 'accepted lived-experience design effect must match the experience map']
+    ];
+    for (const [field, message] of requiredFields) {
+      assert(mapText.includes(field.toLowerCase()), `${id} ${message}`);
+    }
+  }
+}
+
 function requireFollowUpReferencesInResults(ledger, validationResults) {
   for (const ref of concreteFollowUpRefs(ledger)) {
     assert(validationResults.includes(ref), `${ref} counted Fix/Cut follow-up issue must be referenced in validation results`);
@@ -478,6 +497,7 @@ function validateExternalEvidence({ ledger, validationResults, experienceMap, pr
   }
 
   requireAcceptedEvidenceReferences({ledger, validationResults, experienceMap});
+  requireLivedExperienceFieldsMatchMap(ledger, experienceMap);
   requireFollowUpReferencesInResults(ledger, validationResults);
   requirePlayerRouteMatchesResults(ledger, validationResults);
   requirePlayerPhrasesMatchResults(ledger, validationResults);

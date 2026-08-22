@@ -31,6 +31,7 @@ Accepted evidence must include all of the following:
 - failure mode: how the player can be wrong
 - delayed consequence: how the mistake returns later
 - design effect: mechanic change, guardrail change, SME risk update, or explicit exclusion
+- matching `LE-*` row in `docs/fly-lab-experience-map.md` that repeats the same provenance, procedure event, game verb, player skill, failure mode, delayed consequence, and design effect
 
 Not acceptable as #27 closure evidence:
 
@@ -112,7 +113,7 @@ Not acceptable as #33 SME closure evidence:
 
 1. At least 5 lived-experience rows are accepted, or the user explicitly records that no relevant firsthand/observed experience exists.
 2. At least one accepted answer changes a mechanic, guardrail, or SME risk, unless the explicit no-experience decision is used.
-3. `docs/fly-lab-experience-map.md` is updated with accepted provenance.
+3. `docs/fly-lab-experience-map.md` is updated with accepted `LE-*` rows that repeat the ledger provenance, procedure event, game verb, player skill, failure mode, delayed consequence, and design effect.
 4. Unsupported arbitrary phenomena remain excluded from the first slice.
 
 #33 can close only when:

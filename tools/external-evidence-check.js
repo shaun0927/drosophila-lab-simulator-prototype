@@ -75,6 +75,21 @@ function isMissingEvidenceField(value) {
   return !value || /^(Pending|n\/a|-)$/i.test(value);
 }
 
+function isProxyEvidence(value) {
+  return /\b(screenshot|smoke test|automated|implementer|walkthrough|proxy|dogfood|protocol summary|source-backed|issue comment|coached)\b/i.test(value || '');
+}
+
+function requireNoProxyEvidence(row, indexes, id, label) {
+  const proxyIndex = indexes.find(index => isProxyEvidence(row[index]));
+  assert(proxyIndex === undefined, `${id} accepted ${label} row cannot use proxy evidence as an external-evidence source`);
+}
+
+function requireSmeRatings(row, id) {
+  const allowed = /^(Accurate enough|Acceptable simplification|Misleading|Unsafe\/ethically wrong)$/i;
+  const invalidIndex = row.slice(3, 8).findIndex(value => !allowed.test(value || ''));
+  assert(invalidIndex === -1, `${id} accepted SME row has an invalid mechanic rating`);
+}
+
 function requireFixCutFollowUps(markdown) {
   for (const line of markdown.split(/\r?\n/)) {
     if (!line.startsWith('| P-') && !line.startsWith('| SME-')) continue;
@@ -98,16 +113,20 @@ function requireAcceptedRowFields(markdown) {
     if (id.startsWith('LE-') && /^Yes$/i.test(row[8] || '')) {
       const missingIndex = row.slice(1, 8).findIndex(isMissingEvidenceField);
       assert(missingIndex === -1, `${id} accepted lived-experience row has an incomplete required field`);
+      requireNoProxyEvidence(row, [1, 2, 3, 4, 5, 6, 7], id, 'lived-experience');
     }
 
     if (id.startsWith('P-') && /^(Pass|Fix|Cut)$/i.test(row[7] || '')) {
       const missingIndex = row.slice(1, 7).findIndex(isMissingEvidenceField);
       assert(missingIndex === -1, `${id} accepted player row has an incomplete required field`);
+      requireNoProxyEvidence(row, [1, 2, 3, 4, 5, 6], id, 'player');
     }
 
     if (id.startsWith('SME-') && /^(Pass|Fix|Cut)$/i.test(row[8] || '')) {
       const missingIndex = row.slice(1, 8).findIndex(isMissingEvidenceField);
       assert(missingIndex === -1, `${id} accepted SME row has an incomplete required field`);
+      requireNoProxyEvidence(row, [1, 2, 3, 4, 5, 6, 7], id, 'SME');
+      requireSmeRatings(row, id);
     }
   }
 }

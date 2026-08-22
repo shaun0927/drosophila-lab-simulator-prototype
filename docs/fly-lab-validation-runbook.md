@@ -32,12 +32,15 @@ fly-lab smoke passed: R2/R3, objective strip, reviewer repair plans, validation/
 Use local or hosted equivalents of:
 
 - `web-prototype/index.html`
+- `web-prototype/index.html?validation=status`
 - `web-prototype/index.html?validation=packet`
 - `web-prototype/index.html?validation=capture`
 - `web-prototype/index.html?validation=lived`
 - `web-prototype/index.html?fixture=clean`
 - `web-prototype/index.html?fixture=dirty`
 - `web-prototype/index.html?fixture=missing-control`
+
+The status packet URL shows the currently unfilled #27/#33 evidence gates. It does not satisfy validation by itself.
 
 The validation packet URL is the moderator/SME launch page. It does not satisfy validation by itself.
 

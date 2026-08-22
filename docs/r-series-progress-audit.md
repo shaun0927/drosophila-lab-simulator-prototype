@@ -50,7 +50,7 @@ R3 smoke passed: clear, window, collect, select males, set cross, scoring calend
 legacy route smoke passed: old publication prototype still reaches phenomenon screen
 R4/R5 smoke passed: CO2 sorting, batch caveats, assay records, control/n caveats
 R6 smoke passed: reviewer attacks record caveats and claim strength with evidence refs
-fly-lab smoke passed: R2/R3, objective strip, reviewer repair plans, validation/capture packets, clean, dirty, missing-control, URL fixtures, legacy route
+fly-lab smoke passed: R2/R3, objective strip, reviewer repair plans, validation/status/capture packets, clean, dirty, missing-control, URL fixtures, legacy route
 browser smoke passed: file URL Procedure Lab renders and sorting click registers
 browser smoke passed: specimen pad renders and sorting click registers
 browser smoke passed: assay mini-plot renders after controlled run
@@ -83,6 +83,7 @@ The current implementation stays aligned with the parent contract because:
 - Procedure Lab chrome now uses `Lab Record View` and `can the notebook defend the claim?` instead of old phenomenon-first chamber/footer language
 - Procedure Lab first screen now exposes current goal, next action, record risk, and reviewer vulnerability before the dense system list
 - Reviewer #2 results now include next-run repair plans tied to the attacked record weakness, so the validation slice tests whether failure can teach a better second run
+- `?validation=status` opens an in-app status view showing #27 at 0/5 lived rows and #33 at 0/3 player sessions plus 0/1 SME review
 - `?validation=packet` opens an in-app launch page for #33 player/SME sessions with fixture links and closure criteria
 - `?validation=capture` opens an in-app raw evidence capture checklist for #27/#33 session notes before ledger updates
 - `?validation=lived` opens a separate #27 launch page for collecting real lab incidents without mixing them into #33 validation evidence

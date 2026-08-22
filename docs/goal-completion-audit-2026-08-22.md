@@ -10,6 +10,8 @@ This document is the top-level completion audit for that objective. It does not 
 
 External-evidence intake is tracked in [`fly-lab-external-evidence-ledger.md`](fly-lab-external-evidence-ledger.md). Use that ledger to decide whether #27 and #33 have enough non-proxy proof to close.
 
+Prototype status aid: `web-prototype/index.html?validation=status` opens an in-app summary of the current unfilled #27/#33 evidence gates. It is a visibility aid only; it does not replace external evidence.
+
 ## Requirement Matrix
 
 | Requirement from the objective | Current evidence | Status | Why this status is correct |
@@ -32,6 +34,7 @@ What exists:
 - `docs/fly-lab-experience-map.md` maps fly-lab procedure incidents from source-backed and design-derived evidence.
 - `docs/fly-lab-lived-experience-response-form.md` defines the exact answers needed.
 - `docs/fly-lab-external-evidence-ledger.md` tracks the 5 required accepted evidence rows and the design-change requirement.
+- `web-prototype/index.html?validation=status` shows the current 0/5 #27 lived-evidence gap in the prototype.
 - `web-prototype/index.html?validation=lived` exposes the collection packet in the prototype.
 - `.github/ISSUE_TEMPLATE/fly_lab_lived_experience.yml` can capture follow-up implementation issues.
 
@@ -61,6 +64,7 @@ What exists:
 - `docs/fly-lab-sme-validation-sheet.md` defines the biology-aware review.
 - `docs/fly-lab-validation-runbook.md` defines the execution protocol.
 - `docs/fly-lab-external-evidence-ledger.md` tracks the three player sessions, SME review, and follow-up issue gates.
+- `web-prototype/index.html?validation=status` shows the current 0/3 player and 0/1 SME evidence gap in the prototype.
 - `web-prototype/index.html?validation=packet` exposes the in-app validation launcher.
 - `docs/fly-lab-validation-results.md` records proxy QA and explicitly says no external validation has run yet.
 

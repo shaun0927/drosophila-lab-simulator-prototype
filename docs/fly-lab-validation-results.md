@@ -44,6 +44,7 @@ Reusable validation URLs:
 - `web-prototype/index.html?fixture=clean`
 - `web-prototype/index.html?fixture=dirty`
 - `web-prototype/index.html?fixture=missing-control`
+- `web-prototype/index.html?validation=status`
 - `web-prototype/index.html?validation=packet`
 - `web-prototype/index.html?validation=capture`
 - `web-prototype/index.html?validation=lived`
@@ -52,7 +53,7 @@ Reusable validation URLs:
 
 The smoke harness and browser checks prove that the route mechanics can execute, clean/dirty/missing-control paths produce different reviewer findings and next-run repair plans, reusable URL fixtures load those paths, the specimen pad renders, sorting clicks register, the assay mini-plot appears after a controlled run, and desktop/mobile fixture pages do not horizontally overflow. They do not prove that a fresh player understands the route, that the procedure feels good, or that a biology-aware reviewer accepts the simplifications.
 
-The screenshot UX audit also caught and fixed visible drift where Procedure Lab still used the old `Live Assay Chamber` and phenomenon-first footer language. Later proxy passes added an objective strip for current goal, next action, record risk, and reviewer vulnerability, added a Reviewer #2 next-run repair plan after the result card still risked ending at explanation rather than player improvement, added an in-app validation packet so #33 sessions can launch from the prototype, added an in-app capture packet so raw #27/#33 evidence fields are visible during sessions, and added a separate lived-experience packet for #27 collection. This remains proxy evidence only, not a replacement for player, SME, or user lived-experience evidence.
+The screenshot UX audit also caught and fixed visible drift where Procedure Lab still used the old `Live Assay Chamber` and phenomenon-first footer language. Later proxy passes added an objective strip for current goal, next action, record risk, and reviewer vulnerability, added a Reviewer #2 next-run repair plan after the result card still risked ending at explanation rather than player improvement, added an in-app status packet so the remaining #27/#33 evidence gaps are visible, added an in-app validation packet so #33 sessions can launch from the prototype, added an in-app capture packet so raw #27/#33 evidence fields are visible during sessions, and added a separate lived-experience packet for #27 collection. This remains proxy evidence only, not a replacement for player, SME, or user lived-experience evidence.
 
 ## Pending validation
 

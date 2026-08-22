@@ -49,10 +49,11 @@ Run the sessions in this order unless scheduling forces a different order. If or
 After each session:
 
 1. Copy raw notes from the issue-specific packet into the matching target document.
-2. Update `docs/fly-lab-external-evidence-ledger.md` only after the row passes the packet-specific count rule.
-3. Update `docs/fly-lab-experience-map.md` for `LE-*` rows, or `docs/fly-lab-validation-results.md` for `P-*` and `SME-*` rows.
-4. Run `node tools/external-validation-full-check.js --live-issues`.
-5. Comment on the execution issue and parent issue with the accepted/rejected row id and remaining counts.
+2. Stage the row in `docs/external-validation-intake-staging.md` before accepted counts change.
+3. Update `docs/fly-lab-external-evidence-ledger.md` only after the row passes the packet-specific count rule.
+4. Update `docs/fly-lab-experience-map.md` for `LE-*` rows, or `docs/fly-lab-validation-results.md` for `P-*` and `SME-*` rows.
+5. Run `node tools/external-validation-full-check.js --live-issues`.
+6. Comment on the execution issue and parent issue with the accepted/rejected row id and remaining counts.
 
 ## Current Decision
 

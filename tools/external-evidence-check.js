@@ -59,6 +59,22 @@ function acceptedIds(markdown, idPrefix, acceptedColumnIndex) {
   return ids;
 }
 
+function concreteFollowUpRefs(markdown) {
+  const refs = new Set();
+  for (const line of markdown.split(/\r?\n/)) {
+    if (!line.startsWith('| P-') && !line.startsWith('| SME-')) continue;
+    const row = cells(line);
+    const id = row[0];
+    const isPlayer = id.startsWith('P-');
+    const decision = isPlayer ? row[7] : row[8];
+    const followUp = isPlayer ? row[8] : row[9];
+    if (!/^(Fix|Cut)$/i.test(decision)) continue;
+    const matches = (followUp || '').match(/#\d+|https:\/\/github\.com\/[^/\s]+\/[^/\s]+\/issues\/\d+/g) || [];
+    for (const match of matches) refs.add(match);
+  }
+  return refs;
+}
+
 function livedDesignChangeCount(markdown) {
   let count = 0;
   for (const line of markdown.split(/\r?\n/)) {
@@ -248,23 +264,28 @@ function validateExternalEvidence({ ledger, validationResults, experienceMap, pr
   const designChange = rows.get('Lived-experience answer that changes a mechanic, guardrail, or SME risk');
   const playerRows = rows.get('Fresh-player first-run sessions');
   const smeRows = rows.get('SME or biology-aware review');
+  const followUpRows = rows.get('Follow-up fix/cut issues for failed external criteria');
 
   assert(livedRows, 'missing #27 lived-experience current-status gate');
   assert(designChange, 'missing #27 design-change current-status gate');
   assert(playerRows, 'missing #33 player-session current-status gate');
   assert(smeRows, 'missing #33 SME-review current-status gate');
+  assert(followUpRows, 'missing #33 follow-up issue current-status gate');
 
   assert(livedRows.required === '5', '#27 lived-experience required count must stay 5 unless the issue is explicitly re-scoped');
   assert(designChange.required === '1', '#27 design-change required count must stay 1 unless the issue is explicitly re-scoped');
   assert(playerRows.required === '3', '#33 player-session required count must stay 3 unless the issue is explicitly re-scoped');
   assert(smeRows.required === '1', '#33 SME-review required count must stay 1 unless the issue is explicitly re-scoped');
+  assert(followUpRows.required === 'As needed', '#33 follow-up issue required count must stay As needed unless the issue is explicitly re-scoped');
   assert(livedRows.issue === '#27' && designChange.issue === '#27', '#27 ledger gates must point to #27');
   assert(playerRows.issue === '#33' && smeRows.issue === '#33', '#33 ledger gates must point to #33');
+  assert(followUpRows.issue === '#33', '#33 follow-up ledger gate must point to #33');
 
   const livedAccepted = intCell(livedRows.accepted, '#27 lived-experience accepted count');
   const designAccepted = intCell(designChange.accepted, '#27 design-change accepted count');
   const playerAccepted = intCell(playerRows.accepted, '#33 player-session accepted count');
   const smeAccepted = intCell(smeRows.accepted, '#33 SME-review accepted count');
+  const followUpAccepted = intCell(followUpRows.accepted, '#33 follow-up issue accepted count');
 
   rowsPresent(ledger, 'LE', 5);
   rowsPresent(ledger, 'P', 3);
@@ -276,6 +297,7 @@ function validateExternalEvidence({ ledger, validationResults, experienceMap, pr
   assert(tableAcceptedCount(ledger, 'SME', 8) === smeAccepted, '#33 SME accepted count must match decided SME rows');
   requireAcceptedRowFields(ledger);
   requireFixCutFollowUps(ledger);
+  assert(concreteFollowUpRefs(ledger).size === followUpAccepted, '#33 follow-up issue accepted count must match unique concrete Fix/Cut follow-up references');
   assert(designAccepted <= livedAccepted, '#27 design-change accepted count cannot exceed accepted lived-experience rows');
   const counts = {livedAccepted, designAccepted, playerAccepted, smeAccepted};
   compareGameDataStatus(gameData, counts);

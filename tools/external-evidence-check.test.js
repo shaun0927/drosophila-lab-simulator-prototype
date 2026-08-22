@@ -8,6 +8,7 @@ const baseLedger = `# Fly-Lab External Evidence Ledger
 | Lived-experience answer that changes a mechanic, guardrail, or SME risk | 1 | 0 | Pending collection | #27 |
 | Fresh-player first-run sessions | 3 | 0 | Pending execution | #33 |
 | SME or biology-aware review | 1 | 0 | Pending execution | #33 |
+| Follow-up fix/cut issues for failed external criteria | As needed | 0 | Pending external findings | #33 |
 
 Not acceptable as #33 player closure evidence:
 - screenshots of the route
@@ -150,6 +151,7 @@ console.log('pass fixture accepted: partial player evidence in progress');
 validateExternalEvidence({
   ledger: baseLedger
     .replace('| Fresh-player first-run sessions | 3 | 0 | Pending execution | #33 |', '| Fresh-player first-run sessions | 3 | 1 | In progress | #33 |')
+    .replace('| Follow-up fix/cut issues for failed external criteria | As needed | 0 | Pending external findings | #33 |', '| Follow-up fix/cut issues for failed external criteria | As needed | 1 | In progress | #33 |')
     .replace('| P-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending |', '| P-01 | 2026-08-22 | default | Yes | defend record | random luck | add control | Fix | #44 |'),
   validationResults: partialValidationResults,
   experienceMap: pendingExperienceMap,
@@ -165,6 +167,26 @@ validateExternalEvidence({
   }
 });
 console.log('pass fixture accepted: fix decision with linked follow-up issue');
+
+expectFailWith(
+  'fix follow-up issue count not raised',
+  {
+    ledger: baseLedger
+      .replace('| Fresh-player first-run sessions | 3 | 0 | Pending execution | #33 |', '| Fresh-player first-run sessions | 3 | 1 | In progress | #33 |')
+      .replace('| P-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending |', '| P-01 | 2026-08-22 | default | Yes | defend record | random luck | add control | Fix | #44 |'),
+    validationResults: partialValidationResults,
+    experienceMap: pendingExperienceMap,
+    gameData: {
+      externalEvidence: {
+        livedRows: {accepted: 0, required: 5},
+        livedDesignChange: {accepted: 0, required: 1},
+        playerSessions: {accepted: 1, required: 3},
+        smeReviews: {accepted: 0, required: 1}
+      }
+    }
+  },
+  '#33 follow-up issue accepted count must match unique concrete Fix/Cut follow-up references'
+);
 
 validateExternalEvidence({
   ledger: baseLedger

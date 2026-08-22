@@ -77,7 +77,7 @@ The screenshot UX audit also caught and fixed visible drift where Procedure Lab 
 
 - [ ] 3 player first-run sessions.
 - [ ] 1 SME or biology-aware validation pass.
-- [ ] SME validation results explicitly cover `?fixture=clean`, `?fixture=dirty`, and `?fixture=missing-control`.
+- [ ] SME validation results explicitly cover `?fixture=clean`, `?fixture=dirty`, and `?fixture=missing-control` on the accepted SME review id.
 - [ ] Follow-up issues for any misleading core mechanic.
 - [ ] Counted Fix/Cut follow-up issue references and dispositions summarized here before ledger counts increase.
 - [ ] External evidence ledger updated with accepted counts.

@@ -77,6 +77,14 @@ const partialSmeValidationResultsWithoutFixtures = [
   '| Mechanic | Rating | Evidence | Required action |',
   '| Stock/vial/calendar | Accurate enough | default route | none |'
 ].join('\n');
+const partialSmeValidationResultsWithUnlinkedFixtures = [
+  'External validation in progress.',
+  '## Validation Run 2026-08-22',
+  'SME-01 reviewed the default route only.',
+  'Separate proxy notes mention ?fixture=clean, ?fixture=dirty, and ?fixture=missing-control.',
+  '| Mechanic | Rating | Evidence | Required action |',
+  '| Stock/vial/calendar | Accurate enough | default route | none |'
+].join('\n');
 const fullRouteCoverageValidationResults = [
   'External validation in progress.',
   '## Validation Run 2026-08-22',
@@ -402,6 +410,26 @@ expectFailWith(
       .replace('| SME or biology-aware review | 1 | 0 | Pending execution | #33 |', '| SME or biology-aware review | 1 | 1 | In progress | #33 |')
       .replace('| SME-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending |', '| SME-01 | 2026-08-22 | genetics TA | Accurate enough | Acceptable simplification | Acceptable simplification | Accurate enough | Accurate enough | Pass | none |'),
     validationResults: partialSmeValidationResultsWithoutFixtures,
+    experienceMap: pendingExperienceMap,
+    gameData: {
+      externalEvidence: {
+        livedRows: {accepted: 0, required: 5},
+        livedDesignChange: {accepted: 0, required: 1},
+        playerSessions: {accepted: 0, required: 3},
+        smeReviews: {accepted: 1, required: 1}
+      }
+    }
+  },
+  '#33 accepted SME review must reference clean fixture coverage in validation results'
+);
+
+expectFailWith(
+  'accepted SME row with unlinked fixture coverage',
+  {
+    ledger: baseLedger
+      .replace('| SME or biology-aware review | 1 | 0 | Pending execution | #33 |', '| SME or biology-aware review | 1 | 1 | In progress | #33 |')
+      .replace('| SME-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending |', '| SME-01 | 2026-08-22 | genetics TA | Accurate enough | Acceptable simplification | Acceptable simplification | Accurate enough | Accurate enough | Pass | none |'),
+    validationResults: partialSmeValidationResultsWithUnlinkedFixtures,
     experienceMap: pendingExperienceMap,
     gameData: {
       externalEvidence: {

@@ -67,6 +67,8 @@ function bodyFor(contract) {
     '## Verification Method',
     'node tools/external-evidence-check.js',
     'node tools/r-series-status-check.js',
+    'node tools/external-validation-gap-report.js',
+    'node tools/external-validation-full-check.js --live-issues',
     '## Guardrails',
     '## Explicit Non-Goals',
     '## Implementation Approach',
@@ -75,6 +77,7 @@ function bodyFor(contract) {
     '## Drift-Prevention Checklist',
     '## Definition of Done',
     'External evidence checker passes',
+    'External validation gap report passes',
     ...contract.requiredBody
   ].join('\n');
 }

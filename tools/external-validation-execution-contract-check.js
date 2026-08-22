@@ -123,7 +123,10 @@ function validateIssueContract(issue, contract) {
   }
   requireText(issue.body, 'node tools/external-evidence-check.js', `execution issue #${contract.issue}`);
   requireText(issue.body, 'node tools/r-series-status-check.js', `execution issue #${contract.issue}`);
+  requireText(issue.body, 'node tools/external-validation-gap-report.js', `execution issue #${contract.issue}`);
+  requireText(issue.body, 'node tools/external-validation-full-check.js --live-issues', `execution issue #${contract.issue}`);
   requireText(issue.body, 'External evidence checker passes', `execution issue #${contract.issue}`);
+  requireText(issue.body, 'External validation gap report passes', `execution issue #${contract.issue}`);
 }
 
 function validateExecutionContracts({

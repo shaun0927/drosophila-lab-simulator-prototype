@@ -76,6 +76,7 @@ The screenshot UX audit also caught and fixed visible drift where Procedure Lab 
 ## Pending validation
 
 - [ ] 3 player first-run sessions.
+- [ ] Accepted player rows repeat the same route/fixture, goal phrase, failure-cause phrase, and second-run repair phrase as the ledger.
 - [ ] 1 SME or biology-aware validation pass.
 - [ ] SME validation results explicitly cover `?fixture=clean`, `?fixture=dirty`, and `?fixture=missing-control` on the accepted SME review id.
 - [ ] Follow-up issues for any misleading core mechanic.

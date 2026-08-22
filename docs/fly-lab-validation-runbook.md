@@ -145,7 +145,7 @@ Record results in `docs/fly-lab-validation-results.md` under a dated section:
 
 ### Player Sessions
 
-| Player | Route | Reviewer finding | Understood cause? | Second-run improvement | Result | Notes |
+| Player id | Route/fixture | Goal phrase | Failure-cause phrase | Second-run repair phrase | Result | Notes |
 |---|---|---|---|---|---|---|
 
 ### SME Review
@@ -168,5 +168,6 @@ Fixtures reviewed on this SME review id: `?fixture=clean`, `?fixture=dirty`, `?f
 - 1 SME review is recorded
 - accepted SME review id references clean, dirty, and missing-control fixture coverage in validation results
 - accepted player sessions collectively cover clean, dirty, and missing-control routes or fixtures
+- each accepted player id row in validation results repeats the ledger route/fixture, goal phrase, failure-cause phrase, and second-run repair phrase
 - clean/dirty/missing-control fixture differences are understood or follow-up issues are opened
 - all `misleading` or `unsafe` SME findings have fix/cut issues with resolved or accepted-non-blocking dispositions

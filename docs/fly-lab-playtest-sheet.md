@@ -45,8 +45,11 @@ After each session, append notes to `docs/fly-lab-validation-results.md`:
 
 - player profile
 - route taken
-- final reviewer finding
-- misunderstood mechanics
+- exact goal phrase
+- exact failure-cause phrase
+- exact second-run repair phrase
 - strongest moment
 - weakest moment
 - fix/cut follow-up issue links
+
+The accepted `P-*` row in `docs/fly-lab-validation-results.md` must repeat the same route/fixture, goal phrase, failure-cause phrase, and second-run repair phrase recorded in `docs/fly-lab-external-evidence-ledger.md`.

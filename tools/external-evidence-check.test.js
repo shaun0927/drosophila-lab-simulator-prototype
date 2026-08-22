@@ -48,26 +48,32 @@ const pendingGoalAudit = [
 const partialValidationResults = [
   'External validation in progress.',
   '## Validation Run 2026-08-22',
-  '| Player | Route | Reviewer finding | Understood cause? | Second-run improvement | Result | Notes |',
-  '| P-01 | default | handling confound | yes | reduce CO2 exposure | Pass | raw notes linked |'
+  '| Player | Route | Goal phrase | Failure-cause phrase | Second-run repair phrase | Result | Notes |',
+  '| P-01 | default | defend record | bad CO2 | reduce exposure | Pass | raw notes linked |'
 ].join('\n');
 const partialValidationResultsWithFollowUp = [
   'External validation in progress.',
   '## Validation Run 2026-08-22',
-  '| Player | Route | Reviewer finding | Understood cause? | Second-run improvement | Result | Notes |',
-  '| P-01 | default | handling confound | no | add control | Fix | #44 resolved |'
+  '| Player | Route | Goal phrase | Failure-cause phrase | Second-run repair phrase | Result | Notes |',
+  '| P-01 | default | defend record | random luck | add control | Fix | #44 resolved |'
 ].join('\n');
 const partialValidationResultsWithoutId = [
   'External validation in progress.',
   '## Validation Run 2026-08-22',
-  '| Player | Route | Reviewer finding | Understood cause? | Second-run improvement | Result | Notes |',
-  '| player one | default | handling confound | yes | reduce CO2 exposure | Pass | raw notes linked |'
+  '| Player | Route | Goal phrase | Failure-cause phrase | Second-run repair phrase | Result | Notes |',
+  '| player one | default | defend record | bad CO2 | reduce exposure | Pass | raw notes linked |'
 ].join('\n');
 const partialValidationResultsWithRouteMismatch = [
   'External validation in progress.',
   '## Validation Run 2026-08-22',
-  '| Player | Route | Reviewer finding | Understood cause? | Second-run improvement | Result | Notes |',
-  '| P-01 | dirty fixture | handling confound | yes | reduce CO2 exposure | Pass | raw notes linked |'
+  '| Player | Route | Goal phrase | Failure-cause phrase | Second-run repair phrase | Result | Notes |',
+  '| P-01 | dirty fixture | defend record | no attack | preserve controls | Pass | raw notes linked |'
+].join('\n');
+const partialValidationResultsWithPhraseMismatch = [
+  'External validation in progress.',
+  '## Validation Run 2026-08-22',
+  '| Player | Route | Goal phrase | Failure-cause phrase | Second-run repair phrase | Result | Notes |',
+  '| P-01 | clean fixture | defend record | random luck | preserve controls | Pass | raw notes linked |'
 ].join('\n');
 const partialSmeValidationResultsWithFixtures = [
   'External validation in progress.',
@@ -94,10 +100,10 @@ const partialSmeValidationResultsWithUnlinkedFixtures = [
 const fullRouteCoverageValidationResults = [
   'External validation in progress.',
   '## Validation Run 2026-08-22',
-  '| Player | Route | Reviewer finding | Understood cause? | Second-run improvement | Result | Notes |',
-  '| P-01 | clean fixture | none | yes | keep clean controls | Pass | raw notes linked |',
-  '| P-02 | dirty fixture | handling confound | yes | reduce CO2 exposure | Pass | raw notes linked |',
-  '| P-03 | missing-control fixture | missing control | yes | add control batch | Pass | raw notes linked |'
+  '| Player | Route | Goal phrase | Failure-cause phrase | Second-run repair phrase | Result | Notes |',
+  '| P-01 | clean fixture | defend record | no attack | preserve controls | Pass | raw notes linked |',
+  '| P-02 | dirty fixture | defend record | bad CO2 | reduce exposure | Pass | raw notes linked |',
+  '| P-03 | missing-control fixture | defend record | missing control | add control | Pass | raw notes linked |'
 ].join('\n');
 const partialExperienceMap = [
   'User lived-experience pass: in progress.',
@@ -388,6 +394,26 @@ expectFailWith(
     }
   },
   'P-01 accepted player route/fixture must match validation results'
+);
+
+expectFailWith(
+  'accepted player phrase mismatch in validation results',
+  {
+    ledger: baseLedger
+      .replace('| Fresh-player first-run sessions | 3 | 0 | Pending execution | #33 |', '| Fresh-player first-run sessions | 3 | 1 | In progress | #33 |')
+      .replace('| P-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending |', '| P-01 | 2026-08-22 | clean fixture | Yes | defend record | no attack | preserve controls | Pass | none |'),
+    validationResults: partialValidationResultsWithPhraseMismatch,
+    experienceMap: pendingExperienceMap,
+    gameData: {
+      externalEvidence: {
+        livedRows: {accepted: 0, required: 5},
+        livedDesignChange: {accepted: 0, required: 1},
+        playerSessions: {accepted: 1, required: 3},
+        smeReviews: {accepted: 0, required: 1}
+      }
+    }
+  },
+  'P-01 accepted player failure-cause phrase must match validation results'
 );
 
 expectFailWith(

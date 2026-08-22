@@ -125,6 +125,21 @@ function requirePlayerRouteMatchesResults(ledger, validationResults) {
   }
 }
 
+function requirePlayerPhrasesMatchResults(ledger, validationResults) {
+  for (const row of acceptedRows(ledger, 'P', 7)) {
+    const id = row[0];
+    const phrases = [
+      [row[4], 'accepted player goal phrase must match validation results'],
+      [row[5], 'accepted player failure-cause phrase must match validation results'],
+      [row[6], 'accepted player second-run repair phrase must match validation results']
+    ];
+    const resultText = validationResults.split(/\r?\n/).filter(line => line.includes(id)).join('\n').toLowerCase();
+    for (const [phrase, message] of phrases) {
+      assert(resultText.includes(phrase.toLowerCase()), `${id} ${message}`);
+    }
+  }
+}
+
 function requireSmeFixtureCoverage(ledger, validationResults, smeAccepted) {
   if (smeAccepted < 1) return;
   const requiredFixtures = [
@@ -444,6 +459,7 @@ function validateExternalEvidence({ ledger, validationResults, experienceMap, pr
   requireAcceptedEvidenceReferences({ledger, validationResults, experienceMap});
   requireFollowUpReferencesInResults(ledger, validationResults);
   requirePlayerRouteMatchesResults(ledger, validationResults);
+  requirePlayerPhrasesMatchResults(ledger, validationResults);
   requireSmeFixtureCoverage(ledger, validationResults, smeAccepted);
   requirePendingStatusDocs({counts, validationResults, experienceMap, progressAudit, goalAudit});
 

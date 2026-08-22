@@ -76,7 +76,33 @@ function compareGameDataStatus(gameData, counts) {
   assert(evidence.smeReviews.required === 1, 'data.js smeReviews required count must stay 1 unless #33 is explicitly re-scoped');
 }
 
-function validateExternalEvidence({ ledger, validationResults, experienceMap, gameData }) {
+function requireText(text, needle, label) {
+  assert(text && text.includes(needle), `${label} missing required pending-evidence text: ${needle}`);
+}
+
+function requirePendingStatusDocs({ counts, validationResults, experienceMap, progressAudit, goalAudit }) {
+  const needsLivedEvidence = counts.livedAccepted < 5 || counts.designAccepted < 1;
+  const needsValidationEvidence = counts.playerAccepted < 3 || counts.smeAccepted < 1;
+
+  if (needsLivedEvidence) {
+    requireText(experienceMap, 'User lived-experience pass: pending user input', 'experience map');
+    requireText(progressAudit, '| #27 R1 Experience map | Open', 'progress audit');
+    requireText(goalAudit, '#27 lacks lived-experience provenance', 'goal audit');
+  }
+
+  if (needsValidationEvidence) {
+    requireText(validationResults, 'No external player or SME validation has been run yet', 'validation results');
+    requireText(progressAudit, '| #33 R7 Vertical slice validation | Open', 'progress audit');
+    requireText(goalAudit, '#33 lacks player and SME validation', 'goal audit');
+  }
+
+  if (needsLivedEvidence || needsValidationEvidence) {
+    requireText(progressAudit, '#27 and #33 require external/user evidence', 'progress audit');
+    requireText(goalAudit, 'Do not mark the thread goal complete', 'goal audit');
+  }
+}
+
+function validateExternalEvidence({ ledger, validationResults, experienceMap, progressAudit = '', goalAudit = '', gameData }) {
   const rows = currentStatusRows(ledger);
   const livedRows = rows.get('Lived-experience event rows with user or observed-lab provenance');
   const designChange = rows.get('Lived-experience answer that changes a mechanic, guardrail, or SME risk');
@@ -108,7 +134,9 @@ function validateExternalEvidence({ ledger, validationResults, experienceMap, ga
   assert(tableAcceptedCount(ledger, 'P', 7) === playerAccepted, '#33 player accepted count must match decided player rows');
   assert(tableAcceptedCount(ledger, 'SME', 8) === smeAccepted, '#33 SME accepted count must match decided SME rows');
   assert(designAccepted <= livedAccepted, '#27 design-change accepted count cannot exceed accepted lived-experience rows');
-  compareGameDataStatus(gameData, {livedAccepted, designAccepted, playerAccepted, smeAccepted});
+  const counts = {livedAccepted, designAccepted, playerAccepted, smeAccepted};
+  compareGameDataStatus(gameData, counts);
+  requirePendingStatusDocs({counts, validationResults, experienceMap, progressAudit, goalAudit});
 
   if (experienceMap.includes('User lived-experience pass: pending user input')) {
     assert(livedAccepted === 0, '#27 accepted count cannot increase while the experience map still says user input is pending');
@@ -128,9 +156,11 @@ function runCli() {
     ledger: read('docs/fly-lab-external-evidence-ledger.md'),
     validationResults: read('docs/fly-lab-validation-results.md'),
     experienceMap: read('docs/fly-lab-experience-map.md'),
+    progressAudit: read('docs/r-series-progress-audit.md'),
+    goalAudit: read('docs/goal-completion-audit-2026-08-22.md'),
     gameData: loadGameData()
   });
-  console.log('external evidence ledger check passed: counts match intake rows and pending blockers are consistent');
+  console.log('external evidence ledger check passed: counts match intake rows, pending docs, and in-app status');
 }
 
 if (require.main === module) {

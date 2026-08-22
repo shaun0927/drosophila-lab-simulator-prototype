@@ -33,6 +33,17 @@ Not acceptable as #33 player closure evidence:
 
 const pendingValidationResults = 'No external player or SME validation has been run yet';
 const pendingExperienceMap = 'User lived-experience pass: pending user input';
+const pendingProgressAudit = [
+  '| #27 R1 Experience map | Open, ready for user input | Evidence | Remaining gap |',
+  '| #33 R7 Vertical slice validation | Open, proxy-audited and ready for external validation | Evidence | Remaining gap |',
+  '#27 and #33 require external/user evidence'
+].join('\n');
+const pendingGoalAudit = [
+  '## Current Decision',
+  'Do not mark the thread goal complete.',
+  '### Gap A: #27 lacks lived-experience provenance',
+  '### Gap B: #33 lacks player and SME validation'
+].join('\n');
 const matchingGameData = {
   externalEvidence: {
     livedRows: {accepted: 0, required: 5},
@@ -47,6 +58,8 @@ function expectPass(name, ledger = baseLedger) {
     ledger,
     validationResults: pendingValidationResults,
     experienceMap: pendingExperienceMap,
+    progressAudit: pendingProgressAudit,
+    goalAudit: pendingGoalAudit,
     gameData: matchingGameData
   });
   console.log(`pass fixture accepted: ${name}`);
@@ -58,6 +71,8 @@ function expectFail(name, ledger, messagePart, gameData = matchingGameData) {
       ledger,
       validationResults: pendingValidationResults,
       experienceMap: pendingExperienceMap,
+      progressAudit: pendingProgressAudit,
+      goalAudit: pendingGoalAudit,
       gameData
     });
   } catch (error) {
@@ -127,6 +142,8 @@ try {
     ledger: baseLedger,
     validationResults: pendingValidationResults,
     experienceMap: pendingExperienceMap,
+    progressAudit: pendingProgressAudit,
+    goalAudit: pendingGoalAudit,
     gameData: {
       externalEvidence: {
         livedRows: {accepted: 1, required: 5},
@@ -142,6 +159,57 @@ try {
     throw error;
   }
   console.log('bad fixture rejected: data.js count does not match ledger');
+}
+
+try {
+  validateExternalEvidence({
+    ledger: baseLedger,
+    validationResults: 'External sessions are summarized below.',
+    experienceMap: pendingExperienceMap,
+    progressAudit: pendingProgressAudit,
+    goalAudit: pendingGoalAudit,
+    gameData: matchingGameData
+  });
+  throw new Error('stale validation-results fixture should have failed');
+} catch (error) {
+  if (!error.message.includes('validation results missing required pending-evidence text')) {
+    throw error;
+  }
+  console.log('bad fixture rejected: validation results lost pending external-evidence blocker');
+}
+
+try {
+  validateExternalEvidence({
+    ledger: baseLedger,
+    validationResults: pendingValidationResults,
+    experienceMap: pendingExperienceMap,
+    progressAudit: pendingProgressAudit.replace('| #33 R7 Vertical slice validation | Open', '| #33 R7 Vertical slice validation | Closed'),
+    goalAudit: pendingGoalAudit,
+    gameData: matchingGameData
+  });
+  throw new Error('stale progress-audit fixture should have failed');
+} catch (error) {
+  if (!error.message.includes('progress audit missing required pending-evidence text: | #33 R7 Vertical slice validation | Open')) {
+    throw error;
+  }
+  console.log('bad fixture rejected: progress audit closed #33 while evidence remains pending');
+}
+
+try {
+  validateExternalEvidence({
+    ledger: baseLedger,
+    validationResults: pendingValidationResults,
+    experienceMap: pendingExperienceMap,
+    progressAudit: pendingProgressAudit,
+    goalAudit: pendingGoalAudit.replace('Do not mark the thread goal complete.', 'The thread goal can now close.'),
+    gameData: matchingGameData
+  });
+  throw new Error('stale goal-audit fixture should have failed');
+} catch (error) {
+  if (!error.message.includes('goal audit missing required pending-evidence text: Do not mark the thread goal complete')) {
+    throw error;
+  }
+  console.log('bad fixture rejected: goal audit lost not-complete decision');
 }
 
 console.log('external evidence checker self-test passed');

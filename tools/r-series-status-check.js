@@ -94,9 +94,13 @@ const textChecks = [
   ['web-prototype/smoke-tests.js', 'testLivedExperiencePacket'],
   ['web-prototype/smoke-tests.js', 'validation/status/capture packets'],
   ['tools/external-evidence-check.js', 'external evidence ledger check passed'],
+  ['tools/external-evidence-check.js', 'pending docs'],
   ['tools/external-evidence-check.js', 'data.js playerSessions accepted count must match ledger'],
   ['tools/external-evidence-check.test.js', 'external evidence checker self-test passed'],
   ['tools/external-evidence-check.test.js', 'data.js count does not match ledger'],
+  ['tools/external-evidence-check.test.js', 'validation results lost pending external-evidence blocker'],
+  ['tools/external-evidence-check.test.js', 'progress audit closed #33 while evidence remains pending'],
+  ['tools/external-evidence-check.test.js', 'goal audit lost not-complete decision'],
   ['tools/external-evidence-check.test.js', 'bad fixture rejected']
 ];
 

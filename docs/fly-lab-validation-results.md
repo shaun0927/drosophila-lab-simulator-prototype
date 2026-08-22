@@ -26,7 +26,7 @@ node web-prototype/smoke-tests.js
 Expected result:
 
 ```text
-fly-lab smoke passed: R2/R3, objective strip, reviewer repair plans, validation/capture packets, clean, dirty, missing-control, URL fixtures, legacy route
+fly-lab smoke passed: R2/R3, objective strip, reviewer repair plans, validation/status/capture packets, clean, dirty, missing-control, URL fixtures, legacy route
 browser smoke passed: specimen pad renders and sorting click registers
 browser smoke passed: assay mini-plot renders after controlled run
 browser smoke passed: clean/dirty/missing-control URL fixtures load expected reviewer findings

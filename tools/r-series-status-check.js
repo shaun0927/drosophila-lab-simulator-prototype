@@ -15,6 +15,7 @@ const requiredFiles = [
   'docs/goal-completion-audit-2026-08-22.md',
   'docs/open-issue-triage-2026-08-22.md',
   'tools/external-evidence-check.js',
+  'tools/external-evidence-check.test.js',
   '.github/ISSUE_TEMPLATE/fly_lab_lived_experience.yml',
   '.github/ISSUE_TEMPLATE/fly_lab_validation_finding.yml',
   'dogfood-output/screenshot-ux-audit.md',
@@ -63,7 +64,9 @@ const textChecks = [
   ['web-prototype/app.js', 'Do not invent unsupported first-slice phenomena'],
   ['web-prototype/smoke-tests.js', 'testLivedExperiencePacket'],
   ['web-prototype/smoke-tests.js', 'validation packets'],
-  ['tools/external-evidence-check.js', 'external evidence ledger check passed']
+  ['tools/external-evidence-check.js', 'external evidence ledger check passed'],
+  ['tools/external-evidence-check.test.js', 'external evidence checker self-test passed'],
+  ['tools/external-evidence-check.test.js', 'bad fixture rejected']
 ];
 
 function read(rel) {

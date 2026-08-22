@@ -19,4 +19,17 @@ window.GAME_DATA = {
     {name:'Phototactic Courtship Disaster', tags:['light','courtship'], ev:20, weird:85, cred:30, hype:55, susp:30, visual:'blue light turns courtship into a lab safety incident', weakness:'ethics'}
   ],
   fallback: {name:'Ambiguous Locomotor Weirdness', ev:15, weird:55, cred:30, hype:20, susp:10, visual:'flies move just oddly enough to tempt a bad abstract', weakness:'sample'}
+  ,
+  lab: {
+    stocks: [
+      {id:'cs', name:'Canton-S', genotype:'wild-type reference stock', marker:'none', backupCount:1, trust:92},
+      {id:'w1118', name:'w1118', genotype:'w[1118]', marker:'white eyes', backupCount:1, trust:86},
+      {id:'elav', name:'elav-GAL4 tester', genotype:'elav-GAL4 / CyO', marker:'curly wing balancer cue', backupCount:0, trust:78}
+    ],
+    vials: [
+      {id:'V-001', stockId:'cs', setupDay:-18, adults:38, food:'good', labelCompleteness:100, contamination:'clear', status:'active'},
+      {id:'V-002', stockId:'w1118', setupDay:-12, adults:25, food:'good', labelCompleteness:75, contamination:'clear', status:'active'},
+      {id:'V-003', stockId:'elav', setupDay:-23, adults:44, food:'drying', labelCompleteness:50, contamination:'clear', status:'active'}
+    ]
+  }
 };

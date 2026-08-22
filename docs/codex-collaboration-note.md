@@ -1,5 +1,9 @@
 # Codex Collaboration Note
 
+## R-series update
+
+The notes below describe the earlier competition prototype. The R-series direction has changed: real fly-lab procedure is now the gameplay substrate, while publication satire remains as wrapper, evaluator, and tone. The implementation contract is [`fly-lab-product-thesis.md`](fly-lab-product-thesis.md).
+
 ## What Codex/Hermes helped implement
 
 - Competition-scope design document for the 5-minute vertical slice.

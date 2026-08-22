@@ -1,5 +1,11 @@
 # Design Verdict
 
+## R-series supersession note
+
+This verdict applied to the original competition prototype. It is no longer the implementation contract for the R-series work. The current contract is [`fly-lab-product-thesis.md`](fly-lab-product-thesis.md), which deliberately moves the build target toward a fly-lab procedure simulator with a publication wrapper.
+
+The useful part of this verdict is the warning that the game must remain playable and motivated. The obsolete part is the claim that the game should avoid realistic lab procedure as a core direction.
+
 ## Verdict
 
 The current direction is sound **if** the game is treated as a discovery-and-framing game, not as a realistic lab-procedure simulator.

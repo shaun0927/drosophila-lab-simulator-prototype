@@ -1,5 +1,11 @@
 # 0. Competition Scope
 
+## R-series supersession note
+
+The original scope below describes the first phenomenon-first browser prototype. It remains useful as historical context and as a tone reference, but the R-series implementation target is now defined by [`fly-lab-product-thesis.md`](fly-lab-product-thesis.md).
+
+Current target: **fly-lab procedure simulator with a publication wrapper**. Stock handling, vial labels, cross timing, sorting, assay records, controls, sample size, and noisy evidence now take priority over arbitrary discovered phenomena.
+
 ## Product frame
 
 **Title:** Drosophila Lab Simulator: Publish or Perish

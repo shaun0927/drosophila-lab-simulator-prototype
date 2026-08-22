@@ -1,5 +1,11 @@
 # 1. Core Fun Loop Paper Design
 
+## R-series supersession note
+
+This document describes the original paper-loop prototype and should be read as historical context. The R-series implementation target is now defined by [`fly-lab-product-thesis.md`](fly-lab-product-thesis.md): a fly-lab procedure simulator with a publication wrapper.
+
+Do not use `Light-Induced Swarm Dance`, trait-card selection, or abstract hype/suspicion scores as the next production core unless they are rebuilt downstream of stock, cross, sorting, assay-record, control, sample-size, and notebook systems.
+
 ## Loop diagram
 
 ```text

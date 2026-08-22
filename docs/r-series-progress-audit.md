@@ -6,9 +6,13 @@ Parent contract: [`fly-lab-product-thesis.md`](fly-lab-product-thesis.md)
 
 Implementation PR: https://github.com/shaun0927/drosophila-lab-simulator-prototype/pull/34 merged to `main` at merge commit `f470330`.
 
-CI guardrail: `.github/workflows/web-prototype-smoke.yml` runs JavaScript syntax checks and `node web-prototype/smoke-tests.js` on pull requests and pushes.
+CI guardrail: `.github/workflows/web-prototype-smoke.yml` runs JavaScript syntax checks, `node web-prototype/smoke-tests.js`, `node tools/r-series-status-check.js`, `node tools/external-evidence-check.js`, `node tools/external-evidence-check.test.js`, and `node tools/issue-template-contract-check.js` on pull requests and pushes.
 
-Status guardrail: `node tools/r-series-status-check.js` verifies that required R-series artifacts, validation packets, screenshot evidence, external blocker language, and parked-issue drift guardrails are still present.
+Status guardrail: `node tools/r-series-status-check.js` verifies that required R-series artifacts, validation packets, screenshot evidence, external blocker language, issue-template contract checks, and parked-issue drift guardrails are still present.
+
+External-evidence guardrail: `node tools/external-evidence-check.js` verifies that ledger counts match intake rows, in-app status counts, and pending/open/not-complete audit language while #27 and #33 external evidence remains incomplete.
+
+Issue-template contract guardrail: `node tools/issue-template-contract-check.js` verifies that #27 lived-experience entries and #33 validation findings keep scoped implementation fields required before they can become implementation work.
 
 Open-issue triage: [`open-issue-triage-2026-08-22.md`](open-issue-triage-2026-08-22.md) classifies the older Unity/phenomenon-first issues so they do not steer the current R-series browser slice by accident.
 
@@ -21,13 +25,13 @@ External-evidence ledger: [`fly-lab-external-evidence-ledger.md`](fly-lab-extern
 | Issue | Status | Evidence | Remaining gap |
 |---|---|---|---|
 | #26 R0 Product thesis | Closed | `docs/fly-lab-product-thesis.md`; supersession notes in README and existing design docs; merged via PR #34; main CI green | None for R0 |
-| #27 R1 Experience map | Open, ready for user input | `docs/fly-lab-experience-map.md` has 16 events, 3 first-slice candidates, source list, and interview prompts; `docs/fly-lab-lived-experience-response-form.md`, `?validation=lived`, and `.github/ISSUE_TEMPLATE/fly_lab_lived_experience.yml` define the exact response format | User lived-experience answers are still pending, so the issue is not fully complete |
+| #27 R1 Experience map | Open, ready for user input | `docs/fly-lab-experience-map.md` has 16 events, 3 first-slice candidates, source list, and interview prompts; `docs/fly-lab-lived-experience-response-form.md`, `?validation=lived`, `.github/ISSUE_TEMPLATE/fly_lab_lived_experience.yml`, and `node tools/issue-template-contract-check.js` define and guard the exact response-to-implementation contract | User lived-experience answers are still pending, so the issue is not fully complete |
 | #28 R2 Stock/vial/calendar state | Closed | `web-prototype/data.js`, `web-prototype/app.js`, `web-prototype/style.css`; smoke verified starting stocks, vial rack, label, flip, advance day, overdue consequence, notebook; merged via PR #34; main CI green | Player comprehension validation continues under #33 |
 | #29 R3 Cross planner/virgin window | Closed | Lab route supports clear adults, next-day virgin window, collect candidates, select males, set cross vial, schedule scoring window; smoke verified flow; merged via PR #34; main CI green | SME timing review continues under #33 |
 | #30 R4 CO2 bench/sorting | Closed | Procedure Lab has CO2 bench sorting, specimen pad cards, specimen zones, exposure meter, batch records, purity, ambiguity, confidence, and caveats; browser QA passed; merged via PR #34; main CI green | SME visual-tell and player bench-feel validation continue under #33 |
 | #31 R5 Negative geotaxis assay | Closed | Batch records produce assay records with n, control, mean climb score, variance, confidence, caveats, and mini-plot bars; merged via PR #34; main CI green | SME scoring-abstraction and player readability validation continue under #33 |
 | #32 R6 Figure/reviewer rewrite | Closed | Figure summary uses ExperimentRecord aggregation; reviewer findings inspect lineage, missing control, low n, CO2, ambiguity, and overclaim; URL fixtures cover representative paths; merged via PR #34; main CI green | Broader player/SME validation continues under #33 |
-| #33 R7 Vertical slice validation | Open, proxy-audited and ready for external validation | `web-prototype/smoke-tests.js`, URL fixtures, `?validation=packet`, browser QA, objective strip screenshots, Reviewer #2 repair-plan checks, `docs/fly-lab-playtest-sheet.md`, `docs/fly-lab-sme-validation-sheet.md`, `docs/fly-lab-validation-runbook.md`, `docs/fly-lab-validation-results.md`, and `.github/ISSUE_TEMPLATE/fly_lab_validation_finding.yml` | External player/SME validation has not been run, so #33 cannot close |
+| #33 R7 Vertical slice validation | Open, proxy-audited and ready for external validation | `web-prototype/smoke-tests.js`, URL fixtures, `?validation=packet`, browser QA, objective strip screenshots, Reviewer #2 repair-plan checks, `docs/fly-lab-playtest-sheet.md`, `docs/fly-lab-sme-validation-sheet.md`, `docs/fly-lab-validation-runbook.md`, `docs/fly-lab-validation-results.md`, `.github/ISSUE_TEMPLATE/fly_lab_validation_finding.yml`, and `node tools/issue-template-contract-check.js` | External player/SME validation has not been run, so #33 cannot close |
 
 ## Verification run
 
@@ -37,8 +41,14 @@ Commands run:
 node --check web-prototype/app.js
 node --check web-prototype/data.js
 node --check web-prototype/smoke-tests.js
+node --check tools/external-evidence-check.js
+node --check tools/external-evidence-check.test.js
+node --check tools/issue-template-contract-check.js
 node web-prototype/smoke-tests.js
 node tools/r-series-status-check.js
+node tools/external-evidence-check.js
+node tools/external-evidence-check.test.js
+node tools/issue-template-contract-check.js
 ```
 
 Smoke checks run with a DOM stub:
@@ -56,13 +66,16 @@ browser smoke passed: specimen pad renders and sorting click registers
 browser smoke passed: assay mini-plot renders after controlled run
 browser smoke passed: clean/dirty/missing-control URL fixtures load expected reviewer findings
 responsive browser QA passed: desktop/mobile fixtures render without horizontal overflow
-main CI passed: Web prototype smoke run https://github.com/shaun0927/drosophila-lab-simulator-prototype/actions/runs/32563843521
+main CI passed: Web prototype smoke run https://github.com/shaun0927/drosophila-lab-simulator-prototype/actions/runs/32575846239
 screenshot UX audit passed after fixing Procedure Lab chrome drift: `dogfood-output/screenshot-ux-audit.md`
 screenshot proxy passed: objective strip visible on desktop/mobile clean fixture
 screenshot proxy passed: objective strip and repair plan visible on desktop/mobile clean fixture
 screenshot proxy passed: validation packet visible on desktop/mobile without legacy drift
 screenshot proxy passed: lived-experience packet visible on desktop/mobile without legacy drift
-r-series status check passed: artifacts present, packets wired, external blockers preserved, parked scope guarded
+r-series status check passed: artifacts present, packets wired, external blockers preserved, parked scope guarded, goal audit and evidence ledger linked
+external evidence ledger check passed: counts match intake rows, pending docs, and in-app status
+external evidence checker self-test passed
+issue template contract check passed: evidence follow-up forms require scoped implementation fields
 ```
 
 ## Drift audit
@@ -87,6 +100,8 @@ The current implementation stays aligned with the parent contract because:
 - `?validation=packet` opens an in-app launch page for #33 player/SME sessions with fixture links and closure criteria
 - `?validation=capture` opens an in-app raw evidence capture checklist for #27/#33 session notes before ledger updates
 - `?validation=lived` opens a separate #27 launch page for collecting real lab incidents without mixing them into #33 validation evidence
+- `node tools/external-evidence-check.js` prevents the ledger, in-app status, validation results, progress audit, and goal audit from drifting apart while external evidence counts remain incomplete
+- `node tools/issue-template-contract-check.js` prevents #27/#33 follow-up issue forms from losing required implementation-contract fields before evidence becomes work
 
 ## Why the full goal is not complete yet
 

@@ -21,8 +21,8 @@ Prototype status aid: `web-prototype/index.html?validation=status` opens an in-a
 | Analyze incomplete work | `docs/r-series-progress-audit.md`, `docs/open-issue-triage-2026-08-22.md`, and `docs/fly-lab-validation-results.md` identify #27 and #33 as incomplete because they require external evidence | Complete for current evidence | The remaining incompletion is explicitly named, scoped, and tied to required proof rather than hidden behind passing smoke tests. |
 | Analyze work below the goal standard | `dogfood-output/screenshot-ux-audit.md` recorded visual/proxy UX gaps; `docs/fly-lab-validation-results.md` says screenshot proxy is not enough for #33; `docs/fly-lab-lived-experience-response-form.md` says prompt surfaces do not replace actual answers | Complete for current evidence | The audit distinguishes implemented surfaces from proof of player comprehension, SME accuracy, and real lab provenance. |
 | Analyze drift | `docs/open-issue-triage-2026-08-22.md` parks older Unity/phenomenon-first issues; `docs/fly-lab-product-thesis.md` keeps the first slice centered on fly-lab procedure; `tools/r-series-status-check.js` enforces drift guardrails | Complete for current evidence | The current route, docs, and status checker preserve the R-series direction and keep `Light-Induced Swarm Dance` outside the new first slice. |
-| Improve from the analysis | Commits `0b4754b`, `df9095c`, `2a6ddd5`, `d2dc96e`, `528e0cc`, `e33ea3c`, `7951467`, `3978e7b`, and `c4b1451` added the objective strip, Reviewer #2 repair plans, validation packet, lived-experience packet, R-series status guardrail, external evidence ledger, ledger validator, capture packet, and finding decision tree | Complete for the proxy-driven iteration loop | Several iterations converted identified gaps into playable/documented affordances. The next improvement loop depends on external validation evidence. |
-| Repeat implementation and verification | `web-prototype/smoke-tests.js`, screenshot artifacts, `tools/r-series-status-check.js`, and main CI run `32567976725` verify the current implementation and guardrails | Complete for local/proxy verification | Automated and screenshot checks cover routes, fixtures, packets, and drift guardrails. They do not verify external player or SME outcomes. |
+| Improve from the analysis | Commits `0b4754b`, `df9095c`, `2a6ddd5`, `d2dc96e`, `528e0cc`, `e33ea3c`, `7951467`, `3978e7b`, `c4b1451`, `a6ca9a5`, `6dd82b5`, and `77649e7` added the objective strip, Reviewer #2 repair plans, validation packet, lived-experience packet, R-series status guardrail, external evidence ledger, ledger validator, capture packet, finding decision tree, pending-status doc checks, scoped implementation-contract issue forms, and executable issue-template contract checks | Complete for the proxy-driven iteration loop | Several iterations converted identified gaps into playable/documented affordances and stronger anti-drift automation. The next improvement loop depends on external validation evidence. |
+| Repeat implementation and verification | `web-prototype/smoke-tests.js`, screenshot artifacts, `tools/r-series-status-check.js`, `tools/external-evidence-check.js`, `tools/external-evidence-check.test.js`, `tools/issue-template-contract-check.js`, and main CI run `32575846239` verify the current implementation and guardrails | Complete for local/proxy verification | Automated, screenshot, ledger, audit, and issue-template checks cover routes, fixtures, packets, issue contracts, and drift guardrails. They do not verify external player or SME outcomes. |
 | Finish the overall objective | #27 and #33 are still open and explicitly require external/user evidence | Not complete | The objective cannot be marked complete until the remaining current issues either receive the required evidence and close, or are re-scoped by a new explicit product decision. |
 
 ## Remaining Gaps
@@ -37,6 +37,7 @@ What exists:
 - `web-prototype/index.html?validation=status` shows the current 0/5 #27 lived-evidence gap in the prototype.
 - `web-prototype/index.html?validation=lived` exposes the collection packet in the prototype.
 - `.github/ISSUE_TEMPLATE/fly_lab_lived_experience.yml` can capture follow-up implementation issues.
+- `tools/issue-template-contract-check.js` verifies that lived-experience follow-up issues keep Goal, Final Implementation Scope, Success Criteria, Verification Method, Guardrails, Explicit Non-Goals, Implementation Approach, PR Decomposition, Over-Engineering Checklist, Drift-Prevention Checklist, and Definition of Done required.
 
 What is missing:
 
@@ -67,6 +68,8 @@ What exists:
 - `web-prototype/index.html?validation=status` shows the current 0/3 player and 0/1 SME evidence gap in the prototype.
 - `web-prototype/index.html?validation=packet` exposes the in-app validation launcher.
 - `docs/fly-lab-validation-results.md` records proxy QA and explicitly says no external validation has run yet.
+- `tools/external-evidence-check.js` verifies that ledger counts, in-app status counts, and pending/open/not-complete audit language stay synchronized while evidence is missing.
+- `tools/issue-template-contract-check.js` verifies that validation finding issues keep the full implementation-contract fields required before evidence becomes scoped implementation work.
 
 What is missing:
 
@@ -139,4 +142,6 @@ The objective can be marked complete only when:
 5. `docs/r-series-progress-audit.md` and this audit both reflect the final issue status.
 6. `node web-prototype/smoke-tests.js` passes.
 7. `node tools/r-series-status-check.js` passes.
-8. Main CI is green on the commit that contains the final audit.
+8. `node tools/external-evidence-check.js` passes.
+9. `node tools/issue-template-contract-check.js` passes.
+10. Main CI is green on the commit that contains the final audit.

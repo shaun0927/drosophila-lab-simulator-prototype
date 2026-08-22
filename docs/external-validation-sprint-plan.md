@@ -6,6 +6,8 @@ Purpose: turn the remaining #27 and #33 blockers into one executable validation 
 
 Session packet source: use [`external-validation-session-packets.md`](external-validation-session-packets.md) as the issue-by-issue field packet for #35 through #39.
 
+Execution tracker: use [`external-validation-execution-tracker.md`](external-validation-execution-tracker.md) to see which #35 through #39 evidence rows are still missing before closure.
+
 ## Sprint Goal
 
 Produce the missing non-proxy evidence for the R-series Procedure Lab slice:

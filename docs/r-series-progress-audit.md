@@ -26,6 +26,8 @@ External validation execution issues: #35 collects #27 `LE-01` through `LE-05`; 
 
 Session packet source: [`external-validation-session-packets.md`](external-validation-session-packets.md) provides copy-ready raw packets for #35 through #39 so session notes can be captured before ledger/result rows are edited.
 
+External validation execution tracker: [`external-validation-execution-tracker.md`](external-validation-execution-tracker.md) records that #35 through #39 are open and that #27/#33 accepted evidence counts remain at zero until real sessions are recorded.
+
 External-evidence ledger: [`fly-lab-external-evidence-ledger.md`](fly-lab-external-evidence-ledger.md) records the unfilled #27 lived-experience slots and #33 player/SME validation slots.
 
 ## Current implementation status

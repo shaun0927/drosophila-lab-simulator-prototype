@@ -63,6 +63,12 @@ const partialValidationResultsWithoutId = [
   '| Player | Route | Reviewer finding | Understood cause? | Second-run improvement | Result | Notes |',
   '| player one | default | handling confound | yes | reduce CO2 exposure | Pass | raw notes linked |'
 ].join('\n');
+const partialValidationResultsWithRouteMismatch = [
+  'External validation in progress.',
+  '## Validation Run 2026-08-22',
+  '| Player | Route | Reviewer finding | Understood cause? | Second-run improvement | Result | Notes |',
+  '| P-01 | dirty fixture | handling confound | yes | reduce CO2 exposure | Pass | raw notes linked |'
+].join('\n');
 const partialSmeValidationResultsWithFixtures = [
   'External validation in progress.',
   '## Validation Run 2026-08-22',
@@ -362,6 +368,26 @@ expectFailWith(
     }
   },
   'P-01 accepted player row must be referenced in validation results'
+);
+
+expectFailWith(
+  'accepted player route mismatch in validation results',
+  {
+    ledger: baseLedger
+      .replace('| Fresh-player first-run sessions | 3 | 0 | Pending execution | #33 |', '| Fresh-player first-run sessions | 3 | 1 | In progress | #33 |')
+      .replace('| P-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending |', '| P-01 | 2026-08-22 | clean fixture | Yes | defend record | no attack | preserve controls | Pass | none |'),
+    validationResults: partialValidationResultsWithRouteMismatch,
+    experienceMap: pendingExperienceMap,
+    gameData: {
+      externalEvidence: {
+        livedRows: {accepted: 0, required: 5},
+        livedDesignChange: {accepted: 0, required: 1},
+        playerSessions: {accepted: 1, required: 3},
+        smeReviews: {accepted: 0, required: 1}
+      }
+    }
+  },
+  'P-01 accepted player route/fixture must match validation results'
 );
 
 expectFailWith(

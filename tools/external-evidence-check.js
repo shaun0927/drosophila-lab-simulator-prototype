@@ -59,6 +59,17 @@ function acceptedIds(markdown, idPrefix, acceptedColumnIndex) {
   return ids;
 }
 
+function acceptedRows(markdown, idPrefix, acceptedColumnIndex) {
+  const rows = [];
+  for (const line of markdown.split(/\r?\n/)) {
+    if (!line.startsWith(`| ${idPrefix}-`)) continue;
+    const row = cells(line);
+    const acceptedCell = row[acceptedColumnIndex];
+    if (/^(Yes|Pass|Fix|Cut)$/i.test(acceptedCell)) rows.push(row);
+  }
+  return rows;
+}
+
 function concreteFollowUpRefs(markdown) {
   const refs = new Set();
   for (const line of markdown.split(/\r?\n/)) {
@@ -102,6 +113,15 @@ function requireAcceptedEvidenceReferences({ ledger, validationResults, experien
 function requireFollowUpReferencesInResults(ledger, validationResults) {
   for (const ref of concreteFollowUpRefs(ledger)) {
     assert(validationResults.includes(ref), `${ref} counted Fix/Cut follow-up issue must be referenced in validation results`);
+  }
+}
+
+function requirePlayerRouteMatchesResults(ledger, validationResults) {
+  for (const row of acceptedRows(ledger, 'P', 7)) {
+    const id = row[0];
+    const route = row[2];
+    const resultText = validationResults.split(/\r?\n/).filter(line => line.includes(id)).join('\n').toLowerCase();
+    assert(resultText.includes(route.toLowerCase()), `${id} accepted player route/fixture must match validation results`);
   }
 }
 
@@ -423,6 +443,7 @@ function validateExternalEvidence({ ledger, validationResults, experienceMap, pr
 
   requireAcceptedEvidenceReferences({ledger, validationResults, experienceMap});
   requireFollowUpReferencesInResults(ledger, validationResults);
+  requirePlayerRouteMatchesResults(ledger, validationResults);
   requireSmeFixtureCoverage(ledger, validationResults, smeAccepted);
   requirePendingStatusDocs({counts, validationResults, experienceMap, progressAudit, goalAudit});
 

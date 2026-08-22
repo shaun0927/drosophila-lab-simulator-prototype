@@ -687,6 +687,31 @@ try {
 try {
   validateExternalEvidence({
     ledger: baseLedger,
+    validationResults: pendingValidationResults,
+    experienceMap: pendingExperienceMap,
+    progressAudit: pendingProgressAudit,
+    goalAudit: pendingGoalAudit,
+    gameData: {
+      externalEvidence: {
+        livedRows: {accepted: 0, required: 5},
+        livedDesignChange: {accepted: 0, required: 1},
+        playerSessions: {accepted: 0, required: 3},
+        smeReviews: {accepted: 0, required: 1},
+        followUpIssues: {accepted: 1, required: 'As needed'}
+      }
+    }
+  });
+  throw new Error('data.js follow-up mismatch fixture should have failed');
+} catch (error) {
+  if (!error.message.includes('data.js followUpIssues accepted count must match ledger')) {
+    throw error;
+  }
+  console.log('bad fixture rejected: data.js follow-up count does not match ledger');
+}
+
+try {
+  validateExternalEvidence({
+    ledger: baseLedger,
     validationResults: 'External sessions are summarized below.',
     experienceMap: pendingExperienceMap,
     progressAudit: pendingProgressAudit,

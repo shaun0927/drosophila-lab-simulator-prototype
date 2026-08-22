@@ -159,6 +159,8 @@ function testGoalStatusPacket() {
   assert(booted.el('stage').innerHTML.includes('0 / 5'), 'goal status missing #27 count');
   assert(booted.el('stage').innerHTML.includes('0 / 3'), 'goal status missing player count');
   assert(booted.el('stage').innerHTML.includes('0 / 1'), 'goal status missing SME count');
+  assert(booted.el('stage').innerHTML.includes('Fix/Cut follow-up issues'), 'goal status missing follow-up issue gate');
+  assert(booted.el('stage').innerHTML.includes('0 / As needed'), 'goal status missing follow-up issue count');
   assert(booted.el('stage').innerHTML.includes('Screenshots or smoke tests'), 'goal status missing proxy-evidence warning');
   booted = boot('?validation=status');
   assert(booted.el('stage').innerHTML.includes('Thread goal status'), 'goal status URL did not open packet');

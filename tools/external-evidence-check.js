@@ -229,6 +229,10 @@ function compareGameDataStatus(gameData, counts) {
   assert(evidence.playerSessions.required === 3, 'data.js playerSessions required count must stay 3 unless #33 is explicitly re-scoped');
   assert(evidence.smeReviews.accepted === counts.smeAccepted, 'data.js smeReviews accepted count must match ledger');
   assert(evidence.smeReviews.required === 1, 'data.js smeReviews required count must stay 1 unless #33 is explicitly re-scoped');
+  if (evidence.followUpIssues) {
+    assert(evidence.followUpIssues.accepted === counts.followUpAccepted, 'data.js followUpIssues accepted count must match ledger');
+    assert(evidence.followUpIssues.required === 'As needed', 'data.js followUpIssues required count must stay As needed unless #33 is explicitly re-scoped');
+  }
 }
 
 function requireText(text, needle, label) {
@@ -312,7 +316,7 @@ function validateExternalEvidence({ ledger, validationResults, experienceMap, pr
   requireFixCutFollowUps(ledger);
   assert(concreteFollowUpRefs(ledger).size === followUpAccepted, '#33 follow-up issue accepted count must match unique concrete Fix/Cut follow-up references');
   assert(designAccepted <= livedAccepted, '#27 design-change accepted count cannot exceed accepted lived-experience rows');
-  const counts = {livedAccepted, designAccepted, playerAccepted, smeAccepted};
+  const counts = {livedAccepted, designAccepted, playerAccepted, smeAccepted, followUpAccepted};
   compareGameDataStatus(gameData, counts);
 
   if (experienceMap.includes('User lived-experience pass: pending user input')) {

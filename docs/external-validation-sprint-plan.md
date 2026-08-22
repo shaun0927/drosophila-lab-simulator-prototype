@@ -8,6 +8,8 @@ Session packet source: use [`external-validation-session-packets.md`](external-v
 
 Execution tracker: use [`external-validation-execution-tracker.md`](external-validation-execution-tracker.md) to see which #35 through #39 evidence rows are still missing before closure.
 
+Intake runbook: use [`external-validation-intake-runbook.md`](external-validation-intake-runbook.md) after a real session to apply raw notes, accepted rows, status counts, issue comments, and verification commands in the correct order.
+
 ## Sprint Goal
 
 Produce the missing non-proxy evidence for the R-series Procedure Lab slice:
@@ -151,12 +153,13 @@ Any `Misleading` or `Unsafe/ethically wrong` rating requires a concrete Fix/Cut 
 
 After each accepted run:
 
-1. Append raw notes and exact phrases to `docs/fly-lab-validation-results.md`.
-2. Update the matching intake row in `docs/fly-lab-external-evidence-ledger.md`.
-3. For `LE-*`, update `docs/fly-lab-experience-map.md` with the exact same fields.
-4. For `P-*` and `SME-*`, ensure `docs/fly-lab-validation-results.md` repeats the exact same route, fixture coverage, phrases, ratings, decision, and follow-up disposition.
-5. Open follow-up issues for every counted Fix/Cut row.
-6. Run `node tools/external-evidence-check.js` before raising any top-level accepted count.
+Follow the detailed edit sequence in `docs/external-validation-intake-runbook.md`. In short:
+
+1. Preserve raw notes and exact phrases before summarizing.
+2. Update the matching result document and ledger row.
+3. Mirror `LE-*` rows into the experience map, or mirror `P-*`/`SME-*` rows into validation results.
+4. Open and disposition follow-up issues for every counted Fix/Cut row.
+5. Run `node tools/external-validation-full-check.js --live-issues` before requesting closure review.
 
 ## Follow-Up Issue Rule
 
@@ -179,18 +182,7 @@ Do not count these as follow-up evidence:
 Run:
 
 ```bash
-node --check web-prototype/app.js
-node --check web-prototype/data.js
-node --check web-prototype/smoke-tests.js
-node --check tools/external-evidence-check.js
-node --check tools/external-evidence-check.test.js
-node --check tools/r-series-status-check.js
-node web-prototype/smoke-tests.js
-node tools/r-series-status-check.js
-node tools/external-evidence-check.js
-node tools/external-evidence-check.test.js
-node tools/issue-template-contract-check.js
-git diff --check
+node tools/external-validation-full-check.js --live-issues
 gh run list --branch main --limit 5
 ```
 

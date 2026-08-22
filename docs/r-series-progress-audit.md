@@ -26,6 +26,8 @@ Final closure readiness guardrail: `node tools/final-closure-readiness-check.js`
 
 External validation sprint plan: [`external-validation-sprint-plan.md`](external-validation-sprint-plan.md) turns the remaining #27/#33 evidence work into a role-based session order with update, follow-up, and closure rules.
 
+External validation intake runbook: [`external-validation-intake-runbook.md`](external-validation-intake-runbook.md) defines the exact edit order after #35 through #39 produce real evidence, including when to update ledger rows, result docs, status counts, issue comments, and final closure commands.
+
 External validation execution issues: #35 collects #27 `LE-01` through `LE-05`; #36 collects #33 `P-01` clean; #37 collects #33 `P-02` dirty; #38 collects #33 `P-03` missing-control; #39 collects #33 `SME-01` fixture/rating review.
 
 Session packet source: [`external-validation-session-packets.md`](external-validation-session-packets.md) provides copy-ready raw packets for #35 through #39 so session notes can be captured before ledger/result rows are edited.

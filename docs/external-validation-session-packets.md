@@ -7,6 +7,7 @@ Purpose: provide copy-ready packets for issues #35 through #39. These packets ar
 Use with:
 
 - `docs/external-validation-sprint-plan.md`
+- `docs/external-validation-intake-runbook.md`
 - `docs/fly-lab-session-capture-packet.md`
 - `docs/fly-lab-external-evidence-ledger.md`
 - `docs/fly-lab-validation-results.md`
@@ -202,9 +203,7 @@ After each session:
 6. Run:
 
 ```bash
-node tools/external-evidence-check.js
-node tools/r-series-status-check.js
-node web-prototype/smoke-tests.js
+node tools/external-validation-full-check.js --live-issues
 ```
 
 7. Comment on #27 or #33 with the accepted/rejected row id, evidence-doc links, and remaining counts.

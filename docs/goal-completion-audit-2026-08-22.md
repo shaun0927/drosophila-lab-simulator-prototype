@@ -49,6 +49,7 @@ What exists:
 - `web-prototype/index.html?validation=status` shows the current 0/5 #27 lived-evidence gap in the prototype.
 - `web-prototype/index.html?validation=lived` exposes the collection packet in the prototype.
 - `docs/external-validation-sprint-plan.md` defines the #27 session order, accepted `LE-*` minimum output, update order, and drift controls.
+- `docs/external-validation-intake-runbook.md` defines the edit order after real `LE-*`, `P-*`, or `SME-*` evidence is collected.
 - `docs/external-validation-session-packets.md` provides the #35 raw interview and accepted-row packet before ledger updates.
 - `docs/external-validation-execution-tracker.md` records #35 as open with #27 accepted evidence still at 0.
 - `.github/ISSUE_TEMPLATE/fly_lab_lived_experience.yml` can capture follow-up implementation issues.
@@ -82,6 +83,7 @@ What exists:
 - `docs/fly-lab-validation-runbook.md` defines the execution protocol.
 - `docs/fly-lab-external-evidence-ledger.md` tracks the three player sessions, SME review, and follow-up issue gates.
 - `docs/external-validation-sprint-plan.md` assigns `P-01`, `P-02`, and `P-03` target route coverage and defines the accepted `SME-01` fixture/rating requirements.
+- `docs/external-validation-intake-runbook.md` defines the edit order for copying accepted player/SME evidence into validation results, the ledger, status counts, tracker, and issue comments.
 - `docs/external-validation-session-packets.md` provides the #36, #37, #38, and #39 raw session packets before validation-result and ledger updates.
 - `docs/external-validation-execution-tracker.md` records #36 through #39 as open with #33 accepted evidence still at 0.
 - `web-prototype/index.html?validation=status` shows the current 0/3 player, 0/3 route-coverage, and 0/1 SME evidence gap in the prototype.

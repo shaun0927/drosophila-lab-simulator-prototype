@@ -26,6 +26,8 @@ Use [`fly-lab-validation-finding-decision-tree.md`](fly-lab-validation-finding-d
 | Capture launch | `web-prototype/index.html?validation=capture` |
 | Lived-experience launch | `web-prototype/index.html?validation=lived` |
 | Required fixtures | `?fixture=clean`, `?fixture=dirty`, `?fixture=missing-control` |
+| Issue-specific packets | `docs/external-validation-session-packets.md` #35 through #39 |
+| Execution issues | #35, #36, #37, #38, #39 |
 | Result document | `docs/fly-lab-validation-results.md` |
 | Ledger document | `docs/fly-lab-external-evidence-ledger.md` |
 
@@ -35,6 +37,8 @@ Before a session, run or confirm the latest CI equivalent:
 node web-prototype/smoke-tests.js
 node tools/r-series-status-check.js
 node tools/external-evidence-check.js
+node tools/external-validation-preflight-check.js
+node tools/external-validation-gap-report.js
 ```
 
 ## #27 Lived-Experience Capture
@@ -154,6 +158,8 @@ Allowed ratings: `Accurate enough`, `Acceptable simplification`, `Misleading`, `
 | Negative geotaxis n/control/confidence |  |  |  |
 | Reviewer attacks tied to record caveats |  |  |  |
 
+Every misleading or unsafe core mechanic needs a concrete follow-up issue before the row can count.
+
 ### #33 SME follow-up triggers
 
 Open a validation finding issue if:
@@ -177,6 +183,8 @@ Open a validation finding issue if:
 node web-prototype/smoke-tests.js
 node tools/r-series-status-check.js
 node tools/external-evidence-check.js
+node tools/external-validation-gap-report.js
+node tools/external-validation-full-check.js --live-issues
 ```
 
 7. Update #27 or #33 with the result link and whether closure criteria are now met.

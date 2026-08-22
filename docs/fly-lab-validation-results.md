@@ -12,6 +12,8 @@ Use [`fly-lab-validation-runbook.md`](fly-lab-validation-runbook.md) to run the 
 
 Use [`fly-lab-external-evidence-ledger.md`](fly-lab-external-evidence-ledger.md) to record which #27 and #33 external-evidence slots are still pending or accepted.
 
+Use [`final-closure-review-checklist.md`](final-closure-review-checklist.md) only after #27 and #33 evidence thresholds are met and the status docs say the evidence is ready for closure review.
+
 R-series issue status after PR #34 merge:
 
 - Closed: #26, #28, #29, #30, #31, #32.

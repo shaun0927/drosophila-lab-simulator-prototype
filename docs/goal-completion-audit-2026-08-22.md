@@ -145,8 +145,9 @@ The objective can be marked complete only when:
 3. `docs/fly-lab-validation-results.md` records the final external validation result.
 4. `docs/fly-lab-external-evidence-ledger.md` records the accepted external evidence counts.
 5. `docs/r-series-progress-audit.md` and this audit both reflect the final issue status.
-6. `node web-prototype/smoke-tests.js` passes.
-7. `node tools/r-series-status-check.js` passes.
-8. `node tools/external-evidence-check.js` passes.
-9. `node tools/issue-template-contract-check.js` passes.
-10. Main CI is green on the commit that contains the final audit.
+6. `docs/final-closure-review-checklist.md` has been run against the closure commit.
+7. `node web-prototype/smoke-tests.js` passes.
+8. `node tools/r-series-status-check.js` passes.
+9. `node tools/external-evidence-check.js` passes.
+10. `node tools/issue-template-contract-check.js` passes.
+11. Main CI is green on the commit that contains the final audit.

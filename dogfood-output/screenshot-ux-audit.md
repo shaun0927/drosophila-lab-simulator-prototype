@@ -15,12 +15,18 @@ Committed under `dogfood-output/screenshots/`:
 - `desktop-clean-after-record-view.png`
 - `desktop-dirty-after-record-view.png`
 
+Latest replacement screenshots:
+
+- `desktop-clean.png`
+- `mobile-clean.png`
+
 ## Findings
 
 | Finding | Evidence | Risk | Action |
 |---|---|---|---|
 | Procedure route still showed `Live Assay Chamber` and `No mutant line yet` in the right panel | `desktop-clean.png`, `mobile-clean.png` | Drift: the UI told players they were still in the old phenomenon-first prototype while using Procedure Lab | Fixed |
 | Footer still asked `make the phenomenon more believable, or more sensational?` in Procedure Lab | `desktop-clean.png`, `mobile-clean.png` | Drift: the bottom-line question contradicted the R-series notebook/evidence thesis | Fixed |
+| Procedure route listed systems before telling the player what judgment mattered now | `desktop-clean.png`, `mobile-clean.png` | First-run risk: players could see many lab controls without understanding the current objective, next action, record risk, or reviewer vulnerability | Fixed with objective strip |
 | Procedure route screenshots are long on mobile | `mobile-clean.png`, `mobile-dirty.png`, `mobile-missing-control.png` | Usability risk for real first-run validation; not a functional blocker | Keep as #33 player-validation watch item |
 | Lab Record View canvas labels are small and dense | `desktop-clean-after-record-view.png` | Polish/readability risk; not a scientific drift issue | Keep as later polish unless players miss the record summary |
 
@@ -32,6 +38,13 @@ Changed Procedure Lab chrome and canvas behavior:
 - footer becomes `Core question: can the notebook defend the claim?`
 - canvas renders procedure record state instead of old mutant-line chamber text
 - legacy publication-satire route keeps the old chamber language
+
+Added Procedure Lab objective strip:
+
+- current goal: build a defensible experiment record
+- next action: state-derived recommendation for the next lab step
+- record risk: latest vial, batch, assay, or reviewer weakness
+- reviewer vulnerability: the likely critique attached to the current record state
 
 ## Verification
 
@@ -48,6 +61,7 @@ Browser assertion:
 
 ```text
 browser smoke passed: procedure route uses Lab Record View and notebook footer
+screenshot proxy passed: objective strip visible on desktop/mobile clean fixture
 ```
 
 ## Remaining Limits

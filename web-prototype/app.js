@@ -306,6 +306,42 @@ function mode(){
   c.appendChild(btn('Start Procedure Lab','Stock rack, vial age, labels, calendar events, and notebook consequences.',startLab,'choice primary'));
   c.appendChild(btn('Open old publication-satire prototype','Trait cards, absurd phenomena, figure framing, and Reviewer #2.',()=>{S.phase='traits'; log('Historical prototype route opened.'); render();},'choice ghost'));
 }
+function latestLabRecord(){
+  if(S.lab.figureReview) return {stage:'review', record:S.lab.figureReview};
+  if(S.lab.assayRecords.length) return {stage:'assay', record:S.lab.assayRecords[S.lab.assayRecords.length-1]};
+  if(S.lab.batchRecords.length) return {stage:'batch', record:S.lab.batchRecords[S.lab.batchRecords.length-1]};
+  const risky = activeVials().slice().sort((a,b)=>(a.lineageConfidence+a.labelCompleteness)-(b.lineageConfidence+b.labelCompleteness))[0];
+  return {stage:'rack', record:risky};
+}
+function labNextAction(){
+  if(!S.lab.batchRecords.length) return 'Sort a traceable batch from V-001 before testing any claim.';
+  if(!S.lab.assayRecords.length) return 'Run negative geotaxis with a control and enough flies.';
+  if(!S.lab.figureReview) return 'Pick a claim strength and see which record weakness Reviewer #2 attacks.';
+  return 'Repeat the loop with a cleaner record or compare the dirty fixtures.';
+}
+function labRecordRisk(){
+  const latest = latestLabRecord();
+  if(latest.stage==='review') return `${latest.record.finding.id}: ${latest.record.finding.evidenceRef}`;
+  if(latest.stage==='assay') return latest.record.caveats.length ? latest.record.caveats.join(', ') : 'A clean assay can still be overclaimed at figure strength.';
+  if(latest.stage==='batch') return latest.record.caveats.length ? latest.record.caveats.join(', ') : `Batch ${latest.record.id} is defensible enough for a controlled assay.`;
+  const v = latest.record;
+  return `${v.id}: label ${v.labelCompleteness}%, lineage ${v.lineageConfidence}%, age ${vialAge(v)} days.`;
+}
+function labReviewerVulnerability(){
+  const latest = latestLabRecord();
+  if(latest.stage==='review') return latest.record.finding.why;
+  if(latest.stage==='assay'){
+    if(!latest.record.controlPresent) return 'Missing control will dominate the review.';
+    if(latest.record.n<10) return 'Low n makes the assay fragile.';
+    if(latest.record.caveats.some(c=>c.includes('CO2'))) return 'CO2 exposure can become a behavioral confound.';
+    return 'The record is strong; overclaiming is now the main risk.';
+  }
+  if(latest.stage==='batch') return latest.record.caveats.length ? 'Batch caveats will follow every later assay.' : 'Next risk comes from assay design, not sorting.';
+  return 'Weak labels or lineage confidence can invalidate later crosses.';
+}
+function labObjectiveHtml(){
+  return `<div class="objective-strip"><div><span>Current goal</span><b>Build a defensible experiment record</b></div><div><span>Next action</span><b>${labNextAction()}</b></div><div><span>Record risk</span><b>${labRecordRisk()}</b></div><div><span>Reviewer vulnerability</span><b>${labReviewerVulnerability()}</b></div></div>`;
+}
 function lab(){
   const rack = activeVials().map(v=>{
     const stock = stockFor(v), age = vialAge(v), flags = (v.flags||[]).map(f=>`<span class="pill ${f.includes('risk')||f.includes('incomplete')?'warn':''}">${f}</span>`).join('') || '<span class="pill">clean</span>';
@@ -314,7 +350,7 @@ function lab(){
   const calendar = dueEvents().map(e=>`<li><b>${e.kind}</b> ${e.text}</li>`).join('');
   const notes = S.lab.notebook.slice(0,8).map(n=>`<div><b>D${n.day} ${n.action}</b>${n.vialId?` <span>${n.vialId}</span>`:''}<br>${n.detail}</div>`).join('');
   const planner = crossPlannerHtml();
-  setStage(`<div class="kicker">Procedure Lab</div><h2>Stock rack and calendar</h2><div class="body"><p>Small record choices now become future confidence. Bad labels, overdue vials, late virgin collection, CO2 exposure, sorting ambiguity, and missing controls all become record caveats.</p></div><div class="lab-grid"><section><h3>Vial rack</h3><div class="vial-rack">${rack}</div>${planner}${benchHtml()}${assayHtml()}${figureReviewHtml()}</section><section><h3>Calendar checklist</h3><ul class="calendar">${calendar}</ul><h3>Notebook</h3><div class="notebook">${notes}</div></section></div>`);
+  setStage(`<div class="kicker">Procedure Lab</div><h2>Stock rack and calendar</h2><div class="body"><p>Small record choices now become future confidence. Bad labels, overdue vials, late virgin collection, CO2 exposure, sorting ambiguity, and missing controls all become record caveats.</p></div>${labObjectiveHtml()}<div class="lab-grid"><section><h3>Vial rack</h3><div class="vial-rack">${rack}</div>${planner}${benchHtml()}${assayHtml()}${figureReviewHtml()}</section><section><h3>Calendar checklist</h3><ul class="calendar">${calendar}</ul><h3>Notebook</h3><div class="notebook">${notes}</div></section></div>`);
   const c=$('#choices');
   c.appendChild(btn('Advance one day','Ages active vials and applies overdue consequences.',advanceDay,'choice primary'));
   c.appendChild(btn('Return to route selection','Keeps the old prototype accessible without mixing state.',reset,'choice ghost'));

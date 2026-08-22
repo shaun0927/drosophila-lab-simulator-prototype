@@ -69,6 +69,10 @@ function testR2R3() {
   const { ctx, el } = boot();
   ctx.startLab();
   assert(el('stage').innerHTML.includes('Canton-S'), 'starting stocks missing');
+  assert(el('stage').innerHTML.includes('Current goal'), 'objective strip missing current goal');
+  assert(el('stage').innerHTML.includes('Next action'), 'objective strip missing next action');
+  assert(el('stage').innerHTML.includes('Record risk'), 'objective strip missing record risk');
+  assert(el('stage').innerHTML.includes('Reviewer vulnerability'), 'objective strip missing reviewer vulnerability');
   ctx.labelVial('V-003');
   assert(el('stage').innerHTML.includes('Label 75%'), 'label action did not update vial');
   ctx.flipVial('V-003');
@@ -127,10 +131,14 @@ function testLegacyRoute() {
 function testUrlFixtures() {
   let booted = boot('?fixture=clean');
   assert(booted.el('stage').innerHTML.includes('climbing assay does not establish'), 'clean URL fixture missing overclaim review');
+  assert(booted.el('stage').innerHTML.includes('Reviewer vulnerability'), 'clean URL fixture missing objective strip');
+  assert(!booted.el('stage').innerHTML.includes('Light-Induced Swarm Dance'), 'clean URL fixture drifted into legacy phenomenon copy');
   booted = boot('?fixture=dirty');
   assert(booted.el('stage').innerHTML.includes('CO2 exposure is a behavioral confound'), 'dirty URL fixture missing CO2 review');
+  assert(booted.el('stage').innerHTML.includes('Reviewer vulnerability'), 'dirty URL fixture missing objective strip');
   booted = boot('?fixture=missing-control');
   assert(booted.el('stage').innerHTML.includes('Without the control group'), 'missing-control URL fixture missing control review');
+  assert(booted.el('stage').innerHTML.includes('Reviewer vulnerability'), 'missing-control URL fixture missing objective strip');
 }
 
 testR2R3();
@@ -140,4 +148,4 @@ testMissingControlPath();
 testLegacyRoute();
 testUrlFixtures();
 
-console.log('fly-lab smoke passed: R2/R3, clean, dirty, missing-control, URL fixtures, legacy route');
+console.log('fly-lab smoke passed: R2/R3, objective strip, clean, dirty, missing-control, URL fixtures, legacy route');

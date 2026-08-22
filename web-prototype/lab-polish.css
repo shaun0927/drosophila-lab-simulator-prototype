@@ -1,5 +1,9 @@
 .co2-meter{height:12px;border:1px solid #34415b;border-radius:999px;background:#070b12;margin:8px 0 12px;overflow:hidden}
 .co2-meter span{display:block;height:100%;background:linear-gradient(90deg,#7cc7ff,#f5c86a,#ff6b6b)}
+.objective-strip{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:12px 0 16px}
+.objective-strip div{border:1px solid #34415b;border-radius:8px;background:#0b111c;padding:10px;min-width:0}
+.objective-strip span{display:block;color:#9bd8ff;font-size:11px;font-weight:800;text-transform:uppercase;margin-bottom:5px}
+.objective-strip b{display:block;color:#f3ecdc;font-size:13px;line-height:1.3;overflow-wrap:anywhere}
 .specimen-pad{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:8px;margin-top:12px}
 .specimen{border:1px solid #34415b;border-radius:8px;background:#070b12;padding:8px;min-height:170px}
 .specimen.targeted{border-color:#9fdc61;background:#102013}
@@ -29,6 +33,7 @@
   .layout,.layout>*,.panel,.lab-grid,.lab-grid>*,.vial-rack,.planner{min-width:0}
   .topbar h1{font-size:26px}
   .body{font-size:16px}
+  .objective-strip{grid-template-columns:1fr}
   .mini-actions{display:grid;grid-template-columns:1fr}
   .record-card{overflow-wrap:anywhere}
   .record-table{display:block;overflow-x:auto;max-width:100%;white-space:nowrap}

@@ -72,6 +72,8 @@ node web-prototype/smoke-tests.js
 node tools/r-series-status-check.js
 node tools/external-evidence-check.js
 node tools/issue-template-contract-check.js
+node tools/external-validation-gap-report.js
+node tools/external-validation-full-check.js --live-issues
 ```
 
 Open these launch aids:
@@ -191,6 +193,7 @@ Then run `docs/final-closure-review-checklist.md`.
 ## Drift Controls
 
 - Screenshots can guide moderation, but they cannot fill `LE-*`, `P-*`, or `SME-*` rows.
+- Do not count screenshots as external evidence.
 - Do not revive Light-Induced Swarm Dance unless a lived-experience row and SME review both support it.
 - Do not pull parked Unity issues into the R-series sprint unless evidence creates a rewritten R-series issue.
 - Do not change required evidence counts to fit available evidence.

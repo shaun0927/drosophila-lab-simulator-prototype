@@ -34,6 +34,8 @@ jobs:
           node --check tools/external-validation-intake-runbook-check.test.js
           node --check tools/external-validation-gap-report.js
           node --check tools/external-validation-gap-report.test.js
+          node --check tools/external-validation-preflight-check.js
+          node --check tools/external-validation-preflight-check.test.js
           node --check tools/external-validation-issue-state-audit.js
           node --check tools/external-validation-issue-state-audit.test.js
           node --check tools/external-validation-full-check.js
@@ -75,6 +77,12 @@ jobs:
 
       - name: Self-test external validation gap report
         run: node tools/external-validation-gap-report.test.js
+
+      - name: Check external validation preflight
+        run: node tools/external-validation-preflight-check.js
+
+      - name: Self-test external validation preflight
+        run: node tools/external-validation-preflight-check.test.js
 
       - name: Self-test external evidence checker
         run: node tools/external-evidence-check.test.js

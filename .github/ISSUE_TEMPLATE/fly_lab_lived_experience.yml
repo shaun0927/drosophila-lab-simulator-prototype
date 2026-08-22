@@ -65,5 +65,77 @@ body:
   - type: textarea
     id: implementation_scope
     attributes:
-      label: Implementation scope and guardrails
-      description: If this entry should change the game, include final scope, success criteria, verification method, explicit non-goals, and drift-prevention notes.
+      label: Final Implementation Scope
+      description: If this entry should change the game, name the exact screens, mechanics, data fields, or reviewer rules that may change. Write `No implementation change` if it only informs exclusion or SME risk.
+    validations:
+      required: true
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: State the smallest lived-experience-backed outcome this entry should produce.
+    validations:
+      required: true
+  - type: textarea
+    id: success_criteria
+    attributes:
+      label: Success Criteria
+      description: List concrete pass conditions tied to the real incident, player verb, failure mode, and delayed consequence.
+    validations:
+      required: true
+  - type: textarea
+    id: verification_method
+    attributes:
+      label: Verification Method
+      description: Include the command, fixture, screenshot, player re-check, SME re-check, or ledger update that proves the entry was handled.
+    validations:
+      required: true
+  - type: textarea
+    id: guardrails
+    attributes:
+      label: Guardrails
+      description: State what must remain true so the lived experience does not become arbitrary spectacle or misleading lab intuition.
+    validations:
+      required: true
+  - type: textarea
+    id: explicit_non_goals
+    attributes:
+      label: Explicit Non-Goals
+      description: Name adjacent ideas, jokes, broad genetics systems, or parked Unity work that this entry must not pull into scope.
+    validations:
+      required: true
+  - type: textarea
+    id: implementation_approach
+    attributes:
+      label: Implementation Approach
+      description: Describe the intended code/data/doc change, or explain why this entry only changes the experience map or exclusion rules.
+    validations:
+      required: true
+  - type: textarea
+    id: pr_decomposition
+    attributes:
+      label: PR Decomposition
+      description: Say whether this is one PR or split into staged PRs, and why.
+    validations:
+      required: true
+  - type: textarea
+    id: over_engineering_checklist
+    attributes:
+      label: Over-Engineering Checklist
+      description: List the abstractions, simulation systems, or content expansion this entry deliberately avoids.
+    validations:
+      required: true
+  - type: textarea
+    id: drift_prevention_checklist
+    attributes:
+      label: Drift-Prevention Checklist
+      description: List checks that keep this entry aligned with the R-series Procedure Lab contract.
+    validations:
+      required: true
+  - type: textarea
+    id: definition_of_done
+    attributes:
+      label: Definition of Done
+      description: State the final evidence required before this lived-experience entry can count toward #27.
+    validations:
+      required: true

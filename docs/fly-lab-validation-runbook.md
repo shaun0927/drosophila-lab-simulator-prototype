@@ -118,9 +118,17 @@ Each follow-up issue must include:
 
 - observed evidence
 - affected mechanic
-- proposed fix or cut
-- verification method
-- explicit non-goal
+- Goal
+- Final Implementation Scope
+- Success Criteria
+- Verification Method
+- Guardrails
+- Explicit Non-Goals
+- Implementation Approach
+- PR Decomposition
+- Over-Engineering Checklist
+- Drift-Prevention Checklist
+- Definition of Done
 
 Use `.github/ISSUE_TEMPLATE/fly_lab_validation_finding.yml` for these follow-up issues.
 

@@ -59,23 +59,79 @@ body:
     validations:
       required: true
   - type: textarea
-    id: approach
+    id: goal
     attributes:
-      label: Proposed fix or cut
-      description: Keep the scope to the affected mechanic. Include implementation approach, PR decomposition, guardrails, and an explicit non-goal.
+      label: Goal
+      description: State the smallest player/SME-validated outcome this issue must achieve.
+    validations:
+      required: true
+  - type: textarea
+    id: final_implementation_scope
+    attributes:
+      label: Final Implementation Scope
+      description: Name the exact screens, mechanics, data fields, or reviewer rules that may change.
     validations:
       required: true
   - type: textarea
     id: success_criteria
     attributes:
-      label: Success criteria and Definition of Done
-      description: State the concrete pass condition, drift-prevention checklist, and done criteria for this finding.
+      label: Success Criteria
+      description: List concrete pass conditions tied to the observed finding.
     validations:
       required: true
   - type: textarea
-    id: verification
+    id: verification_method
     attributes:
-      label: Verification method
-      description: How will we prove the fix addressed this specific finding?
+      label: Verification Method
+      description: Include automated checks, fixture URLs, screenshot/player/SME re-checks, and the exact command or evidence source.
+    validations:
+      required: true
+  - type: textarea
+    id: guardrails
+    attributes:
+      label: Guardrails
+      description: State what must remain true about the R-series procedure-first contract while fixing this finding.
+    validations:
+      required: true
+  - type: textarea
+    id: explicit_non_goals
+    attributes:
+      label: Explicit Non-Goals
+      description: Name tempting adjacent work that must not be included in this issue.
+    validations:
+      required: true
+  - type: textarea
+    id: implementation_approach
+    attributes:
+      label: Implementation Approach
+      description: Describe the intended code/data/doc change without broad redesign language.
+    validations:
+      required: true
+  - type: textarea
+    id: pr_decomposition
+    attributes:
+      label: PR Decomposition
+      description: Say whether this is one PR or split into staged PRs, and why.
+    validations:
+      required: true
+  - type: textarea
+    id: over_engineering_checklist
+    attributes:
+      label: Over-Engineering Checklist
+      description: List the abstractions, systems, or content expansion this issue deliberately avoids.
+    validations:
+      required: true
+  - type: textarea
+    id: drift_prevention_checklist
+    attributes:
+      label: Drift-Prevention Checklist
+      description: List checks that keep the fix from reintroducing phenomenon-first, unsupported, or parked Unity scope.
+    validations:
+      required: true
+  - type: textarea
+    id: definition_of_done
+    attributes:
+      label: Definition of Done
+      description: State the final evidence required before this issue can close.
     validations:
       required: true

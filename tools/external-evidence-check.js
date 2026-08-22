@@ -71,6 +71,10 @@ function isMissingFollowUp(value) {
   return !value || /^(Pending|none|n\/a|-|No)$/i.test(value);
 }
 
+function isMissingEvidenceField(value) {
+  return !value || /^(Pending|n\/a|-)$/i.test(value);
+}
+
 function requireFixCutFollowUps(markdown) {
   for (const line of markdown.split(/\r?\n/)) {
     if (!line.startsWith('| P-') && !line.startsWith('| SME-')) continue;
@@ -81,6 +85,29 @@ function requireFixCutFollowUps(markdown) {
     const followUp = isPlayer ? row[8] : row[9];
     if (/^(Fix|Cut)$/i.test(decision)) {
       assert(!isMissingFollowUp(followUp), `${id} decision ${decision} must link a follow-up issue before it can count`);
+    }
+  }
+}
+
+function requireAcceptedRowFields(markdown) {
+  for (const line of markdown.split(/\r?\n/)) {
+    if (!line.startsWith('| LE-') && !line.startsWith('| P-') && !line.startsWith('| SME-')) continue;
+    const row = cells(line);
+    const id = row[0];
+
+    if (id.startsWith('LE-') && /^Yes$/i.test(row[8] || '')) {
+      const missingIndex = row.slice(1, 8).findIndex(isMissingEvidenceField);
+      assert(missingIndex === -1, `${id} accepted lived-experience row has an incomplete required field`);
+    }
+
+    if (id.startsWith('P-') && /^(Pass|Fix|Cut)$/i.test(row[7] || '')) {
+      const missingIndex = row.slice(1, 7).findIndex(isMissingEvidenceField);
+      assert(missingIndex === -1, `${id} accepted player row has an incomplete required field`);
+    }
+
+    if (id.startsWith('SME-') && /^(Pass|Fix|Cut)$/i.test(row[8] || '')) {
+      const missingIndex = row.slice(1, 8).findIndex(isMissingEvidenceField);
+      assert(missingIndex === -1, `${id} accepted SME row has an incomplete required field`);
     }
   }
 }
@@ -178,6 +205,7 @@ function validateExternalEvidence({ ledger, validationResults, experienceMap, pr
   assert(livedDesignChangeCount(ledger) === designAccepted, '#27 design-change count must match accepted LE rows with mechanic, guardrail, or SME-risk design effects');
   assert(tableAcceptedCount(ledger, 'P', 7) === playerAccepted, '#33 player accepted count must match decided player rows');
   assert(tableAcceptedCount(ledger, 'SME', 8) === smeAccepted, '#33 SME accepted count must match decided SME rows');
+  requireAcceptedRowFields(ledger);
   requireFixCutFollowUps(ledger);
   assert(designAccepted <= livedAccepted, '#27 design-change accepted count cannot exceed accepted lived-experience rows');
   const counts = {livedAccepted, designAccepted, playerAccepted, smeAccepted};

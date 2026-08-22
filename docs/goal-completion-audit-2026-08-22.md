@@ -12,7 +12,7 @@ External-evidence intake is tracked in [`fly-lab-external-evidence-ledger.md`](f
 
 Prototype status aid: `web-prototype/index.html?validation=status` opens an in-app summary of the current unfilled #27/#33 evidence gates. It is a visibility aid only; it does not replace external evidence.
 
-External validation execution tracker: [`external-validation-execution-tracker.md`](external-validation-execution-tracker.md) records which #35 through #39 execution issues still lack accepted evidence rows. `node tools/external-validation-tracker-check.js` verifies that tracker counts still match the evidence ledger and route-coverage status. `node tools/external-validation-tracker-check.test.js` verifies the tracker checker against mismatch fixtures. `node tools/external-validation-issue-state-audit.js` locally verifies the tracker issue states against live GitHub.
+External validation execution tracker: [`external-validation-execution-tracker.md`](external-validation-execution-tracker.md) records which #35 through #39 execution issues still lack accepted evidence rows. `node tools/external-validation-tracker-check.js` verifies that tracker counts still match the evidence ledger and route-coverage status and rejects premature ready/closed tracker language while numeric gates are below their required counts. `node tools/external-validation-tracker-check.test.js` verifies the tracker checker against mismatch fixtures. `node tools/external-validation-issue-state-audit.js` locally verifies the tracker issue states against live GitHub.
 
 Issue-state audit self-test: `node tools/external-validation-issue-state-audit.test.js` verifies the live issue-state audit parser and mismatch detection with mock issue states in CI.
 

@@ -38,7 +38,7 @@ External validation execution contract guardrail: `node tools/external-validatio
 
 External validation execution tracker: [`external-validation-execution-tracker.md`](external-validation-execution-tracker.md) records that #35 through #39 are open and that #27/#33 accepted evidence counts remain at zero until real sessions are recorded. `node tools/external-validation-tracker-check.js` verifies the tracker counts against the ledger and route-coverage status.
 
-External validation tracker self-test: `node tools/external-validation-tracker-check.test.js` verifies that tracker count mismatches, route coverage mismatches, stale ready language with zero evidence, and missing no-closure decisions are rejected before execution-state updates can drift.
+External validation tracker self-test: `node tools/external-validation-tracker-check.test.js` verifies that tracker count mismatches, route coverage mismatches, stale ready language with zero or partial evidence, premature closed/resolved issue-state language, and missing no-closure decisions are rejected before execution-state updates can drift.
 
 Live issue-state audit: `node tools/external-validation-issue-state-audit.js` uses authenticated `gh` locally to verify that #27, #33, and #35 through #39 still match the open states recorded in the execution tracker. This is not a CI gate because it depends on live GitHub issue state.
 

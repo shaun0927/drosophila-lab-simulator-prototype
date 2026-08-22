@@ -98,7 +98,31 @@ expectFailure(
 expectFailure(
   'zero evidence marked ready',
   () => validate(ledger, tracker.replace('Blocked on real player sessions', 'Ready for closure review')),
-  '#33:Fresh-player sessions with zero accepted evidence must stay blocked or pending'
+  '#33:Fresh-player sessions below required evidence must stay blocked, pending, or in progress'
+);
+
+const partialPlayerLedger = ledger.replace(
+  '| Fresh-player first-run sessions | 3 | 0 | Pending execution | #33 |',
+  '| Fresh-player first-run sessions | 3 | 1 | In progress | #33 |'
+);
+const partialPlayerTracker = tracker.replace(
+  '| #33 | Fresh-player sessions | 3 | 0 | #36, #37, #38 | Open | Blocked on real player sessions |',
+  '| #33 | Fresh-player sessions | 3 | 1 | #36, #37, #38 | Open | In progress: one player session accepted |'
+);
+
+validate(partialPlayerLedger, partialPlayerTracker);
+console.log('pass fixture accepted: partial player tracker in progress');
+
+expectFailure(
+  'partial player gate closed early',
+  () => validate(partialPlayerLedger, partialPlayerTracker.replace('Open | In progress: one player session accepted', 'Closed | Complete')),
+  '#33:Fresh-player sessions below required evidence must not mark issue state closed or resolved'
+);
+
+expectFailure(
+  'partial player gate ready early',
+  () => validate(partialPlayerLedger, partialPlayerTracker.replace('In progress: one player session accepted', 'Ready for closure review')),
+  '#33:Fresh-player sessions below required evidence must stay blocked, pending, or in progress'
 );
 
 expectFailure(

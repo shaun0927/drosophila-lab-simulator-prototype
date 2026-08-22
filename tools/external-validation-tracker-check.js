@@ -99,6 +99,20 @@ function compareNumber(label, actual, expected) {
   assert(String(actual) === String(expected), `${label} expected ${expected}, got ${actual}`);
 }
 
+function numericCount(value) {
+  return /^\d+$/.test(String(value)) ? Number(value) : null;
+}
+
+function validateIncompleteGateState(key, row) {
+  const required = numericCount(row.required);
+  const accepted = numericCount(row.accepted);
+  if (required === null || accepted === null || accepted >= required) return;
+
+  assert(!/\b(Closed|Resolved|Done)\b/i.test(row.issueState), `${key} below required evidence must not mark issue state closed or resolved`);
+  assert(/\b(Blocked|Pending|In progress)\b/i.test(row.closureStatus), `${key} below required evidence must stay blocked, pending, or in progress`);
+  assert(!/\b(Ready|Complete|Closed|Resolved|Done)\b/i.test(row.closureStatus), `${key} below required evidence must not use ready or complete closure language`);
+}
+
 function validateTrackerConsistency({
   ledgerMarkdown = read('docs/fly-lab-external-evidence-ledger.md'),
   trackerMarkdown = read('docs/external-validation-execution-tracker.md'),
@@ -149,9 +163,7 @@ function validateTrackerConsistency({
   assert(followUpTracker.executionIssue === 'Created from #36-#39 findings', '#33 follow-up tracker row must point to #36-#39 findings');
 
   for (const [key, row] of trackerRows.entries()) {
-    if (row.accepted === '0') {
-      assert(/Blocked|Pending/.test(row.closureStatus), `${key} with zero accepted evidence must stay blocked or pending`);
-    }
+    validateIncompleteGateState(key, row);
   }
 
   assert(trackerMarkdown.includes('Do not close #27, #33, or the thread goal from the current tracker state'), 'tracker must preserve no-closure decision for current pending state');

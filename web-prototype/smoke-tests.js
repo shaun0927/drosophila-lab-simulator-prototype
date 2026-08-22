@@ -163,6 +163,10 @@ function testGoalStatusPacket() {
   booted = boot('?validation=status');
   assert(booted.el('stage').innerHTML.includes('Thread goal status'), 'goal status URL did not open packet');
   assert(booted.el('footer-question').textContent.includes('evidence is still missing'), 'goal status chrome footer missing');
+  booted.ctx.window.GAME_DATA.externalEvidence.playerSessions.accepted = 1;
+  booted.ctx.startStatus();
+  assert(booted.el('stage').innerHTML.includes('Not complete: external evidence in progress'), 'goal status missing partial-evidence status');
+  assert(booted.el('stage').innerHTML.includes('1 / 3'), 'goal status missing partial player count');
 }
 
 function testCapturePacket() {

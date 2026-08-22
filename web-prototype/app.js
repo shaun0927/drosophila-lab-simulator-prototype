@@ -32,6 +32,14 @@ function combo(tags){ return tags.every(t=>S.selectedTags.has(t)|| (t==='social'
 function resolve(){ S.selectedTags=new Set(S.selected.flatMap(t=>t.tags)); return D.phenomena.find(p=>combo(p.tags)) || D.fallback; }
 function clone(o){ return JSON.parse(JSON.stringify(o)); }
 function stockFor(vial){ return S.lab.stocks.find(s=>s.id===vial.stockId); }
+function evidenceGateStatus(){
+  const e = D.externalEvidence;
+  const gates = [e.livedRows, e.livedDesignChange, e.playerSessions, e.smeReviews];
+  const accepted = gates.reduce((sum,g)=>sum+g.accepted,0);
+  if(accepted===0) return {title:'Not complete: external evidence missing', canvas:'Goal status: external evidence missing'};
+  if(gates.every(g=>g.accepted>=g.required)) return {title:'External evidence ready for closure review', canvas:'Goal status: evidence ready for review'};
+  return {title:'Not complete: external evidence in progress', canvas:'Goal status: external evidence in progress'};
+}
 function activeVials(){ return S.lab.vials.filter(v=>v.status==='active'); }
 function vialAge(vial){ return S.lab.day - vial.setupDay; }
 function notebook(action, detail, vialId=''){ S.lab.notebook.unshift({day:S.lab.day, action, detail, vialId}); log(`Day ${S.lab.day}: ${action} — ${detail}`); }
@@ -339,7 +347,8 @@ function validation(){
 function startStatus(){ S.phase='status'; log('Goal status opened: #27 and #33 still need external evidence.'); render(); }
 function goalStatus(){
   const e = D.externalEvidence;
-  setStage(`<div class="kicker">Thread goal status</div><h2>Not complete: external evidence missing</h2><div class="body"><p>The implementation, proxy QA, ledger, capture packet, and decision tree are in place. The current objective still cannot close because the remaining proof must come from real lived-experience input and real player/SME sessions.</p></div><div class="validation-grid"><section class="planner"><h3>#27 lived experience</h3><ul class="calendar"><li>Accepted lived-experience rows: <b>${e.livedRows.accepted} / ${e.livedRows.required}</b>.</li><li>Design-changing lived answer: <b>${e.livedDesignChange.accepted} / ${e.livedDesignChange.required}</b>.</li><li>Needed: user or observed-lab provenance, then experience-map update.</li></ul></section><section class="planner"><h3>#33 validation</h3><ul class="calendar"><li>Fresh-player sessions: <b>${e.playerSessions.accepted} / ${e.playerSessions.required}</b>.</li><li>SME or biology-aware review: <b>${e.smeReviews.accepted} / ${e.smeReviews.required}</b>.</li><li>Needed: raw phrases, rubric ratings, and fix/cut issues for failures.</li></ul></section><section class="planner"><h3>What is already ready</h3><ul class="calendar"><li>Procedure Lab route and URL fixtures.</li><li>Validation, capture, and lived-experience packets.</li><li>External evidence ledger and validator.</li><li>Finding decision tree and issue templates.</li></ul></section><section class="planner"><h3>Do not close from</h3><ul class="calendar"><li>Screenshots or smoke tests.</li><li>Implementer walkthroughs.</li><li>Prompt surfaces without real answers.</li><li>Parked Unity or old-loop backlog.</li></ul></section></div>`);
+  const status = evidenceGateStatus();
+  setStage(`<div class="kicker">Thread goal status</div><h2>${status.title}</h2><div class="body"><p>The implementation, proxy QA, ledger, capture packet, and decision tree are in place. The current objective still cannot close until the remaining proof comes from real lived-experience input and real player/SME sessions, then passes closure review.</p></div><div class="validation-grid"><section class="planner"><h3>#27 lived experience</h3><ul class="calendar"><li>Accepted lived-experience rows: <b>${e.livedRows.accepted} / ${e.livedRows.required}</b>.</li><li>Design-changing lived answer: <b>${e.livedDesignChange.accepted} / ${e.livedDesignChange.required}</b>.</li><li>Needed: user or observed-lab provenance, then experience-map update.</li></ul></section><section class="planner"><h3>#33 validation</h3><ul class="calendar"><li>Fresh-player sessions: <b>${e.playerSessions.accepted} / ${e.playerSessions.required}</b>.</li><li>SME or biology-aware review: <b>${e.smeReviews.accepted} / ${e.smeReviews.required}</b>.</li><li>Needed: raw phrases, rubric ratings, and fix/cut issues for failures.</li></ul></section><section class="planner"><h3>What is already ready</h3><ul class="calendar"><li>Procedure Lab route and URL fixtures.</li><li>Validation, capture, and lived-experience packets.</li><li>External evidence ledger and validator.</li><li>Finding decision tree and issue templates.</li></ul></section><section class="planner"><h3>Do not close from</h3><ul class="calendar"><li>Screenshots or smoke tests.</li><li>Implementer walkthroughs.</li><li>Prompt surfaces without real answers.</li><li>Parked Unity or old-loop backlog.</li></ul></section></div>`);
   const c=$('#choices');
   c.appendChild(btn('Open validation packet','Run #33 player/SME protocol.',startValidation,'choice'));
   c.appendChild(btn('Open capture packet','Record raw evidence fields.',startCapture,'choice primary'));
@@ -576,7 +585,8 @@ function drawChamber(){
   }
   if(S.phase==='status'){
     const e = D.externalEvidence;
-    ctx.fillStyle='#d8e6ff'; ctx.font='20px system-ui'; ctx.fillText('Goal status: external evidence missing',28,48);
+    const status = evidenceGateStatus();
+    ctx.fillStyle='#d8e6ff'; ctx.font='20px system-ui'; ctx.fillText(status.canvas,28,48);
     ctx.fillStyle='#9fb0c6'; ctx.font='15px system-ui'; ctx.fillText(`#27: ${e.livedRows.accepted}/${e.livedRows.required} lived rows. #33: ${e.playerSessions.accepted}/${e.playerSessions.required} players, ${e.smeReviews.accepted}/${e.smeReviews.required} SME.`,28,76);
     ctx.fillStyle='#9fdc61'; ctx.font='15px system-ui'; ctx.fillText('Ready: route, packets, ledger, validator, decision tree.',28,126);
     ctx.fillStyle='#f5c86a'; ctx.font='14px system-ui'; ctx.fillText('Completion still requires real user/player/SME evidence.',28,h-36);

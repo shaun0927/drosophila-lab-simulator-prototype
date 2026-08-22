@@ -99,6 +99,7 @@ The current implementation stays aligned with the parent contract because:
 - Procedure Lab first screen now exposes current goal, next action, record risk, and reviewer vulnerability before the dense system list
 - Reviewer #2 results now include next-run repair plans tied to the attacked record weakness, so the validation slice tests whether failure can teach a better second run
 - `?validation=status` opens an in-app status view showing #27 at 0/5 lived rows and #33 at 0/3 player sessions plus 0/1 SME review
+- the in-app status view distinguishes missing external evidence from in-progress partial evidence before closure review
 - `?validation=packet` opens an in-app launch page for #33 player/SME sessions with fixture links and closure criteria
 - `?validation=capture` opens an in-app raw evidence capture checklist for #27/#33 session notes before ledger updates
 - `?validation=lived` opens a separate #27 launch page for collecting real lab incidents without mixing them into #33 validation evidence

@@ -130,7 +130,7 @@ Each follow-up issue must include:
 - Drift-Prevention Checklist
 - Definition of Done
 
-Before a Fix/Cut player or SME row can count in the evidence ledger, its follow-up field must include a concrete GitHub issue reference plus either `resolved` or `accepted non-blocking`. A still-open blocker can be recorded in notes, but it must not be counted as closure evidence.
+Before a Fix/Cut player or SME row can count in the evidence ledger, its follow-up field must include a concrete GitHub issue reference plus either `resolved` or `accepted non-blocking`. The same follow-up issue reference and disposition must also appear in `docs/fly-lab-validation-results.md`. A still-open blocker can be recorded in notes, but it must not be counted as closure evidence.
 
 Use `.github/ISSUE_TEMPLATE/fly_lab_validation_finding.yml` for these follow-up issues.
 

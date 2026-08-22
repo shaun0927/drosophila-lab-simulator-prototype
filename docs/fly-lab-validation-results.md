@@ -78,4 +78,5 @@ The screenshot UX audit also caught and fixed visible drift where Procedure Lab 
 - [ ] 3 player first-run sessions.
 - [ ] 1 SME or biology-aware validation pass.
 - [ ] Follow-up issues for any misleading core mechanic.
+- [ ] Counted Fix/Cut follow-up issue references and dispositions summarized here before ledger counts increase.
 - [ ] External evidence ledger updated with accepted counts.

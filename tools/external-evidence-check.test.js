@@ -51,6 +51,12 @@ const partialValidationResults = [
   '| Player | Route | Reviewer finding | Understood cause? | Second-run improvement | Result | Notes |',
   '| P-01 | default | handling confound | yes | reduce CO2 exposure | Pass | raw notes linked |'
 ].join('\n');
+const partialValidationResultsWithFollowUp = [
+  'External validation in progress.',
+  '## Validation Run 2026-08-22',
+  '| Player | Route | Reviewer finding | Understood cause? | Second-run improvement | Result | Notes |',
+  '| P-01 | default | handling confound | no | add control | Fix | #44 resolved |'
+].join('\n');
 const partialValidationResultsWithoutId = [
   'External validation in progress.',
   '## Validation Run 2026-08-22',
@@ -204,7 +210,7 @@ validateExternalEvidence({
     .replace('| Fresh-player first-run sessions | 3 | 0 | Pending execution | #33 |', '| Fresh-player first-run sessions | 3 | 1 | In progress | #33 |')
     .replace('| Follow-up fix/cut issues for failed external criteria | As needed | 0 | Pending external findings | #33 |', '| Follow-up fix/cut issues for failed external criteria | As needed | 1 | In progress | #33 |')
     .replace('| P-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending |', '| P-01 | 2026-08-22 | default | Yes | defend record | random luck | add control | Fix | #44 resolved |'),
-  validationResults: partialValidationResults,
+  validationResults: partialValidationResultsWithFollowUp,
   experienceMap: pendingExperienceMap,
   progressAudit: pendingProgressAudit,
   goalAudit: pendingGoalAudit,
@@ -225,7 +231,7 @@ expectFailWith(
     ledger: baseLedger
       .replace('| Fresh-player first-run sessions | 3 | 0 | Pending execution | #33 |', '| Fresh-player first-run sessions | 3 | 1 | In progress | #33 |')
       .replace('| P-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending |', '| P-01 | 2026-08-22 | default | Yes | defend record | random luck | add control | Fix | #44 resolved |'),
-    validationResults: partialValidationResults,
+    validationResults: partialValidationResultsWithFollowUp,
     experienceMap: pendingExperienceMap,
     gameData: {
       externalEvidence: {
@@ -237,6 +243,27 @@ expectFailWith(
     }
   },
   '#33 follow-up issue accepted count must match unique concrete Fix/Cut follow-up references'
+);
+
+expectFailWith(
+  'fix follow-up issue missing from validation results',
+  {
+    ledger: baseLedger
+      .replace('| Fresh-player first-run sessions | 3 | 0 | Pending execution | #33 |', '| Fresh-player first-run sessions | 3 | 1 | In progress | #33 |')
+      .replace('| Follow-up fix/cut issues for failed external criteria | As needed | 0 | Pending external findings | #33 |', '| Follow-up fix/cut issues for failed external criteria | As needed | 1 | In progress | #33 |')
+      .replace('| P-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending |', '| P-01 | 2026-08-22 | default | Yes | defend record | random luck | add control | Fix | #44 resolved |'),
+    validationResults: partialValidationResults,
+    experienceMap: pendingExperienceMap,
+    gameData: {
+      externalEvidence: {
+        livedRows: {accepted: 0, required: 5},
+        livedDesignChange: {accepted: 0, required: 1},
+        playerSessions: {accepted: 1, required: 3},
+        smeReviews: {accepted: 0, required: 1}
+      }
+    }
+  },
+  '#44 counted Fix/Cut follow-up issue must be referenced in validation results'
 );
 
 expectFail(

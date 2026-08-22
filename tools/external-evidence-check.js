@@ -99,6 +99,12 @@ function requireAcceptedEvidenceReferences({ ledger, validationResults, experien
   }
 }
 
+function requireFollowUpReferencesInResults(ledger, validationResults) {
+  for (const ref of concreteFollowUpRefs(ledger)) {
+    assert(validationResults.includes(ref), `${ref} counted Fix/Cut follow-up issue must be referenced in validation results`);
+  }
+}
+
 function rowsPresent(markdown, idPrefix, expected) {
   for (let i = 1; i <= expected; i += 1) {
     const id = `${idPrefix}-${String(i).padStart(2, '0')}`;
@@ -401,6 +407,7 @@ function validateExternalEvidence({ ledger, validationResults, experienceMap, pr
   }
 
   requireAcceptedEvidenceReferences({ledger, validationResults, experienceMap});
+  requireFollowUpReferencesInResults(ledger, validationResults);
   requirePendingStatusDocs({counts, validationResults, experienceMap, progressAudit, goalAudit});
 
   assert(ledger.includes('Do not treat screenshots as player, SME, or lived-experience evidence') || ledger.includes('screenshots of the route'), 'ledger must reject screenshot-only closure evidence');

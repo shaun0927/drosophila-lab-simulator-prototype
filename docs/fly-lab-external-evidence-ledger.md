@@ -119,7 +119,7 @@ Not acceptable as #33 SME closure evidence:
 3. The accepted player sessions collectively cover clean, dirty, and missing-control routes or fixtures before closure review.
 4. Every serious player comprehension failure has a fix/cut decision with a resolved or accepted-non-blocking follow-up disposition.
 5. Every misleading or unsafe SME mark has a linked fix/cut issue with a resolved or accepted-non-blocking follow-up disposition.
-6. `docs/fly-lab-validation-results.md` summarizes the result.
+6. `docs/fly-lab-validation-results.md` summarizes the result, including every counted Fix/Cut follow-up issue reference and disposition.
 7. `node web-prototype/smoke-tests.js` passes after any resulting implementation change.
 8. `node tools/r-series-status-check.js` passes after the ledger and status docs are updated.
 

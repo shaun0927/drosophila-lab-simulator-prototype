@@ -24,7 +24,7 @@ node web-prototype/smoke-tests.js
 Expected result:
 
 ```text
-fly-lab smoke passed: R2/R3, objective strip, reviewer repair plans, validation packet, clean, dirty, missing-control, URL fixtures, legacy route
+fly-lab smoke passed: R2/R3, objective strip, reviewer repair plans, validation packets, clean, dirty, missing-control, URL fixtures, legacy route
 browser smoke passed: specimen pad renders and sorting click registers
 browser smoke passed: assay mini-plot renders after controlled run
 browser smoke passed: clean/dirty/missing-control URL fixtures load expected reviewer findings
@@ -34,6 +34,7 @@ screenshot UX audit passed after fixing Procedure Lab chrome drift: `dogfood-out
 screenshot proxy passed: objective strip visible on desktop/mobile clean fixture
 screenshot proxy passed: objective strip and repair plan visible on desktop/mobile clean fixture
 screenshot proxy passed: validation packet visible on desktop/mobile without legacy drift
+screenshot proxy passed: lived-experience packet visible on desktop/mobile without legacy drift
 ```
 
 Reusable validation URLs:
@@ -42,12 +43,13 @@ Reusable validation URLs:
 - `web-prototype/index.html?fixture=dirty`
 - `web-prototype/index.html?fixture=missing-control`
 - `web-prototype/index.html?validation=packet`
+- `web-prototype/index.html?validation=lived`
 
 ## Why this is not sufficient for #33
 
 The smoke harness and browser checks prove that the route mechanics can execute, clean/dirty/missing-control paths produce different reviewer findings and next-run repair plans, reusable URL fixtures load those paths, the specimen pad renders, sorting clicks register, the assay mini-plot appears after a controlled run, and desktop/mobile fixture pages do not horizontally overflow. They do not prove that a fresh player understands the route, that the procedure feels good, or that a biology-aware reviewer accepts the simplifications.
 
-The screenshot UX audit also caught and fixed visible drift where Procedure Lab still used the old `Live Assay Chamber` and phenomenon-first footer language. Later screenshot passes added an objective strip for current goal, next action, record risk, and reviewer vulnerability, added a Reviewer #2 next-run repair plan after the result card still risked ending at explanation rather than player improvement, and added an in-app validation packet so #33 sessions can launch from the prototype. This remains proxy evidence only, not a replacement for player or SME validation.
+The screenshot UX audit also caught and fixed visible drift where Procedure Lab still used the old `Live Assay Chamber` and phenomenon-first footer language. Later screenshot passes added an objective strip for current goal, next action, record risk, and reviewer vulnerability, added a Reviewer #2 next-run repair plan after the result card still risked ending at explanation rather than player improvement, added an in-app validation packet so #33 sessions can launch from the prototype, and added a separate lived-experience packet for #27 collection. This remains proxy evidence only, not a replacement for player, SME, or user lived-experience evidence.
 
 ## Pending validation
 

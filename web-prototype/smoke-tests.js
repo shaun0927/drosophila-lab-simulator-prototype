@@ -135,13 +135,26 @@ function testLegacyRoute() {
 function testValidationPacket() {
   let booted = boot();
   assert(booted.el('choices').children.some(child => child.innerHTML.includes('Open validation packet')), 'route selection missing validation packet entry');
+  assert(booted.el('choices').children.some(child => child.innerHTML.includes('Open lived-experience packet')), 'route selection missing lived-experience packet entry');
   booted.ctx.startValidation();
   assert(booted.el('stage').innerHTML.includes('R7 validation packet'), 'validation packet screen missing');
   assert(booted.el('stage').innerHTML.includes('3 player sessions recorded'), 'validation packet missing closure gate');
   assert(booted.el('stage').innerHTML.includes('?fixture=dirty'), 'validation packet missing dirty fixture link');
+  assert(booted.el('stage').innerHTML.includes('?validation=lived'), 'validation packet missing lived-experience link');
   booted = boot('?validation=packet');
   assert(booted.el('stage').innerHTML.includes('First-run and SME validation'), 'validation URL did not open packet');
   assert(booted.el('footer-question').textContent.includes('new player'), 'validation chrome footer missing');
+}
+
+function testLivedExperiencePacket() {
+  let booted = boot();
+  booted.ctx.startLived();
+  assert(booted.el('stage').innerHTML.includes('R1 lived-experience packet'), 'lived-experience packet screen missing');
+  assert(booted.el('stage').innerHTML.includes('At least 5 event-map rows'), 'lived-experience packet missing acceptance gate');
+  assert(booted.el('stage').innerHTML.includes('Unsupported arbitrary phenomena'), 'lived-experience packet missing arbitrary-phenomenon guardrail');
+  booted = boot('?validation=lived');
+  assert(booted.el('stage').innerHTML.includes('Real lab incidents to mine'), 'lived-experience URL did not open packet');
+  assert(booted.el('footer-question').textContent.includes('real lab memory'), 'lived-experience chrome footer missing');
 }
 
 function testUrlFixtures() {
@@ -166,6 +179,7 @@ testDirtyPath();
 testMissingControlPath();
 testLegacyRoute();
 testValidationPacket();
+testLivedExperiencePacket();
 testUrlFixtures();
 
-console.log('fly-lab smoke passed: R2/R3, objective strip, reviewer repair plans, validation packet, clean, dirty, missing-control, URL fixtures, legacy route');
+console.log('fly-lab smoke passed: R2/R3, objective strip, reviewer repair plans, validation packets, clean, dirty, missing-control, URL fixtures, legacy route');

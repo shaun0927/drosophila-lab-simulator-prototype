@@ -15,7 +15,7 @@ Open-issue triage: [`open-issue-triage-2026-08-22.md`](open-issue-triage-2026-08
 | Issue | Status | Evidence | Remaining gap |
 |---|---|---|---|
 | #26 R0 Product thesis | Closed | `docs/fly-lab-product-thesis.md`; supersession notes in README and existing design docs; merged via PR #34; main CI green | None for R0 |
-| #27 R1 Experience map | Open, ready for user input | `docs/fly-lab-experience-map.md` has 16 events, 3 first-slice candidates, source list, and interview prompts; `docs/fly-lab-lived-experience-response-form.md` and `.github/ISSUE_TEMPLATE/fly_lab_lived_experience.yml` define the exact response format | User lived-experience answers are still pending, so the issue is not fully complete |
+| #27 R1 Experience map | Open, ready for user input | `docs/fly-lab-experience-map.md` has 16 events, 3 first-slice candidates, source list, and interview prompts; `docs/fly-lab-lived-experience-response-form.md`, `?validation=lived`, and `.github/ISSUE_TEMPLATE/fly_lab_lived_experience.yml` define the exact response format | User lived-experience answers are still pending, so the issue is not fully complete |
 | #28 R2 Stock/vial/calendar state | Closed | `web-prototype/data.js`, `web-prototype/app.js`, `web-prototype/style.css`; smoke verified starting stocks, vial rack, label, flip, advance day, overdue consequence, notebook; merged via PR #34; main CI green | Player comprehension validation continues under #33 |
 | #29 R3 Cross planner/virgin window | Closed | Lab route supports clear adults, next-day virgin window, collect candidates, select males, set cross vial, schedule scoring window; smoke verified flow; merged via PR #34; main CI green | SME timing review continues under #33 |
 | #30 R4 CO2 bench/sorting | Closed | Procedure Lab has CO2 bench sorting, specimen pad cards, specimen zones, exposure meter, batch records, purity, ambiguity, confidence, and caveats; browser QA passed; merged via PR #34; main CI green | SME visual-tell and player bench-feel validation continue under #33 |
@@ -43,7 +43,7 @@ R3 smoke passed: clear, window, collect, select males, set cross, scoring calend
 legacy route smoke passed: old publication prototype still reaches phenomenon screen
 R4/R5 smoke passed: CO2 sorting, batch caveats, assay records, control/n caveats
 R6 smoke passed: reviewer attacks record caveats and claim strength with evidence refs
-fly-lab smoke passed: R2/R3, objective strip, reviewer repair plans, validation packet, clean, dirty, missing-control, URL fixtures, legacy route
+fly-lab smoke passed: R2/R3, objective strip, reviewer repair plans, validation packets, clean, dirty, missing-control, URL fixtures, legacy route
 browser smoke passed: file URL Procedure Lab renders and sorting click registers
 browser smoke passed: specimen pad renders and sorting click registers
 browser smoke passed: assay mini-plot renders after controlled run
@@ -54,6 +54,7 @@ screenshot UX audit passed after fixing Procedure Lab chrome drift: `dogfood-out
 screenshot proxy passed: objective strip visible on desktop/mobile clean fixture
 screenshot proxy passed: objective strip and repair plan visible on desktop/mobile clean fixture
 screenshot proxy passed: validation packet visible on desktop/mobile without legacy drift
+screenshot proxy passed: lived-experience packet visible on desktop/mobile without legacy drift
 ```
 
 ## Drift audit
@@ -75,6 +76,7 @@ The current implementation stays aligned with the parent contract because:
 - Procedure Lab first screen now exposes current goal, next action, record risk, and reviewer vulnerability before the dense system list
 - Reviewer #2 results now include next-run repair plans tied to the attacked record weakness, so the validation slice tests whether failure can teach a better second run
 - `?validation=packet` opens an in-app launch page for #33 player/SME sessions with fixture links and closure criteria
+- `?validation=lived` opens a separate #27 launch page for collecting real lab incidents without mixing them into #33 validation evidence
 
 ## Why the full goal is not complete yet
 

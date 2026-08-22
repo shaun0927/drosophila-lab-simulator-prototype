@@ -2,6 +2,8 @@
 
 Use this to complete the remaining user-experience portion of #27. The goal is not to collect general lab trivia. The goal is to identify real actions, mistakes, pressure, and delayed consequences that should change the game.
 
+Prototype launch aid: `web-prototype/index.html?validation=lived` opens the same collection gate inside the playable prototype. It is only a prompt surface; it does not replace actual user answers.
+
 ## How to Fill This Out
 
 - Prefer concrete incidents over general statements.

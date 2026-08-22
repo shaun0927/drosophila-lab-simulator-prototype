@@ -21,6 +21,8 @@ Latest replacement screenshots:
 - `mobile-clean.png`
 - `desktop-validation-packet.png`
 - `mobile-validation-packet.png`
+- `desktop-lived-experience-packet.png`
+- `mobile-lived-experience-packet.png`
 
 ## Findings
 
@@ -31,6 +33,7 @@ Latest replacement screenshots:
 | Procedure route listed systems before telling the player what judgment mattered now | `desktop-clean.png`, `mobile-clean.png` | First-run risk: players could see many lab controls without understanding the current objective, next action, record risk, or reviewer vulnerability | Fixed with objective strip |
 | Reviewer result explained the weakness but did not clearly convert it into a second-run action | `desktop-clean.png`, `mobile-clean.png` | #33 comprehension risk: players might understand the attack quote without knowing what to repair next | Fixed with next-run repair plan |
 | #33 validation required leaving the prototype and reading docs before a session could start | `desktop-validation-packet.png`, `mobile-validation-packet.png` | Execution risk: moderators or SMEs could use the wrong route, skip fixture contrast, or blur #27 and #33 gates | Fixed with in-app validation packet |
+| #27 lived-experience collection had no in-app prompt and could be confused with #33 validation | `desktop-lived-experience-packet.png`, `mobile-lived-experience-packet.png` | Drift risk: user memories could be treated as shipped content, or player/SME validation could be treated as lived-experience provenance | Fixed with separate lived-experience packet |
 | Procedure route screenshots are long on mobile | `mobile-clean.png`, `mobile-dirty.png`, `mobile-missing-control.png` | Usability risk for real first-run validation; not a functional blocker | Keep as #33 player-validation watch item |
 | Lab Record View canvas labels are small and dense | `desktop-clean-after-record-view.png` | Polish/readability risk; not a scientific drift issue | Keep as later polish unless players miss the record summary |
 
@@ -63,6 +66,13 @@ Added validation packet:
 - canvas and footer use validation-specific language instead of old mutant-line language
 - packet states that #27 and #33 still require external evidence
 
+Added lived-experience packet:
+
+- `?validation=lived` opens a #27 collection prompt inside the prototype
+- packet asks for repeated work, costly mistakes, hard visual tells, and real criticism
+- packet converts answers into procedure event, game verb, failure mode, delayed consequence, comedy boundary, and SME risk
+- packet keeps user/lived-experience provenance separate from #33 player/SME validation
+
 ## Verification
 
 Commands run:
@@ -81,6 +91,7 @@ browser smoke passed: procedure route uses Lab Record View and notebook footer
 screenshot proxy passed: objective strip visible on desktop/mobile clean fixture
 screenshot proxy passed: objective strip and repair plan visible on desktop/mobile clean fixture
 screenshot proxy passed: validation packet visible on desktop/mobile without legacy drift
+screenshot proxy passed: lived-experience packet visible on desktop/mobile without legacy drift
 ```
 
 ## Remaining Limits

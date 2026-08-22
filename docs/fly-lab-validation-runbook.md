@@ -31,11 +31,14 @@ Use local or hosted equivalents of:
 
 - `web-prototype/index.html`
 - `web-prototype/index.html?validation=packet`
+- `web-prototype/index.html?validation=lived`
 - `web-prototype/index.html?fixture=clean`
 - `web-prototype/index.html?fixture=dirty`
 - `web-prototype/index.html?fixture=missing-control`
 
 The validation packet URL is the moderator/SME launch page. It does not satisfy validation by itself.
+
+The lived-experience packet URL is for #27 collection and should not be counted as #33 player/SME evidence.
 
 The fixture URLs are not the first-run playtest. They are controlled comparison states for debrief and SME review.
 

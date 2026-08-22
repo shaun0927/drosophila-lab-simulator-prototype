@@ -15,13 +15,14 @@ function renderStats(){
   $('#stats').innerHTML = `<div class="stat">Time ${S.time}s</div><div class="stat">Budget $${S.budget}</div><div></div>`+
     ['ev','weird','cred','hype','susp'].map(k=>`<div class="stat ${k==='susp'?'bad':'good'}">${statName(k)} ${S[k]}</div>`).join('');
 }
-function render(){ renderStats(); renderChrome(); $('#log').innerHTML=S.log.slice(-9).map(x=>`<div>${x}</div>`).join(''); ({mode,validation,lived,lab,traits,discover,assay,figure,reviewer,final,result})[S.phase](); }
+function render(){ renderStats(); renderChrome(); $('#log').innerHTML=S.log.slice(-9).map(x=>`<div>${x}</div>`).join(''); ({mode,validation,capture,lived,lab,traits,discover,assay,figure,reviewer,final,result})[S.phase](); }
 function renderChrome(){
   const procedure = S && S.lab && S.phase==='lab';
   const validationMode = S && S.phase==='validation';
+  const captureMode = S && S.phase==='capture';
   const livedMode = S && S.phase==='lived';
-  $('#side-title').textContent = livedMode ? 'Experience Packet' : validationMode ? 'Validation Packet' : procedure ? 'Lab Record View' : 'Live Assay Chamber';
-  $('#footer-question').textContent = livedMode ? 'Core question: which real lab memory should change the game?' : validationMode ? 'Core question: can a new player explain the failed record?' : procedure ? 'Core question: can the notebook defend the claim?' : 'Core question: make the phenomenon more believable, or more sensational?';
+  $('#side-title').textContent = livedMode ? 'Experience Packet' : captureMode ? 'Capture Packet' : validationMode ? 'Validation Packet' : procedure ? 'Lab Record View' : 'Live Assay Chamber';
+  $('#footer-question').textContent = livedMode ? 'Core question: which real lab memory should change the game?' : captureMode ? 'Core question: what exact evidence can update the ledger?' : validationMode ? 'Core question: can a new player explain the failed record?' : procedure ? 'Core question: can the notebook defend the claim?' : 'Core question: make the phenomenon more believable, or more sensational?';
 }
 function btn(label, detail, fn, cls='choice'){ const b=document.createElement('button'); b.className=cls; b.innerHTML=`<h3>${label}</h3><p>${detail||''}</p>`; b.onclick=fn; return b; }
 function setStage(html){ $('#stage').innerHTML=html; $('#choices').innerHTML=''; }
@@ -320,21 +321,32 @@ function mode(){
   const c=$('#choices');
   c.appendChild(btn('Start Procedure Lab','Stock rack, vial age, labels, calendar events, and notebook consequences.',startLab,'choice primary'));
   c.appendChild(btn('Open validation packet','Run #33 player/SME sessions without leaving the prototype.',startValidation,'choice'));
+  c.appendChild(btn('Open capture packet','Record exact #27/#33 evidence before updating the ledger.',startCapture,'choice'));
   c.appendChild(btn('Open lived-experience packet','Collect #27 firsthand/observed lab incidents without adding arbitrary spectacle.',startLived,'choice'));
   c.appendChild(btn('Open old publication-satire prototype','Trait cards, absurd phenomena, figure framing, and Reviewer #2.',()=>{S.phase='traits'; log('Historical prototype route opened.'); render();},'choice ghost'));
 }
 function startValidation(){ S.phase='validation'; log('Validation packet opened: player session, SME fixtures, and closure gate are visible.'); render(); }
 function validation(){
-  setStage(`<div class="kicker">R7 validation packet</div><h2>First-run and SME validation</h2><div class="body"><p>This packet keeps validation focused on the R-series question: can the player connect lab records to Reviewer #2, and can a biology-aware reviewer accept the simplifications?</p></div><div class="validation-grid"><section class="planner"><h3>Player session</h3><ol><li>Open the default Procedure Lab route.</li><li>Let a fresh player reach one Reviewer #2 finding without coaching the first 30 seconds.</li><li>Ask what caused the attack and what they would change next run.</li></ol><p><b>Pass:</b> names one real cause and one plausible second-run repair.</p></section><section class="planner"><h3>SME fixture checks</h3><ul class="calendar"><li><a href="?fixture=clean">Clean overclaim fixture</a></li><li><a href="?fixture=dirty">Dirty CO2 fixture</a></li><li><a href="?fixture=missing-control">Missing-control fixture</a></li><li><a href="?validation=lived">#27 lived-experience packet</a></li></ul><p>Rate each core mechanic as accurate enough, acceptable simplification, misleading, or unsafe.</p></section><section class="planner"><h3>Record exact evidence</h3><p>Capture exact player phrases, the reviewer finding id, second-run repair, and any misleading SME mark. Open a follow-up issue for every misleading or unsafe core mechanic.</p></section><section class="planner"><h3>Closure gate</h3><ul class="calendar"><li>3 player sessions recorded.</li><li>1 SME review recorded.</li><li>Fixture differences understood or follow-up issues opened.</li><li>#27 lived-experience gap stays separate.</li></ul></section></div>`);
+  setStage(`<div class="kicker">R7 validation packet</div><h2>First-run and SME validation</h2><div class="body"><p>This packet keeps validation focused on the R-series question: can the player connect lab records to Reviewer #2, and can a biology-aware reviewer accept the simplifications?</p></div><div class="validation-grid"><section class="planner"><h3>Player session</h3><ol><li>Open the default Procedure Lab route.</li><li>Let a fresh player reach one Reviewer #2 finding without coaching the first 30 seconds.</li><li>Ask what caused the attack and what they would change next run.</li></ol><p><b>Pass:</b> names one real cause and one plausible second-run repair.</p></section><section class="planner"><h3>SME fixture checks</h3><ul class="calendar"><li><a href="?fixture=clean">Clean overclaim fixture</a></li><li><a href="?fixture=dirty">Dirty CO2 fixture</a></li><li><a href="?fixture=missing-control">Missing-control fixture</a></li><li><a href="?validation=capture">Session capture packet</a></li><li><a href="?validation=lived">#27 lived-experience packet</a></li></ul><p>Rate each core mechanic as accurate enough, acceptable simplification, misleading, or unsafe.</p></section><section class="planner"><h3>Record exact evidence</h3><p>Capture exact player phrases, the reviewer finding id, second-run repair, and any misleading SME mark. Open a follow-up issue for every misleading or unsafe core mechanic.</p></section><section class="planner"><h3>Closure gate</h3><ul class="calendar"><li>3 player sessions recorded.</li><li>1 SME review recorded.</li><li>Fixture differences understood or follow-up issues opened.</li><li>#27 lived-experience gap stays separate.</li></ul></section></div>`);
   const c=$('#choices');
   c.appendChild(btn('Start first-run route','Open the Procedure Lab without fixture setup.',startLab,'choice primary'));
+  c.appendChild(btn('Open capture packet','Record raw session evidence before summarizing.',startCapture,'choice'));
   c.appendChild(btn('Return to route selection','Back to normal prototype entry.',reset,'choice ghost'));
+}
+function startCapture(){ S.phase='capture'; log('Capture packet opened: record exact evidence before updating ledger counts.'); render(); }
+function capture(){
+  setStage(`<div class="kicker">External evidence capture</div><h2>Record before interpreting</h2><div class="body"><p>This packet is a session-side checklist for #27 and #33. It does not close either issue; it prevents raw evidence from becoming vague summaries.</p></div><div class="validation-grid"><section class="planner"><h3>#33 player row</h3><ul class="calendar"><li>Session id, date, route or fixture.</li><li>Completed one run within 5 minutes?</li><li>Exact goal phrase in the first 30 seconds.</li><li>Exact reviewer-cause phrase.</li><li>Exact second-run repair phrase.</li><li>Decision: Pass, Fix, or Cut.</li></ul></section><section class="planner"><h3>#33 SME row</h3><ul class="calendar"><li>Reviewer role or biology experience level.</li><li>Rate stock/vial, virgin/cross, CO2/sorting, assay, and record-reviewer logic.</li><li>Every misleading or unsafe mark needs a fix/cut issue.</li></ul></section><section class="planner"><h3>#27 lived row</h3><ul class="calendar"><li>Provenance: firsthand, observed, or explicit no relevant experience.</li><li>Procedure event, game verb, player skill.</li><li>Failure mode and delayed consequence.</li><li>Design effect: mechanic, guardrail, SME risk, or exclusion.</li></ul></section><section class="planner"><h3>After session</h3><ol><li>Append raw notes to validation results.</li><li>Update external evidence ledger counts.</li><li>Apply the decision tree before implementation.</li><li>Run smoke, status, and external evidence checks.</li></ol><p><b>Do not count screenshots, smoke tests, or implementer walkthroughs as external evidence.</b></p></section></div>`);
+  const c=$('#choices');
+  c.appendChild(btn('Open validation packet','Return to #33 protocol and fixtures.',startValidation,'choice'));
+  c.appendChild(btn('Open lived-experience packet','Collect #27 source answers.',startLived,'choice'));
+  c.appendChild(btn('Start Procedure Lab','Run the normal player route.',startLab,'choice primary'));
 }
 function startLived(){ S.phase='lived'; log('Lived-experience packet opened: collect real incidents before expanding content.'); render(); }
 function lived(){
   setStage(`<div class="kicker">R1 lived-experience packet</div><h2>Real lab incidents to mine</h2><div class="body"><p>Use this packet to capture firsthand or observed fly-lab memories that can change mechanics, guardrails, or SME risk. Do not use it to invent new spectacle.</p></div><div class="validation-grid"><section class="planner"><h3>Ask for incidents</h3><ol><li>Repeated hands-on work that became muscle memory.</li><li>Costliest mistake in time, confidence, or trust.</li><li>Hardest visual tell when learning.</li><li>Real criticism from PI, senior lab member, collaborator, or reviewer.</li></ol></section><section class="planner"><h3>Translate each answer</h3><ul class="calendar"><li>Procedure event.</li><li>Game verb.</li><li>Player skill.</li><li>Failure mode.</li><li>Delayed consequence.</li><li>Comedy boundary and SME risk.</li></ul></section><section class="planner"><h3>Acceptance gate</h3><ul class="calendar"><li>At least 5 event-map rows have user/lived-experience provenance.</li><li>At least one answer changes design, guardrails, or SME risk.</li><li>Unsupported arbitrary phenomena stay excluded from the first slice.</li></ul></section><section class="planner"><h3>Record location</h3><p>Copy accepted rows into <b>docs/fly-lab-experience-map.md</b>. If an answer needs implementation, open a lived-experience issue instead of editing gameplay directly.</p></section></div>`);
   const c=$('#choices');
   c.appendChild(btn('Open Procedure Lab context','Review the current stock, sorting, assay, and reviewer loop before answering.',startLab,'choice primary'));
+  c.appendChild(btn('Open capture packet','Record #27 answers before updating the ledger.',startCapture,'choice'));
   c.appendChild(btn('Open #33 validation packet','Keep lived experience separate from player/SME validation.',startValidation,'choice'));
   c.appendChild(btn('Return to route selection','Back to normal prototype entry.',reset,'choice ghost'));
 }
@@ -519,6 +531,7 @@ function applyInitialFixture(){
     const search = window.location && window.location.search ? window.location.search : '';
     const params = new URLSearchParams(search);
     if(params.get('validation')==='packet') startValidation();
+    if(params.get('validation')==='capture') startCapture();
     if(params.get('validation')==='lived') startLived();
     const fixture = params.get('fixture');
     if(['clean','dirty','missing-control'].includes(fixture)) loadValidationFixture(fixture);
@@ -535,6 +548,15 @@ function drawChamber(){
     ctx.fillText('2. Name the mistake and delayed cost.',28,154);
     ctx.fillText('3. Mark uncertainty for SME review.',28,182);
     ctx.fillStyle='#f5c86a'; ctx.font='14px system-ui'; ctx.fillText('Do not invent unsupported first-slice phenomena.',28,h-36);
+    return requestAnimationFrame(drawChamber);
+  }
+  if(S.phase==='capture'){
+    ctx.fillStyle='#d8e6ff'; ctx.font='20px system-ui'; ctx.fillText('External evidence capture packet',28,48);
+    ctx.fillStyle='#9fb0c6'; ctx.font='15px system-ui'; ctx.fillText('Write exact phrases before summary or issue creation.',28,76);
+    ctx.fillStyle='#9fdc61'; ctx.font='15px system-ui'; ctx.fillText('1. P-01..P-03 exact player phrases.',28,126);
+    ctx.fillText('2. SME-01 mechanic ratings.',28,154);
+    ctx.fillText('3. LE-01..LE-05 provenance rows.',28,182);
+    ctx.fillStyle='#f5c86a'; ctx.font='14px system-ui'; ctx.fillText('Do not close #27 or #33 from this screen alone.',28,h-36);
     return requestAnimationFrame(drawChamber);
   }
   if(S.phase==='validation'){

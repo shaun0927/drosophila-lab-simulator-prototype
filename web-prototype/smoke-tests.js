@@ -135,15 +135,30 @@ function testLegacyRoute() {
 function testValidationPacket() {
   let booted = boot();
   assert(booted.el('choices').children.some(child => child.innerHTML.includes('Open validation packet')), 'route selection missing validation packet entry');
+  assert(booted.el('choices').children.some(child => child.innerHTML.includes('Open capture packet')), 'route selection missing capture packet entry');
   assert(booted.el('choices').children.some(child => child.innerHTML.includes('Open lived-experience packet')), 'route selection missing lived-experience packet entry');
   booted.ctx.startValidation();
   assert(booted.el('stage').innerHTML.includes('R7 validation packet'), 'validation packet screen missing');
   assert(booted.el('stage').innerHTML.includes('3 player sessions recorded'), 'validation packet missing closure gate');
   assert(booted.el('stage').innerHTML.includes('?fixture=dirty'), 'validation packet missing dirty fixture link');
+  assert(booted.el('stage').innerHTML.includes('?validation=capture'), 'validation packet missing capture packet link');
   assert(booted.el('stage').innerHTML.includes('?validation=lived'), 'validation packet missing lived-experience link');
+  assert(booted.el('choices').children.some(child => child.innerHTML.includes('Open capture packet')), 'validation packet missing capture packet action');
   booted = boot('?validation=packet');
   assert(booted.el('stage').innerHTML.includes('First-run and SME validation'), 'validation URL did not open packet');
   assert(booted.el('footer-question').textContent.includes('new player'), 'validation chrome footer missing');
+}
+
+function testCapturePacket() {
+  let booted = boot();
+  booted.ctx.startCapture();
+  assert(booted.el('stage').innerHTML.includes('External evidence capture'), 'capture packet screen missing');
+  assert(booted.el('stage').innerHTML.includes('Exact goal phrase'), 'capture packet missing player phrase fields');
+  assert(booted.el('stage').innerHTML.includes('Every misleading or unsafe mark'), 'capture packet missing SME follow-up guardrail');
+  assert(booted.el('stage').innerHTML.includes('Do not count screenshots'), 'capture packet missing proxy-evidence guardrail');
+  booted = boot('?validation=capture');
+  assert(booted.el('stage').innerHTML.includes('Record before interpreting'), 'capture URL did not open packet');
+  assert(booted.el('footer-question').textContent.includes('update the ledger'), 'capture chrome footer missing');
 }
 
 function testLivedExperiencePacket() {
@@ -152,6 +167,7 @@ function testLivedExperiencePacket() {
   assert(booted.el('stage').innerHTML.includes('R1 lived-experience packet'), 'lived-experience packet screen missing');
   assert(booted.el('stage').innerHTML.includes('At least 5 event-map rows'), 'lived-experience packet missing acceptance gate');
   assert(booted.el('stage').innerHTML.includes('Unsupported arbitrary phenomena'), 'lived-experience packet missing arbitrary-phenomenon guardrail');
+  assert(booted.el('choices').children.some(child => child.innerHTML.includes('Open capture packet')), 'lived-experience packet missing capture packet action');
   booted = boot('?validation=lived');
   assert(booted.el('stage').innerHTML.includes('Real lab incidents to mine'), 'lived-experience URL did not open packet');
   assert(booted.el('footer-question').textContent.includes('real lab memory'), 'lived-experience chrome footer missing');
@@ -179,7 +195,8 @@ testDirtyPath();
 testMissingControlPath();
 testLegacyRoute();
 testValidationPacket();
+testCapturePacket();
 testLivedExperiencePacket();
 testUrlFixtures();
 
-console.log('fly-lab smoke passed: R2/R3, objective strip, reviewer repair plans, validation packets, clean, dirty, missing-control, URL fixtures, legacy route');
+console.log('fly-lab smoke passed: R2/R3, objective strip, reviewer repair plans, validation/capture packets, clean, dirty, missing-control, URL fixtures, legacy route');

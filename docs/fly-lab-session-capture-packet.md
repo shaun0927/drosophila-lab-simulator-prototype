@@ -4,6 +4,8 @@ Date opened: 2026-08-22
 
 Purpose: capture the exact external evidence needed to update [`fly-lab-external-evidence-ledger.md`](fly-lab-external-evidence-ledger.md). This is the field packet for #27 lived-experience collection and #33 player/SME validation. It should be filled during or immediately after sessions, before summary language is written.
 
+Prototype launch aid: `web-prototype/index.html?validation=capture` opens the same capture checklist inside the playable prototype. It is a recording aid only; it does not replace external evidence.
+
 Use [`fly-lab-validation-finding-decision-tree.md`](fly-lab-validation-finding-decision-tree.md) to decide whether a captured finding becomes pass evidence, a fix issue, a cut/rework issue, or a rejected note.
 
 ## Capture Rules
@@ -21,6 +23,7 @@ Use [`fly-lab-validation-finding-decision-tree.md`](fly-lab-validation-finding-d
 | Build | Current `main` deployment or local `web-prototype/index.html` |
 | Default route | Procedure Lab |
 | Player validation launch | `web-prototype/index.html?validation=packet` |
+| Capture launch | `web-prototype/index.html?validation=capture` |
 | Lived-experience launch | `web-prototype/index.html?validation=lived` |
 | Required fixtures | `?fixture=clean`, `?fixture=dirty`, `?fixture=missing-control` |
 | Result document | `docs/fly-lab-validation-results.md` |

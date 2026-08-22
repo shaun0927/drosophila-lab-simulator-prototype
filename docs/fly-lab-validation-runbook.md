@@ -24,7 +24,7 @@ node web-prototype/smoke-tests.js
 Expected:
 
 ```text
-fly-lab smoke passed: R2/R3, objective strip, reviewer repair plans, validation packet, clean, dirty, missing-control, URL fixtures, legacy route
+fly-lab smoke passed: R2/R3, objective strip, reviewer repair plans, validation/capture packets, clean, dirty, missing-control, URL fixtures, legacy route
 ```
 
 ## Validation URLs
@@ -33,12 +33,15 @@ Use local or hosted equivalents of:
 
 - `web-prototype/index.html`
 - `web-prototype/index.html?validation=packet`
+- `web-prototype/index.html?validation=capture`
 - `web-prototype/index.html?validation=lived`
 - `web-prototype/index.html?fixture=clean`
 - `web-prototype/index.html?fixture=dirty`
 - `web-prototype/index.html?fixture=missing-control`
 
 The validation packet URL is the moderator/SME launch page. It does not satisfy validation by itself.
+
+The capture packet URL is the session recording aid. It does not satisfy validation by itself.
 
 The lived-experience packet URL is for #27 collection and should not be counted as #33 player/SME evidence.
 

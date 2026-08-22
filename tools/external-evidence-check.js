@@ -55,6 +55,24 @@ function rowsPresent(markdown, idPrefix, expected) {
   }
 }
 
+function isMissingFollowUp(value) {
+  return !value || /^(Pending|none|n\/a|-|No)$/i.test(value);
+}
+
+function requireFixCutFollowUps(markdown) {
+  for (const line of markdown.split(/\r?\n/)) {
+    if (!line.startsWith('| P-') && !line.startsWith('| SME-')) continue;
+    const row = cells(line);
+    const id = row[0];
+    const isPlayer = id.startsWith('P-');
+    const decision = isPlayer ? row[7] : row[8];
+    const followUp = isPlayer ? row[8] : row[9];
+    if (/^(Fix|Cut)$/i.test(decision)) {
+      assert(!isMissingFollowUp(followUp), `${id} decision ${decision} must link a follow-up issue before it can count`);
+    }
+  }
+}
+
 function loadGameData() {
   const context = { window: {} };
   vm.createContext(context);
@@ -147,6 +165,7 @@ function validateExternalEvidence({ ledger, validationResults, experienceMap, pr
   assert(tableAcceptedCount(ledger, 'LE', 8) === livedAccepted, '#27 accepted count must match accepted LE intake rows');
   assert(tableAcceptedCount(ledger, 'P', 7) === playerAccepted, '#33 player accepted count must match decided player rows');
   assert(tableAcceptedCount(ledger, 'SME', 8) === smeAccepted, '#33 SME accepted count must match decided SME rows');
+  requireFixCutFollowUps(ledger);
   assert(designAccepted <= livedAccepted, '#27 design-change accepted count cannot exceed accepted lived-experience rows');
   const counts = {livedAccepted, designAccepted, playerAccepted, smeAccepted};
   compareGameDataStatus(gameData, counts);

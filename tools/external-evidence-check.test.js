@@ -118,6 +118,25 @@ console.log('pass fixture accepted: partial player evidence in progress');
 
 validateExternalEvidence({
   ledger: baseLedger
+    .replace('| Fresh-player first-run sessions | 3 | 0 | Pending execution | #33 |', '| Fresh-player first-run sessions | 3 | 1 | In progress | #33 |')
+    .replace('| P-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending |', '| P-01 | 2026-08-22 | default | Yes | defend record | random luck | add control | Fix | #44 |'),
+  validationResults: partialValidationResults,
+  experienceMap: pendingExperienceMap,
+  progressAudit: pendingProgressAudit,
+  goalAudit: pendingGoalAudit,
+  gameData: {
+    externalEvidence: {
+      livedRows: {accepted: 0, required: 5},
+      livedDesignChange: {accepted: 0, required: 1},
+      playerSessions: {accepted: 1, required: 3},
+      smeReviews: {accepted: 0, required: 1}
+    }
+  }
+});
+console.log('pass fixture accepted: fix decision with linked follow-up issue');
+
+validateExternalEvidence({
+  ledger: baseLedger
     .replace('| Lived-experience event rows with user or observed-lab provenance | 5 | 0 | Pending collection | #27 |', '| Lived-experience event rows with user or observed-lab provenance | 5 | 1 | In progress | #27 |')
     .replace('| LE-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | No |', '| LE-01 | firsthand | vial flip | label vial | timing | stale vial | bad cross | mechanic change | Yes |'),
   validationResults: pendingValidationResults,
@@ -183,6 +202,38 @@ expectFail(
   'missing fifth lived-experience row',
   baseLedger.replace('| LE-05 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | No |\n', ''),
   'missing external evidence intake row: LE-05'
+);
+
+expectFail(
+  'player fix decision without follow-up issue',
+  baseLedger
+    .replace('| Fresh-player first-run sessions | 3 | 0 | Pending execution | #33 |', '| Fresh-player first-run sessions | 3 | 1 | In progress | #33 |')
+    .replace('| P-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending |', '| P-01 | 2026-08-22 | default | Yes | defend record | random luck | add control | Fix | Pending |'),
+  'P-01 decision Fix must link a follow-up issue',
+  {
+    externalEvidence: {
+      livedRows: {accepted: 0, required: 5},
+      livedDesignChange: {accepted: 0, required: 1},
+      playerSessions: {accepted: 1, required: 3},
+      smeReviews: {accepted: 0, required: 1}
+    }
+  }
+);
+
+expectFail(
+  'SME cut decision without follow-up issue',
+  baseLedger
+    .replace('| SME or biology-aware review | 1 | 0 | Pending execution | #33 |', '| SME or biology-aware review | 1 | 1 | In progress | #33 |')
+    .replace('| SME-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending |', '| SME-01 | 2026-08-22 | genetics TA | Accurate enough | Acceptable simplification | Misleading | Acceptable simplification | Misleading | Cut | none |'),
+  'SME-01 decision Cut must link a follow-up issue',
+  {
+    externalEvidence: {
+      livedRows: {accepted: 0, required: 5},
+      livedDesignChange: {accepted: 0, required: 1},
+      playerSessions: {accepted: 0, required: 3},
+      smeReviews: {accepted: 1, required: 1}
+    }
+  }
 );
 
 try {

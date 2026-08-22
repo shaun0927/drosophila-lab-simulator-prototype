@@ -26,6 +26,8 @@ External validation launch matrix: `docs/external-validation-launch-matrix.md` g
 
 External validation intake staging: `docs/external-validation-intake-staging.md` gives the evidence editor a pre-copy staging sheet for exact phrases, row ids, decisions, target-doc copies, and follow-up dispositions after real sessions but before accepted counts are raised. `node tools/external-validation-intake-staging-check.js` and `node tools/external-validation-intake-staging-check.test.js` keep missing rows, wrong route mapping, wrong issue mapping, missing SME coverage, and proxy-evidence drift out of intake.
 
+External validation participant briefs: `docs/external-validation-participant-briefs.md` provides copy-ready #35/#36/#37/#38/#39 invitation and session-start language while preserving first-30-seconds player guardrails and preventing answer-key leakage. `node tools/external-validation-participant-briefs-check.js` and `node tools/external-validation-participant-briefs-check.test.js` keep invitation-only material from becoming evidence and reject wrong route URLs or missing SME fixture coverage.
+
 Issue-state audit self-test: `node tools/external-validation-issue-state-audit.test.js` verifies the live issue-state audit parser and mismatch detection with mock issue states in CI.
 
 Full local verification wrapper: `node tools/external-validation-full-check.js` runs the non-live local verification chain. `node tools/external-validation-full-check.js --live-issues` also runs the authenticated GitHub issue-state audit required before closure.

@@ -10,6 +10,8 @@ Launch matrix: use [`external-validation-launch-matrix.md`](external-validation-
 
 Intake staging: use [`external-validation-intake-staging.md`](external-validation-intake-staging.md) after a real session and before ledger edits to stage exact phrases, target-doc copies, decisions, and follow-up dispositions without raising accepted counts.
 
+Participant briefs: use [`external-validation-participant-briefs.md`](external-validation-participant-briefs.md) for copy-ready invitation text, first-30-seconds moderator language, player answer-key guardrails, and SME review framing.
+
 Execution tracker: use [`external-validation-execution-tracker.md`](external-validation-execution-tracker.md) to see which #35 through #39 evidence rows are still missing before closure.
 
 Intake runbook: use [`external-validation-intake-runbook.md`](external-validation-intake-runbook.md) after a real session to apply raw notes, accepted rows, status counts, issue comments, and verification commands in the correct order.

@@ -44,6 +44,8 @@ jobs:
           node --check tools/external-validation-launch-matrix-check.test.js
           node --check tools/external-validation-intake-staging-check.js
           node --check tools/external-validation-intake-staging-check.test.js
+          node --check tools/external-validation-participant-briefs-check.js
+          node --check tools/external-validation-participant-briefs-check.test.js
           node --check tools/external-validation-issue-state-audit.js
           node --check tools/external-validation-issue-state-audit.test.js
           node --check tools/external-validation-full-check.js
@@ -115,6 +117,12 @@ jobs:
 
       - name: Self-test external validation intake staging
         run: node tools/external-validation-intake-staging-check.test.js
+
+      - name: Check external validation participant briefs
+        run: node tools/external-validation-participant-briefs-check.js
+
+      - name: Self-test external validation participant briefs
+        run: node tools/external-validation-participant-briefs-check.test.js
 
       - name: Self-test external evidence checker
         run: node tools/external-evidence-check.test.js

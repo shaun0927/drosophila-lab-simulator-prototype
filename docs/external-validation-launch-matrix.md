@@ -6,6 +6,8 @@ Purpose: give the session runner one place to choose the correct prototype URL, 
 
 This matrix is not evidence. It is an execution aid. Do not raise accepted counts from this document, screenshots, smoke tests, implementer walkthroughs, or packet visibility.
 
+Use `docs/external-validation-participant-briefs.md` for copy-ready invitation text, first-30-seconds moderator language, answer-key guardrails, and SME review framing.
+
 ## Preflight
 
 Before inviting a participant or reviewer, run:

@@ -39,6 +39,8 @@ Use `docs/external-validation-launch-matrix.md` before the session to select the
 
 Use `docs/external-validation-intake-staging.md` after a real session and before accepted-count edits to stage exact phrases, row ids, decisions, and follow-up dispositions. The staging sheet is not evidence and must not raise accepted counts.
 
+Use `docs/external-validation-participant-briefs.md` before inviting participants so the moderator does not leak clean/dirty/missing-control route meanings, answer keys, or SME conclusions before evidence is captured.
+
 Preserve exact wording from the respondent/player/reviewer before summarizing. Screenshots, smoke tests, packet visibility, implementer walkthroughs, and generic source summaries still do not count as external evidence.
 
 ## Accepted Row Edit Order

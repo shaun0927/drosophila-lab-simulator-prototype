@@ -1,6 +1,6 @@
 # Fly-Lab Validation Results
 
-Implementation PR: https://github.com/shaun0927/drosophila-lab-simulator-prototype/pull/34
+Implementation PR: https://github.com/shaun0927/drosophila-lab-simulator-prototype/pull/34 merged to `main` at merge commit `f470330`.
 
 CI guardrail: `.github/workflows/web-prototype-smoke.yml` runs syntax checks and `node web-prototype/smoke-tests.js` for pull requests and pushes.
 
@@ -22,6 +22,7 @@ browser smoke passed: specimen pad renders and sorting click registers
 browser smoke passed: assay mini-plot renders after controlled run
 browser smoke passed: clean/dirty/missing-control URL fixtures load expected reviewer findings
 responsive browser QA passed: desktop/mobile fixtures render without horizontal overflow
+main CI passed: Web prototype smoke run https://github.com/shaun0927/drosophila-lab-simulator-prototype/actions/runs/32563843521
 ```
 
 Reusable validation URLs:

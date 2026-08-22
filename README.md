@@ -48,6 +48,7 @@ The player repeatedly chooses whether to make the phenomenon more believable or 
 - `docs/fly-lab-lived-experience-response-form.md` — User response form for closing the remaining lived-experience gap in R1.
 - `docs/r-series-progress-audit.md` — Current completion, verification, drift, and remaining-work audit for R0-R7.
 - `docs/goal-completion-audit-2026-08-22.md` — Top-level audit of the active thread goal, including why the goal is not yet complete.
+- `docs/fly-lab-external-evidence-ledger.md` — Intake ledger for the #27 lived-experience and #33 player/SME evidence gates.
 - `docs/open-issue-triage-2026-08-22.md` — Current open-issue classification so old Unity/phenomenon work does not steer R-series implementation by accident.
 - `docs/fly-lab-playtest-sheet.md` — R7 player validation script.
 - `docs/fly-lab-sme-validation-sheet.md` — R7 biology-aware validation rubric.

@@ -8,6 +8,8 @@ No external player or SME validation has been run yet.
 
 Use [`fly-lab-validation-runbook.md`](fly-lab-validation-runbook.md) to run the remaining validation required to close #33.
 
+Use [`fly-lab-external-evidence-ledger.md`](fly-lab-external-evidence-ledger.md) to record which #27 and #33 external-evidence slots are still pending or accepted.
+
 R-series issue status after PR #34 merge:
 
 - Closed: #26, #28, #29, #30, #31, #32.
@@ -56,3 +58,4 @@ The screenshot UX audit also caught and fixed visible drift where Procedure Lab 
 - [ ] 3 player first-run sessions.
 - [ ] 1 SME or biology-aware validation pass.
 - [ ] Follow-up issues for any misleading core mechanic.
+- [ ] External evidence ledger updated with accepted counts.

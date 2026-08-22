@@ -10,6 +10,7 @@ const requiredFiles = [
   'docs/fly-lab-sme-validation-sheet.md',
   'docs/fly-lab-validation-runbook.md',
   'docs/fly-lab-validation-results.md',
+  'docs/fly-lab-external-evidence-ledger.md',
   'docs/r-series-progress-audit.md',
   'docs/goal-completion-audit-2026-08-22.md',
   'docs/open-issue-triage-2026-08-22.md',
@@ -36,6 +37,12 @@ const textChecks = [
   ['docs/fly-lab-validation-runbook.md', '#33 can close only when'],
   ['docs/fly-lab-validation-results.md', 'No external player or SME validation has been run yet'],
   ['docs/fly-lab-validation-results.md', 'screenshot proxy passed: lived-experience packet visible on desktop/mobile without legacy drift'],
+  ['docs/fly-lab-validation-results.md', 'External evidence ledger updated with accepted counts'],
+  ['docs/fly-lab-external-evidence-ledger.md', 'Lived-experience event rows with user or observed-lab provenance'],
+  ['docs/fly-lab-external-evidence-ledger.md', 'Fresh-player first-run sessions'],
+  ['docs/fly-lab-external-evidence-ledger.md', '#27 can close only when'],
+  ['docs/fly-lab-external-evidence-ledger.md', '#33 can close only when'],
+  ['docs/fly-lab-external-evidence-ledger.md', 'Not acceptable as #33 player closure evidence'],
   ['docs/r-series-progress-audit.md', '#27 R1 Experience map'],
   ['docs/r-series-progress-audit.md', '#33 R7 Vertical slice validation'],
   ['docs/r-series-progress-audit.md', '#27 and #33 require external/user evidence'],
@@ -44,6 +51,7 @@ const textChecks = [
   ['docs/goal-completion-audit-2026-08-22.md', '#27 lacks lived-experience provenance'],
   ['docs/goal-completion-audit-2026-08-22.md', '#33 lacks player and SME validation'],
   ['docs/goal-completion-audit-2026-08-22.md', 'Do not treat screenshots as player, SME, or lived-experience evidence'],
+  ['docs/goal-completion-audit-2026-08-22.md', 'fly-lab-external-evidence-ledger.md'],
   ['docs/goal-completion-audit-2026-08-22.md', 'Main CI is green on the commit that contains the final audit'],
   ['docs/open-issue-triage-2026-08-22.md', 'r-series-current'],
   ['docs/open-issue-triage-2026-08-22.md', 'parked-unity-line'],
@@ -78,8 +86,16 @@ const progress = read('docs/r-series-progress-audit.md');
 assert(progress.includes('| #27 R1 Experience map | Open'), '#27 must remain explicitly open until lived-experience evidence exists');
 assert(progress.includes('| #33 R7 Vertical slice validation | Open'), '#33 must remain explicitly open until player/SME evidence exists');
 
+const ledger = read('docs/fly-lab-external-evidence-ledger.md');
+assert(ledger.includes('| Lived-experience event rows with user or observed-lab provenance | 5 | 0 | Pending collection | #27 |'), '#27 ledger gate must start with 0 accepted lived-experience rows');
+assert(ledger.includes('| Fresh-player first-run sessions | 3 | 0 | Pending execution | #33 |'), '#33 ledger gate must start with 0 accepted player sessions');
+assert(ledger.includes('| SME or biology-aware review | 1 | 0 | Pending execution | #33 |'), '#33 ledger gate must start with 0 accepted SME reviews');
+assert(ledger.includes('| LE-05 | Pending'), '#27 ledger must reserve five lived-experience intake rows');
+assert(ledger.includes('| P-03 | Pending'), '#33 ledger must reserve three player-session rows');
+assert(ledger.includes('| SME-01 | Pending'), '#33 ledger must reserve one SME-review row');
+
 const triage = read('docs/open-issue-triage-2026-08-22.md');
 assert(triage.includes('#4, #5'), 'parked Unity line must remain classified');
 assert(triage.includes('Do not pick up #4/#5/#7/#9/#10-#25'), 'parked issue drift guardrail missing');
 
-console.log('r-series status check passed: artifacts present, packets wired, external blockers preserved, parked scope guarded, goal audit linked');
+console.log('r-series status check passed: artifacts present, packets wired, external blockers preserved, parked scope guarded, goal audit and evidence ledger linked');

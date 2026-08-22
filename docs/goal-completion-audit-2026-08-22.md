@@ -8,6 +8,8 @@ Thread objective audited:
 
 This document is the top-level completion audit for that objective. It does not replace the R-series product contract or validation runbook; it checks whether the thread goal itself is currently proven complete.
 
+External-evidence intake is tracked in [`fly-lab-external-evidence-ledger.md`](fly-lab-external-evidence-ledger.md). Use that ledger to decide whether #27 and #33 have enough non-proxy proof to close.
+
 ## Requirement Matrix
 
 | Requirement from the objective | Current evidence | Status | Why this status is correct |
@@ -29,6 +31,7 @@ What exists:
 
 - `docs/fly-lab-experience-map.md` maps fly-lab procedure incidents from source-backed and design-derived evidence.
 - `docs/fly-lab-lived-experience-response-form.md` defines the exact answers needed.
+- `docs/fly-lab-external-evidence-ledger.md` tracks the 5 required accepted evidence rows and the design-change requirement.
 - `web-prototype/index.html?validation=lived` exposes the collection packet in the prototype.
 - `.github/ISSUE_TEMPLATE/fly_lab_lived_experience.yml` can capture follow-up implementation issues.
 
@@ -57,6 +60,7 @@ What exists:
 - `docs/fly-lab-playtest-sheet.md` defines the player test.
 - `docs/fly-lab-sme-validation-sheet.md` defines the biology-aware review.
 - `docs/fly-lab-validation-runbook.md` defines the execution protocol.
+- `docs/fly-lab-external-evidence-ledger.md` tracks the three player sessions, SME review, and follow-up issue gates.
 - `web-prototype/index.html?validation=packet` exposes the in-app validation launcher.
 - `docs/fly-lab-validation-results.md` records proxy QA and explicitly says no external validation has run yet.
 
@@ -127,7 +131,8 @@ The objective can be marked complete only when:
 1. #27 has accepted lived-experience evidence recorded in the experience map, or a documented explicit user decision removes that requirement.
 2. #33 has three player sessions, one SME review, and any required follow-up issues opened or resolved.
 3. `docs/fly-lab-validation-results.md` records the final external validation result.
-4. `docs/r-series-progress-audit.md` and this audit both reflect the final issue status.
-5. `node web-prototype/smoke-tests.js` passes.
-6. `node tools/r-series-status-check.js` passes.
-7. Main CI is green on the commit that contains the final audit.
+4. `docs/fly-lab-external-evidence-ledger.md` records the accepted external evidence counts.
+5. `docs/r-series-progress-audit.md` and this audit both reflect the final issue status.
+6. `node web-prototype/smoke-tests.js` passes.
+7. `node tools/r-series-status-check.js` passes.
+8. Main CI is green on the commit that contains the final audit.

@@ -14,6 +14,8 @@ Open-issue triage: [`open-issue-triage-2026-08-22.md`](open-issue-triage-2026-08
 
 Thread-goal audit: [`goal-completion-audit-2026-08-22.md`](goal-completion-audit-2026-08-22.md) checks the user's active objective requirement by requirement and records why the overall goal is still not complete.
 
+External-evidence ledger: [`fly-lab-external-evidence-ledger.md`](fly-lab-external-evidence-ledger.md) records the unfilled #27 lived-experience slots and #33 player/SME validation slots.
+
 ## Current implementation status
 
 | Issue | Status | Evidence | Remaining gap |

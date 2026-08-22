@@ -6,6 +6,8 @@ CI guardrail: `.github/workflows/web-prototype-smoke.yml` runs syntax checks and
 
 No external player or SME validation has been run yet.
 
+Use [`fly-lab-validation-runbook.md`](fly-lab-validation-runbook.md) to run the remaining validation required to close #33.
+
 R-series issue status after PR #34 merge:
 
 - Closed: #26, #28, #29, #30, #31, #32.

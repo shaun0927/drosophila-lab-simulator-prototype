@@ -45,9 +45,11 @@ The player repeatedly chooses whether to make the phenomenon more believable or 
 
 - `docs/fly-lab-product-thesis.md` — R-series product contract. Supersedes the phenomenon-first prototype direction for future implementation.
 - `docs/fly-lab-experience-map.md` — R-series source-backed UX incident map for stock, cross, sorting, and assay work.
+- `docs/fly-lab-lived-experience-response-form.md` — User response form for closing the remaining lived-experience gap in R1.
 - `docs/r-series-progress-audit.md` — Current completion, verification, drift, and remaining-work audit for R0-R7.
 - `docs/fly-lab-playtest-sheet.md` — R7 player validation script.
 - `docs/fly-lab-sme-validation-sheet.md` — R7 biology-aware validation rubric.
+- `docs/fly-lab-validation-runbook.md` — Step-by-step protocol for player/SME validation and follow-up issue creation.
 - `docs/fly-lab-validation-results.md` — Validation status and result log.
 - `docs/00-competition-scope.md`
 - `docs/01-core-fun-loop-paper-design.md`

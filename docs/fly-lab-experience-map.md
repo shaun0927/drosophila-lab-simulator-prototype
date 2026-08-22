@@ -8,6 +8,8 @@ Source-backed draft: complete enough for R2/R3/R4 implementation planning.
 
 User lived-experience pass: pending user input. Do not treat the personal-experience column as validated until the user answers the interview prompts below.
 
+Use [`fly-lab-lived-experience-response-form.md`](fly-lab-lived-experience-response-form.md) to collect the remaining user-provenance answers required to close #27.
+
 ## Interview prompts for lived experience
 
 Ask these before locking final micro-interactions:

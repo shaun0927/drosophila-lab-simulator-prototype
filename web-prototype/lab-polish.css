@@ -31,6 +31,8 @@
 .repair-plan>b{display:block;color:#9bd8ff;margin-bottom:6px}
 .repair-plan ol{margin:0;padding-left:18px;color:#d8e6ff}
 .repair-plan li{margin:4px 0;font-size:13px;line-height:1.35}
+.validation-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}
+.validation-grid a{color:#9bd8ff;font-weight:800}
 @media(max-width:600px){
   #app{padding:10px}
   .panel{padding:12px}
@@ -38,6 +40,7 @@
   .topbar h1{font-size:26px}
   .body{font-size:16px}
   .objective-strip{grid-template-columns:1fr}
+  .validation-grid{grid-template-columns:1fr}
   .mini-actions{display:grid;grid-template-columns:1fr}
   .record-card{overflow-wrap:anywhere}
   .record-table{display:block;overflow-x:auto;max-width:100%;white-space:nowrap}

@@ -19,6 +19,8 @@ Latest replacement screenshots:
 
 - `desktop-clean.png`
 - `mobile-clean.png`
+- `desktop-validation-packet.png`
+- `mobile-validation-packet.png`
 
 ## Findings
 
@@ -28,6 +30,7 @@ Latest replacement screenshots:
 | Footer still asked `make the phenomenon more believable, or more sensational?` in Procedure Lab | `desktop-clean.png`, `mobile-clean.png` | Drift: the bottom-line question contradicted the R-series notebook/evidence thesis | Fixed |
 | Procedure route listed systems before telling the player what judgment mattered now | `desktop-clean.png`, `mobile-clean.png` | First-run risk: players could see many lab controls without understanding the current objective, next action, record risk, or reviewer vulnerability | Fixed with objective strip |
 | Reviewer result explained the weakness but did not clearly convert it into a second-run action | `desktop-clean.png`, `mobile-clean.png` | #33 comprehension risk: players might understand the attack quote without knowing what to repair next | Fixed with next-run repair plan |
+| #33 validation required leaving the prototype and reading docs before a session could start | `desktop-validation-packet.png`, `mobile-validation-packet.png` | Execution risk: moderators or SMEs could use the wrong route, skip fixture contrast, or blur #27 and #33 gates | Fixed with in-app validation packet |
 | Procedure route screenshots are long on mobile | `mobile-clean.png`, `mobile-dirty.png`, `mobile-missing-control.png` | Usability risk for real first-run validation; not a functional blocker | Keep as #33 player-validation watch item |
 | Lab Record View canvas labels are small and dense | `desktop-clean-after-record-view.png` | Polish/readability risk; not a scientific drift issue | Keep as later polish unless players miss the record summary |
 
@@ -53,6 +56,13 @@ Added Reviewer #2 repair plan:
 - clean, dirty CO2, and missing-control fixtures verify different repair guidance
 - repair text stays attached to evidence refs instead of introducing new phenomena or jokes
 
+Added validation packet:
+
+- `?validation=packet` opens a moderator/SME launch page inside the prototype
+- fixture links are visible from the packet
+- canvas and footer use validation-specific language instead of old mutant-line language
+- packet states that #27 and #33 still require external evidence
+
 ## Verification
 
 Commands run:
@@ -70,6 +80,7 @@ Browser assertion:
 browser smoke passed: procedure route uses Lab Record View and notebook footer
 screenshot proxy passed: objective strip visible on desktop/mobile clean fixture
 screenshot proxy passed: objective strip and repair plan visible on desktop/mobile clean fixture
+screenshot proxy passed: validation packet visible on desktop/mobile without legacy drift
 ```
 
 ## Remaining Limits

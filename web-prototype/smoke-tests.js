@@ -132,6 +132,18 @@ function testLegacyRoute() {
   assert(el('stage').innerHTML.includes('Light-Induced Swarm Dance'), 'legacy route no longer reaches phenomenon screen');
 }
 
+function testValidationPacket() {
+  let booted = boot();
+  assert(booted.el('choices').children.some(child => child.innerHTML.includes('Open validation packet')), 'route selection missing validation packet entry');
+  booted.ctx.startValidation();
+  assert(booted.el('stage').innerHTML.includes('R7 validation packet'), 'validation packet screen missing');
+  assert(booted.el('stage').innerHTML.includes('3 player sessions recorded'), 'validation packet missing closure gate');
+  assert(booted.el('stage').innerHTML.includes('?fixture=dirty'), 'validation packet missing dirty fixture link');
+  booted = boot('?validation=packet');
+  assert(booted.el('stage').innerHTML.includes('First-run and SME validation'), 'validation URL did not open packet');
+  assert(booted.el('footer-question').textContent.includes('new player'), 'validation chrome footer missing');
+}
+
 function testUrlFixtures() {
   let booted = boot('?fixture=clean');
   assert(booted.el('stage').innerHTML.includes('climbing assay does not establish'), 'clean URL fixture missing overclaim review');
@@ -153,6 +165,7 @@ testCleanPath();
 testDirtyPath();
 testMissingControlPath();
 testLegacyRoute();
+testValidationPacket();
 testUrlFixtures();
 
-console.log('fly-lab smoke passed: R2/R3, objective strip, reviewer repair plans, clean, dirty, missing-control, URL fixtures, legacy route');
+console.log('fly-lab smoke passed: R2/R3, objective strip, reviewer repair plans, validation packet, clean, dirty, missing-control, URL fixtures, legacy route');

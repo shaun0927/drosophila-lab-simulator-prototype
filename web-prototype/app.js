@@ -15,11 +15,12 @@ function renderStats(){
   $('#stats').innerHTML = `<div class="stat">Time ${S.time}s</div><div class="stat">Budget $${S.budget}</div><div></div>`+
     ['ev','weird','cred','hype','susp'].map(k=>`<div class="stat ${k==='susp'?'bad':'good'}">${statName(k)} ${S[k]}</div>`).join('');
 }
-function render(){ renderStats(); renderChrome(); $('#log').innerHTML=S.log.slice(-9).map(x=>`<div>${x}</div>`).join(''); ({mode,lab,traits,discover,assay,figure,reviewer,final,result})[S.phase](); }
+function render(){ renderStats(); renderChrome(); $('#log').innerHTML=S.log.slice(-9).map(x=>`<div>${x}</div>`).join(''); ({mode,validation,lab,traits,discover,assay,figure,reviewer,final,result})[S.phase](); }
 function renderChrome(){
   const procedure = S && S.lab && S.phase==='lab';
-  $('#side-title').textContent = procedure ? 'Lab Record View' : 'Live Assay Chamber';
-  $('#footer-question').textContent = procedure ? 'Core question: can the notebook defend the claim?' : 'Core question: make the phenomenon more believable, or more sensational?';
+  const validationMode = S && S.phase==='validation';
+  $('#side-title').textContent = validationMode ? 'Validation Packet' : procedure ? 'Lab Record View' : 'Live Assay Chamber';
+  $('#footer-question').textContent = validationMode ? 'Core question: can a new player explain the failed record?' : procedure ? 'Core question: can the notebook defend the claim?' : 'Core question: make the phenomenon more believable, or more sensational?';
 }
 function btn(label, detail, fn, cls='choice'){ const b=document.createElement('button'); b.className=cls; b.innerHTML=`<h3>${label}</h3><p>${detail||''}</p>`; b.onclick=fn; return b; }
 function setStage(html){ $('#stage').innerHTML=html; $('#choices').innerHTML=''; }
@@ -317,7 +318,15 @@ function mode(){
   setStage(`<div class="kicker">R-series prototype direction</div><h2>Choose the lab loop to test</h2><div class="body"><p>The production target is now a fly-lab procedure simulator with a publication wrapper. The old phenomenon-first loop remains available as a historical prototype.</p><div class="objective">Current goal: make labels, vial age, calendar pressure, and notebook traceability matter before any paper claim exists.</div></div>`);
   const c=$('#choices');
   c.appendChild(btn('Start Procedure Lab','Stock rack, vial age, labels, calendar events, and notebook consequences.',startLab,'choice primary'));
+  c.appendChild(btn('Open validation packet','Run #33 player/SME sessions without leaving the prototype.',startValidation,'choice'));
   c.appendChild(btn('Open old publication-satire prototype','Trait cards, absurd phenomena, figure framing, and Reviewer #2.',()=>{S.phase='traits'; log('Historical prototype route opened.'); render();},'choice ghost'));
+}
+function startValidation(){ S.phase='validation'; log('Validation packet opened: player session, SME fixtures, and closure gate are visible.'); render(); }
+function validation(){
+  setStage(`<div class="kicker">R7 validation packet</div><h2>First-run and SME validation</h2><div class="body"><p>This packet keeps validation focused on the R-series question: can the player connect lab records to Reviewer #2, and can a biology-aware reviewer accept the simplifications?</p></div><div class="validation-grid"><section class="planner"><h3>Player session</h3><ol><li>Open the default Procedure Lab route.</li><li>Let a fresh player reach one Reviewer #2 finding without coaching the first 30 seconds.</li><li>Ask what caused the attack and what they would change next run.</li></ol><p><b>Pass:</b> names one real cause and one plausible second-run repair.</p></section><section class="planner"><h3>SME fixture checks</h3><ul class="calendar"><li><a href="?fixture=clean">Clean overclaim fixture</a></li><li><a href="?fixture=dirty">Dirty CO2 fixture</a></li><li><a href="?fixture=missing-control">Missing-control fixture</a></li></ul><p>Rate each core mechanic as accurate enough, acceptable simplification, misleading, or unsafe.</p></section><section class="planner"><h3>Record exact evidence</h3><p>Capture exact player phrases, the reviewer finding id, second-run repair, and any misleading SME mark. Open a follow-up issue for every misleading or unsafe core mechanic.</p></section><section class="planner"><h3>Closure gate</h3><ul class="calendar"><li>3 player sessions recorded.</li><li>1 SME review recorded.</li><li>Fixture differences understood or follow-up issues opened.</li><li>#27 lived-experience gap stays separate.</li></ul></section></div>`);
+  const c=$('#choices');
+  c.appendChild(btn('Start first-run route','Open the Procedure Lab without fixture setup.',startLab,'choice primary'));
+  c.appendChild(btn('Return to route selection','Back to normal prototype entry.',reset,'choice ghost'));
 }
 function latestLabRecord(){
   if(S.lab.figureReview) return {stage:'review', record:S.lab.figureReview};
@@ -498,7 +507,9 @@ function loadValidationFixture(name){
 function applyInitialFixture(){
   try{
     const search = window.location && window.location.search ? window.location.search : '';
-    const fixture = new URLSearchParams(search).get('fixture');
+    const params = new URLSearchParams(search);
+    if(params.get('validation')==='packet') startValidation();
+    const fixture = params.get('fixture');
     if(['clean','dirty','missing-control'].includes(fixture)) loadValidationFixture(fixture);
   }catch(e){}
 }
@@ -506,6 +517,15 @@ function drawChamber(){
   const cv=$('#chamber'), ctx=cv.getContext('2d'), w=cv.width, h=cv.height; anim+=0.025;
   ctx.clearRect(0,0,w,h); ctx.fillStyle='#02040a'; ctx.fillRect(0,0,w,h);
   ctx.strokeStyle='#25324a'; ctx.strokeRect(8,8,w-16,h-16);
+  if(S.phase==='validation'){
+    ctx.fillStyle='#d8e6ff'; ctx.font='20px system-ui'; ctx.fillText('Validation packet, not a play state.',28,48);
+    ctx.fillStyle='#9fb0c6'; ctx.font='15px system-ui'; ctx.fillText('Run sessions, record exact evidence, then decide #33.',28,76);
+    ctx.fillStyle='#9fdc61'; ctx.font='15px system-ui'; ctx.fillText('1. Fresh player reaches Reviewer #2.',28,126);
+    ctx.fillText('2. SME reviews clean / dirty / missing-control.',28,154);
+    ctx.fillText('3. Follow-up issues capture failures.',28,182);
+    ctx.fillStyle='#f5c86a'; ctx.font='14px system-ui'; ctx.fillText('Do not close #27 or #33 from this screen alone.',28,h-36);
+    return requestAnimationFrame(drawChamber);
+  }
   if(S.lab&&S.phase==='lab'){
     const vials = activeVials(), batches = S.lab.batchRecords.length, assays = S.lab.assayRecords.length, review = S.lab.figureReview;
     ctx.fillStyle='#d8e6ff'; ctx.font='20px system-ui'; ctx.fillText('Procedure record, not phenomenon chamber.',28,48);

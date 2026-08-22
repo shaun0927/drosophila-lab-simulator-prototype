@@ -22,7 +22,7 @@ node web-prototype/smoke-tests.js
 Expected:
 
 ```text
-fly-lab smoke passed: R2/R3, clean, dirty, missing-control, URL fixtures, legacy route
+fly-lab smoke passed: R2/R3, objective strip, reviewer repair plans, validation packet, clean, dirty, missing-control, URL fixtures, legacy route
 ```
 
 ## Validation URLs
@@ -30,9 +30,12 @@ fly-lab smoke passed: R2/R3, clean, dirty, missing-control, URL fixtures, legacy
 Use local or hosted equivalents of:
 
 - `web-prototype/index.html`
+- `web-prototype/index.html?validation=packet`
 - `web-prototype/index.html?fixture=clean`
 - `web-prototype/index.html?fixture=dirty`
 - `web-prototype/index.html?fixture=missing-control`
+
+The validation packet URL is the moderator/SME launch page. It does not satisfy validation by itself.
 
 The fixture URLs are not the first-run playtest. They are controlled comparison states for debrief and SME review.
 

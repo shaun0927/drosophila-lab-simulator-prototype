@@ -203,7 +203,7 @@ validateExternalEvidence({
   ledger: baseLedger
     .replace('| Fresh-player first-run sessions | 3 | 0 | Pending execution | #33 |', '| Fresh-player first-run sessions | 3 | 1 | In progress | #33 |')
     .replace('| Follow-up fix/cut issues for failed external criteria | As needed | 0 | Pending external findings | #33 |', '| Follow-up fix/cut issues for failed external criteria | As needed | 1 | In progress | #33 |')
-    .replace('| P-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending |', '| P-01 | 2026-08-22 | default | Yes | defend record | random luck | add control | Fix | #44 |'),
+    .replace('| P-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending |', '| P-01 | 2026-08-22 | default | Yes | defend record | random luck | add control | Fix | #44 resolved |'),
   validationResults: partialValidationResults,
   experienceMap: pendingExperienceMap,
   progressAudit: pendingProgressAudit,
@@ -224,7 +224,7 @@ expectFailWith(
   {
     ledger: baseLedger
       .replace('| Fresh-player first-run sessions | 3 | 0 | Pending execution | #33 |', '| Fresh-player first-run sessions | 3 | 1 | In progress | #33 |')
-      .replace('| P-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending |', '| P-01 | 2026-08-22 | default | Yes | defend record | random luck | add control | Fix | #44 |'),
+      .replace('| P-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending |', '| P-01 | 2026-08-22 | default | Yes | defend record | random luck | add control | Fix | #44 resolved |'),
     validationResults: partialValidationResults,
     experienceMap: pendingExperienceMap,
     gameData: {
@@ -237,6 +237,23 @@ expectFailWith(
     }
   },
   '#33 follow-up issue accepted count must match unique concrete Fix/Cut follow-up references'
+);
+
+expectFail(
+  'player fix decision with blocking-open follow-up',
+  baseLedger
+    .replace('| Fresh-player first-run sessions | 3 | 0 | Pending execution | #33 |', '| Fresh-player first-run sessions | 3 | 1 | In progress | #33 |')
+    .replace('| Follow-up fix/cut issues for failed external criteria | As needed | 0 | Pending external findings | #33 |', '| Follow-up fix/cut issues for failed external criteria | As needed | 1 | In progress | #33 |')
+    .replace('| P-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending |', '| P-01 | 2026-08-22 | default | Yes | defend record | random luck | add control | Fix | #44 blocking open |'),
+  'P-01 decision Fix follow-up must be resolved or accepted non-blocking before it can count',
+  {
+    externalEvidence: {
+      livedRows: {accepted: 0, required: 5},
+      livedDesignChange: {accepted: 0, required: 1},
+      playerSessions: {accepted: 1, required: 3},
+      smeReviews: {accepted: 0, required: 1}
+    }
+  }
 );
 
 validateExternalEvidence({

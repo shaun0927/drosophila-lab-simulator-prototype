@@ -112,6 +112,7 @@ The current implementation stays aligned with the parent contract because:
 - `node tools/external-evidence-check.js` requires every accepted LE row id to appear in the experience map and every accepted P/SME row id to appear in validation results
 - `node tools/external-evidence-check.js` requires Fix/Cut follow-up fields to contain a concrete GitHub issue reference
 - `node tools/external-evidence-check.js` rejects Fix/Cut follow-up references that point back to #27 or #33
+- `node tools/external-evidence-check.js` rejects Fix/Cut follow-up evidence unless the follow-up field says `resolved` or `accepted non-blocking`, so opening an issue alone cannot close #33
 - `node tools/external-evidence-check.js` requires the follow-up issue accepted count to match unique concrete Fix/Cut follow-up references
 - `?validation=status` and `web-prototype/data.js` expose the Fix/Cut follow-up issue gate so the in-app status cannot hide unresolved validation failures
 - `node tools/r-series-status-check.js` requires the follow-up issue ledger gate to remain `As needed`, linked to #33, and represented by a non-negative accepted count

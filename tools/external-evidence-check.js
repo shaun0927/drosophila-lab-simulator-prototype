@@ -118,6 +118,10 @@ function referencesCurrentGateIssue(value) {
   return /(^|\s)#(27|33)(\s|$)|\/issues\/(27|33)(\s|$)/.test(value || '');
 }
 
+function hasClosedFollowUpDisposition(value) {
+  return /\b(resolved|accepted non-blocking)\b/i.test(value || '');
+}
+
 function isMissingEvidenceField(value) {
   return !value || /^(Pending|n\/a|-)$/i.test(value);
 }
@@ -228,6 +232,7 @@ function requireFixCutFollowUps(markdown) {
       assert(!isMissingFollowUp(followUp), `${id} decision ${decision} must link a follow-up issue before it can count`);
       assert(isConcreteIssueReference(followUp), `${id} decision ${decision} follow-up must be a concrete GitHub issue reference`);
       assert(!referencesCurrentGateIssue(followUp), `${id} decision ${decision} follow-up must not reference #27 or #33`);
+      assert(hasClosedFollowUpDisposition(followUp), `${id} decision ${decision} follow-up must be resolved or accepted non-blocking before it can count`);
     }
   }
 }

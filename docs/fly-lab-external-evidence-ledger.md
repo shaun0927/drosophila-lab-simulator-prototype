@@ -50,6 +50,7 @@ Each fresh-player session must include:
 - exact player phrase for one second-run repair
 - observed blocker, if any
 - pass/fix/cut decision
+- for Fix/Cut decisions, a concrete follow-up issue reference plus `resolved` or `accepted non-blocking` disposition before the row can count
 
 Not acceptable as #33 player closure evidence:
 
@@ -68,7 +69,7 @@ The SME or biology-aware review must include:
 - rating for CO2/sorting abstraction
 - rating for negative geotaxis assay abstraction
 - rating for record-to-reviewer claim logic
-- every `misleading` or `unsafe/ethically wrong` mark with a linked fix/cut issue
+- every `misleading` or `unsafe/ethically wrong` mark with a linked fix/cut issue and `resolved` or `accepted non-blocking` disposition before the row can count
 
 Not acceptable as #33 SME closure evidence:
 
@@ -116,8 +117,8 @@ Not acceptable as #33 SME closure evidence:
 1. Three player sessions are recorded.
 2. One SME or biology-aware review is recorded.
 3. The accepted player sessions collectively cover clean, dirty, and missing-control routes or fixtures before closure review.
-4. Every serious player comprehension failure has a fix/cut decision.
-5. Every misleading or unsafe SME mark has a linked fix/cut issue.
+4. Every serious player comprehension failure has a fix/cut decision with a resolved or accepted-non-blocking follow-up disposition.
+5. Every misleading or unsafe SME mark has a linked fix/cut issue with a resolved or accepted-non-blocking follow-up disposition.
 6. `docs/fly-lab-validation-results.md` summarizes the result.
 7. `node web-prototype/smoke-tests.js` passes after any resulting implementation change.
 8. `node tools/r-series-status-check.js` passes after the ledger and status docs are updated.

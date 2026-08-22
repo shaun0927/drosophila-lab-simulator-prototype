@@ -167,7 +167,7 @@ Default implementation scope:
 | Evidence | Severity | Closure effect |
 |---|---|---|
 | One player misreads a non-core affordance but can explain the record | Follow-up polish after #33 | Does not block #33 |
-| One player finishes but misattributes the reviewer finding | Fix before #33 can close | Blocks #33 until issue exists and disposition is recorded |
+| One player finishes but misattributes the reviewer finding | Fix before #33 can close | Blocks #33 until issue exists and disposition is `resolved` or `accepted non-blocking` |
 | Two or more players fail the same core connection | Cut or redesign before #33 can close | Blocks #33 |
 | SME marks core mechanic `Misleading` | Fix before #33 can close | Blocks #33 |
 | SME marks core mechanic `Unsafe/ethically wrong` | Cut or redesign before #33 can close | Blocks #33 |
@@ -179,7 +179,7 @@ Default implementation scope:
 - Do not convert validation frustration into a larger feature unless the evidence demands it.
 - Do not treat "needs more explanation" as the default fix; first check whether action feedback, record state, or reviewer mapping is unclear.
 - Do not add a new organism, assay, phenotype, or Unity scene to solve a first-slice evidence problem.
-- Do not close #33 by opening issues only; serious fix/cut issues must be resolved or explicitly accepted as non-blocking.
+- Do not close #33 by opening issues only; serious fix/cut issues must be resolved or explicitly accepted as non-blocking, and that disposition must be written in the ledger follow-up field before the evidence row can count.
 - Do not close #27 with source research alone; lived-experience provenance must be recorded or explicitly waived by the user.
 
 ## Required Issue Body Fields

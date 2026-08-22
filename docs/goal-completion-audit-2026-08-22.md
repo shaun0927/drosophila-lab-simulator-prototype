@@ -16,6 +16,8 @@ External validation execution tracker: [`external-validation-execution-tracker.m
 
 Issue-state audit self-test: `node tools/external-validation-issue-state-audit.test.js` verifies the live issue-state audit parser and mismatch detection with mock issue states in CI.
 
+Full local verification wrapper: `node tools/external-validation-full-check.js` runs the non-live local verification chain. `node tools/external-validation-full-check.js --live-issues` also runs the authenticated GitHub issue-state audit required before closure.
+
 ## Requirement Matrix
 
 | Requirement from the objective | Current evidence | Status | Why this status is correct |
@@ -165,4 +167,5 @@ The objective can be marked complete only when:
 11. `node tools/external-validation-issue-state-audit.js` passes in an authenticated local `gh` environment.
 12. `node tools/external-validation-issue-state-audit.test.js` passes.
 13. `node tools/issue-template-contract-check.js` passes.
-14. Main CI is green on the commit that contains the final audit.
+14. `node tools/external-validation-full-check.js --live-issues` passes.
+15. Main CI is green on the commit that contains the final audit.

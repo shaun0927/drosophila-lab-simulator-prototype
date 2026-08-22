@@ -38,6 +38,8 @@ Purpose: track whether the external validation execution issues have produced th
 Run:
 
 ```bash
+node tools/external-validation-full-check.js
+node tools/external-validation-full-check.js --live-issues
 node tools/external-evidence-check.js
 node tools/external-validation-tracker-check.js
 node tools/external-validation-issue-state-audit.js
@@ -46,7 +48,7 @@ node web-prototype/smoke-tests.js
 node tools/issue-template-contract-check.js
 ```
 
-Run `node tools/external-validation-issue-state-audit.js` from a local environment with `gh` authenticated. It is intentionally not a CI gate because it depends on live GitHub issue state.
+Run `node tools/external-validation-full-check.js` for the non-live local chain. Run `node tools/external-validation-full-check.js --live-issues` from a local environment with `gh` authenticated. The live issue-state audit is intentionally not a CI gate because it depends on live GitHub issue state.
 
 Then update:
 

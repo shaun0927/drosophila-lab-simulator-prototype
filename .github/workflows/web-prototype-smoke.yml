@@ -29,6 +29,7 @@ jobs:
           node --check tools/external-validation-tracker-check.js
           node --check tools/external-validation-issue-state-audit.js
           node --check tools/external-validation-issue-state-audit.test.js
+          node --check tools/external-validation-full-check.js
           node --check tools/issue-template-contract-check.js
 
       - name: Run fly-lab smoke tests

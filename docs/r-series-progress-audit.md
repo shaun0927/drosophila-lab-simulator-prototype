@@ -32,6 +32,8 @@ Live issue-state audit: `node tools/external-validation-issue-state-audit.js` us
 
 Issue-state audit self-test: `node tools/external-validation-issue-state-audit.test.js` uses mock issue states in CI to verify that the live audit parser rejects closed issues, missing no-closure decisions, and missing required execution issues.
 
+Full local verification wrapper: `node tools/external-validation-full-check.js` runs the non-live syntax, smoke, R-series status, external-evidence ledger, tracker, audit self-test, issue-template, and whitespace checks. Add `--live-issues` to include the authenticated `gh` issue-state audit before closure decisions.
+
 External-evidence ledger: [`fly-lab-external-evidence-ledger.md`](fly-lab-external-evidence-ledger.md) records the unfilled #27 lived-experience slots and #33 player/SME validation slots.
 
 ## Current implementation status

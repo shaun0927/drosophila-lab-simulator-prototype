@@ -4,6 +4,8 @@ Date: 2026-08-22
 
 Parent contract: [`fly-lab-product-thesis.md`](fly-lab-product-thesis.md)
 
+Implementation PR: https://github.com/shaun0927/drosophila-lab-simulator-prototype/pull/34
+
 ## Current implementation status
 
 | Issue | Status | Evidence | Remaining gap |

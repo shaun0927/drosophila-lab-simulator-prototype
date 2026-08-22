@@ -1,5 +1,7 @@
 # Fly-Lab Validation Results
 
+Implementation PR: https://github.com/shaun0927/drosophila-lab-simulator-prototype/pull/34
+
 No external player or SME validation has been run yet.
 
 ## Current internal regression status

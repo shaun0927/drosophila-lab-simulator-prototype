@@ -133,6 +133,13 @@ function requireSmeRatings(row, id) {
   assert(invalidIndex === -1, `${id} accepted SME row has an invalid mechanic rating`);
 }
 
+function requireLivedExperienceContract(row, id) {
+  const provenance = row[1] || '';
+  const designEffect = row[7] || '';
+  assert(/^(firsthand|observed lab work|explicit no relevant experience)$/i.test(provenance), `${id} accepted lived-experience row has invalid provenance`);
+  assert(/^(mechanic change|guardrail change|SME risk update|explicit exclusion)$/i.test(designEffect), `${id} accepted lived-experience row has invalid design effect`);
+}
+
 function requirePlayerDecisionConsistency(row, id) {
   const completed = row[3] || '';
   const decision = row[7] || '';
@@ -178,6 +185,7 @@ function requireAcceptedRowFields(markdown) {
       const missingIndex = row.slice(1, 8).findIndex(isMissingEvidenceField);
       assert(missingIndex === -1, `${id} accepted lived-experience row has an incomplete required field`);
       requireNoProxyEvidence(row, [1, 2, 3, 4, 5, 6, 7], id, 'lived-experience');
+      requireLivedExperienceContract(row, id);
     }
 
     if (id.startsWith('P-') && /^(Pass|Fix|Cut)$/i.test(row[7] || '')) {

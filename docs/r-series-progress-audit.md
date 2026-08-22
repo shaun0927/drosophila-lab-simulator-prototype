@@ -112,6 +112,7 @@ The current implementation stays aligned with the parent contract because:
 - `node tools/external-evidence-check.js` requires every accepted LE row id to appear in the experience map and every accepted P/SME row id to appear in validation results
 - `node tools/external-evidence-check.js` requires Fix/Cut follow-up fields to contain a concrete GitHub issue reference
 - `node tools/external-evidence-check.js` requires the follow-up issue accepted count to match unique concrete Fix/Cut follow-up references
+- `node tools/external-evidence-check.js` requires accepted LE provenance and design-effect fields to use the allowed #27 closure vocabulary
 - `node tools/external-evidence-check.js` requires the #27 design-change count to match accepted LE rows whose design effect is a mechanic change, guardrail change, or SME-risk update
 - `node tools/external-evidence-check.js` rejects `Fix` or `Cut` player/SME evidence rows unless they link a concrete follow-up issue before counting
 - `node tools/r-series-status-check.js` uses ledger counts to accept either zero-evidence pending language or partial-evidence in-progress language, so status guardrails do not block real validation progress

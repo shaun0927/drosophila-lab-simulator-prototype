@@ -90,6 +90,26 @@ function requireSmeRatings(row, id) {
   assert(invalidIndex === -1, `${id} accepted SME row has an invalid mechanic rating`);
 }
 
+function requirePlayerDecisionConsistency(row, id) {
+  const completed = row[3] || '';
+  const decision = row[7] || '';
+  assert(/^(Yes|No)$/i.test(completed), `${id} accepted player row must record completion as Yes or No`);
+  if (/^Pass$/i.test(decision)) {
+    assert(/^Yes$/i.test(completed), `${id} player Pass requires completing one run within 5 minutes`);
+  }
+}
+
+function requireSmeDecisionConsistency(row, id) {
+  const ratings = row.slice(3, 8);
+  const decision = row[8] || '';
+  if (ratings.some(value => /^Misleading$/i.test(value || ''))) {
+    assert(/^(Fix|Cut)$/i.test(decision), `${id} SME row with a Misleading rating must be Fix or Cut`);
+  }
+  if (ratings.some(value => /^Unsafe\/ethically wrong$/i.test(value || ''))) {
+    assert(/^Cut$/i.test(decision), `${id} SME row with an Unsafe/ethically wrong rating must be Cut`);
+  }
+}
+
 function requireFixCutFollowUps(markdown) {
   for (const line of markdown.split(/\r?\n/)) {
     if (!line.startsWith('| P-') && !line.startsWith('| SME-')) continue;
@@ -120,6 +140,7 @@ function requireAcceptedRowFields(markdown) {
       const missingIndex = row.slice(1, 7).findIndex(isMissingEvidenceField);
       assert(missingIndex === -1, `${id} accepted player row has an incomplete required field`);
       requireNoProxyEvidence(row, [1, 2, 3, 4, 5, 6], id, 'player');
+      requirePlayerDecisionConsistency(row, id);
     }
 
     if (id.startsWith('SME-') && /^(Pass|Fix|Cut)$/i.test(row[8] || '')) {
@@ -127,6 +148,7 @@ function requireAcceptedRowFields(markdown) {
       assert(missingIndex === -1, `${id} accepted SME row has an incomplete required field`);
       requireNoProxyEvidence(row, [1, 2, 3, 4, 5, 6, 7], id, 'SME');
       requireSmeRatings(row, id);
+      requireSmeDecisionConsistency(row, id);
     }
   }
 }

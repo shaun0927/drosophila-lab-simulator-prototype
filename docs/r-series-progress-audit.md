@@ -107,6 +107,8 @@ The current implementation stays aligned with the parent contract because:
 - `node tools/external-evidence-check.js` rejects accepted LE/player/SME rows that still contain incomplete required evidence fields
 - `node tools/external-evidence-check.js` rejects accepted external-evidence rows that use screenshots, smoke tests, implementer walkthroughs, or proxy reviews as the evidence source
 - `node tools/external-evidence-check.js` requires accepted SME rows to use the allowed mechanic-rating rubric
+- `node tools/external-evidence-check.js` rejects player Pass rows unless the player completed one run within 5 minutes
+- `node tools/external-evidence-check.js` rejects SME Pass rows when any core mechanic is rated Misleading or Unsafe/ethically wrong
 - `node tools/external-evidence-check.js` requires the #27 design-change count to match accepted LE rows whose design effect is a mechanic change, guardrail change, or SME-risk update
 - `node tools/external-evidence-check.js` rejects `Fix` or `Cut` player/SME evidence rows unless they link a concrete follow-up issue before counting
 - `node tools/r-series-status-check.js` uses ledger counts to accept either zero-evidence pending language or partial-evidence in-progress language, so status guardrails do not block real validation progress

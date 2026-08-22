@@ -105,6 +105,18 @@ function requireFollowUpReferencesInResults(ledger, validationResults) {
   }
 }
 
+function requireSmeFixtureCoverage(validationResults, smeAccepted) {
+  if (smeAccepted < 1) return;
+  const requiredFixtures = [
+    [/\bclean\b/i, '#33 accepted SME review must reference clean fixture coverage in validation results'],
+    [/\bdirty\b/i, '#33 accepted SME review must reference dirty fixture coverage in validation results'],
+    [/missing[-\s]?control/i, '#33 accepted SME review must reference missing-control fixture coverage in validation results']
+  ];
+  for (const [pattern, message] of requiredFixtures) {
+    assert(pattern.test(validationResults), message);
+  }
+}
+
 function rowsPresent(markdown, idPrefix, expected) {
   for (let i = 1; i <= expected; i += 1) {
     const id = `${idPrefix}-${String(i).padStart(2, '0')}`;
@@ -408,6 +420,7 @@ function validateExternalEvidence({ ledger, validationResults, experienceMap, pr
 
   requireAcceptedEvidenceReferences({ledger, validationResults, experienceMap});
   requireFollowUpReferencesInResults(ledger, validationResults);
+  requireSmeFixtureCoverage(validationResults, smeAccepted);
   requirePendingStatusDocs({counts, validationResults, experienceMap, progressAudit, goalAudit});
 
   assert(ledger.includes('Do not treat screenshots as player, SME, or lived-experience evidence') || ledger.includes('screenshots of the route'), 'ledger must reject screenshot-only closure evidence');

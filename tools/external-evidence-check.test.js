@@ -63,6 +63,20 @@ const partialValidationResultsWithoutId = [
   '| Player | Route | Reviewer finding | Understood cause? | Second-run improvement | Result | Notes |',
   '| player one | default | handling confound | yes | reduce CO2 exposure | Pass | raw notes linked |'
 ].join('\n');
+const partialSmeValidationResultsWithFixtures = [
+  'External validation in progress.',
+  '## Validation Run 2026-08-22',
+  'SME-01 reviewed ?fixture=clean, ?fixture=dirty, and ?fixture=missing-control.',
+  '| Mechanic | Rating | Evidence | Required action |',
+  '| Stock/vial/calendar | Accurate enough | clean fixture, dirty fixture, missing-control fixture compared | none |'
+].join('\n');
+const partialSmeValidationResultsWithoutFixtures = [
+  'External validation in progress.',
+  '## Validation Run 2026-08-22',
+  'SME-01 reviewed the default route only.',
+  '| Mechanic | Rating | Evidence | Required action |',
+  '| Stock/vial/calendar | Accurate enough | default route | none |'
+].join('\n');
 const fullRouteCoverageValidationResults = [
   'External validation in progress.',
   '## Validation Run 2026-08-22',
@@ -360,6 +374,45 @@ expectFailWith(
     }
   },
   'SME-01 accepted SME row must be referenced in validation results'
+);
+
+validateExternalEvidence({
+  ledger: baseLedger
+    .replace('| SME or biology-aware review | 1 | 0 | Pending execution | #33 |', '| SME or biology-aware review | 1 | 1 | In progress | #33 |')
+    .replace('| SME-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending |', '| SME-01 | 2026-08-22 | genetics TA | Accurate enough | Acceptable simplification | Acceptable simplification | Accurate enough | Accurate enough | Pass | none |'),
+  validationResults: partialSmeValidationResultsWithFixtures,
+  experienceMap: pendingExperienceMap,
+  progressAudit: pendingProgressAudit,
+  goalAudit: pendingGoalAudit,
+  gameData: {
+    externalEvidence: {
+      livedRows: {accepted: 0, required: 5},
+      livedDesignChange: {accepted: 0, required: 1},
+      playerSessions: {accepted: 0, required: 3},
+      smeReviews: {accepted: 1, required: 1}
+    }
+  }
+});
+console.log('pass fixture accepted: SME fixture coverage');
+
+expectFailWith(
+  'accepted SME row without fixture coverage',
+  {
+    ledger: baseLedger
+      .replace('| SME or biology-aware review | 1 | 0 | Pending execution | #33 |', '| SME or biology-aware review | 1 | 1 | In progress | #33 |')
+      .replace('| SME-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending |', '| SME-01 | 2026-08-22 | genetics TA | Accurate enough | Acceptable simplification | Acceptable simplification | Accurate enough | Accurate enough | Pass | none |'),
+    validationResults: partialSmeValidationResultsWithoutFixtures,
+    experienceMap: pendingExperienceMap,
+    gameData: {
+      externalEvidence: {
+        livedRows: {accepted: 0, required: 5},
+        livedDesignChange: {accepted: 0, required: 1},
+        playerSessions: {accepted: 0, required: 3},
+        smeReviews: {accepted: 1, required: 1}
+      }
+    }
+  },
+  '#33 accepted SME review must reference clean fixture coverage in validation results'
 );
 
 expectFail(

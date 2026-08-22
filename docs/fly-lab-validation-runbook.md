@@ -150,6 +150,8 @@ Record results in `docs/fly-lab-validation-results.md` under a dated section:
 
 ### SME Review
 
+Fixtures reviewed: `?fixture=clean`, `?fixture=dirty`, `?fixture=missing-control`
+
 | Mechanic | Rating | Evidence | Required action |
 |---|---|---|---|
 
@@ -164,6 +166,7 @@ Record results in `docs/fly-lab-validation-results.md` under a dated section:
 
 - 3 player sessions are recorded
 - 1 SME review is recorded
+- accepted SME review references clean, dirty, and missing-control fixture coverage in validation results
 - accepted player sessions collectively cover clean, dirty, and missing-control routes or fixtures
 - clean/dirty/missing-control fixture differences are understood or follow-up issues are opened
 - all `misleading` or `unsafe` SME findings have fix/cut issues with resolved or accepted-non-blocking dispositions

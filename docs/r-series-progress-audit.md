@@ -6,7 +6,7 @@ Parent contract: [`fly-lab-product-thesis.md`](fly-lab-product-thesis.md)
 
 Implementation PR: https://github.com/shaun0927/drosophila-lab-simulator-prototype/pull/34 merged to `main` at merge commit `f470330`.
 
-CI guardrail: `.github/workflows/web-prototype-smoke.yml` runs JavaScript syntax checks, `node web-prototype/smoke-tests.js`, `node tools/r-series-status-check.js`, `node tools/external-evidence-check.js`, `node tools/external-validation-tracker-check.js`, `node tools/external-validation-tracker-check.test.js`, `node tools/external-evidence-check.test.js`, `node tools/external-validation-issue-state-audit.test.js`, `node tools/final-closure-readiness-check.js`, `node tools/final-closure-readiness-check.test.js`, and `node tools/issue-template-contract-check.js` on pull requests and pushes.
+CI guardrail: `.github/workflows/web-prototype-smoke.yml` runs JavaScript syntax checks, `node web-prototype/smoke-tests.js`, `node tools/r-series-status-check.js`, `node tools/external-evidence-check.js`, `node tools/external-validation-tracker-check.js`, `node tools/external-validation-tracker-check.test.js`, `node tools/external-evidence-check.test.js`, `node tools/external-validation-issue-state-audit.test.js`, `node tools/final-closure-readiness-check.js`, `node tools/final-closure-readiness-check.test.js`, `node tools/open-issue-triage-audit.test.js`, and `node tools/issue-template-contract-check.js` on pull requests and pushes.
 
 Status guardrail: `node tools/r-series-status-check.js` verifies that required R-series artifacts, validation packets, screenshot evidence, external blocker language, issue-template contract checks, and parked-issue drift guardrails are still present.
 
@@ -15,6 +15,8 @@ External-evidence guardrail: `node tools/external-evidence-check.js` verifies th
 Issue-template contract guardrail: `node tools/issue-template-contract-check.js` verifies that #27 lived-experience entries and #33 validation findings keep scoped implementation fields required before they can become implementation work.
 
 Open-issue triage: [`open-issue-triage-2026-08-22.md`](open-issue-triage-2026-08-22.md) classifies the older Unity/phenomenon-first issues so they do not steer the current R-series browser slice by accident.
+
+Open-issue triage live audit: `node tools/open-issue-triage-audit.js` uses authenticated `gh` locally to verify that active R-series issues have `r-series-current`, parked Unity/old-loop issues have `parked-unity-line` plus `post-r-series-backlog`, superseded planning issues stay closed, and no unclassified issue through #39 is open. `node tools/open-issue-triage-audit.test.js` covers this policy in CI with mock issues.
 
 Thread-goal audit: [`goal-completion-audit-2026-08-22.md`](goal-completion-audit-2026-08-22.md) checks the user's active objective requirement by requirement and records why the overall goal is still not complete.
 

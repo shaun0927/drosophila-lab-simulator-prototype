@@ -20,6 +20,8 @@ const checks = [
   [node, ['--check', 'tools/external-validation-full-check.js']],
   [node, ['--check', 'tools/final-closure-readiness-check.js']],
   [node, ['--check', 'tools/final-closure-readiness-check.test.js']],
+  [node, ['--check', 'tools/open-issue-triage-audit.js']],
+  [node, ['--check', 'tools/open-issue-triage-audit.test.js']],
   [node, ['--check', 'tools/issue-template-contract-check.js']],
   [node, ['--check', 'tools/r-series-status-check.js']],
   [node, ['web-prototype/smoke-tests.js']],
@@ -31,6 +33,7 @@ const checks = [
   [node, ['tools/external-validation-issue-state-audit.test.js']],
   [node, ['tools/final-closure-readiness-check.js']],
   [node, ['tools/final-closure-readiness-check.test.js']],
+  [node, ['tools/open-issue-triage-audit.test.js']],
   [node, ['tools/issue-template-contract-check.js']],
   ['git', ['diff', '--check']]
 ];
@@ -77,8 +80,9 @@ for (const [command, args] of checks) {
 
 if (liveIssues) {
   run(node, ['tools/external-validation-issue-state-audit.js']);
+  run(node, ['tools/open-issue-triage-audit.js']);
 } else {
-  console.log('\n- skipped live issue-state audit; run with --live-issues from an authenticated gh environment');
+  console.log('\n- skipped live issue-state and open-issue triage audits; run with --live-issues from an authenticated gh environment');
 }
 
 console.log('\nexternal validation full check passed');

@@ -33,6 +33,8 @@ jobs:
           node --check tools/external-validation-full-check.js
           node --check tools/final-closure-readiness-check.js
           node --check tools/final-closure-readiness-check.test.js
+          node --check tools/open-issue-triage-audit.js
+          node --check tools/open-issue-triage-audit.test.js
           node --check tools/issue-template-contract-check.js
 
       - name: Run fly-lab smoke tests
@@ -61,6 +63,9 @@ jobs:
 
       - name: Self-test final closure readiness
         run: node tools/final-closure-readiness-check.test.js
+
+      - name: Self-test open issue triage audit
+        run: node tools/open-issue-triage-audit.test.js
 
       - name: Check evidence issue templates
         run: node tools/issue-template-contract-check.js

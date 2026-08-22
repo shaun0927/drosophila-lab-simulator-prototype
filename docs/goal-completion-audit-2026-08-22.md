@@ -20,6 +20,8 @@ Full local verification wrapper: `node tools/external-validation-full-check.js` 
 
 Final closure readiness guardrail: `node tools/final-closure-readiness-check.js` verifies that the current not-ready state still preserves no-closure language. `node tools/final-closure-readiness-check.js --require-ready` is required on the closure commit and fails until #27/#33 evidence counts and clean/dirty/missing-control route coverage are ready.
 
+Open-issue triage live audit: `node tools/open-issue-triage-audit.js` verifies the live GitHub state behind `docs/open-issue-triage-2026-08-22.md`. It keeps active R-series issues, parked Unity/old-loop backlog, and superseded planning issues from drifting into the wrong status or label set.
+
 ## Requirement Matrix
 
 | Requirement from the objective | Current evidence | Status | Why this status is correct |
@@ -171,6 +173,8 @@ The objective can be marked complete only when:
 13. `node tools/external-validation-issue-state-audit.test.js` passes.
 14. `node tools/final-closure-readiness-check.js --require-ready` passes.
 15. `node tools/final-closure-readiness-check.test.js` passes.
-16. `node tools/issue-template-contract-check.js` passes.
-17. `node tools/external-validation-full-check.js --live-issues` passes.
-18. Main CI is green on the commit that contains the final audit.
+16. `node tools/open-issue-triage-audit.js` passes in an authenticated local `gh` environment.
+17. `node tools/open-issue-triage-audit.test.js` passes.
+18. `node tools/issue-template-contract-check.js` passes.
+19. `node tools/external-validation-full-check.js --live-issues` passes.
+20. Main CI is green on the commit that contains the final audit.

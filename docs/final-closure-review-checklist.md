@@ -6,7 +6,8 @@ Purpose: run this only after the external evidence ledger says #27 and #33 are r
 
 ## Required Inputs
 
-- `docs/fly-lab-external-evidence-ledger.md` has #27 lived rows `5 / 5`, #27 design-changing lived evidence `1 / 1`, #33 player sessions `3 / 3`, #33 player route coverage `3 / 3`, and #33 SME review `1 / 1`.
+- `docs/fly-lab-external-evidence-ledger.md` has #27 lived rows `5 / 5`, #27 design-changing lived evidence `1 / 1`, #33 player sessions `3 / 3`, and #33 SME review `1 / 1`.
+- Accepted #33 player rows cover clean, dirty, and missing-control route or fixture coverage before closure review.
 - `docs/fly-lab-experience-map.md` says `User lived-experience pass: ready for closure review`.
 - `docs/fly-lab-validation-results.md` says `External evidence ready for closure review`.
 - `docs/r-series-progress-audit.md` says `#27 and #33 evidence thresholds met`.
@@ -38,12 +39,21 @@ node --check web-prototype/data.js
 node --check web-prototype/smoke-tests.js
 node --check tools/external-evidence-check.js
 node --check tools/external-evidence-check.test.js
+node --check tools/external-validation-tracker-check.js
+node --check tools/external-validation-tracker-check.test.js
+node --check tools/final-closure-readiness-check.js
+node --check tools/final-closure-readiness-check.test.js
 node --check tools/r-series-status-check.js
 node web-prototype/smoke-tests.js
 node tools/r-series-status-check.js
 node tools/external-evidence-check.js
 node tools/external-evidence-check.test.js
+node tools/external-validation-tracker-check.js
+node tools/external-validation-tracker-check.test.js
+node tools/final-closure-readiness-check.js --require-ready
+node tools/final-closure-readiness-check.test.js
 node tools/issue-template-contract-check.js
+node tools/external-validation-full-check.js --live-issues
 git diff --check
 gh run list --branch main --limit 5
 ```

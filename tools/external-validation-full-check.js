@@ -18,6 +18,8 @@ const checks = [
   [node, ['--check', 'tools/external-validation-issue-state-audit.js']],
   [node, ['--check', 'tools/external-validation-issue-state-audit.test.js']],
   [node, ['--check', 'tools/external-validation-full-check.js']],
+  [node, ['--check', 'tools/final-closure-readiness-check.js']],
+  [node, ['--check', 'tools/final-closure-readiness-check.test.js']],
   [node, ['--check', 'tools/issue-template-contract-check.js']],
   [node, ['--check', 'tools/r-series-status-check.js']],
   [node, ['web-prototype/smoke-tests.js']],
@@ -27,6 +29,8 @@ const checks = [
   [node, ['tools/external-evidence-check.test.js']],
   [node, ['tools/external-validation-tracker-check.test.js']],
   [node, ['tools/external-validation-issue-state-audit.test.js']],
+  [node, ['tools/final-closure-readiness-check.js']],
+  [node, ['tools/final-closure-readiness-check.test.js']],
   [node, ['tools/issue-template-contract-check.js']],
   ['git', ['diff', '--check']]
 ];

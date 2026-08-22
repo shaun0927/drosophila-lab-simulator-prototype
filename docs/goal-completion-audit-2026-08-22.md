@@ -18,6 +18,8 @@ Issue-state audit self-test: `node tools/external-validation-issue-state-audit.t
 
 Full local verification wrapper: `node tools/external-validation-full-check.js` runs the non-live local verification chain. `node tools/external-validation-full-check.js --live-issues` also runs the authenticated GitHub issue-state audit required before closure.
 
+Final closure readiness guardrail: `node tools/final-closure-readiness-check.js` verifies that the current not-ready state still preserves no-closure language. `node tools/final-closure-readiness-check.js --require-ready` is required on the closure commit and fails until #27/#33 evidence counts and clean/dirty/missing-control route coverage are ready.
+
 ## Requirement Matrix
 
 | Requirement from the objective | Current evidence | Status | Why this status is correct |
@@ -167,6 +169,8 @@ The objective can be marked complete only when:
 11. `node tools/external-validation-tracker-check.test.js` passes.
 12. `node tools/external-validation-issue-state-audit.js` passes in an authenticated local `gh` environment.
 13. `node tools/external-validation-issue-state-audit.test.js` passes.
-14. `node tools/issue-template-contract-check.js` passes.
-15. `node tools/external-validation-full-check.js --live-issues` passes.
-16. Main CI is green on the commit that contains the final audit.
+14. `node tools/final-closure-readiness-check.js --require-ready` passes.
+15. `node tools/final-closure-readiness-check.test.js` passes.
+16. `node tools/issue-template-contract-check.js` passes.
+17. `node tools/external-validation-full-check.js --live-issues` passes.
+18. Main CI is green on the commit that contains the final audit.

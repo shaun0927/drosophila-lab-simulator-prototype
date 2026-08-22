@@ -6,7 +6,7 @@ Parent contract: [`fly-lab-product-thesis.md`](fly-lab-product-thesis.md)
 
 Implementation PR: https://github.com/shaun0927/drosophila-lab-simulator-prototype/pull/34 merged to `main` at merge commit `f470330`.
 
-CI guardrail: `.github/workflows/web-prototype-smoke.yml` runs JavaScript syntax checks, `node web-prototype/smoke-tests.js`, `node tools/r-series-status-check.js`, `node tools/external-evidence-check.js`, `node tools/external-validation-tracker-check.js`, `node tools/external-validation-tracker-check.test.js`, `node tools/external-evidence-check.test.js`, `node tools/external-validation-issue-state-audit.test.js`, and `node tools/issue-template-contract-check.js` on pull requests and pushes.
+CI guardrail: `.github/workflows/web-prototype-smoke.yml` runs JavaScript syntax checks, `node web-prototype/smoke-tests.js`, `node tools/r-series-status-check.js`, `node tools/external-evidence-check.js`, `node tools/external-validation-tracker-check.js`, `node tools/external-validation-tracker-check.test.js`, `node tools/external-evidence-check.test.js`, `node tools/external-validation-issue-state-audit.test.js`, `node tools/final-closure-readiness-check.js`, `node tools/final-closure-readiness-check.test.js`, and `node tools/issue-template-contract-check.js` on pull requests and pushes.
 
 Status guardrail: `node tools/r-series-status-check.js` verifies that required R-series artifacts, validation packets, screenshot evidence, external blocker language, issue-template contract checks, and parked-issue drift guardrails are still present.
 
@@ -19,6 +19,8 @@ Open-issue triage: [`open-issue-triage-2026-08-22.md`](open-issue-triage-2026-08
 Thread-goal audit: [`goal-completion-audit-2026-08-22.md`](goal-completion-audit-2026-08-22.md) checks the user's active objective requirement by requirement and records why the overall goal is still not complete.
 
 Final closure checklist: [`final-closure-review-checklist.md`](final-closure-review-checklist.md) defines the last review pass required after #27 and #33 evidence thresholds are met and before the thread goal can be marked complete.
+
+Final closure readiness guardrail: `node tools/final-closure-readiness-check.js` verifies that the current not-ready state preserves no-closure language, and `node tools/final-closure-readiness-check.js --require-ready` fails until #27/#33 evidence counts and clean/dirty/missing-control route coverage are ready for closure review.
 
 External validation sprint plan: [`external-validation-sprint-plan.md`](external-validation-sprint-plan.md) turns the remaining #27/#33 evidence work into a role-based session order with update, follow-up, and closure rules.
 

@@ -104,6 +104,7 @@ The current implementation stays aligned with the parent contract because:
 - `?validation=capture` opens an in-app raw evidence capture checklist for #27/#33 session notes before ledger updates
 - `?validation=lived` opens a separate #27 launch page for collecting real lab incidents without mixing them into #33 validation evidence
 - `node tools/external-evidence-check.js` prevents the ledger, in-app status, validation results, progress audit, and goal audit from drifting apart while external evidence counts remain incomplete, without blocking valid partial evidence updates
+- `node tools/external-evidence-check.js` requires the #27 design-change count to match accepted LE rows whose design effect is a mechanic change, guardrail change, or SME-risk update
 - `node tools/external-evidence-check.js` rejects `Fix` or `Cut` player/SME evidence rows unless they link a concrete follow-up issue before counting
 - `node tools/r-series-status-check.js` uses ledger counts to accept either zero-evidence pending language or partial-evidence in-progress language, so status guardrails do not block real validation progress
 - `node tools/issue-template-contract-check.js` prevents #27/#33 follow-up issue forms from losing required implementation-contract fields before evidence becomes work

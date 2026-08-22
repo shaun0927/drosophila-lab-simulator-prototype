@@ -138,7 +138,7 @@ console.log('pass fixture accepted: fix decision with linked follow-up issue');
 validateExternalEvidence({
   ledger: baseLedger
     .replace('| Lived-experience event rows with user or observed-lab provenance | 5 | 0 | Pending collection | #27 |', '| Lived-experience event rows with user or observed-lab provenance | 5 | 1 | In progress | #27 |')
-    .replace('| LE-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | No |', '| LE-01 | firsthand | vial flip | label vial | timing | stale vial | bad cross | mechanic change | Yes |'),
+    .replace('| LE-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | No |', '| LE-01 | firsthand | vial flip | label vial | timing | stale vial | bad cross | explicit exclusion | Yes |'),
   validationResults: pendingValidationResults,
   experienceMap: partialExperienceMap,
   progressAudit: pendingProgressAudit,
@@ -156,9 +156,46 @@ console.log('pass fixture accepted: partial lived-experience evidence in progres
 
 expectFail(
   'accepted LE row without matching top-level count',
-  baseLedger.replace('| LE-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | No |', '| LE-01 | firsthand | vial flip | label | timing | stale vial | bad cross | mechanic change | Yes |'),
+  baseLedger.replace('| LE-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | No |', '| LE-01 | firsthand | vial flip | label | timing | stale vial | bad cross | explicit exclusion | Yes |'),
   '#27 accepted count must match accepted LE intake rows'
 );
+
+expectFail(
+  'design-change count raised without matching LE design effect',
+  baseLedger
+    .replace('| Lived-experience event rows with user or observed-lab provenance | 5 | 0 | Pending collection | #27 |', '| Lived-experience event rows with user or observed-lab provenance | 5 | 1 | In progress | #27 |')
+    .replace('| Lived-experience answer that changes a mechanic, guardrail, or SME risk | 1 | 0 | Pending collection | #27 |', '| Lived-experience answer that changes a mechanic, guardrail, or SME risk | 1 | 1 | In progress | #27 |')
+    .replace('| LE-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | No |', '| LE-01 | firsthand | vial flip | label vial | timing | stale vial | bad cross | explicit exclusion | Yes |'),
+  '#27 design-change count must match accepted LE rows with mechanic, guardrail, or SME-risk design effects',
+  {
+    externalEvidence: {
+      livedRows: {accepted: 1, required: 5},
+      livedDesignChange: {accepted: 1, required: 1},
+      playerSessions: {accepted: 0, required: 3},
+      smeReviews: {accepted: 0, required: 1}
+    }
+  }
+);
+
+validateExternalEvidence({
+  ledger: baseLedger
+    .replace('| Lived-experience event rows with user or observed-lab provenance | 5 | 0 | Pending collection | #27 |', '| Lived-experience event rows with user or observed-lab provenance | 5 | 1 | In progress | #27 |')
+    .replace('| Lived-experience answer that changes a mechanic, guardrail, or SME risk | 1 | 0 | Pending collection | #27 |', '| Lived-experience answer that changes a mechanic, guardrail, or SME risk | 1 | 1 | In progress | #27 |')
+    .replace('| LE-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | No |', '| LE-01 | firsthand | vial flip | label vial | timing | stale vial | bad cross | mechanic change | Yes |'),
+  validationResults: pendingValidationResults,
+  experienceMap: partialExperienceMap,
+  progressAudit: pendingProgressAudit,
+  goalAudit: pendingGoalAudit,
+  gameData: {
+    externalEvidence: {
+      livedRows: {accepted: 1, required: 5},
+      livedDesignChange: {accepted: 1, required: 1},
+      playerSessions: {accepted: 0, required: 3},
+      smeReviews: {accepted: 0, required: 1}
+    }
+  }
+});
+console.log('pass fixture accepted: design-change row matches top-level count');
 
 expectFail(
   'top-level player count raised while validation results still pending',
@@ -186,7 +223,7 @@ expectFail(
   'matching lived-experience count accepted while experience map still pending',
   baseLedger
     .replace('| Lived-experience event rows with user or observed-lab provenance | 5 | 0 | Pending collection | #27 |', '| Lived-experience event rows with user or observed-lab provenance | 5 | 1 | Pending collection | #27 |')
-    .replace('| LE-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | No |', '| LE-01 | firsthand | vial flip | label vial | timing | stale vial | bad cross | mechanic change | Yes |'),
+    .replace('| LE-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | No |', '| LE-01 | firsthand | vial flip | label vial | timing | stale vial | bad cross | explicit exclusion | Yes |'),
   '#27 accepted count cannot increase while the experience map still says user input is pending',
   {
     externalEvidence: {

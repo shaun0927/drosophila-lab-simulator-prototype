@@ -48,6 +48,18 @@ function tableAcceptedCount(markdown, idPrefix, acceptedColumnIndex) {
   return count;
 }
 
+function livedDesignChangeCount(markdown) {
+  let count = 0;
+  for (const line of markdown.split(/\r?\n/)) {
+    if (!line.startsWith('| LE-')) continue;
+    const row = cells(line);
+    const designEffect = row[7] || '';
+    const accepted = row[8] || '';
+    if (/^Yes$/i.test(accepted) && /(mechanic change|guardrail change|SME risk)/i.test(designEffect)) count += 1;
+  }
+  return count;
+}
+
 function rowsPresent(markdown, idPrefix, expected) {
   for (let i = 1; i <= expected; i += 1) {
     const id = `${idPrefix}-${String(i).padStart(2, '0')}`;
@@ -163,6 +175,7 @@ function validateExternalEvidence({ ledger, validationResults, experienceMap, pr
   rowsPresent(ledger, 'SME', 1);
 
   assert(tableAcceptedCount(ledger, 'LE', 8) === livedAccepted, '#27 accepted count must match accepted LE intake rows');
+  assert(livedDesignChangeCount(ledger) === designAccepted, '#27 design-change count must match accepted LE rows with mechanic, guardrail, or SME-risk design effects');
   assert(tableAcceptedCount(ledger, 'P', 7) === playerAccepted, '#33 player accepted count must match decided player rows');
   assert(tableAcceptedCount(ledger, 'SME', 8) === smeAccepted, '#33 SME accepted count must match decided SME rows');
   requireFixCutFollowUps(ledger);

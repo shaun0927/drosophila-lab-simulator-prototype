@@ -78,24 +78,27 @@ const partialValidationResultsWithPhraseMismatch = [
 const partialSmeValidationResultsWithFixtures = [
   'External validation in progress.',
   '## Validation Run 2026-08-22',
-  'SME-01 reviewed ?fixture=clean, ?fixture=dirty, and ?fixture=missing-control.',
-  '| Mechanic | Rating | Evidence | Required action |',
-  '| Stock/vial/calendar | Accurate enough | clean fixture, dirty fixture, missing-control fixture compared | none |'
+  '| Review id | Fixtures reviewed | Stock/vial/calendar | Virgin/cross timing | CO2/sorting | Negative geotaxis | Record/reviewer logic | Result | Notes |',
+  '| SME-01 | ?fixture=clean, ?fixture=dirty, ?fixture=missing-control | Accurate enough | Acceptable simplification | Acceptable simplification | Accurate enough | Accurate enough | Pass | none |'
 ].join('\n');
 const partialSmeValidationResultsWithoutFixtures = [
   'External validation in progress.',
   '## Validation Run 2026-08-22',
-  'SME-01 reviewed the default route only.',
-  '| Mechanic | Rating | Evidence | Required action |',
-  '| Stock/vial/calendar | Accurate enough | default route | none |'
+  '| Review id | Fixtures reviewed | Stock/vial/calendar | Virgin/cross timing | CO2/sorting | Negative geotaxis | Record/reviewer logic | Result | Notes |',
+  '| SME-01 | default route only | Accurate enough | Acceptable simplification | Acceptable simplification | Accurate enough | Accurate enough | Pass | none |'
 ].join('\n');
 const partialSmeValidationResultsWithUnlinkedFixtures = [
   'External validation in progress.',
   '## Validation Run 2026-08-22',
-  'SME-01 reviewed the default route only.',
+  '| Review id | Fixtures reviewed | Stock/vial/calendar | Virgin/cross timing | CO2/sorting | Negative geotaxis | Record/reviewer logic | Result | Notes |',
+  '| SME-01 | default route only | Accurate enough | Acceptable simplification | Acceptable simplification | Accurate enough | Accurate enough | Pass | none |',
   'Separate proxy notes mention ?fixture=clean, ?fixture=dirty, and ?fixture=missing-control.',
-  '| Mechanic | Rating | Evidence | Required action |',
-  '| Stock/vial/calendar | Accurate enough | default route | none |'
+].join('\n');
+const partialSmeValidationResultsWithRatingMismatch = [
+  'External validation in progress.',
+  '## Validation Run 2026-08-22',
+  '| Review id | Fixtures reviewed | Stock/vial/calendar | Virgin/cross timing | CO2/sorting | Negative geotaxis | Record/reviewer logic | Result | Notes |',
+  '| SME-01 | ?fixture=clean, ?fixture=dirty, ?fixture=missing-control | Accurate enough | Acceptable simplification | Misleading | Accurate enough | Accurate enough | Fix | #44 resolved |'
 ].join('\n');
 const fullRouteCoverageValidationResults = [
   'External validation in progress.',
@@ -493,6 +496,26 @@ expectFailWith(
     }
   },
   '#33 accepted SME review must reference clean fixture coverage in validation results'
+);
+
+expectFailWith(
+  'accepted SME rating mismatch in validation results',
+  {
+    ledger: baseLedger
+      .replace('| SME or biology-aware review | 1 | 0 | Pending execution | #33 |', '| SME or biology-aware review | 1 | 1 | In progress | #33 |')
+      .replace('| SME-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending |', '| SME-01 | 2026-08-22 | genetics TA | Accurate enough | Acceptable simplification | Acceptable simplification | Accurate enough | Accurate enough | Pass | none |'),
+    validationResults: partialSmeValidationResultsWithRatingMismatch,
+    experienceMap: pendingExperienceMap,
+    gameData: {
+      externalEvidence: {
+        livedRows: {accepted: 0, required: 5},
+        livedDesignChange: {accepted: 0, required: 1},
+        playerSessions: {accepted: 0, required: 3},
+        smeReviews: {accepted: 1, required: 1}
+      }
+    }
+  },
+  'SME-01 accepted SME CO2/sorting rating must match validation results'
 );
 
 expectFail(

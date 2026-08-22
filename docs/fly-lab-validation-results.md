@@ -79,6 +79,7 @@ The screenshot UX audit also caught and fixed visible drift where Procedure Lab 
 - [ ] Accepted player rows repeat the same route/fixture, goal phrase, failure-cause phrase, and second-run repair phrase as the ledger.
 - [ ] 1 SME or biology-aware validation pass.
 - [ ] SME validation results explicitly cover `?fixture=clean`, `?fixture=dirty`, and `?fixture=missing-control` on the accepted SME review id.
+- [ ] Accepted SME review rows repeat the same five core ratings as the ledger.
 - [ ] Follow-up issues for any misleading core mechanic.
 - [ ] Counted Fix/Cut follow-up issue references and dispositions summarized here before ledger counts increase.
 - [ ] External evidence ledger updated with accepted counts.

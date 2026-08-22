@@ -155,6 +155,27 @@ function requireSmeFixtureCoverage(ledger, validationResults, smeAccepted) {
   }
 }
 
+function requireSmeRatingsMatchResults(ledger, validationResults) {
+  for (const row of acceptedRows(ledger, 'SME', 8)) {
+    const id = row[0];
+    const resultRow = validationResults.split(/\r?\n/)
+      .filter(line => line.startsWith('|') && line.includes(id))
+      .map(cells)
+      .find(candidate => candidate[0] === id);
+    assert(resultRow, `${id} accepted SME rating row must be present in validation results`);
+    const ratingChecks = [
+      ['accepted SME stock/vial/calendar rating must match validation results', row[3], resultRow[2]],
+      ['accepted SME virgin/cross timing rating must match validation results', row[4], resultRow[3]],
+      ['accepted SME CO2/sorting rating must match validation results', row[5], resultRow[4]],
+      ['accepted SME negative geotaxis rating must match validation results', row[6], resultRow[5]],
+      ['accepted SME record/reviewer logic rating must match validation results', row[7], resultRow[6]]
+    ];
+    for (const [message, expected, actual] of ratingChecks) {
+      assert(actual === expected, `${id} ${message}`);
+    }
+  }
+}
+
 function rowsPresent(markdown, idPrefix, expected) {
   for (let i = 1; i <= expected; i += 1) {
     const id = `${idPrefix}-${String(i).padStart(2, '0')}`;
@@ -461,6 +482,7 @@ function validateExternalEvidence({ ledger, validationResults, experienceMap, pr
   requirePlayerRouteMatchesResults(ledger, validationResults);
   requirePlayerPhrasesMatchResults(ledger, validationResults);
   requireSmeFixtureCoverage(ledger, validationResults, smeAccepted);
+  requireSmeRatingsMatchResults(ledger, validationResults);
   requirePendingStatusDocs({counts, validationResults, experienceMap, progressAudit, goalAudit});
 
   assert(ledger.includes('Do not treat screenshots as player, SME, or lived-experience evidence') || ledger.includes('screenshots of the route'), 'ledger must reject screenshot-only closure evidence');

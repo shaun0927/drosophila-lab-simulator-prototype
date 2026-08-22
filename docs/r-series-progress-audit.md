@@ -123,6 +123,7 @@ The current implementation stays aligned with the parent contract because:
 - `node tools/external-evidence-check.js` requires the #27 design-change count to match accepted LE rows whose design effect is a mechanic change, guardrail change, or SME-risk update
 - `node tools/external-evidence-check.js` requires three accepted #33 player sessions to collectively cover clean, dirty, and missing-control routes or fixtures before closure review
 - `node tools/external-evidence-check.js` requires accepted #33 SME evidence ids to reference clean, dirty, and missing-control fixture coverage in `docs/fly-lab-validation-results.md`
+- `node tools/external-evidence-check.js` requires each accepted #33 SME core rating in the ledger to match the same SME review id in `docs/fly-lab-validation-results.md`
 - `node tools/external-evidence-check.js` requires each accepted #33 player route/fixture in the ledger to match the same player id in `docs/fly-lab-validation-results.md`
 - `node tools/external-evidence-check.js` requires each accepted #33 player goal phrase, failure-cause phrase, and second-run repair phrase in the ledger to match the same player id in `docs/fly-lab-validation-results.md`
 - `?validation=status`, `web-prototype/data.js`, and `node tools/external-evidence-check.js` expose and validate #33 route/fixture coverage so the in-app status cannot claim closure readiness from player-session count alone

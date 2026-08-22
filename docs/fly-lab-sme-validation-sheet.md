@@ -40,3 +40,10 @@ The reviewer should classify each mechanic:
 ## Required follow-up handling
 
 Any `Misleading` or `Unsafe/ethically wrong` mark on a core mechanic must create a fix/cut issue before #33 can close.
+
+## Required validation result record
+
+After review, append one accepted `SME-*` row to `docs/fly-lab-validation-results.md` with the same review id, fixture coverage, and five core ratings recorded in `docs/fly-lab-external-evidence-ledger.md`:
+
+| Review id | Fixtures reviewed | Stock/vial/calendar | Virgin/cross timing | CO2/sorting | Negative geotaxis | Record/reviewer logic | Result | Notes |
+|---|---|---|---|---|---|---|---|---|

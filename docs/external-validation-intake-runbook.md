@@ -35,6 +35,8 @@ Use the source matching the execution issue:
 | #38 | `docs/external-validation-session-packets.md` #38 packet or `?validation=capture` | `P-03` missing-control |
 | #39 | `docs/external-validation-session-packets.md` #39 packet or SME sheet | `SME-01` |
 
+Use `docs/external-validation-launch-matrix.md` before the session to select the exact prototype URL, fixture, packet, target docs, and count rule. The launch matrix is not evidence and must not raise accepted counts.
+
 Preserve exact wording from the respondent/player/reviewer before summarizing. Screenshots, smoke tests, packet visibility, implementer walkthroughs, and generic source summaries still do not count as external evidence.
 
 ## Accepted Row Edit Order

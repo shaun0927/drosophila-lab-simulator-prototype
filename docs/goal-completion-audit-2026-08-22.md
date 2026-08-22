@@ -22,6 +22,8 @@ External validation capture-packet guardrail: `node tools/external-validation-ca
 
 External validation session handoff: `node tools/external-validation-session-handoff.js` verifies the #35-#39 handoff index from execution issue to evidence row, packet source, target docs, and missing proof. `node tools/external-validation-session-handoff.test.js` keeps session-handoff mismatch fixtures in CI.
 
+External validation launch matrix: `docs/external-validation-launch-matrix.md` gives the runner the exact issue, evidence row, prototype URL, packet source, target docs, and count rule for #35 through #39. `node tools/external-validation-launch-matrix-check.js` and `node tools/external-validation-launch-matrix-check.test.js` keep wrong URL, missing fixture, missing target-doc, and proxy-evidence drift out of the execution handoff.
+
 Issue-state audit self-test: `node tools/external-validation-issue-state-audit.test.js` verifies the live issue-state audit parser and mismatch detection with mock issue states in CI.
 
 Full local verification wrapper: `node tools/external-validation-full-check.js` runs the non-live local verification chain. `node tools/external-validation-full-check.js --live-issues` also runs the authenticated GitHub issue-state audit required before closure.

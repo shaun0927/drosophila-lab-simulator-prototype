@@ -6,6 +6,8 @@ Purpose: turn the remaining #27 and #33 blockers into one executable validation 
 
 Session packet source: use [`external-validation-session-packets.md`](external-validation-session-packets.md) as the issue-by-issue field packet for #35 through #39.
 
+Launch matrix: use [`external-validation-launch-matrix.md`](external-validation-launch-matrix.md) to pick the exact issue, evidence row, prototype URL, packet source, target docs, and count rule before opening a session.
+
 Execution tracker: use [`external-validation-execution-tracker.md`](external-validation-execution-tracker.md) to see which #35 through #39 evidence rows are still missing before closure.
 
 Intake runbook: use [`external-validation-intake-runbook.md`](external-validation-intake-runbook.md) after a real session to apply raw notes, accepted rows, status counts, issue comments, and verification commands in the correct order.

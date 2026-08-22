@@ -26,6 +26,8 @@ Final closure readiness guardrail: `node tools/final-closure-readiness-check.js`
 
 External validation sprint plan: [`external-validation-sprint-plan.md`](external-validation-sprint-plan.md) turns the remaining #27/#33 evidence work into a role-based session order with update, follow-up, and closure rules.
 
+External validation launch matrix: [`external-validation-launch-matrix.md`](external-validation-launch-matrix.md) gives the runner the exact #35-#39 issue, evidence row, participant type, prototype URL, packet source, target docs, and count rule before a session starts. `node tools/external-validation-launch-matrix-check.js` verifies those links and the no-proxy/no-closure warnings; `node tools/external-validation-launch-matrix-check.test.js` covers missing-warning, wrong-URL, missing-fixture, order, and target-doc fixtures.
+
 External validation intake runbook: [`external-validation-intake-runbook.md`](external-validation-intake-runbook.md) defines the exact edit order after #35 through #39 produce real evidence, including when to update ledger rows, result docs, status counts, issue comments, and final closure commands.
 
 External validation intake runbook guardrail: `node tools/external-validation-intake-runbook-check.js` verifies the runbook keeps the required source order, accepted-row edit order, Fix/Cut handling, status update order, and final closure handoff rules. `node tools/external-validation-intake-runbook-check.test.js` keeps missing-warning, command drift, section-order, and status-update mismatch fixtures in CI.

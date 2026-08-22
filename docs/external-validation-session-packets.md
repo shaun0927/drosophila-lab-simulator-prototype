@@ -7,6 +7,7 @@ Purpose: provide copy-ready packets for issues #35 through #39. These packets ar
 Use with:
 
 - `docs/external-validation-sprint-plan.md`
+- `docs/external-validation-launch-matrix.md`
 - `docs/external-validation-intake-runbook.md`
 - `docs/fly-lab-session-capture-packet.md`
 - `docs/fly-lab-external-evidence-ledger.md`

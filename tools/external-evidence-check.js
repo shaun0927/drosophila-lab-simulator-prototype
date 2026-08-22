@@ -48,6 +48,17 @@ function tableAcceptedCount(markdown, idPrefix, acceptedColumnIndex) {
   return count;
 }
 
+function acceptedIds(markdown, idPrefix, acceptedColumnIndex) {
+  const ids = [];
+  for (const line of markdown.split(/\r?\n/)) {
+    if (!line.startsWith(`| ${idPrefix}-`)) continue;
+    const row = cells(line);
+    const acceptedCell = row[acceptedColumnIndex];
+    if (/^(Yes|Pass|Fix|Cut)$/i.test(acceptedCell)) ids.push(row[0]);
+  }
+  return ids;
+}
+
 function livedDesignChangeCount(markdown) {
   let count = 0;
   for (const line of markdown.split(/\r?\n/)) {
@@ -58,6 +69,18 @@ function livedDesignChangeCount(markdown) {
     if (/^Yes$/i.test(accepted) && /(mechanic change|guardrail change|SME risk)/i.test(designEffect)) count += 1;
   }
   return count;
+}
+
+function requireAcceptedEvidenceReferences({ ledger, validationResults, experienceMap }) {
+  for (const id of acceptedIds(ledger, 'LE', 8)) {
+    assert(experienceMap.includes(id), `${id} accepted lived-experience row must be referenced in the experience map`);
+  }
+  for (const id of acceptedIds(ledger, 'P', 7)) {
+    assert(validationResults.includes(id), `${id} accepted player row must be referenced in validation results`);
+  }
+  for (const id of acceptedIds(ledger, 'SME', 8)) {
+    assert(validationResults.includes(id), `${id} accepted SME row must be referenced in validation results`);
+  }
 }
 
 function rowsPresent(markdown, idPrefix, expected) {
@@ -262,6 +285,7 @@ function validateExternalEvidence({ ledger, validationResults, experienceMap, pr
     assert(smeAccepted === 0, '#33 SME count cannot increase while validation results say no external validation has run');
   }
 
+  requireAcceptedEvidenceReferences({ledger, validationResults, experienceMap});
   requirePendingStatusDocs({counts, validationResults, experienceMap, progressAudit, goalAudit});
 
   assert(ledger.includes('Do not treat screenshots as player, SME, or lived-experience evidence') || ledger.includes('screenshots of the route'), 'ledger must reject screenshot-only closure evidence');

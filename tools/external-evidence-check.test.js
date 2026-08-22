@@ -50,7 +50,18 @@ const partialValidationResults = [
   '| Player | Route | Reviewer finding | Understood cause? | Second-run improvement | Result | Notes |',
   '| P-01 | default | handling confound | yes | reduce CO2 exposure | Pass | raw notes linked |'
 ].join('\n');
+const partialValidationResultsWithoutId = [
+  'External validation in progress.',
+  '## Validation Run 2026-08-22',
+  '| Player | Route | Reviewer finding | Understood cause? | Second-run improvement | Result | Notes |',
+  '| player one | default | handling confound | yes | reduce CO2 exposure | Pass | raw notes linked |'
+].join('\n');
 const partialExperienceMap = [
+  'User lived-experience pass: in progress.',
+  'Accepted lived-experience rows are being transferred from the evidence ledger.',
+  '| LE-01 | firsthand | vial flip | label vial | timing | stale vial | bad cross | explicit exclusion |'
+].join('\n');
+const partialExperienceMapWithoutId = [
   'User lived-experience pass: in progress.',
   'Accepted lived-experience rows are being transferred from the evidence ledger.'
 ].join('\n');
@@ -84,6 +95,26 @@ function expectFail(name, ledger, messagePart, gameData = matchingGameData) {
       progressAudit: pendingProgressAudit,
       goalAudit: pendingGoalAudit,
       gameData
+    });
+  } catch (error) {
+    if (!error.message.includes(messagePart)) {
+      throw new Error(`${name} failed with wrong message: ${error.message}`);
+    }
+    console.log(`bad fixture rejected: ${name}`);
+    return;
+  }
+  throw new Error(`${name} should have failed`);
+}
+
+function expectFailWith(name, options, messagePart) {
+  try {
+    validateExternalEvidence({
+      ledger: options.ledger || baseLedger,
+      validationResults: options.validationResults || pendingValidationResults,
+      experienceMap: options.experienceMap || pendingExperienceMap,
+      progressAudit: options.progressAudit || pendingProgressAudit,
+      goalAudit: options.goalAudit || pendingGoalAudit,
+      gameData: options.gameData || matchingGameData
     });
   } catch (error) {
     if (!error.message.includes(messagePart)) {
@@ -153,6 +184,66 @@ validateExternalEvidence({
   }
 });
 console.log('pass fixture accepted: partial lived-experience evidence in progress');
+
+expectFailWith(
+  'accepted LE row missing from experience map',
+  {
+    ledger: baseLedger
+      .replace('| Lived-experience event rows with user or observed-lab provenance | 5 | 0 | Pending collection | #27 |', '| Lived-experience event rows with user or observed-lab provenance | 5 | 1 | In progress | #27 |')
+      .replace('| LE-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | No |', '| LE-01 | firsthand | vial flip | label vial | timing | stale vial | bad cross | explicit exclusion | Yes |'),
+    validationResults: pendingValidationResults,
+    experienceMap: partialExperienceMapWithoutId,
+    gameData: {
+      externalEvidence: {
+        livedRows: {accepted: 1, required: 5},
+        livedDesignChange: {accepted: 0, required: 1},
+        playerSessions: {accepted: 0, required: 3},
+        smeReviews: {accepted: 0, required: 1}
+      }
+    }
+  },
+  'LE-01 accepted lived-experience row must be referenced in the experience map'
+);
+
+expectFailWith(
+  'accepted player row missing from validation results',
+  {
+    ledger: baseLedger
+      .replace('| Fresh-player first-run sessions | 3 | 0 | Pending execution | #33 |', '| Fresh-player first-run sessions | 3 | 1 | In progress | #33 |')
+      .replace('| P-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending |', '| P-01 | 2026-08-22 | default | Yes | defend record | bad CO2 | reduce exposure | Pass | none |'),
+    validationResults: partialValidationResultsWithoutId,
+    experienceMap: pendingExperienceMap,
+    gameData: {
+      externalEvidence: {
+        livedRows: {accepted: 0, required: 5},
+        livedDesignChange: {accepted: 0, required: 1},
+        playerSessions: {accepted: 1, required: 3},
+        smeReviews: {accepted: 0, required: 1}
+      }
+    }
+  },
+  'P-01 accepted player row must be referenced in validation results'
+);
+
+expectFailWith(
+  'accepted SME row missing from validation results',
+  {
+    ledger: baseLedger
+      .replace('| SME or biology-aware review | 1 | 0 | Pending execution | #33 |', '| SME or biology-aware review | 1 | 1 | In progress | #33 |')
+      .replace('| SME-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending |', '| SME-01 | 2026-08-22 | genetics TA | Accurate enough | Acceptable simplification | Acceptable simplification | Accurate enough | Accurate enough | Pass | none |'),
+    validationResults: partialValidationResultsWithoutId,
+    experienceMap: pendingExperienceMap,
+    gameData: {
+      externalEvidence: {
+        livedRows: {accepted: 0, required: 5},
+        livedDesignChange: {accepted: 0, required: 1},
+        playerSessions: {accepted: 0, required: 3},
+        smeReviews: {accepted: 1, required: 1}
+      }
+    }
+  },
+  'SME-01 accepted SME row must be referenced in validation results'
+);
 
 expectFail(
   'accepted LE row without matching top-level count',

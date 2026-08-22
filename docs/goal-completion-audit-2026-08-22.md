@@ -21,7 +21,7 @@ Prototype status aid: `web-prototype/index.html?validation=status` opens an in-a
 | Analyze incomplete work | `docs/r-series-progress-audit.md`, `docs/open-issue-triage-2026-08-22.md`, and `docs/fly-lab-validation-results.md` identify #27 and #33 as incomplete because they require external evidence | Complete for current evidence | The remaining incompletion is explicitly named, scoped, and tied to required proof rather than hidden behind passing smoke tests. |
 | Analyze work below the goal standard | `dogfood-output/screenshot-ux-audit.md` recorded visual/proxy UX gaps; `docs/fly-lab-validation-results.md` says screenshot proxy is not enough for #33; `docs/fly-lab-lived-experience-response-form.md` says prompt surfaces do not replace actual answers | Complete for current evidence | The audit distinguishes implemented surfaces from proof of player comprehension, SME accuracy, and real lab provenance. |
 | Analyze drift | `docs/open-issue-triage-2026-08-22.md` parks older Unity/phenomenon-first issues; `docs/fly-lab-product-thesis.md` keeps the first slice centered on fly-lab procedure; `tools/r-series-status-check.js` enforces drift guardrails | Complete for current evidence | The current route, docs, and status checker preserve the R-series direction and keep `Light-Induced Swarm Dance` outside the new first slice. |
-| Improve from the analysis | Commits through `56ba037` added the objective strip, Reviewer #2 repair plans, validation packet, lived-experience packet, R-series status guardrail, external evidence ledger, ledger validator, capture packet, finding decision tree, pending-status doc checks, scoped implementation-contract issue forms, executable issue-template contract checks, partial-evidence intake, proxy-evidence rejection, accepted-row completeness checks, player/SME decision consistency checks, accepted-evidence document references, concrete follow-up issue references, follow-up count validation, #27 lived-evidence vocabulary validation, follow-up self-reference rejection, in-app follow-up gate exposure, dynamic follow-up status validation, explicit no-experience row constraints, and no-experience conflict rejection | Complete for the proxy-driven iteration loop | Several iterations converted identified gaps into playable/documented affordances and stronger anti-drift automation. These guardrails make false closure harder; they do not provide the missing lived, player, or SME evidence. |
+| Improve from the analysis | The current guardrail set includes the objective strip, Reviewer #2 repair plans, validation packet, lived-experience packet, R-series status guardrail, external evidence ledger, ledger validator, capture packet, finding decision tree, pending-status doc checks, scoped implementation-contract issue forms, executable issue-template contract checks, partial-evidence intake, proxy-evidence rejection, accepted-row completeness checks, player/SME decision consistency checks, accepted-evidence document references, concrete follow-up issue references, follow-up count validation, #27 lived-evidence vocabulary validation, follow-up self-reference rejection, in-app follow-up gate exposure, dynamic follow-up status validation, explicit no-experience row constraints, no-experience conflict rejection, and #33 route-coverage validation | Complete for the proxy-driven iteration loop | Several iterations converted identified gaps into playable/documented affordances and stronger anti-drift automation. These guardrails make false closure harder; they do not provide the missing lived, player, or SME evidence. |
 | Repeat implementation and verification | `web-prototype/smoke-tests.js`, screenshot artifacts, `tools/r-series-status-check.js`, `tools/external-evidence-check.js`, `tools/external-evidence-check.test.js`, `tools/issue-template-contract-check.js`, and `gh run list --branch main --limit 5` verify the current implementation and latest main CI guardrails | Complete for local/proxy verification | Automated, screenshot, ledger, audit, issue-template, and latest-main-CI checks cover routes, fixtures, packets, issue contracts, and drift guardrails. They do not verify external player or SME outcomes. |
 | Finish the overall objective | #27 and #33 are still open and explicitly require external/user evidence | Not complete | The objective cannot be marked complete until the remaining current issues either receive the required evidence and close, or are re-scoped by a new explicit product decision. |
 
@@ -65,7 +65,7 @@ What exists:
 - `docs/fly-lab-sme-validation-sheet.md` defines the biology-aware review.
 - `docs/fly-lab-validation-runbook.md` defines the execution protocol.
 - `docs/fly-lab-external-evidence-ledger.md` tracks the three player sessions, SME review, and follow-up issue gates.
-- `web-prototype/index.html?validation=status` shows the current 0/3 player and 0/1 SME evidence gap in the prototype.
+- `web-prototype/index.html?validation=status` shows the current 0/3 player, 0/3 route-coverage, and 0/1 SME evidence gap in the prototype.
 - `web-prototype/index.html?validation=packet` exposes the in-app validation launcher.
 - `docs/fly-lab-validation-results.md` records proxy QA and explicitly says no external validation has run yet.
 - `tools/external-evidence-check.js` verifies that ledger counts, in-app status counts, and pending/open/not-complete audit language stay synchronized while evidence is missing or only partially collected.
@@ -77,6 +77,7 @@ What is missing:
 - 3 fresh-player sessions.
 - 1 SME or biology-aware review.
 - Follow-up fix/cut issues for serious comprehension failures or misleading/unsafe mechanics.
+- Clean, dirty, and missing-control route or fixture coverage across the accepted player sessions.
 - A final closure decision for #33 based on recorded evidence.
 
 Why it is not complete:
@@ -86,11 +87,12 @@ Automated smoke tests and screenshots prove the prototype can present the valida
 Next work:
 
 1. Run three sessions with `docs/fly-lab-playtest-sheet.md`.
-2. Run one review with `docs/fly-lab-sme-validation-sheet.md`.
-3. Append results to `docs/fly-lab-validation-results.md`.
-4. Open follow-up issues from every failed closure criterion.
-5. Re-run smoke, status check, and CI.
-6. Decide whether #33 can close.
+2. Ensure the accepted player sessions collectively cover clean, dirty, and missing-control routes or fixtures.
+3. Run one review with `docs/fly-lab-sme-validation-sheet.md`.
+4. Append results to `docs/fly-lab-validation-results.md`.
+5. Open follow-up issues from every failed closure criterion.
+6. Re-run smoke, status check, and CI.
+7. Decide whether #33 can close.
 
 ### Gap C: Parked Unity and old-loop issues are not implemented
 

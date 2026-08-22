@@ -158,6 +158,7 @@ function testGoalStatusPacket() {
   assert(booted.el('stage').innerHTML.includes('Not complete: external evidence missing'), 'goal status screen missing incomplete status');
   assert(booted.el('stage').innerHTML.includes('0 / 5'), 'goal status missing #27 count');
   assert(booted.el('stage').innerHTML.includes('0 / 3'), 'goal status missing player count');
+  assert(booted.el('stage').innerHTML.includes('Route/fixture coverage'), 'goal status missing route coverage gate');
   assert(booted.el('stage').innerHTML.includes('0 / 1'), 'goal status missing SME count');
   assert(booted.el('stage').innerHTML.includes('Fix/Cut follow-up issues'), 'goal status missing follow-up issue gate');
   assert(booted.el('stage').innerHTML.includes('0 / As needed'), 'goal status missing follow-up issue count');
@@ -169,6 +170,15 @@ function testGoalStatusPacket() {
   booted.ctx.startStatus();
   assert(booted.el('stage').innerHTML.includes('Not complete: external evidence in progress'), 'goal status missing partial-evidence status');
   assert(booted.el('stage').innerHTML.includes('1 / 3'), 'goal status missing partial player count');
+  booted.ctx.window.GAME_DATA.externalEvidence.livedRows.accepted = 5;
+  booted.ctx.window.GAME_DATA.externalEvidence.livedDesignChange.accepted = 1;
+  booted.ctx.window.GAME_DATA.externalEvidence.playerSessions.accepted = 3;
+  booted.ctx.window.GAME_DATA.externalEvidence.smeReviews.accepted = 1;
+  booted.ctx.startStatus();
+  assert(booted.el('stage').innerHTML.includes('Not complete: external evidence in progress'), 'goal status should stay incomplete until route coverage is met');
+  booted.ctx.window.GAME_DATA.externalEvidence.playerRouteCoverage.accepted = 3;
+  booted.ctx.startStatus();
+  assert(booted.el('stage').innerHTML.includes('External evidence ready for closure review'), 'goal status missing ready state after all numeric gates are met');
 }
 
 function testCapturePacket() {

@@ -23,6 +23,7 @@ window.GAME_DATA = {
     livedRows: {accepted:0, required:5},
     livedDesignChange: {accepted:0, required:1},
     playerSessions: {accepted:0, required:3},
+    playerRouteCoverage: {accepted:0, required:3},
     smeReviews: {accepted:0, required:1},
     followUpIssues: {accepted:0, required:'As needed'}
   },

@@ -173,6 +173,15 @@ function requirePlayerDecisionConsistency(row, id) {
 
 function requirePlayerRouteCoverage(markdown, playerAccepted) {
   if (playerAccepted < 3) return;
+  const covered = playerRouteCoverage(markdown);
+
+  assert(
+    covered.clean && covered.dirty && covered.missingControl,
+    '#33 accepted player sessions must cover clean, dirty, and missing-control routes or fixtures before closure review'
+  );
+}
+
+function playerRouteCoverage(markdown) {
   const covered = {
     clean: false,
     dirty: false,
@@ -189,10 +198,11 @@ function requirePlayerRouteCoverage(markdown, playerAccepted) {
     if (/missing[-\s]?control/i.test(route)) covered.missingControl = true;
   }
 
-  assert(
-    covered.clean && covered.dirty && covered.missingControl,
-    '#33 accepted player sessions must cover clean, dirty, and missing-control routes or fixtures before closure review'
-  );
+  return covered;
+}
+
+function playerRouteCoverageCount(markdown) {
+  return Object.values(playerRouteCoverage(markdown)).filter(Boolean).length;
 }
 
 function requireSmeDecisionConsistency(row, id) {
@@ -269,6 +279,10 @@ function compareGameDataStatus(gameData, counts) {
   assert(evidence.livedDesignChange.required === 1, 'data.js livedDesignChange required count must stay 1 unless #27 is explicitly re-scoped');
   assert(evidence.playerSessions.accepted === counts.playerAccepted, 'data.js playerSessions accepted count must match ledger');
   assert(evidence.playerSessions.required === 3, 'data.js playerSessions required count must stay 3 unless #33 is explicitly re-scoped');
+  if (evidence.playerRouteCoverage) {
+    assert(evidence.playerRouteCoverage.accepted === counts.playerRouteCoverageAccepted, 'data.js playerRouteCoverage accepted count must match ledger route coverage');
+    assert(evidence.playerRouteCoverage.required === 3, 'data.js playerRouteCoverage required count must stay 3 unless #33 is explicitly re-scoped');
+  }
   assert(evidence.smeReviews.accepted === counts.smeAccepted, 'data.js smeReviews accepted count must match ledger');
   assert(evidence.smeReviews.required === 1, 'data.js smeReviews required count must stay 1 unless #33 is explicitly re-scoped');
   if (evidence.followUpIssues) {
@@ -360,7 +374,14 @@ function validateExternalEvidence({ ledger, validationResults, experienceMap, pr
   requireFixCutFollowUps(ledger);
   assert(concreteFollowUpRefs(ledger).size === followUpAccepted, '#33 follow-up issue accepted count must match unique concrete Fix/Cut follow-up references');
   assert(designAccepted <= livedAccepted, '#27 design-change accepted count cannot exceed accepted lived-experience rows');
-  const counts = {livedAccepted, designAccepted, playerAccepted, smeAccepted, followUpAccepted};
+  const counts = {
+    livedAccepted,
+    designAccepted,
+    playerAccepted,
+    playerRouteCoverageAccepted: playerRouteCoverageCount(ledger),
+    smeAccepted,
+    followUpAccepted
+  };
   compareGameDataStatus(gameData, counts);
 
   if (experienceMap.includes('User lived-experience pass: pending user input')) {

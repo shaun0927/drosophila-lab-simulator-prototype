@@ -119,6 +119,7 @@ The current implementation stays aligned with the parent contract because:
 - `node tools/external-evidence-check.js` requires explicit no-relevant-experience LE rows to use `explicit exclusion`, not mechanic/guardrail/SME-risk design changes
 - `node tools/external-evidence-check.js` rejects duplicated no-experience LE rows and mixed no-experience plus firsthand/observed LE evidence
 - `node tools/external-evidence-check.js` requires the #27 design-change count to match accepted LE rows whose design effect is a mechanic change, guardrail change, or SME-risk update
+- `node tools/external-evidence-check.js` requires three accepted #33 player sessions to collectively cover clean, dirty, and missing-control routes or fixtures before closure review
 - `node tools/external-evidence-check.js` rejects `Fix` or `Cut` player/SME evidence rows unless they link a concrete follow-up issue before counting
 - `node tools/r-series-status-check.js` uses ledger counts to accept either zero-evidence pending language or partial-evidence in-progress language, so status guardrails do not block real validation progress
 - `node tools/issue-template-contract-check.js` prevents #27/#33 follow-up issue forms from losing required implementation-contract fields before evidence becomes work

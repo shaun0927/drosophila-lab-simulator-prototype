@@ -57,6 +57,14 @@ const partialValidationResultsWithoutId = [
   '| Player | Route | Reviewer finding | Understood cause? | Second-run improvement | Result | Notes |',
   '| player one | default | handling confound | yes | reduce CO2 exposure | Pass | raw notes linked |'
 ].join('\n');
+const fullRouteCoverageValidationResults = [
+  'External validation in progress.',
+  '## Validation Run 2026-08-22',
+  '| Player | Route | Reviewer finding | Understood cause? | Second-run improvement | Result | Notes |',
+  '| P-01 | clean fixture | none | yes | keep clean controls | Pass | raw notes linked |',
+  '| P-02 | dirty fixture | handling confound | yes | reduce CO2 exposure | Pass | raw notes linked |',
+  '| P-03 | missing-control fixture | missing control | yes | add control batch | Pass | raw notes linked |'
+].join('\n');
 const partialExperienceMap = [
   'User lived-experience pass: in progress.',
   'Accepted lived-experience rows are being transferred from the evidence ledger.',
@@ -147,6 +155,49 @@ validateExternalEvidence({
   }
 });
 console.log('pass fixture accepted: partial player evidence in progress');
+
+validateExternalEvidence({
+  ledger: baseLedger
+    .replace('| Fresh-player first-run sessions | 3 | 0 | Pending execution | #33 |', '| Fresh-player first-run sessions | 3 | 3 | In progress | #33 |')
+    .replace('| P-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending |', '| P-01 | 2026-08-22 | clean fixture | Yes | defend record | no attack | preserve controls | Pass | none |')
+    .replace('| P-02 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending |', '| P-02 | 2026-08-22 | dirty fixture | Yes | defend record | bad CO2 | reduce exposure | Pass | none |')
+    .replace('| P-03 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending |', '| P-03 | 2026-08-22 | missing-control fixture | Yes | defend record | missing control | add control | Pass | none |'),
+  validationResults: fullRouteCoverageValidationResults,
+  experienceMap: pendingExperienceMap,
+  progressAudit: pendingProgressAudit,
+  goalAudit: pendingGoalAudit,
+  gameData: {
+    externalEvidence: {
+      livedRows: {accepted: 0, required: 5},
+      livedDesignChange: {accepted: 0, required: 1},
+      playerSessions: {accepted: 3, required: 3},
+      smeReviews: {accepted: 0, required: 1}
+    }
+  }
+});
+console.log('pass fixture accepted: full player route coverage');
+
+expectFailWith(
+  'three accepted player rows without route coverage',
+  {
+    ledger: baseLedger
+      .replace('| Fresh-player first-run sessions | 3 | 0 | Pending execution | #33 |', '| Fresh-player first-run sessions | 3 | 3 | In progress | #33 |')
+      .replace('| P-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending |', '| P-01 | 2026-08-22 | clean fixture | Yes | defend record | no attack | preserve controls | Pass | none |')
+      .replace('| P-02 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending |', '| P-02 | 2026-08-22 | clean fixture | Yes | defend record | no attack | preserve controls | Pass | none |')
+      .replace('| P-03 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending |', '| P-03 | 2026-08-22 | clean fixture | Yes | defend record | no attack | preserve controls | Pass | none |'),
+    validationResults: fullRouteCoverageValidationResults,
+    experienceMap: pendingExperienceMap,
+    gameData: {
+      externalEvidence: {
+        livedRows: {accepted: 0, required: 5},
+        livedDesignChange: {accepted: 0, required: 1},
+        playerSessions: {accepted: 3, required: 3},
+        smeReviews: {accepted: 0, required: 1}
+      }
+    }
+  },
+  '#33 accepted player sessions must cover clean, dirty, and missing-control routes or fixtures before closure review'
+);
 
 validateExternalEvidence({
   ledger: baseLedger

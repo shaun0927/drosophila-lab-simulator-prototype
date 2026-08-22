@@ -171,6 +171,30 @@ function requirePlayerDecisionConsistency(row, id) {
   }
 }
 
+function requirePlayerRouteCoverage(markdown, playerAccepted) {
+  if (playerAccepted < 3) return;
+  const covered = {
+    clean: false,
+    dirty: false,
+    missingControl: false
+  };
+
+  for (const line of markdown.split(/\r?\n/)) {
+    if (!line.startsWith('| P-')) continue;
+    const row = cells(line);
+    if (!/^(Pass|Fix|Cut)$/i.test(row[7] || '')) continue;
+    const route = row[2] || '';
+    if (/\bclean\b/i.test(route)) covered.clean = true;
+    if (/\bdirty\b/i.test(route)) covered.dirty = true;
+    if (/missing[-\s]?control/i.test(route)) covered.missingControl = true;
+  }
+
+  assert(
+    covered.clean && covered.dirty && covered.missingControl,
+    '#33 accepted player sessions must cover clean, dirty, and missing-control routes or fixtures before closure review'
+  );
+}
+
 function requireSmeDecisionConsistency(row, id) {
   const ratings = row.slice(3, 8);
   const decision = row[8] || '';
@@ -332,6 +356,7 @@ function validateExternalEvidence({ ledger, validationResults, experienceMap, pr
   assert(tableAcceptedCount(ledger, 'SME', 8) === smeAccepted, '#33 SME accepted count must match decided SME rows');
   requireAcceptedRowFields(ledger);
   requireNoConflictingNoExperienceRows(ledger);
+  requirePlayerRouteCoverage(ledger, playerAccepted);
   requireFixCutFollowUps(ledger);
   assert(concreteFollowUpRefs(ledger).size === followUpAccepted, '#33 follow-up issue accepted count must match unique concrete Fix/Cut follow-up references');
   assert(designAccepted <= livedAccepted, '#27 design-change accepted count cannot exceed accepted lived-experience rows');

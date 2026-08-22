@@ -115,11 +115,12 @@ Not acceptable as #33 SME closure evidence:
 
 1. Three player sessions are recorded.
 2. One SME or biology-aware review is recorded.
-3. Every serious player comprehension failure has a fix/cut decision.
-4. Every misleading or unsafe SME mark has a linked fix/cut issue.
-5. `docs/fly-lab-validation-results.md` summarizes the result.
-6. `node web-prototype/smoke-tests.js` passes after any resulting implementation change.
-7. `node tools/r-series-status-check.js` passes after the ledger and status docs are updated.
+3. The accepted player sessions collectively cover clean, dirty, and missing-control routes or fixtures before closure review.
+4. Every serious player comprehension failure has a fix/cut decision.
+5. Every misleading or unsafe SME mark has a linked fix/cut issue.
+6. `docs/fly-lab-validation-results.md` summarizes the result.
+7. `node web-prototype/smoke-tests.js` passes after any resulting implementation change.
+8. `node tools/r-series-status-check.js` passes after the ledger and status docs are updated.
 
 ## Drift Checks Before Accepting Evidence
 

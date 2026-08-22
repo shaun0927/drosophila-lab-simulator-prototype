@@ -69,7 +69,7 @@ What exists:
 - `web-prototype/index.html?validation=packet` exposes the in-app validation launcher.
 - `docs/fly-lab-validation-results.md` records proxy QA and explicitly says no external validation has run yet.
 - `tools/external-evidence-check.js` verifies that ledger counts, in-app status counts, and pending/open/not-complete audit language stay synchronized while evidence is missing or only partially collected.
-- `tools/external-evidence-check.js` also rejects proxy evidence, incomplete accepted rows, invalid #27 provenance/design-effect vocabulary, duplicated or mixed explicit no-experience rows, inconsistent player/SME decisions, missing accepted-evidence document references, vague or self-referential Fix/Cut follow-up notes, and follow-up count mismatches.
+- `tools/external-evidence-check.js` also rejects proxy evidence, incomplete accepted rows, invalid #27 provenance/design-effect vocabulary, duplicated or mixed explicit no-experience rows, incomplete #33 player route coverage, inconsistent player/SME decisions, missing accepted-evidence document references, vague or self-referential Fix/Cut follow-up notes, and follow-up count mismatches.
 - `tools/issue-template-contract-check.js` verifies that validation finding issues keep the full implementation-contract fields required before evidence becomes scoped implementation work.
 
 What is missing:

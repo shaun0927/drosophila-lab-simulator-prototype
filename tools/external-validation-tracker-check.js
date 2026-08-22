@@ -99,59 +99,78 @@ function compareNumber(label, actual, expected) {
   assert(String(actual) === String(expected), `${label} expected ${expected}, got ${actual}`);
 }
 
-const ledger = read('docs/fly-lab-external-evidence-ledger.md');
-const tracker = read('docs/external-validation-execution-tracker.md');
-const ledgerRows = parseLedgerStatus(ledger);
-const trackerRows = parseTrackerSummary(tracker);
-const gameData = loadGameData();
-const evidence = gameData.externalEvidence;
+function validateTrackerConsistency({
+  ledgerMarkdown = read('docs/fly-lab-external-evidence-ledger.md'),
+  trackerMarkdown = read('docs/external-validation-execution-tracker.md'),
+  gameData = loadGameData()
+} = {}) {
+  const ledgerRows = parseLedgerStatus(ledgerMarkdown);
+  const trackerRows = parseTrackerSummary(trackerMarkdown);
+  const evidence = gameData.externalEvidence;
 
-assert(evidence, 'web-prototype/data.js missing externalEvidence for tracker comparison');
+  assert(evidence, 'web-prototype/data.js missing externalEvidence for tracker comparison');
 
-const livedLedger = ledgerRows.get('Lived-experience event rows with user or observed-lab provenance');
-const designLedger = ledgerRows.get('Lived-experience answer that changes a mechanic, guardrail, or SME risk');
-const playerLedger = ledgerRows.get('Fresh-player first-run sessions');
-const smeLedger = ledgerRows.get('SME or biology-aware review');
-const followUpLedger = ledgerRows.get('Follow-up fix/cut issues for failed external criteria');
+  const livedLedger = ledgerRows.get('Lived-experience event rows with user or observed-lab provenance');
+  const designLedger = ledgerRows.get('Lived-experience answer that changes a mechanic, guardrail, or SME risk');
+  const playerLedger = ledgerRows.get('Fresh-player first-run sessions');
+  const smeLedger = ledgerRows.get('SME or biology-aware review');
+  const followUpLedger = ledgerRows.get('Follow-up fix/cut issues for failed external criteria');
 
-assert(livedLedger && designLedger && playerLedger && smeLedger && followUpLedger, 'ledger missing status rows required by execution tracker');
+  assert(livedLedger && designLedger && playerLedger && smeLedger && followUpLedger, 'ledger missing status rows required by execution tracker');
 
-const livedTracker = requireTrackerRow(trackerRows, '#27:Lived-experience rows');
-compareNumber('#27 lived required tracker count', livedTracker.required, livedLedger.required);
-compareNumber('#27 lived accepted tracker count', livedTracker.accepted, livedLedger.accepted);
-assert(livedTracker.executionIssue === '#35', '#27 lived tracker row must point to #35');
+  const livedTracker = requireTrackerRow(trackerRows, '#27:Lived-experience rows');
+  compareNumber('#27 lived required tracker count', livedTracker.required, livedLedger.required);
+  compareNumber('#27 lived accepted tracker count', livedTracker.accepted, livedLedger.accepted);
+  assert(livedTracker.executionIssue === '#35', '#27 lived tracker row must point to #35');
 
-const designTracker = requireTrackerRow(trackerRows, '#27:Design-changing lived row');
-compareNumber('#27 design-change required tracker count', designTracker.required, designLedger.required);
-compareNumber('#27 design-change accepted tracker count', designTracker.accepted, livedDesignChangeCount(ledger));
-assert(designTracker.executionIssue === '#35', '#27 design-change tracker row must point to #35');
+  const designTracker = requireTrackerRow(trackerRows, '#27:Design-changing lived row');
+  compareNumber('#27 design-change required tracker count', designTracker.required, designLedger.required);
+  compareNumber('#27 design-change accepted tracker count', designTracker.accepted, livedDesignChangeCount(ledgerMarkdown));
+  assert(designTracker.executionIssue === '#35', '#27 design-change tracker row must point to #35');
 
-const playerTracker = requireTrackerRow(trackerRows, '#33:Fresh-player sessions');
-compareNumber('#33 player required tracker count', playerTracker.required, playerLedger.required);
-compareNumber('#33 player accepted tracker count', playerTracker.accepted, playerLedger.accepted);
-assert(playerTracker.executionIssue === '#36, #37, #38', '#33 player tracker row must point to #36, #37, #38');
+  const playerTracker = requireTrackerRow(trackerRows, '#33:Fresh-player sessions');
+  compareNumber('#33 player required tracker count', playerTracker.required, playerLedger.required);
+  compareNumber('#33 player accepted tracker count', playerTracker.accepted, playerLedger.accepted);
+  assert(playerTracker.executionIssue === '#36, #37, #38', '#33 player tracker row must point to #36, #37, #38');
 
-const routeTracker = requireTrackerRow(trackerRows, '#33:Player route coverage');
-compareNumber('#33 route required tracker count', routeTracker.required, evidence.playerRouteCoverage.required);
-compareNumber('#33 route accepted tracker count', routeTracker.accepted, playerRouteCoverageCount(ledger));
-assert(routeTracker.executionIssue === '#36, #37, #38', '#33 route tracker row must point to #36, #37, #38');
+  const routeTracker = requireTrackerRow(trackerRows, '#33:Player route coverage');
+  compareNumber('#33 route required tracker count', routeTracker.required, evidence.playerRouteCoverage.required);
+  compareNumber('#33 route accepted tracker count', routeTracker.accepted, playerRouteCoverageCount(ledgerMarkdown));
+  assert(routeTracker.executionIssue === '#36, #37, #38', '#33 route tracker row must point to #36, #37, #38');
 
-const smeTracker = requireTrackerRow(trackerRows, '#33:SME review');
-compareNumber('#33 SME required tracker count', smeTracker.required, smeLedger.required);
-compareNumber('#33 SME accepted tracker count', smeTracker.accepted, smeLedger.accepted);
-assert(smeTracker.executionIssue === '#39', '#33 SME tracker row must point to #39');
+  const smeTracker = requireTrackerRow(trackerRows, '#33:SME review');
+  compareNumber('#33 SME required tracker count', smeTracker.required, smeLedger.required);
+  compareNumber('#33 SME accepted tracker count', smeTracker.accepted, smeLedger.accepted);
+  assert(smeTracker.executionIssue === '#39', '#33 SME tracker row must point to #39');
 
-const followUpTracker = requireTrackerRow(trackerRows, '#33:Fix/Cut follow-up issues');
-compareNumber('#33 follow-up required tracker count', followUpTracker.required, followUpLedger.required);
-compareNumber('#33 follow-up accepted tracker count', followUpTracker.accepted, followUpLedger.accepted);
-assert(followUpTracker.executionIssue === 'Created from #36-#39 findings', '#33 follow-up tracker row must point to #36-#39 findings');
+  const followUpTracker = requireTrackerRow(trackerRows, '#33:Fix/Cut follow-up issues');
+  compareNumber('#33 follow-up required tracker count', followUpTracker.required, followUpLedger.required);
+  compareNumber('#33 follow-up accepted tracker count', followUpTracker.accepted, followUpLedger.accepted);
+  assert(followUpTracker.executionIssue === 'Created from #36-#39 findings', '#33 follow-up tracker row must point to #36-#39 findings');
 
-for (const [key, row] of trackerRows.entries()) {
-  if (row.accepted === '0') {
-    assert(/Blocked|Pending/.test(row.closureStatus), `${key} with zero accepted evidence must stay blocked or pending`);
+  for (const [key, row] of trackerRows.entries()) {
+    if (row.accepted === '0') {
+      assert(/Blocked|Pending/.test(row.closureStatus), `${key} with zero accepted evidence must stay blocked or pending`);
+    }
   }
+
+  assert(trackerMarkdown.includes('Do not close #27, #33, or the thread goal from the current tracker state'), 'tracker must preserve no-closure decision for current pending state');
 }
 
-assert(tracker.includes('Do not close #27, #33, or the thread goal from the current tracker state'), 'tracker must preserve no-closure decision for current pending state');
+function main() {
+  validateTrackerConsistency();
+  console.log('external validation tracker check passed: tracker counts match ledger and route coverage status');
+}
 
-console.log('external validation tracker check passed: tracker counts match ledger and route coverage status');
+if (require.main === module) {
+  main();
+}
+
+module.exports = {
+  acceptedRows,
+  livedDesignChangeCount,
+  parseLedgerStatus,
+  parseTrackerSummary,
+  playerRouteCoverageCount,
+  validateTrackerConsistency
+};

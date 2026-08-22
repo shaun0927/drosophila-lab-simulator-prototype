@@ -14,6 +14,7 @@ const checks = [
   [node, ['--check', 'tools/external-evidence-check.js']],
   [node, ['--check', 'tools/external-evidence-check.test.js']],
   [node, ['--check', 'tools/external-validation-tracker-check.js']],
+  [node, ['--check', 'tools/external-validation-tracker-check.test.js']],
   [node, ['--check', 'tools/external-validation-issue-state-audit.js']],
   [node, ['--check', 'tools/external-validation-issue-state-audit.test.js']],
   [node, ['--check', 'tools/external-validation-full-check.js']],
@@ -24,6 +25,7 @@ const checks = [
   [node, ['tools/external-evidence-check.js']],
   [node, ['tools/external-validation-tracker-check.js']],
   [node, ['tools/external-evidence-check.test.js']],
+  [node, ['tools/external-validation-tracker-check.test.js']],
   [node, ['tools/external-validation-issue-state-audit.test.js']],
   [node, ['tools/issue-template-contract-check.js']],
   ['git', ['diff', '--check']]

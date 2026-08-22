@@ -35,7 +35,6 @@ const requiredFiles = [
 const textChecks = [
   ['docs/fly-lab-product-thesis.md', 'fly-lab procedure simulator with a publication wrapper'],
   ['docs/fly-lab-product-thesis.md', 'Light-Induced Swarm Dance'],
-  ['docs/fly-lab-experience-map.md', 'User lived-experience pass: pending user input'],
   ['docs/fly-lab-lived-experience-response-form.md', 'web-prototype/index.html?validation=lived'],
   ['docs/fly-lab-validation-runbook.md', 'web-prototype/index.html?validation=status'],
   ['docs/fly-lab-validation-runbook.md', 'web-prototype/index.html?validation=packet'],
@@ -46,7 +45,6 @@ const textChecks = [
   ['docs/fly-lab-validation-runbook.md', 'fly-lab-validation-finding-decision-tree.md'],
   ['docs/fly-lab-validation-runbook.md', 'Over-Engineering Checklist'],
   ['docs/fly-lab-validation-runbook.md', 'Drift-Prevention Checklist'],
-  ['docs/fly-lab-validation-results.md', 'No external player or SME validation has been run yet'],
   ['docs/fly-lab-validation-results.md', 'External validation in progress'],
   ['docs/fly-lab-validation-results.md', 'node tools/external-evidence-check.js'],
   ['docs/fly-lab-validation-results.md', 'node tools/issue-template-contract-check.js'],
@@ -100,6 +98,7 @@ const textChecks = [
   ['docs/r-series-progress-audit.md', 'pass fixture accepted: partial lived-experience evidence in progress'],
   ['docs/r-series-progress-audit.md', 'issue template contract check passed: evidence follow-up forms require scoped implementation fields'],
   ['docs/r-series-progress-audit.md', 'in-progress partial evidence before closure review'],
+  ['docs/r-series-progress-audit.md', 'uses ledger counts to accept either zero-evidence pending language or partial-evidence in-progress language'],
   ['docs/r-series-progress-audit.md', 'goal-completion-audit-2026-08-22.md'],
   ['docs/goal-completion-audit-2026-08-22.md', 'Do not mark the thread goal complete'],
   ['docs/goal-completion-audit-2026-08-22.md', '#27 lacks lived-experience provenance'],
@@ -147,7 +146,10 @@ const textChecks = [
   ['tools/issue-template-contract-check.js', 'must be required'],
   ['tools/issue-template-contract-check.js', 'Final Implementation Scope'],
   ['tools/issue-template-contract-check.js', 'Definition of Done'],
-  ['tools/r-series-status-check.js', 'must not hard-code a GitHub Actions run id']
+  ['tools/r-series-status-check.js', 'must not hard-code a GitHub Actions run id'],
+  ['tools/r-series-status-check.js', 'validateEvidenceStatusLanguage'],
+  ['tools/r-series-status-check.js', 'partial player/SME validation progress'],
+  ['tools/r-series-status-check.js', 'pending user-input language while #27 evidence count is zero']
 ];
 
 function read(rel) {
@@ -160,6 +162,55 @@ function assert(condition, message) {
   }
 }
 
+function cells(line) {
+  return line.split('|').slice(1, -1).map(cell => cell.trim());
+}
+
+function currentStatusRows(markdown) {
+  const rows = new Map();
+  for (const line of markdown.split(/\r?\n/)) {
+    if (!line.startsWith('| ') || line.includes('---')) continue;
+    const row = cells(line);
+    if (row.length !== 5 || row[0] === 'Evidence gate') continue;
+    rows.set(row[0], {
+      required: Number(row[1]),
+      accepted: Number(row[2])
+    });
+  }
+  return rows;
+}
+
+function requireAnyText(text, needles, message) {
+  assert(needles.some(needle => text.includes(needle)), `${message}: ${needles.join(' OR ')}`);
+}
+
+function validateEvidenceStatusLanguage() {
+  const ledgerRows = currentStatusRows(read('docs/fly-lab-external-evidence-ledger.md'));
+  const livedRows = ledgerRows.get('Lived-experience event rows with user or observed-lab provenance');
+  const designChange = ledgerRows.get('Lived-experience answer that changes a mechanic, guardrail, or SME risk');
+  const playerRows = ledgerRows.get('Fresh-player first-run sessions');
+  const smeRows = ledgerRows.get('SME or biology-aware review');
+  const experienceMap = read('docs/fly-lab-experience-map.md');
+  const validationResults = read('docs/fly-lab-validation-results.md');
+
+  assert(livedRows && designChange && playerRows && smeRows, 'ledger missing evidence status rows required for dynamic status language check');
+
+  const hasLivedEvidence = livedRows.accepted > 0 || designChange.accepted > 0;
+  const hasValidationEvidence = playerRows.accepted > 0 || smeRows.accepted > 0;
+
+  if (hasLivedEvidence) {
+    requireAnyText(experienceMap, ['User lived-experience pass: in progress', 'Accepted lived-experience rows'], 'experience map must describe partial lived-evidence progress');
+  } else {
+    assert(experienceMap.includes('User lived-experience pass: pending user input'), 'experience map must preserve pending user-input language while #27 evidence count is zero');
+  }
+
+  if (hasValidationEvidence) {
+    requireAnyText(validationResults, ['External validation in progress', '## Validation Run'], 'validation results must describe partial player/SME validation progress');
+  } else {
+    assert(validationResults.includes('No external player or SME validation has been run yet'), 'validation results must preserve no-external-validation language while #33 evidence count is zero');
+  }
+}
+
 for (const rel of requiredFiles) {
   assert(fs.existsSync(path.join(root, rel)), `missing required R-series artifact: ${rel}`);
 }
@@ -167,6 +218,8 @@ for (const rel of requiredFiles) {
 for (const [rel, needle] of textChecks) {
   assert(read(rel).includes(needle), `${rel} missing required text: ${needle}`);
 }
+
+validateEvidenceStatusLanguage();
 
 for (const rel of [
   'docs/fly-lab-validation-results.md',

@@ -65,10 +65,10 @@ function bodyFor(contract) {
     '## Final Implementation Scope',
     '## Success Criteria',
     '## Verification Method',
-    'node tools/external-evidence-check.js',
-    'node tools/r-series-status-check.js',
-    'node tools/external-validation-gap-report.js',
-    'node tools/external-validation-full-check.js --live-issues',
+    '- Run `node tools/external-evidence-check.js`',
+    '- Run `node tools/r-series-status-check.js`',
+    '- Run `node tools/external-validation-gap-report.js`',
+    '- Run `node tools/external-validation-full-check.js --live-issues`',
     '## Guardrails',
     '## Explicit Non-Goals',
     '## Implementation Approach',
@@ -133,6 +133,24 @@ expectFailure(
     issues: fixtureIssues().map(issue => issue.number === 39 ? { ...issue, labels: [{ name: 'validation' }, { name: 'r-series-current' }] } : issue)
   }),
   'execution issue #39 missing required label: sme-review'
+);
+
+expectFailure(
+  'malformed gap command',
+  () => validateExecutionContracts({
+    packetMarkdown,
+    issues: fixtureIssues().map(issue => issue.number === 35 ? { ...issue, body: issue.body.replace('`node tools/external-validation-gap-report.js`', 'node tools/external-validation-gap-report.js') } : issue)
+  }),
+  'execution issue #35 contains malformed handoff command'
+);
+
+expectFailure(
+  'broken newline node command',
+  () => validateExecutionContracts({
+    packetMarkdown,
+    issues: fixtureIssues().map(issue => issue.number === 36 ? { ...issue, body: issue.body.replace('`node tools/external-validation-full-check.js --live-issues`', 'Run \node tools/external-validation-full-check.js --live-issues') } : issue)
+  }),
+  'execution issue #36 contains malformed handoff command'
 );
 
 expectFailure(

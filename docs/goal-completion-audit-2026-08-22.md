@@ -24,7 +24,7 @@ Final closure readiness guardrail: `node tools/final-closure-readiness-check.js`
 
 Open-issue triage live audit: `node tools/open-issue-triage-audit.js` verifies the live GitHub state behind `docs/open-issue-triage-2026-08-22.md`. It keeps active R-series issues, parked Unity/old-loop backlog, and superseded planning issues from drifting into the wrong status or label set.
 
-External validation execution contract guardrail: `node tools/external-validation-execution-contract-check.js` verifies that the local #35-#39 session packets keep their required fields and anti-proxy warnings. `node tools/external-validation-execution-contract-check.js --live-issues` verifies the live #35-#39 issue bodies, labels, gap-report command, full live wrapper command, and required verification commands.
+External validation execution contract guardrail: `node tools/external-validation-execution-contract-check.js` verifies that the local #35-#39 session packets keep their required fields and anti-proxy warnings. `node tools/external-validation-execution-contract-check.js --live-issues` verifies the live #35-#39 issue bodies, labels, gap-report command, full live wrapper command, malformed handoff command rejection, and required verification commands.
 
 External validation intake runbook guardrail: `node tools/external-validation-intake-runbook-check.js` verifies the evidence intake edit-order contract, and `node tools/external-validation-intake-runbook-check.test.js` keeps mismatch fixtures in CI.
 

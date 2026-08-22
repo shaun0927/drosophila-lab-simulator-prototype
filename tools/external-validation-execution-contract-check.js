@@ -84,6 +84,20 @@ function requireText(text, needle, context) {
   assert(text.includes(needle), `${context} missing required text: ${needle}`);
 }
 
+function rejectMalformedCommands(text, context) {
+  const malformedPatterns = [
+    /Run\s+\\?node tools\//i,
+    /Run\s*\r?\node tools\//i,
+    /^node tools\/external-validation-gap-report\.js$/m,
+    /^node tools\/external-validation-full-check\.js --live-issues$/m,
+    /`node tools\/external-validation-gap-report\.js[^`]/,
+    /`node tools\/external-validation-full-check\.js --live-issues[^`]/
+  ];
+  for (const pattern of malformedPatterns) {
+    assert(!pattern.test(text), `${context} contains malformed handoff command matching ${pattern}`);
+  }
+}
+
 function issueBody(number, cwd = root) {
   const output = execFileSync('gh', ['issue', 'view', String(number), '--json', 'number,state,title,body,labels'], {
     cwd,
@@ -109,6 +123,7 @@ function validatePacketContracts(packetMarkdown) {
 
 function validateIssueContract(issue, contract) {
   assert(issue.state === 'OPEN', `execution issue #${contract.issue} must remain open until evidence is accepted or rejected`);
+  rejectMalformedCommands(issue.body, `execution issue #${contract.issue}`);
   const labels = labelNames(issue);
   for (const label of contract.requiredLabels) {
     assert(labels.includes(label), `execution issue #${contract.issue} missing required label: ${label}`);

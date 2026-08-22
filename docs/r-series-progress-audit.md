@@ -34,7 +34,7 @@ External validation execution issues: #35 collects #27 `LE-01` through `LE-05`; 
 
 Session packet source: [`external-validation-session-packets.md`](external-validation-session-packets.md) provides copy-ready raw packets for #35 through #39 so session notes can be captured before ledger/result rows are edited.
 
-External validation execution contract guardrail: `node tools/external-validation-execution-contract-check.js` verifies the local #35-#39 packet contract, and `node tools/external-validation-execution-contract-check.js --live-issues` verifies the live execution issue bodies, labels, gap-report command, full live wrapper command, and required commands before evidence collection proceeds.
+External validation execution contract guardrail: `node tools/external-validation-execution-contract-check.js` verifies the local #35-#39 packet contract, and `node tools/external-validation-execution-contract-check.js --live-issues` verifies the live execution issue bodies, labels, gap-report command, full live wrapper command, malformed handoff command rejection, and required commands before evidence collection proceeds.
 
 External validation execution tracker: [`external-validation-execution-tracker.md`](external-validation-execution-tracker.md) records that #35 through #39 are open and that #27/#33 accepted evidence counts remain at zero until real sessions are recorded. `node tools/external-validation-tracker-check.js` verifies the tracker counts against the ledger and route-coverage status.
 

@@ -1,0 +1,37 @@
+.co2-meter{height:12px;border:1px solid #34415b;border-radius:999px;background:#070b12;margin:8px 0 12px;overflow:hidden}
+.co2-meter span{display:block;height:100%;background:linear-gradient(90deg,#7cc7ff,#f5c86a,#ff6b6b)}
+.specimen-pad{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:8px;margin-top:12px}
+.specimen{border:1px solid #34415b;border-radius:8px;background:#070b12;padding:8px;min-height:170px}
+.specimen.targeted{border-color:#9fdc61;background:#102013}
+.specimen.rejected{opacity:.68}
+.specimen.uncertain{border-color:#f5c86a;background:#221b0d}
+.specimen.stress{box-shadow:0 0 0 2px #ff6b6b55 inset}
+.specimen-id{border:0;background:transparent;color:#9bd8ff;font-weight:800;padding:0;cursor:pointer}
+.fly-chip{height:46px;position:relative;margin:8px 0;background:radial-gradient(circle at center,#111827,#070b12);border:1px solid #26324a;border-radius:8px}
+.fly-chip span{position:absolute;background:#d9b15c;border-radius:999px}
+.fly-chip span:nth-child(1){width:36px;height:16px;left:50%;top:16px;transform:translateX(-50%)}
+.fly-chip span:nth-child(2){width:18px;height:18px;left:38%;top:14px;background:#f07171}
+.fly-chip span:nth-child(3){width:18px;height:18px;right:38%;top:14px;background:#f07171}
+.specimen p{font-size:13px;color:#bcb4a4;margin:0 0 8px;min-height:36px}
+.zone-label{font-size:12px;text-transform:uppercase;color:#f5c86a;margin-bottom:6px}
+.specimen-actions{display:grid;grid-template-columns:1fr;gap:4px}
+.specimen-actions button{border:1px solid #46516b;border-radius:6px;background:#151b28;color:#f3ecdc;padding:5px;cursor:pointer}
+.assay-plots{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:8px;margin:10px 0}
+.assay-plot{border:1px solid #34415b;border-radius:8px;background:#070b12;padding:10px}
+.bar-row{display:grid;grid-template-columns:72px 1fr 44px;gap:8px;align-items:center;margin-top:8px;font-size:13px}
+.bar-row div{height:10px;border:1px solid #26324a;border-radius:999px;background:#0b111c;overflow:hidden}
+.bar-row i{display:block;height:100%;background:#9fdc61}
+.bad-bar i{background:#ff8f6b}
+.assay-plot p{margin:8px 0 0;color:#bcb4a4;font-size:13px}
+@media(max-width:600px){
+  #app{padding:10px}
+  .panel{padding:12px}
+  .layout,.layout>*,.panel,.lab-grid,.lab-grid>*,.vial-rack,.planner{min-width:0}
+  .topbar h1{font-size:26px}
+  .body{font-size:16px}
+  .mini-actions{display:grid;grid-template-columns:1fr}
+  .record-card{overflow-wrap:anywhere}
+  .record-table{display:block;overflow-x:auto;max-width:100%;white-space:nowrap}
+  .bar-row{grid-template-columns:64px minmax(0,1fr) 42px}
+  .vial-rack,.specimen-pad{grid-template-columns:1fr}
+}

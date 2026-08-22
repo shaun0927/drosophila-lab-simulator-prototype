@@ -1,6 +1,8 @@
 # Drosophila Lab Simulator: Publish or Perish
 
-A browser prototype repo for exploring a competition concept: engineer absurd Drosophila neural traits, discover bizarre behavior, package it as a suspiciously publishable figure, survive Reviewer #2, and submit before midnight.
+A browser prototype repo for exploring a Drosophila lab game. The current playable build still reflects the original publication-satire prototype: engineer absurd neural traits, discover bizarre behavior, package it as a suspiciously publishable figure, survive Reviewer #2, and submit before midnight.
+
+The R-series implementation direction now shifts the core game toward real fly-lab procedure: plan crosses, protect stocks, collect the right flies, run messy assays, and make claims that survive the experiment record. See [`docs/fly-lab-product-thesis.md`](docs/fly-lab-product-thesis.md).
 
 ## Current playable links
 
@@ -41,6 +43,12 @@ The player repeatedly chooses whether to make the phenomenon more believable or 
 
 ## Design docs
 
+- `docs/fly-lab-product-thesis.md` — R-series product contract. Supersedes the phenomenon-first prototype direction for future implementation.
+- `docs/fly-lab-experience-map.md` — R-series source-backed UX incident map for stock, cross, sorting, and assay work.
+- `docs/r-series-progress-audit.md` — Current completion, verification, drift, and remaining-work audit for R0-R7.
+- `docs/fly-lab-playtest-sheet.md` — R7 player validation script.
+- `docs/fly-lab-sme-validation-sheet.md` — R7 biology-aware validation rubric.
+- `docs/fly-lab-validation-results.md` — Validation status and result log.
 - `docs/00-competition-scope.md`
 - `docs/01-core-fun-loop-paper-design.md`
 - `docs/design-verdict.md`

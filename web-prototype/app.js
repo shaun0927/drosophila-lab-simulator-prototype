@@ -3,9 +3,9 @@ const D = window.GAME_DATA;
 let S, anim = 0;
 
 function reset(){
-  S = {phase:'traits', time:300, budget:100, ev:0, weird:0, cred:0, hype:0, susp:0,
+  S = {phase:'mode', time:300, budget:100, ev:0, weird:0, cred:0, hype:0, susp:0,
        selected:[], phenomenon:null, title:'Untitled Figure', reviewer:'', ending:'', body:'', log:[]};
-  log('PI: We need a publishable behavior by midnight. Make the flies do something weird. Then make it look rigorous.');
+  log('PI: The paper can wait. First prove the vial history makes sense.');
   render();
 }
 function log(t){ S.log.push('• '+t); }
@@ -15,15 +15,353 @@ function renderStats(){
   $('#stats').innerHTML = `<div class="stat">Time ${S.time}s</div><div class="stat">Budget $${S.budget}</div><div></div>`+
     ['ev','weird','cred','hype','susp'].map(k=>`<div class="stat ${k==='susp'?'bad':'good'}">${statName(k)} ${S[k]}</div>`).join('');
 }
-function render(){ renderStats(); $('#log').innerHTML=S.log.slice(-9).map(x=>`<div>${x}</div>`).join(''); ({traits,discover,assay,figure,reviewer,final,result})[S.phase](); }
+function render(){ renderStats(); $('#log').innerHTML=S.log.slice(-9).map(x=>`<div>${x}</div>`).join(''); ({mode,lab,traits,discover,assay,figure,reviewer,final,result})[S.phase](); }
 function btn(label, detail, fn, cls='choice'){ const b=document.createElement('button'); b.className=cls; b.innerHTML=`<h3>${label}</h3><p>${detail||''}</p>`; b.onclick=fn; return b; }
 function setStage(html){ $('#stage').innerHTML=html; $('#choices').innerHTML=''; }
 function choose(c, next){ add(c); if(c.log) log(c.log); if(c.title) S.title=c.title; if(S.time<=0||S.budget<=0) return submit(); if(next) S.phase=next; render(); }
 function combo(tags){ return tags.every(t=>S.selectedTags.has(t)|| (t==='social'&&S.selectedTags.has('swarm'))); }
 function resolve(){ S.selectedTags=new Set(S.selected.flatMap(t=>t.tags)); return D.phenomena.find(p=>combo(p.tags)) || D.fallback; }
+function clone(o){ return JSON.parse(JSON.stringify(o)); }
+function stockFor(vial){ return S.lab.stocks.find(s=>s.id===vial.stockId); }
+function activeVials(){ return S.lab.vials.filter(v=>v.status==='active'); }
+function vialAge(vial){ return S.lab.day - vial.setupDay; }
+function notebook(action, detail, vialId=''){ S.lab.notebook.unshift({day:S.lab.day, action, detail, vialId}); log(`Day ${S.lab.day}: ${action} — ${detail}`); }
+function createLabState(){
+  const lab = clone(D.lab);
+  lab.day = 0;
+  lab.nextVial = 4;
+  lab.nextCross = 1;
+  lab.nextBatch = 1;
+  lab.nextAssay = 1;
+  lab.crossPlan = null;
+  lab.crosses = [];
+  lab.sortingSession = null;
+  lab.batchRecords = [];
+  lab.assayRecords = [];
+  lab.figureReview = null;
+  lab.notebook = [
+    {day:0, action:'Lab opened', detail:'Starting stock rack loaded from R2 fixture.', vialId:''}
+  ];
+  applyVialConsequences(lab, false);
+  return lab;
+}
+function applyVialConsequences(lab=S.lab, writeNotebook=true){
+  lab.vials.forEach(v=>{
+    if(v.status!=='active') return;
+    const age = lab.day - v.setupDay;
+    const stock = lab.stocks.find(s=>s.id===v.stockId);
+    v.flags = [];
+    if(v.labelCompleteness<100) v.flags.push('label incomplete');
+    if(age>=18) v.flags.push('flip due');
+    if(age>20) v.flags.push('overcrowding risk');
+    if(age>24) v.flags.push('mixed-generation risk');
+    if(v.food==='drying'||age>21) v.flags.push('food condition risk');
+    if(v.contamination!=='clear') v.flags.push(v.contamination);
+    v.lineageConfidence = Math.max(20, Math.min(100, v.labelCompleteness - Math.max(0, age-18)*5 - (v.flags.includes('mixed-generation risk')?15:0)));
+    if(stock) stock.trust = Math.max(20, Math.min(100, stock.trust - (v.flags.includes('mixed-generation risk')?1:0)));
+    if(writeNotebook && v.flags.includes('overcrowding risk') && !v.overdueLogged){
+      v.overdueLogged = true;
+      lab.notebook.unshift({day:lab.day, action:'Overdue consequence', detail:`${v.id} is old enough to threaten culture confidence.`, vialId:v.id});
+    }
+  });
+}
+function startLab(){ S.lab = createLabState(); S.phase='lab'; log('Procedure Lab started: stock rack, calendar, and notebook are now authoritative.'); render(); }
+function advanceDay(){ S.lab.day += 1; activeVials().forEach(v=>v.adults += v.flags&&v.flags.includes('overcrowding risk') ? 2 : 1); applyVialConsequences(); notebook('Advance day', 'Vial ages, due events, and confidence warnings updated.'); render(); }
+function labelVial(vialId){
+  const v = S.lab.vials.find(x=>x.id===vialId);
+  if(!v) return;
+  const before = v.labelCompleteness;
+  v.labelCompleteness = Math.min(100, v.labelCompleteness+25);
+  applyVialConsequences();
+  notebook('Label vial', `${v.id} label completeness ${before}% -> ${v.labelCompleteness}%.`, v.id);
+  render();
+}
+function flipVial(vialId){
+  const v = S.lab.vials.find(x=>x.id===vialId);
+  if(!v||v.status!=='active') return;
+  const stock = stockFor(v);
+  const id = 'V-'+String(S.lab.nextVial++).padStart(3,'0');
+  const newVial = {id, stockId:v.stockId, setupDay:S.lab.day, adults:Math.max(8, Math.round(v.adults*.55)), food:'fresh', labelCompleteness:v.labelCompleteness, contamination:'clear', status:'active'};
+  v.status = 'archived';
+  v.archivedDay = S.lab.day;
+  S.lab.vials.push(newVial);
+  if(stock&&stock.backupCount<1) stock.backupCount += 1;
+  applyVialConsequences();
+  notebook('Flip vial', `${v.id} -> ${id} for ${stock?stock.name:v.stockId}; label confidence carried forward.`, id);
+  render();
+}
+function clearAdultsForVirginCollection(vialId){
+  const v = S.lab.vials.find(x=>x.id===vialId&&x.status==='active');
+  if(!v) return;
+  const stock = stockFor(v);
+  S.lab.crossPlan = {sourceVialId:v.id, femaleStockId:v.stockId, clearDay:S.lab.day, windowDay:S.lab.day+1, status:'cleared', virginCount:0, virginConfidence:0, maleStockId:null};
+  notebook('Clear adults', `${v.id} cleared for virgin collection. Return on day ${S.lab.crossPlan.windowDay}.`, v.id);
+  render();
+}
+function collectVirgins(){
+  const p = S.lab.crossPlan;
+  if(!p||p.status!=='cleared') return;
+  const delta = S.lab.day - p.windowDay;
+  if(delta<0){
+    notebook('Virgin collection blocked', `Window opens on day ${p.windowDay}; collecting now would be premature.`, p.sourceVialId);
+    return render();
+  }
+  p.status = 'virgins-collected';
+  p.collectionDay = S.lab.day;
+  p.late = delta>0;
+  p.virginCount = Math.max(3, 10 - Math.max(0, delta*3));
+  p.virginConfidence = p.late ? 48 : 92;
+  notebook('Collect candidate virgins', `${p.virginCount} females collected with ${p.virginConfidence}% virgin confidence${p.late?' after a late window':''}.`, p.sourceVialId);
+  render();
+}
+function selectCrossMales(stockId){
+  const p = S.lab.crossPlan;
+  if(!p) return;
+  p.maleStockId = stockId;
+  const stock = S.lab.stocks.find(s=>s.id===stockId);
+  notebook('Select males', `${stock.name} selected as male parent stock.`, '');
+  render();
+}
+function setCrossVial(){
+  const p = S.lab.crossPlan;
+  if(!p||p.status!=='virgins-collected'||!p.maleStockId) return;
+  const female = S.lab.stocks.find(s=>s.id===p.femaleStockId);
+  const male = S.lab.stocks.find(s=>s.id===p.maleStockId);
+  const crossId = 'X-'+String(S.lab.nextCross++).padStart(2,'0');
+  const vialId = 'V-'+String(S.lab.nextVial++).padStart(3,'0');
+  const labelCompleteness = p.virginConfidence>=90 ? 90 : 65;
+  const confidence = Math.max(20, Math.min(100, Math.round((p.virginConfidence + labelCompleteness + female.trust + male.trust)/4)));
+  const cross = {id:crossId, vialId, femaleStockId:p.femaleStockId, maleStockId:p.maleStockId, setupDay:S.lab.day, scoringStart:S.lab.day+10, scoringEnd:S.lab.day+18, femaleCount:Math.min(8,p.virginCount), maleCount:4, labelCompleteness, confidence, expected:['female-parent marker class','male-parent marker class','ambiguous low-confidence class']};
+  S.lab.crosses.push(cross);
+  S.lab.vials.push({id:vialId, stockId:p.femaleStockId, crossId, setupDay:S.lab.day, adults:cross.femaleCount+cross.maleCount, food:'fresh', labelCompleteness, contamination:'clear', status:'active'});
+  S.lab.crossPlan = null;
+  applyVialConsequences();
+  notebook('Set cross', `${crossId} ${female.name} females x ${male.name} males in ${vialId}; confidence ${confidence}%.`, vialId);
+  render();
+}
+function specimenSet(sourceId){
+  const types = [
+    ['female','target','red eyes, rounded abdomen'],
+    ['female','target','red eyes, rounded abdomen'],
+    ['female','target','red eyes, rounded abdomen'],
+    ['female','target','red eyes, rounded abdomen'],
+    ['female','target','red eyes, rounded abdomen'],
+    ['female','target','red eyes, rounded abdomen'],
+    ['female','target','red eyes, rounded abdomen'],
+    ['female','target','red eyes, rounded abdomen'],
+    ['female','ambiguous','faint marker, borderline abdomen'],
+    ['male','wild','white eyes, slimmer abdomen'],
+    ['female','target','red eyes, rounded abdomen'],
+    ['female','target','red eyes, rounded abdomen']
+  ];
+  return types.map((t,i)=>({id:`${sourceId}-F${i+1}`, sex:t[0], marker:t[1], tell:t[2], zone:'unsorted', exposureSeconds:0, stress:false}));
+}
+function startSorting(sourceId=''){
+  const source = sourceId || (S.lab.crosses[0]&&S.lab.crosses[0].vialId) || activeVials()[0].id;
+  S.lab.sortingSession = {sourceId:source, exposureSeconds:0, co2On:false, specimens:specimenSet(source), inspected:null};
+  notebook('Start CO2 bench', `${source} loaded onto sorting pad.`, source);
+  render();
+}
+function applyCO2(seconds=20){
+  const session = S.lab.sortingSession;
+  if(!session) return;
+  session.co2On = true;
+  session.exposureSeconds += seconds;
+  session.specimens.filter(f=>f.zone==='unsorted').forEach(f=>{
+    f.exposureSeconds += seconds;
+    if(f.exposureSeconds>=80) f.stress = true;
+  });
+  notebook('Apply CO2', `Exposure increased to ${session.exposureSeconds}s; sorting gets easier, assay caveat risk rises.`, session.sourceId);
+  render();
+}
+function stopCO2(){
+  if(!S.lab.sortingSession) return;
+  S.lab.sortingSession.co2On = false;
+  notebook('Stop CO2', `Exposure stopped at ${S.lab.sortingSession.exposureSeconds}s.`, S.lab.sortingSession.sourceId);
+  render();
+}
+function inspectSpecimen(id){
+  const session = S.lab.sortingSession;
+  if(!session) return;
+  session.inspected = session.specimens.find(f=>f.id===id) || null;
+  render();
+}
+function sortSpecimen(id, zone){
+  const session = S.lab.sortingSession;
+  if(!session) return;
+  const fly = session.specimens.find(f=>f.id===id);
+  if(!fly) return;
+  fly.zone = zone;
+  render();
+}
+function finishBatch(){
+  const session = S.lab.sortingSession;
+  if(!session) return;
+  const selected = session.specimens.filter(f=>f.zone==='target');
+  const targetCorrect = selected.filter(f=>f.sex==='female'&&f.marker==='target').length;
+  const ambiguous = selected.filter(f=>f.marker==='ambiguous'||f.sex==='unknown').length;
+  const wrong = selected.length - targetCorrect - ambiguous;
+  const purity = selected.length ? Math.max(0, Math.round((targetCorrect / selected.length) * 100 - ambiguous*5 - wrong*12)) : 0;
+  const exposureRisk = session.exposureSeconds>=80 ? 'high_co2_exposure' : session.exposureSeconds>=40 ? 'moderate_co2_exposure' : '';
+  const caveats = [];
+  if(selected.length<8) caveats.push('low_batch_n');
+  if(ambiguous>0) caveats.push('ambiguous_batch');
+  if(wrong>0) caveats.push('mis_sorted_specimens');
+  if(exposureRisk) caveats.push(exposureRisk);
+  const record = {
+    id:'B-'+String(S.lab.nextBatch++).padStart(2,'0'),
+    sourceId:session.sourceId,
+    day:S.lab.day,
+    count:selected.length,
+    purity,
+    ambiguity:ambiguous,
+    co2ExposureSeconds:session.exposureSeconds,
+    sortingConfidence:Math.max(20, Math.min(100, purity - caveats.length*6)),
+    caveats
+  };
+  S.lab.batchRecords.unshift(record);
+  S.lab.sortingSession = null;
+  notebook('Batch record', `${record.id} from ${record.sourceId}: n=${record.count}, purity ${record.purity}%, CO2 ${record.co2ExposureSeconds}s, caveats ${record.caveats.join(', ')||'none'}.`, record.sourceId);
+  render();
+}
+function runNegativeGeotaxis(batchId, controlPresent=false, nTarget=8){
+  const batch = S.lab.batchRecords.find(b=>b.id===batchId);
+  if(!batch) return;
+  const n = Math.min(nTarget, batch.count);
+  const caveats = [...batch.caveats];
+  if(!controlPresent) caveats.push('missing_control');
+  if(n<10) caveats.push('low_n');
+  if(batch.co2ExposureSeconds>=80) caveats.push('co2_exposure');
+  if(batch.ambiguity>0) caveats.push('ambiguous_batch');
+  const penalty = caveats.length*5 + Math.max(0, 90-batch.purity)*.25 + Math.max(0, 80-batch.sortingConfidence)*.2;
+  const meanScore = Math.max(5, Math.round(72 - penalty + (controlPresent?4:-3)));
+  const variance = Math.round(8 + caveats.length*4 + Math.max(0, 90-batch.purity)*.15);
+  const confidence = Math.max(10, Math.min(100, Math.round(batch.sortingConfidence + (controlPresent?12:-12) + n*1.5 - caveats.length*7)));
+  const record = {id:'A-'+String(S.lab.nextAssay++).padStart(2,'0'), batchId, day:S.lab.day, n, controlPresent, meanScore, variance, confidence, caveats:[...new Set(caveats)]};
+  S.lab.assayRecords.unshift(record);
+  notebook('Negative geotaxis assay', `${record.id} from ${batchId}: n=${n}, control ${controlPresent?'present':'missing'}, climb ${meanScore}, confidence ${confidence}%.`, batch.sourceId);
+  render();
+}
+function buildExperimentRecord(assayId, claimStrength='conservative'){
+  const assay = S.lab.assayRecords.find(a=>a.id===assayId);
+  if(!assay) return null;
+  const batch = S.lab.batchRecords.find(b=>b.id===assay.batchId);
+  const cross = batch ? S.lab.crosses.find(x=>x.vialId===batch.sourceId) : null;
+  const sourceVial = batch ? S.lab.vials.find(v=>v.id===batch.sourceId) : null;
+  const labelCompleteness = sourceVial ? sourceVial.labelCompleteness : 100;
+  const crossConfidence = cross ? cross.confidence : (sourceVial ? sourceVial.lineageConfidence : 70);
+  const caveats = [...new Set([...(assay.caveats||[]), ...(batch?batch.caveats:[])])];
+  return {assay, batch, cross, sourceVial, labelCompleteness, crossConfidence, claimStrength, caveats};
+}
+function reviewerFinding(record){
+  if(!record) return null;
+  const strengthLabel = {conservative:'conservative climbing phenotype', mechanistic:'mechanistic neural interpretation', sensational:'broad behavioral discovery'}[record.claimStrength];
+  if(record.crossConfidence<60||record.labelCompleteness<70) return {id:'weak_lineage', severity:'major', evidenceRef:record.cross?record.cross.id:(record.sourceVial&&record.sourceVial.id)||'source vial', quote:'I cannot tell whether the assayed flies are the flies your title claims they are.', why:'Lineage confidence or label completeness is too low for a strong claim.'};
+  if(record.caveats.includes('missing_control')) return {id:'missing_control', severity:'major', evidenceRef:record.assay.id, quote:'Without the control group, this climbing difference could be handling, genotype, or wishful thinking.', why:'The assay record has no control, so the result cannot separate treatment from procedure.'};
+  if(record.caveats.includes('low_n')) return {id:'low_n', severity:'major', evidenceRef:record.assay.id, quote:'Your n is still a lab anecdote wearing a figure legend.', why:'The assay used too few scored flies for the chosen claim.'};
+  if(record.caveats.includes('co2_exposure')||record.caveats.includes('high_co2_exposure')) return {id:'co2_exposure', severity:'major', evidenceRef:record.batch.id, quote:'The CO2 exposure is a behavioral confound, not a methods detail you can bury.', why:'The sorted batch carried a high CO2 caveat into the behavior assay.'};
+  if(record.caveats.includes('ambiguous_batch')||record.caveats.includes('mis_sorted_specimens')) return {id:'ambiguous_batch', severity:'major', evidenceRef:record.batch.id, quote:'Your batch purity makes the genotype label aspirational.', why:'Sorting ambiguity or mis-sorted specimens lowered batch confidence.'};
+  if(record.claimStrength==='sensational') return {id:'overclaim_sensational', severity:'major', evidenceRef:record.assay.id, quote:'A climbing assay does not establish a grand theory of behavioral control.', why:'The claim strength exceeds what a negative geotaxis record can support.'};
+  if(record.claimStrength==='mechanistic') return {id:'overclaim_mechanism', severity:'minor', evidenceRef:record.assay.id, quote:'The phenotype is plausible, but the mechanism is still mostly a drawing.', why:'The record supports a behavior difference better than a mechanism.'};
+  return {id:'clean_record', severity:'minor', evidenceRef:record.assay.id, quote:'This is annoyingly defensible. I still want one independent repeat.', why:'The record has control, usable n, and no dominant procedural caveat.'};
+}
+function chooseClaim(assayId, claimStrength){
+  const record = buildExperimentRecord(assayId, claimStrength);
+  const finding = reviewerFinding(record);
+  S.lab.figureReview = {record, finding};
+  notebook('Figure summary reviewed', `${assayId} as ${claimStrength}: Reviewer finding ${finding.id} from ${finding.evidenceRef}.`, finding.evidenceRef);
+  render();
+}
+function dueEvents(){
+  const events = [];
+  activeVials().forEach(v=>{
+    const stock = stockFor(v), age = vialAge(v);
+    if(v.labelCompleteness<100) events.push({kind:'Label', text:`${v.id} ${stock.name}: label incomplete (${v.labelCompleteness}%).`});
+    if(age>=18&&age<=20) events.push({kind:'Due', text:`${v.id} ${stock.name}: flip due now, age ${age} days.`});
+    if(age>20) events.push({kind:'Overdue', text:`${v.id} ${stock.name}: overdue, confidence falling.`});
+  });
+  if(S.lab.crossPlan){
+    const p = S.lab.crossPlan, stock = S.lab.stocks.find(s=>s.id===p.femaleStockId);
+    if(p.status==='cleared'&&S.lab.day<p.windowDay) events.push({kind:'Virgin', text:`${p.sourceVialId} ${stock.name}: virgin window opens day ${p.windowDay}.`});
+    if(p.status==='cleared'&&S.lab.day===p.windowDay) events.push({kind:'Virgin', text:`${p.sourceVialId} ${stock.name}: collect candidate virgins today.`});
+    if(p.status==='cleared'&&S.lab.day>p.windowDay) events.push({kind:'Late', text:`${p.sourceVialId} ${stock.name}: virgin window is late; confidence will drop.`});
+  }
+  S.lab.crosses.forEach(x=>{
+    if(S.lab.day>=x.scoringStart&&S.lab.day<=x.scoringEnd) events.push({kind:'Score', text:`${x.id} ${x.vialId}: progeny scoring window is open.`});
+    if(S.lab.day<x.scoringStart) events.push({kind:'Cross', text:`${x.id} ${x.vialId}: scoring opens day ${x.scoringStart}.`});
+  });
+  return events.length ? events : [{kind:'Clear', text:'No urgent rack events. Advance only if the notebook can defend it.'}];
+}
 function quickStart(){ S.selected=[D.traits[0],D.traits[3],D.traits[8]]; createLine(); }
 function createLine(){ S.selected.forEach(add); S.time-=35; S.budget-=15; S.phenomenon=resolve(); add(S.phenomenon); log('Mutant line created: '+S.selected.map(t=>t.name).join(' + ')); log('NEW PHENOMENON: '+S.phenomenon.name); S.phase='discover'; render(); }
 
+function mode(){
+  setStage(`<div class="kicker">R-series prototype direction</div><h2>Choose the lab loop to test</h2><div class="body"><p>The production target is now a fly-lab procedure simulator with a publication wrapper. The old phenomenon-first loop remains available as a historical prototype.</p><div class="objective">Current goal: make labels, vial age, calendar pressure, and notebook traceability matter before any paper claim exists.</div></div>`);
+  const c=$('#choices');
+  c.appendChild(btn('Start Procedure Lab','Stock rack, vial age, labels, calendar events, and notebook consequences.',startLab,'choice primary'));
+  c.appendChild(btn('Open old publication-satire prototype','Trait cards, absurd phenomena, figure framing, and Reviewer #2.',()=>{S.phase='traits'; log('Historical prototype route opened.'); render();},'choice ghost'));
+}
+function lab(){
+  const rack = activeVials().map(v=>{
+    const stock = stockFor(v), age = vialAge(v), flags = (v.flags||[]).map(f=>`<span class="pill ${f.includes('risk')||f.includes('incomplete')?'warn':''}">${f}</span>`).join('') || '<span class="pill">clean</span>';
+    return `<article class="vial-card"><div class="vial-head"><b>${v.id}</b><span>Day ${S.lab.day}, age ${age}</span></div><h3>${stock.name}</h3><p>${stock.genotype}<br>Marker: ${stock.marker}</p><div class="lab-metrics"><span>Adults ${v.adults}</span><span>Food ${v.food}</span><span>Label ${v.labelCompleteness}%</span><span>Lineage ${v.lineageConfidence}%</span></div><div>${flags}</div><div class="mini-actions"><button onclick="labelVial('${v.id}')">Label</button><button onclick="flipVial('${v.id}')">Flip</button></div></article>`;
+  }).join('');
+  const calendar = dueEvents().map(e=>`<li><b>${e.kind}</b> ${e.text}</li>`).join('');
+  const notes = S.lab.notebook.slice(0,8).map(n=>`<div><b>D${n.day} ${n.action}</b>${n.vialId?` <span>${n.vialId}</span>`:''}<br>${n.detail}</div>`).join('');
+  const planner = crossPlannerHtml();
+  setStage(`<div class="kicker">Procedure Lab</div><h2>Stock rack and calendar</h2><div class="body"><p>Small record choices now become future confidence. Bad labels, overdue vials, late virgin collection, CO2 exposure, sorting ambiguity, and missing controls all become record caveats.</p></div><div class="lab-grid"><section><h3>Vial rack</h3><div class="vial-rack">${rack}</div>${planner}${benchHtml()}${assayHtml()}${figureReviewHtml()}</section><section><h3>Calendar checklist</h3><ul class="calendar">${calendar}</ul><h3>Notebook</h3><div class="notebook">${notes}</div></section></div>`);
+  const c=$('#choices');
+  c.appendChild(btn('Advance one day','Ages active vials and applies overdue consequences.',advanceDay,'choice primary'));
+  c.appendChild(btn('Return to route selection','Keeps the old prototype accessible without mixing state.',reset,'choice ghost'));
+}
+function crossPlannerHtml(){
+  const p = S.lab.crossPlan;
+  if(!p){
+    const options = activeVials().slice(0,3).map(v=>{
+      const stock = stockFor(v);
+      return `<button onclick="clearAdultsForVirginCollection('${v.id}')">Clear ${v.id} for ${stock.name} virgins</button>`;
+    }).join('');
+    return `<section class="planner"><h3>Cross planner</h3><p>Start one cross by clearing adults, waiting for the virgin window, collecting females, selecting males, and setting a labeled cross vial.</p><div class="mini-actions stacked">${options}</div></section>`;
+  }
+  const female = S.lab.stocks.find(s=>s.id===p.femaleStockId);
+  const maleButtons = S.lab.stocks.filter(s=>s.id!==p.femaleStockId).map(s=>`<button onclick="selectCrossMales('${s.id}')">${p.maleStockId===s.id?'Selected: ':''}${s.name} males</button>`).join('');
+  const collectButton = p.status==='cleared' ? `<button onclick="collectVirgins()">Collect candidate virgins</button>` : '';
+  const setButton = p.status==='virgins-collected'&&p.maleStockId ? `<button onclick="setCrossVial()">Set cross vial</button>` : '';
+  return `<section class="planner"><h3>Cross planner</h3><p><b>Female source:</b> ${female.name} from ${p.sourceVialId}<br><b>Window:</b> day ${p.windowDay}<br><b>Status:</b> ${p.status}${p.virginCount?`<br><b>Candidate virgins:</b> ${p.virginCount}, confidence ${p.virginConfidence}%`:''}</p><div class="mini-actions stacked">${collectButton}${maleButtons}${setButton}</div></section>`;
+}
+function benchHtml(){
+  const session = S.lab.sortingSession;
+  const records = S.lab.batchRecords.map(b=>`<li><b>${b.id}</b> ${b.sourceId}: n=${b.count}, purity ${b.purity}%, CO2 ${b.co2ExposureSeconds}s, confidence ${b.sortingConfidence}%, caveats ${b.caveats.join(', ')||'none'}</li>`).join('') || '<li>No batch record yet.</li>';
+  if(!session){
+    const sourceButtons = [...S.lab.crosses.map(x=>x.vialId), ...activeVials().slice(0,2).map(v=>v.id)].slice(0,4).map(id=>`<button onclick="startSorting('${id}')">Sort from ${id}</button>`).join('');
+    return `<section class="planner"><h3>CO2 bench sorting</h3><p>Use CO2 to slow flies, then sort target females. More exposure makes sorting calmer but adds assay caveats.</p><div class="mini-actions stacked">${sourceButtons||'<button onclick="startSorting()">Start from rack vial</button>'}</div><ul class="calendar">${records}</ul></section>`;
+  }
+  const rows = session.specimens.map(f=>{
+    const stress = f.stress ? ' stress' : '';
+    const zone = f.zone==='target' ? 'targeted' : f.zone==='reject' ? 'rejected' : f.zone==='ambiguous' ? 'uncertain' : 'unsorted';
+    return `<article class="specimen ${zone}${stress}"><button class="specimen-id" onclick="inspectSpecimen('${f.id}')">${f.id}</button><div class="fly-chip"><span></span><span></span><span></span></div><p>${f.tell}</p><div class="zone-label">${f.zone}</div><div class="specimen-actions"><button onclick="sortSpecimen('${f.id}','target')">Target</button><button onclick="sortSpecimen('${f.id}','reject')">Reject</button><button onclick="sortSpecimen('${f.id}','ambiguous')">Ambiguous</button></div></article>`;
+  }).join('');
+  const selected = session.specimens.filter(f=>f.zone==='target').length;
+  const inspected = session.inspected ? `<p><b>Inspecting ${session.inspected.id}</b><br>Tell: ${session.inspected.tell}<br>True state for prototype QA: ${session.inspected.sex}, ${session.inspected.marker}</p>` : '<p>Select a specimen to inspect its tell.</p>';
+  return `<section class="planner"><h3>CO2 bench sorting</h3><p><b>Source:</b> ${session.sourceId}<br><b>CO2 exposure:</b> ${session.exposureSeconds}s ${session.exposureSeconds>=80?'<span class="warning">high assay caveat risk</span>':session.exposureSeconds>=40?'<span class="hint">moderate caveat risk</span>':'low caveat risk'}<br><b>Selected target count:</b> ${selected}</p><div class="co2-meter"><span style="width:${Math.min(100,session.exposureSeconds)}%"></span></div><div class="mini-actions"><button onclick="applyCO2(20)">Apply CO2 +20s</button><button onclick="stopCO2()">Stop CO2</button><button onclick="finishBatch()">Finish batch</button></div>${inspected}<div class="specimen-pad">${rows}</div></section>`;
+}
+function assayHtml(){
+  const batchOptions = S.lab.batchRecords.map(b=>`<div class="record-card"><b>${b.id}</b> from ${b.sourceId}<br>n=${b.count}, purity ${b.purity}%, confidence ${b.sortingConfidence}%<div class="mini-actions"><button onclick="runNegativeGeotaxis('${b.id}',false,8)">Run no-control n=8</button><button onclick="runNegativeGeotaxis('${b.id}',true,12)">Run controlled n=12</button></div></div>`).join('') || '<p>No sorted batch available. Finish CO2 sorting first.</p>';
+  const plots = S.lab.assayRecords.map(assayPlot).join('');
+  const records = S.lab.assayRecords.map(a=>`<tr><td>${a.id}</td><td>${a.batchId}</td><td>${a.n}</td><td>${a.controlPresent?'yes':'no'}</td><td>${a.meanScore}</td><td>${a.variance}</td><td>${a.confidence}%</td><td>${a.caveats.join(', ')||'none'}</td></tr>`).join('');
+  const table = records ? `<table class="record-table"><thead><tr><th>ID</th><th>Batch</th><th>n</th><th>Control</th><th>Mean climb</th><th>Variance</th><th>Confidence</th><th>Caveats</th></tr></thead><tbody>${records}</tbody></table>` : '<p>No assay record yet.</p>';
+  return `<section class="planner"><h3>Negative geotaxis assay</h3><p>Run a simplified climbing assay from a sorted batch. Control, n, CO2, and ambiguity change confidence and reviewer vulnerabilities.</p>${batchOptions}<div class="assay-plots">${plots}</div>${table}</section>`;
+}
+function assayPlot(a){
+  const noise = Math.min(100, a.variance*4);
+  return `<article class="assay-plot"><div><b>${a.id}</b> ${a.controlPresent?'controlled':'no control'} n=${a.n}</div><div class="bar-row"><span>climb</span><div><i style="width:${a.meanScore}%"></i></div><b>${a.meanScore}</b></div><div class="bar-row"><span>confidence</span><div><i style="width:${a.confidence}%"></i></div><b>${a.confidence}%</b></div><div class="bar-row bad-bar"><span>noise</span><div><i style="width:${noise}%"></i></div><b>${a.variance}</b></div><p>${a.caveats.join(', ')||'clean record'}</p></article>`;
+}
+function figureReviewHtml(){
+  const assayButtons = S.lab.assayRecords.map(a=>`<div class="record-card"><b>${a.id}</b> confidence ${a.confidence}%, caveats ${a.caveats.join(', ')||'none'}<div class="mini-actions"><button onclick="chooseClaim('${a.id}','conservative')">Conservative claim</button><button onclick="chooseClaim('${a.id}','mechanistic')">Mechanistic claim</button><button onclick="chooseClaim('${a.id}','sensational')">Sensational claim</button></div></div>`).join('') || '<p>No assay record available for review.</p>';
+  const review = S.lab.figureReview;
+  const result = review ? `<div class="record-card"><h3>Reviewer #2 finding</h3><p><b>${review.finding.severity.toUpperCase()}:</b> ${review.finding.quote}</p><p><b>Evidence ref:</b> ${review.finding.evidenceRef}<br><b>Why this happened:</b> ${review.finding.why}</p><p><b>Claim:</b> ${review.record.claimStrength}<br><b>Assay:</b> ${review.record.assay.id}, n=${review.record.assay.n}, control=${review.record.assay.controlPresent?'yes':'no'}, confidence=${review.record.assay.confidence}%</p></div>` : '';
+  return `<section class="planner"><h3>Figure summary and reviewer</h3><p>Choose claim strength from an assay record. Reviewer #2 reads lineage, batch, control, n, CO2, and ambiguity before attacking one primary weakness.</p>${assayButtons}${result}</section>`;
+}
 function traits(){
   setStage(`<div class="kicker">Step 1 — Select 3 traits</div><h2>Engineer a publishable fly line</h2><div class="body"><p><b>PI:</b> “Make the flies do something weird. Then make it look rigorous.”</p><div class="objective">Goal: discover one abnormal behavior, gather evidence, frame the figure, survive Reviewer #2, and submit before midnight.</div><p><b>Selected:</b> ${S.selected.length}/3 ${S.selected.map(t=>`<span class="pill">${t.name}</span>`).join('')||'<span class="pill">empty</span><span class="pill">empty</span><span class="pill">empty</span>'}</p></div>`);
   const c=$('#choices'); c.appendChild(btn('Start recommended first run','Blue Light + Hyperactive + Social Bias. Fastest path to a visible phenomenon.', quickStart, 'choice primary'));
@@ -76,6 +414,39 @@ function result(){
   setStage(`<div class="kicker">Submission result</div><div class="result-title">${S.ending}</div><p class="paper-title">${S.title}</p><div class="body"><p>${S.body}</p><div class="meters">${meterHtml()}</div><p><b>Impact Score: ${impact}</b></p><p class="hint">Catalog updated: ${S.phenomenon.name}</p></div>`);
   $('#choices').appendChild(btn('Run another experiment','Try another trait combination and chase a different ending.',reset,'choice primary'));
 }
+function sortFixtureTargets(sourceId, ids, co2Pulses=0){
+  startSorting(sourceId);
+  for(let i=0;i<co2Pulses;i++) applyCO2(20);
+  ids.forEach(id=>sortSpecimen(`${sourceId}-${id}`,'target'));
+  finishBatch();
+}
+function loadValidationFixture(name){
+  startLab();
+  if(name==='clean'){
+    sortFixtureTargets('V-001',['F1','F2','F3','F4','F5','F6','F7','F8','F11','F12']);
+    runNegativeGeotaxis('B-01', true, 12);
+    chooseClaim('A-01','sensational');
+    log('Validation fixture loaded: clean path.');
+  } else if(name==='dirty'){
+    sortFixtureTargets('V-002',['F1','F2','F3','F4','F5','F6','F7','F8','F9','F10'],4);
+    runNegativeGeotaxis('B-01', true, 12);
+    chooseClaim('A-01','conservative');
+    log('Validation fixture loaded: dirty CO2 path.');
+  } else if(name==='missing-control'){
+    sortFixtureTargets('V-001',['F1','F2','F3','F4','F5','F6','F7','F8','F11','F12']);
+    runNegativeGeotaxis('B-01', false, 8);
+    chooseClaim('A-01','mechanistic');
+    log('Validation fixture loaded: missing-control path.');
+  }
+  render();
+}
+function applyInitialFixture(){
+  try{
+    const search = window.location && window.location.search ? window.location.search : '';
+    const fixture = new URLSearchParams(search).get('fixture');
+    if(['clean','dirty','missing-control'].includes(fixture)) loadValidationFixture(fixture);
+  }catch(e){}
+}
 function drawChamber(){
   const cv=$('#chamber'), ctx=cv.getContext('2d'), w=cv.width, h=cv.height; anim+=0.025;
   ctx.clearRect(0,0,w,h); ctx.fillStyle='#02040a'; ctx.fillRect(0,0,w,h);
@@ -86,4 +457,4 @@ function drawChamber(){
   ctx.fillStyle='#d8e6ff'; ctx.font='15px system-ui'; ctx.fillText(S.phenomenon.name,18,h-26);
   requestAnimationFrame(drawChamber);
 }
-reset(); drawChamber();
+reset(); applyInitialFixture(); drawChamber();

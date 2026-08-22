@@ -6,6 +6,11 @@ CI guardrail: `.github/workflows/web-prototype-smoke.yml` runs syntax checks and
 
 No external player or SME validation has been run yet.
 
+R-series issue status after PR #34 merge:
+
+- Closed: #26, #28, #29, #30, #31, #32.
+- Still open: #27 for user lived-experience input, #33 for player/SME validation.
+
 ## Current internal regression status
 
 Command:

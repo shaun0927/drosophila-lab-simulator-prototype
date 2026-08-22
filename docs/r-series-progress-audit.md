@@ -12,14 +12,14 @@ CI guardrail: `.github/workflows/web-prototype-smoke.yml` runs JavaScript syntax
 
 | Issue | Status | Evidence | Remaining gap |
 |---|---|---|---|
-| #26 R0 Product thesis | Implemented locally | `docs/fly-lab-product-thesis.md`; supersession notes in README and existing design docs | Needs commit/push/PR before closing the GitHub issue |
+| #26 R0 Product thesis | Closed | `docs/fly-lab-product-thesis.md`; supersession notes in README and existing design docs; merged via PR #34; main CI green | None for R0 |
 | #27 R1 Experience map | Partially implemented locally | `docs/fly-lab-experience-map.md` has 16 events, 3 first-slice candidates, source list, and interview prompts | User lived-experience answers are still pending, so the issue is not fully complete |
-| #28 R2 Stock/vial/calendar state | Implemented as first pass | `web-prototype/data.js`, `web-prototype/app.js`, `web-prototype/style.css`; smoke verified starting stocks, vial rack, label, flip, advance day, overdue consequence, notebook | Needs fuller browser visual QA and player comprehension validation |
-| #29 R3 Cross planner/virgin window | Implemented as first pass | Lab route now supports clear adults, next-day virgin window, collect candidates, select males, set cross vial, schedule scoring window; smoke verified flow | Needs late-window branch playtest and SME review of the timing simplification |
-| #30 R4 CO2 bench/sorting | Implemented as first pass | Procedure Lab now has CO2 bench sorting, specimen pad cards, specimen zones, exposure meter, batch records, purity, ambiguity, confidence, and caveats | Needs SME review of visual tells and player validation of bench feel |
-| #31 R5 Negative geotaxis assay | Implemented as first pass | Batch records can produce assay records with n, control, mean climb score, variance, confidence, caveats, and mini-plot bars | Needs SME review of scoring abstraction and player validation of readability |
-| #32 R6 Figure/reviewer rewrite | Implemented as first pass | Figure summary uses ExperimentRecord aggregation; reviewer findings inspect lineage, missing control, low n, CO2, ambiguity, and overclaim | Needs browser playtest and broader rule fixtures |
-| #33 R7 Vertical slice validation | Partially implemented | `web-prototype/smoke-tests.js`, `docs/fly-lab-playtest-sheet.md`, `docs/fly-lab-sme-validation-sheet.md`, `docs/fly-lab-validation-results.md` | External player/SME validation has not been run, so #33 cannot close |
+| #28 R2 Stock/vial/calendar state | Closed | `web-prototype/data.js`, `web-prototype/app.js`, `web-prototype/style.css`; smoke verified starting stocks, vial rack, label, flip, advance day, overdue consequence, notebook; merged via PR #34; main CI green | Player comprehension validation continues under #33 |
+| #29 R3 Cross planner/virgin window | Closed | Lab route supports clear adults, next-day virgin window, collect candidates, select males, set cross vial, schedule scoring window; smoke verified flow; merged via PR #34; main CI green | SME timing review continues under #33 |
+| #30 R4 CO2 bench/sorting | Closed | Procedure Lab has CO2 bench sorting, specimen pad cards, specimen zones, exposure meter, batch records, purity, ambiguity, confidence, and caveats; browser QA passed; merged via PR #34; main CI green | SME visual-tell and player bench-feel validation continue under #33 |
+| #31 R5 Negative geotaxis assay | Closed | Batch records produce assay records with n, control, mean climb score, variance, confidence, caveats, and mini-plot bars; merged via PR #34; main CI green | SME scoring-abstraction and player readability validation continue under #33 |
+| #32 R6 Figure/reviewer rewrite | Closed | Figure summary uses ExperimentRecord aggregation; reviewer findings inspect lineage, missing control, low n, CO2, ambiguity, and overclaim; URL fixtures cover representative paths; merged via PR #34; main CI green | Broader player/SME validation continues under #33 |
+| #33 R7 Vertical slice validation | Open, partially implemented | `web-prototype/smoke-tests.js`, URL fixtures, browser QA, `docs/fly-lab-playtest-sheet.md`, `docs/fly-lab-sme-validation-sheet.md`, `docs/fly-lab-validation-results.md` | External player/SME validation has not been run, so #33 cannot close |
 
 ## Verification run
 
@@ -68,7 +68,7 @@ The current implementation stays aligned with the parent contract because:
 
 ## Why the full goal is not complete yet
 
-The full objective asks for all R-series issues to be worked through, verified, analyzed, improved, and repeated without drift. The implementation now reaches R6 as a first-pass vertical chain, but it is still not complete because external validation has not occurred and browser visual QA has not been performed.
+The full objective asks for all R-series issues to be worked through, verified, analyzed, improved, and repeated without drift. R0 and R2-R6 are now closed because implementation, smoke coverage, browser QA where relevant, merge, and main CI evidence are sufficient for their scoped DoD. The full goal is still not complete because #27 and #33 require external/user evidence that has not been collected.
 
 The remaining work is not blocked, but it must stay sequenced:
 

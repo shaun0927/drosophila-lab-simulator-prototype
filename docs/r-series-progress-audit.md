@@ -73,7 +73,9 @@ screenshot proxy passed: objective strip and repair plan visible on desktop/mobi
 screenshot proxy passed: validation packet visible on desktop/mobile without legacy drift
 screenshot proxy passed: lived-experience packet visible on desktop/mobile without legacy drift
 r-series status check passed: artifacts present, packets wired, external blockers preserved, parked scope guarded, goal audit and evidence ledger linked
-external evidence ledger check passed: counts match intake rows, pending docs, and in-app status
+external evidence ledger check passed: counts match intake rows, status docs, and in-app status
+pass fixture accepted: partial player evidence in progress
+pass fixture accepted: partial lived-experience evidence in progress
 external evidence checker self-test passed
 issue template contract check passed: evidence follow-up forms require scoped implementation fields
 ```
@@ -100,7 +102,7 @@ The current implementation stays aligned with the parent contract because:
 - `?validation=packet` opens an in-app launch page for #33 player/SME sessions with fixture links and closure criteria
 - `?validation=capture` opens an in-app raw evidence capture checklist for #27/#33 session notes before ledger updates
 - `?validation=lived` opens a separate #27 launch page for collecting real lab incidents without mixing them into #33 validation evidence
-- `node tools/external-evidence-check.js` prevents the ledger, in-app status, validation results, progress audit, and goal audit from drifting apart while external evidence counts remain incomplete
+- `node tools/external-evidence-check.js` prevents the ledger, in-app status, validation results, progress audit, and goal audit from drifting apart while external evidence counts remain incomplete, without blocking valid partial evidence updates
 - `node tools/issue-template-contract-check.js` prevents #27/#33 follow-up issue forms from losing required implementation-contract fields before evidence becomes work
 
 ## Why the full goal is not complete yet

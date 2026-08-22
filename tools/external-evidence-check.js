@@ -80,18 +80,32 @@ function requireText(text, needle, label) {
   assert(text && text.includes(needle), `${label} missing required pending-evidence text: ${needle}`);
 }
 
+function requireAnyText(text, needles, label, reason) {
+  assert(text && needles.some(needle => text.includes(needle)), `${label} missing required ${reason}: ${needles.join(' OR ')}`);
+}
+
 function requirePendingStatusDocs({ counts, validationResults, experienceMap, progressAudit, goalAudit }) {
   const needsLivedEvidence = counts.livedAccepted < 5 || counts.designAccepted < 1;
   const needsValidationEvidence = counts.playerAccepted < 3 || counts.smeAccepted < 1;
+  const hasAnyLivedEvidence = counts.livedAccepted > 0 || counts.designAccepted > 0;
+  const hasAnyValidationEvidence = counts.playerAccepted > 0 || counts.smeAccepted > 0;
 
   if (needsLivedEvidence) {
-    requireText(experienceMap, 'User lived-experience pass: pending user input', 'experience map');
+    if (hasAnyLivedEvidence) {
+      requireAnyText(experienceMap, ['User lived-experience pass: in progress', 'Accepted lived-experience rows'], 'experience map', 'partial lived-evidence status');
+    } else {
+      requireText(experienceMap, 'User lived-experience pass: pending user input', 'experience map');
+    }
     requireText(progressAudit, '| #27 R1 Experience map | Open', 'progress audit');
     requireText(goalAudit, '#27 lacks lived-experience provenance', 'goal audit');
   }
 
   if (needsValidationEvidence) {
-    requireText(validationResults, 'No external player or SME validation has been run yet', 'validation results');
+    if (hasAnyValidationEvidence) {
+      requireAnyText(validationResults, ['External validation in progress', '## Validation Run'], 'validation results', 'partial external-validation status');
+    } else {
+      requireText(validationResults, 'No external player or SME validation has been run yet', 'validation results');
+    }
     requireText(progressAudit, '| #33 R7 Vertical slice validation | Open', 'progress audit');
     requireText(goalAudit, '#33 lacks player and SME validation', 'goal audit');
   }
@@ -136,7 +150,6 @@ function validateExternalEvidence({ ledger, validationResults, experienceMap, pr
   assert(designAccepted <= livedAccepted, '#27 design-change accepted count cannot exceed accepted lived-experience rows');
   const counts = {livedAccepted, designAccepted, playerAccepted, smeAccepted};
   compareGameDataStatus(gameData, counts);
-  requirePendingStatusDocs({counts, validationResults, experienceMap, progressAudit, goalAudit});
 
   if (experienceMap.includes('User lived-experience pass: pending user input')) {
     assert(livedAccepted === 0, '#27 accepted count cannot increase while the experience map still says user input is pending');
@@ -147,6 +160,8 @@ function validateExternalEvidence({ ledger, validationResults, experienceMap, pr
     assert(playerAccepted === 0, '#33 player count cannot increase while validation results say no external validation has run');
     assert(smeAccepted === 0, '#33 SME count cannot increase while validation results say no external validation has run');
   }
+
+  requirePendingStatusDocs({counts, validationResults, experienceMap, progressAudit, goalAudit});
 
   assert(ledger.includes('Do not treat screenshots as player, SME, or lived-experience evidence') || ledger.includes('screenshots of the route'), 'ledger must reject screenshot-only closure evidence');
 }
@@ -160,7 +175,7 @@ function runCli() {
     goalAudit: read('docs/goal-completion-audit-2026-08-22.md'),
     gameData: loadGameData()
   });
-  console.log('external evidence ledger check passed: counts match intake rows, pending docs, and in-app status');
+  console.log('external evidence ledger check passed: counts match intake rows, status docs, and in-app status');
 }
 
 if (require.main === module) {

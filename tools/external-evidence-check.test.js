@@ -44,6 +44,16 @@ const pendingGoalAudit = [
   '### Gap A: #27 lacks lived-experience provenance',
   '### Gap B: #33 lacks player and SME validation'
 ].join('\n');
+const partialValidationResults = [
+  'External validation in progress.',
+  '## Validation Run 2026-08-22',
+  '| Player | Route | Reviewer finding | Understood cause? | Second-run improvement | Result | Notes |',
+  '| P-01 | default | handling confound | yes | reduce CO2 exposure | Pass | raw notes linked |'
+].join('\n');
+const partialExperienceMap = [
+  'User lived-experience pass: in progress.',
+  'Accepted lived-experience rows are being transferred from the evidence ledger.'
+].join('\n');
 const matchingGameData = {
   externalEvidence: {
     livedRows: {accepted: 0, required: 5},
@@ -86,6 +96,44 @@ function expectFail(name, ledger, messagePart, gameData = matchingGameData) {
 }
 
 expectPass('current pending ledger');
+
+validateExternalEvidence({
+  ledger: baseLedger
+    .replace('| Fresh-player first-run sessions | 3 | 0 | Pending execution | #33 |', '| Fresh-player first-run sessions | 3 | 1 | In progress | #33 |')
+    .replace('| P-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending |', '| P-01 | 2026-08-22 | default | Yes | defend record | bad CO2 | reduce exposure | Pass | none |'),
+  validationResults: partialValidationResults,
+  experienceMap: pendingExperienceMap,
+  progressAudit: pendingProgressAudit,
+  goalAudit: pendingGoalAudit,
+  gameData: {
+    externalEvidence: {
+      livedRows: {accepted: 0, required: 5},
+      livedDesignChange: {accepted: 0, required: 1},
+      playerSessions: {accepted: 1, required: 3},
+      smeReviews: {accepted: 0, required: 1}
+    }
+  }
+});
+console.log('pass fixture accepted: partial player evidence in progress');
+
+validateExternalEvidence({
+  ledger: baseLedger
+    .replace('| Lived-experience event rows with user or observed-lab provenance | 5 | 0 | Pending collection | #27 |', '| Lived-experience event rows with user or observed-lab provenance | 5 | 1 | In progress | #27 |')
+    .replace('| LE-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | No |', '| LE-01 | firsthand | vial flip | label vial | timing | stale vial | bad cross | mechanic change | Yes |'),
+  validationResults: pendingValidationResults,
+  experienceMap: partialExperienceMap,
+  progressAudit: pendingProgressAudit,
+  goalAudit: pendingGoalAudit,
+  gameData: {
+    externalEvidence: {
+      livedRows: {accepted: 1, required: 5},
+      livedDesignChange: {accepted: 0, required: 1},
+      playerSessions: {accepted: 0, required: 3},
+      smeReviews: {accepted: 0, required: 1}
+    }
+  }
+});
+console.log('pass fixture accepted: partial lived-experience evidence in progress');
 
 expectFail(
   'accepted LE row without matching top-level count',

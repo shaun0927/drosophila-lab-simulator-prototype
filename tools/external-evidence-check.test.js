@@ -420,6 +420,40 @@ expectFail(
 );
 
 expectFail(
+  'duplicated accepted no-experience LE rows',
+  baseLedger
+    .replace('| Lived-experience event rows with user or observed-lab provenance | 5 | 0 | Pending collection | #27 |', '| Lived-experience event rows with user or observed-lab provenance | 5 | 2 | In progress | #27 |')
+    .replace('| LE-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | No |', '| LE-01 | explicit no relevant experience | no fly-lab task | exclude candidate | boundary | fake memory | wrong slice | explicit exclusion | Yes |')
+    .replace('| LE-02 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | No |', '| LE-02 | explicit no relevant experience | no assay memory | exclude candidate | boundary | fake confidence | wrong assay | explicit exclusion | Yes |'),
+  '#27 no-experience decision must not be duplicated across accepted LE rows',
+  {
+    externalEvidence: {
+      livedRows: {accepted: 2, required: 5},
+      livedDesignChange: {accepted: 0, required: 1},
+      playerSessions: {accepted: 0, required: 3},
+      smeReviews: {accepted: 0, required: 1}
+    }
+  }
+);
+
+expectFail(
+  'no-experience LE row mixed with lived LE row',
+  baseLedger
+    .replace('| Lived-experience event rows with user or observed-lab provenance | 5 | 0 | Pending collection | #27 |', '| Lived-experience event rows with user or observed-lab provenance | 5 | 2 | In progress | #27 |')
+    .replace('| LE-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | No |', '| LE-01 | explicit no relevant experience | no fly-lab task | exclude candidate | boundary | fake memory | wrong slice | explicit exclusion | Yes |')
+    .replace('| LE-02 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | No |', '| LE-02 | firsthand | vial flip | label vial | timing | stale vial | bad cross | explicit exclusion | Yes |'),
+  '#27 no-experience decision cannot be mixed with accepted firsthand or observed LE rows',
+  {
+    externalEvidence: {
+      livedRows: {accepted: 2, required: 5},
+      livedDesignChange: {accepted: 0, required: 1},
+      playerSessions: {accepted: 0, required: 3},
+      smeReviews: {accepted: 0, required: 1}
+    }
+  }
+);
+
+expectFail(
   'accepted player row with incomplete required field',
   baseLedger
     .replace('| Fresh-player first-run sessions | 3 | 0 | Pending execution | #33 |', '| Fresh-player first-run sessions | 3 | 1 | In progress | #33 |')

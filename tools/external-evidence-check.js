@@ -147,6 +147,21 @@ function requireLivedExperienceContract(row, id) {
   }
 }
 
+function requireNoConflictingNoExperienceRows(markdown) {
+  let noExperienceCount = 0;
+  let livedExperienceCount = 0;
+  for (const line of markdown.split(/\r?\n/)) {
+    if (!line.startsWith('| LE-')) continue;
+    const row = cells(line);
+    if (!/^Yes$/i.test(row[8] || '')) continue;
+    const provenance = row[1] || '';
+    if (/^explicit no relevant experience$/i.test(provenance)) noExperienceCount += 1;
+    if (/^(firsthand|observed lab work)$/i.test(provenance)) livedExperienceCount += 1;
+  }
+  assert(noExperienceCount <= 1, '#27 no-experience decision must not be duplicated across accepted LE rows');
+  assert(noExperienceCount === 0 || livedExperienceCount === 0, '#27 no-experience decision cannot be mixed with accepted firsthand or observed LE rows');
+}
+
 function requirePlayerDecisionConsistency(row, id) {
   const completed = row[3] || '';
   const decision = row[7] || '';
@@ -316,6 +331,7 @@ function validateExternalEvidence({ ledger, validationResults, experienceMap, pr
   assert(tableAcceptedCount(ledger, 'P', 7) === playerAccepted, '#33 player accepted count must match decided player rows');
   assert(tableAcceptedCount(ledger, 'SME', 8) === smeAccepted, '#33 SME accepted count must match decided SME rows');
   requireAcceptedRowFields(ledger);
+  requireNoConflictingNoExperienceRows(ledger);
   requireFixCutFollowUps(ledger);
   assert(concreteFollowUpRefs(ledger).size === followUpAccepted, '#33 follow-up issue accepted count must match unique concrete Fix/Cut follow-up references');
   assert(designAccepted <= livedAccepted, '#27 design-change accepted count cannot exceed accepted lived-experience rows');

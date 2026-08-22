@@ -30,6 +30,10 @@ Copy targets:
 - `docs/fly-lab-experience-map.md`
 - #27 issue comment
 
+| Field | Value |
+|---|---|
+| Issue | #35 |
+
 ### Raw Interview Notes
 
 | Prompt | Exact answer | Provenance |

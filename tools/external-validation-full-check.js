@@ -15,6 +15,8 @@ const checks = [
   [node, ['--check', 'tools/external-evidence-check.test.js']],
   [node, ['--check', 'tools/external-validation-tracker-check.js']],
   [node, ['--check', 'tools/external-validation-tracker-check.test.js']],
+  [node, ['--check', 'tools/external-validation-execution-contract-check.js']],
+  [node, ['--check', 'tools/external-validation-execution-contract-check.test.js']],
   [node, ['--check', 'tools/external-validation-issue-state-audit.js']],
   [node, ['--check', 'tools/external-validation-issue-state-audit.test.js']],
   [node, ['--check', 'tools/external-validation-full-check.js']],
@@ -30,6 +32,8 @@ const checks = [
   [node, ['tools/external-validation-tracker-check.js']],
   [node, ['tools/external-evidence-check.test.js']],
   [node, ['tools/external-validation-tracker-check.test.js']],
+  [node, ['tools/external-validation-execution-contract-check.js']],
+  [node, ['tools/external-validation-execution-contract-check.test.js']],
   [node, ['tools/external-validation-issue-state-audit.test.js']],
   [node, ['tools/final-closure-readiness-check.js']],
   [node, ['tools/final-closure-readiness-check.test.js']],
@@ -79,6 +83,7 @@ for (const [command, args] of checks) {
 }
 
 if (liveIssues) {
+  run(node, ['tools/external-validation-execution-contract-check.js', '--live-issues']);
   run(node, ['tools/external-validation-issue-state-audit.js']);
   run(node, ['tools/open-issue-triage-audit.js']);
 } else {

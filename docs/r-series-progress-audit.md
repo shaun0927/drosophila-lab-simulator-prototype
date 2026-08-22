@@ -6,7 +6,7 @@ Parent contract: [`fly-lab-product-thesis.md`](fly-lab-product-thesis.md)
 
 Implementation PR: https://github.com/shaun0927/drosophila-lab-simulator-prototype/pull/34 merged to `main` at merge commit `f470330`.
 
-CI guardrail: `.github/workflows/web-prototype-smoke.yml` runs JavaScript syntax checks, `node web-prototype/smoke-tests.js`, `node tools/r-series-status-check.js`, `node tools/external-evidence-check.js`, `node tools/external-validation-tracker-check.js`, `node tools/external-validation-tracker-check.test.js`, `node tools/external-evidence-check.test.js`, `node tools/external-validation-issue-state-audit.test.js`, `node tools/final-closure-readiness-check.js`, `node tools/final-closure-readiness-check.test.js`, `node tools/open-issue-triage-audit.test.js`, and `node tools/issue-template-contract-check.js` on pull requests and pushes.
+CI guardrail: `.github/workflows/web-prototype-smoke.yml` runs JavaScript syntax checks, `node web-prototype/smoke-tests.js`, `node tools/r-series-status-check.js`, `node tools/external-evidence-check.js`, `node tools/external-validation-tracker-check.js`, `node tools/external-validation-tracker-check.test.js`, `node tools/external-validation-execution-contract-check.js`, `node tools/external-validation-execution-contract-check.test.js`, `node tools/external-evidence-check.test.js`, `node tools/external-validation-issue-state-audit.test.js`, `node tools/final-closure-readiness-check.js`, `node tools/final-closure-readiness-check.test.js`, `node tools/open-issue-triage-audit.test.js`, and `node tools/issue-template-contract-check.js` on pull requests and pushes.
 
 Status guardrail: `node tools/r-series-status-check.js` verifies that required R-series artifacts, validation packets, screenshot evidence, external blocker language, issue-template contract checks, and parked-issue drift guardrails are still present.
 
@@ -29,6 +29,8 @@ External validation sprint plan: [`external-validation-sprint-plan.md`](external
 External validation execution issues: #35 collects #27 `LE-01` through `LE-05`; #36 collects #33 `P-01` clean; #37 collects #33 `P-02` dirty; #38 collects #33 `P-03` missing-control; #39 collects #33 `SME-01` fixture/rating review.
 
 Session packet source: [`external-validation-session-packets.md`](external-validation-session-packets.md) provides copy-ready raw packets for #35 through #39 so session notes can be captured before ledger/result rows are edited.
+
+External validation execution contract guardrail: `node tools/external-validation-execution-contract-check.js` verifies the local #35-#39 packet contract, and `node tools/external-validation-execution-contract-check.js --live-issues` verifies the live execution issue bodies, labels, and required commands before evidence collection proceeds.
 
 External validation execution tracker: [`external-validation-execution-tracker.md`](external-validation-execution-tracker.md) records that #35 through #39 are open and that #27/#33 accepted evidence counts remain at zero until real sessions are recorded. `node tools/external-validation-tracker-check.js` verifies the tracker counts against the ledger and route-coverage status.
 

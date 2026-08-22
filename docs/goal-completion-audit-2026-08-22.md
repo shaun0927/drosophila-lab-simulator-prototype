@@ -22,6 +22,8 @@ Final closure readiness guardrail: `node tools/final-closure-readiness-check.js`
 
 Open-issue triage live audit: `node tools/open-issue-triage-audit.js` verifies the live GitHub state behind `docs/open-issue-triage-2026-08-22.md`. It keeps active R-series issues, parked Unity/old-loop backlog, and superseded planning issues from drifting into the wrong status or label set.
 
+External validation execution contract guardrail: `node tools/external-validation-execution-contract-check.js` verifies that the local #35-#39 session packets keep their required fields and anti-proxy warnings. `node tools/external-validation-execution-contract-check.js --live-issues` verifies the live #35-#39 issue bodies, labels, and required verification commands.
+
 ## Requirement Matrix
 
 | Requirement from the objective | Current evidence | Status | Why this status is correct |
@@ -169,12 +171,14 @@ The objective can be marked complete only when:
 9. `node tools/external-evidence-check.js` passes.
 10. `node tools/external-validation-tracker-check.js` passes.
 11. `node tools/external-validation-tracker-check.test.js` passes.
-12. `node tools/external-validation-issue-state-audit.js` passes in an authenticated local `gh` environment.
-13. `node tools/external-validation-issue-state-audit.test.js` passes.
-14. `node tools/final-closure-readiness-check.js --require-ready` passes.
-15. `node tools/final-closure-readiness-check.test.js` passes.
-16. `node tools/open-issue-triage-audit.js` passes in an authenticated local `gh` environment.
-17. `node tools/open-issue-triage-audit.test.js` passes.
-18. `node tools/issue-template-contract-check.js` passes.
-19. `node tools/external-validation-full-check.js --live-issues` passes.
-20. Main CI is green on the commit that contains the final audit.
+12. `node tools/external-validation-execution-contract-check.js --live-issues` passes in an authenticated local `gh` environment.
+13. `node tools/external-validation-execution-contract-check.test.js` passes.
+14. `node tools/external-validation-issue-state-audit.js` passes in an authenticated local `gh` environment.
+15. `node tools/external-validation-issue-state-audit.test.js` passes.
+16. `node tools/final-closure-readiness-check.js --require-ready` passes.
+17. `node tools/final-closure-readiness-check.test.js` passes.
+18. `node tools/open-issue-triage-audit.js` passes in an authenticated local `gh` environment.
+19. `node tools/open-issue-triage-audit.test.js` passes.
+20. `node tools/issue-template-contract-check.js` passes.
+21. `node tools/external-validation-full-check.js --live-issues` passes.
+22. Main CI is green on the commit that contains the final audit.

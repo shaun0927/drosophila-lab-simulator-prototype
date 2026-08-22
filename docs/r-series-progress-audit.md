@@ -20,6 +20,8 @@ Thread-goal audit: [`goal-completion-audit-2026-08-22.md`](goal-completion-audit
 
 Final closure checklist: [`final-closure-review-checklist.md`](final-closure-review-checklist.md) defines the last review pass required after #27 and #33 evidence thresholds are met and before the thread goal can be marked complete.
 
+External validation sprint plan: [`external-validation-sprint-plan.md`](external-validation-sprint-plan.md) turns the remaining #27/#33 evidence work into a role-based session order with update, follow-up, and closure rules.
+
 External-evidence ledger: [`fly-lab-external-evidence-ledger.md`](fly-lab-external-evidence-ledger.md) records the unfilled #27 lived-experience slots and #33 player/SME validation slots.
 
 ## Current implementation status

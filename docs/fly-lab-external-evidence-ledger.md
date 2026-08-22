@@ -8,6 +8,8 @@ Use [`fly-lab-session-capture-packet.md`](fly-lab-session-capture-packet.md) to 
 
 Use [`fly-lab-validation-finding-decision-tree.md`](fly-lab-validation-finding-decision-tree.md) to decide whether captured evidence changes counts, opens a fix/cut issue, or gets rejected.
 
+Use [`external-validation-sprint-plan.md`](external-validation-sprint-plan.md) to run the remaining #27/#33 sessions in a fixed order before raising accepted counts.
+
 ## Current Ledger Status
 
 | Evidence gate | Required count | Accepted count | Current status | Blocking issue |

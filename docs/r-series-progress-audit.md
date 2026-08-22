@@ -111,6 +111,7 @@ The current implementation stays aligned with the parent contract because:
 - `node tools/external-evidence-check.js` rejects SME Pass rows when any core mechanic is rated Misleading or Unsafe/ethically wrong
 - `node tools/external-evidence-check.js` requires every accepted LE row id to appear in the experience map and every accepted P/SME row id to appear in validation results
 - `node tools/external-evidence-check.js` requires Fix/Cut follow-up fields to contain a concrete GitHub issue reference
+- `node tools/external-evidence-check.js` rejects Fix/Cut follow-up references that point back to #27 or #33
 - `node tools/external-evidence-check.js` requires the follow-up issue accepted count to match unique concrete Fix/Cut follow-up references
 - `node tools/external-evidence-check.js` requires accepted LE provenance and design-effect fields to use the allowed #27 closure vocabulary
 - `node tools/external-evidence-check.js` requires the #27 design-change count to match accepted LE rows whose design effect is a mechanic change, guardrail change, or SME-risk update

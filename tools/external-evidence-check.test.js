@@ -595,11 +595,45 @@ expectFail(
 );
 
 expectFail(
+  'player fix decision referencing current gate issue',
+  baseLedger
+    .replace('| Fresh-player first-run sessions | 3 | 0 | Pending execution | #33 |', '| Fresh-player first-run sessions | 3 | 1 | In progress | #33 |')
+    .replace('| Follow-up fix/cut issues for failed external criteria | As needed | 0 | Pending external findings | #33 |', '| Follow-up fix/cut issues for failed external criteria | As needed | 1 | In progress | #33 |')
+    .replace('| P-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending |', '| P-01 | 2026-08-22 | default | Yes | defend record | random luck | add control | Fix | #33 |'),
+  'P-01 decision Fix follow-up must not reference #27 or #33',
+  {
+    externalEvidence: {
+      livedRows: {accepted: 0, required: 5},
+      livedDesignChange: {accepted: 0, required: 1},
+      playerSessions: {accepted: 1, required: 3},
+      smeReviews: {accepted: 0, required: 1}
+    }
+  }
+);
+
+expectFail(
   'SME cut decision without follow-up issue',
   baseLedger
     .replace('| SME or biology-aware review | 1 | 0 | Pending execution | #33 |', '| SME or biology-aware review | 1 | 1 | In progress | #33 |')
     .replace('| SME-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending |', '| SME-01 | 2026-08-22 | genetics TA | Accurate enough | Acceptable simplification | Misleading | Acceptable simplification | Misleading | Cut | none |'),
   'SME-01 decision Cut must link a follow-up issue',
+  {
+    externalEvidence: {
+      livedRows: {accepted: 0, required: 5},
+      livedDesignChange: {accepted: 0, required: 1},
+      playerSessions: {accepted: 0, required: 3},
+      smeReviews: {accepted: 1, required: 1}
+    }
+  }
+);
+
+expectFail(
+  'SME cut decision referencing current gate issue URL',
+  baseLedger
+    .replace('| SME or biology-aware review | 1 | 0 | Pending execution | #33 |', '| SME or biology-aware review | 1 | 1 | In progress | #33 |')
+    .replace('| Follow-up fix/cut issues for failed external criteria | As needed | 0 | Pending external findings | #33 |', '| Follow-up fix/cut issues for failed external criteria | As needed | 1 | In progress | #33 |')
+    .replace('| SME-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending | Pending |', '| SME-01 | 2026-08-22 | genetics TA | Accurate enough | Acceptable simplification | Misleading | Acceptable simplification | Misleading | Cut | https://github.com/shaun0927/drosophila-lab-simulator-prototype/issues/33 |'),
+  'SME-01 decision Cut follow-up must not reference #27 or #33',
   {
     externalEvidence: {
       livedRows: {accepted: 0, required: 5},

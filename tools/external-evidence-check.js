@@ -114,6 +114,10 @@ function isConcreteIssueReference(value) {
   return /(^|\s)(#\d+|https:\/\/github\.com\/[^/\s]+\/[^/\s]+\/issues\/\d+)(\s|$)/.test(value || '');
 }
 
+function referencesCurrentGateIssue(value) {
+  return /(^|\s)#(27|33)(\s|$)|\/issues\/(27|33)(\s|$)/.test(value || '');
+}
+
 function isMissingEvidenceField(value) {
   return !value || /^(Pending|n\/a|-)$/i.test(value);
 }
@@ -171,6 +175,7 @@ function requireFixCutFollowUps(markdown) {
     if (/^(Fix|Cut)$/i.test(decision)) {
       assert(!isMissingFollowUp(followUp), `${id} decision ${decision} must link a follow-up issue before it can count`);
       assert(isConcreteIssueReference(followUp), `${id} decision ${decision} follow-up must be a concrete GitHub issue reference`);
+      assert(!referencesCurrentGateIssue(followUp), `${id} decision ${decision} follow-up must not reference #27 or #33`);
     }
   }
 }

@@ -20,6 +20,8 @@ External validation preflight guardrail: `node tools/external-validation-preflig
 
 External validation capture-packet guardrail: `node tools/external-validation-capture-packet-check.js` verifies the raw capture packet still preserves exact-phrase fields, issue-specific packet links, updated verification commands, SME follow-up warnings, and no-closure language. `node tools/external-validation-capture-packet-check.test.js` keeps capture-packet mismatch fixtures in CI.
 
+External validation session handoff: `node tools/external-validation-session-handoff.js` verifies the #35-#39 handoff index from execution issue to evidence row, packet source, target docs, and missing proof. `node tools/external-validation-session-handoff.test.js` keeps session-handoff mismatch fixtures in CI.
+
 Issue-state audit self-test: `node tools/external-validation-issue-state-audit.test.js` verifies the live issue-state audit parser and mismatch detection with mock issue states in CI.
 
 Full local verification wrapper: `node tools/external-validation-full-check.js` runs the non-live local verification chain. `node tools/external-validation-full-check.js --live-issues` also runs the authenticated GitHub issue-state audit required before closure.
@@ -187,16 +189,18 @@ The objective can be marked complete only when:
 15. `node tools/external-validation-preflight-check.test.js` passes.
 16. `node tools/external-validation-capture-packet-check.js` passes.
 17. `node tools/external-validation-capture-packet-check.test.js` passes.
-18. `node tools/external-validation-execution-contract-check.js --live-issues` passes in an authenticated local `gh` environment.
-19. `node tools/external-validation-execution-contract-check.test.js` passes.
-20. `node tools/external-validation-intake-runbook-check.js` passes.
-21. `node tools/external-validation-intake-runbook-check.test.js` passes.
-22. `node tools/external-validation-issue-state-audit.js` passes in an authenticated local `gh` environment.
-23. `node tools/external-validation-issue-state-audit.test.js` passes.
-24. `node tools/final-closure-readiness-check.js --require-ready` passes.
-25. `node tools/final-closure-readiness-check.test.js` passes.
-26. `node tools/open-issue-triage-audit.js` passes in an authenticated local `gh` environment.
-27. `node tools/open-issue-triage-audit.test.js` passes.
-28. `node tools/issue-template-contract-check.js` passes.
-29. `node tools/external-validation-full-check.js --live-issues` passes.
-30. Main CI is green on the commit that contains the final audit.
+18. `node tools/external-validation-session-handoff.js` passes.
+19. `node tools/external-validation-session-handoff.test.js` passes.
+20. `node tools/external-validation-execution-contract-check.js --live-issues` passes in an authenticated local `gh` environment.
+21. `node tools/external-validation-execution-contract-check.test.js` passes.
+22. `node tools/external-validation-intake-runbook-check.js` passes.
+23. `node tools/external-validation-intake-runbook-check.test.js` passes.
+24. `node tools/external-validation-issue-state-audit.js` passes in an authenticated local `gh` environment.
+25. `node tools/external-validation-issue-state-audit.test.js` passes.
+26. `node tools/final-closure-readiness-check.js --require-ready` passes.
+27. `node tools/final-closure-readiness-check.test.js` passes.
+28. `node tools/open-issue-triage-audit.js` passes in an authenticated local `gh` environment.
+29. `node tools/open-issue-triage-audit.test.js` passes.
+30. `node tools/issue-template-contract-check.js` passes.
+31. `node tools/external-validation-full-check.js --live-issues` passes.
+32. Main CI is green on the commit that contains the final audit.

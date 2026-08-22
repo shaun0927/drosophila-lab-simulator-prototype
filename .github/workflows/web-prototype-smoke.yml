@@ -38,6 +38,8 @@ jobs:
           node --check tools/external-validation-preflight-check.test.js
           node --check tools/external-validation-capture-packet-check.js
           node --check tools/external-validation-capture-packet-check.test.js
+          node --check tools/external-validation-session-handoff.js
+          node --check tools/external-validation-session-handoff.test.js
           node --check tools/external-validation-issue-state-audit.js
           node --check tools/external-validation-issue-state-audit.test.js
           node --check tools/external-validation-full-check.js
@@ -91,6 +93,12 @@ jobs:
 
       - name: Self-test external validation capture packet
         run: node tools/external-validation-capture-packet-check.test.js
+
+      - name: Report external validation session handoff
+        run: node tools/external-validation-session-handoff.js
+
+      - name: Self-test external validation session handoff
+        run: node tools/external-validation-session-handoff.test.js
 
       - name: Self-test external evidence checker
         run: node tools/external-evidence-check.test.js

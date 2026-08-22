@@ -39,6 +39,7 @@ Run:
 
 ```bash
 node tools/external-evidence-check.js
+node tools/external-validation-tracker-check.js
 node tools/r-series-status-check.js
 node web-prototype/smoke-tests.js
 node tools/issue-template-contract-check.js

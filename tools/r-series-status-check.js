@@ -18,6 +18,7 @@ const requiredFiles = [
   'docs/open-issue-triage-2026-08-22.md',
   'tools/external-evidence-check.js',
   'tools/external-evidence-check.test.js',
+  'tools/issue-template-contract-check.js',
   '.github/ISSUE_TEMPLATE/fly_lab_lived_experience.yml',
   '.github/ISSUE_TEMPLATE/fly_lab_validation_finding.yml',
   'dogfood-output/screenshot-ux-audit.md',
@@ -117,7 +118,11 @@ const textChecks = [
   ['tools/external-evidence-check.test.js', 'validation results lost pending external-evidence blocker'],
   ['tools/external-evidence-check.test.js', 'progress audit closed #33 while evidence remains pending'],
   ['tools/external-evidence-check.test.js', 'goal audit lost not-complete decision'],
-  ['tools/external-evidence-check.test.js', 'bad fixture rejected']
+  ['tools/external-evidence-check.test.js', 'bad fixture rejected'],
+  ['tools/issue-template-contract-check.js', 'issue template contract check passed'],
+  ['tools/issue-template-contract-check.js', 'must be required'],
+  ['tools/issue-template-contract-check.js', 'Final Implementation Scope'],
+  ['tools/issue-template-contract-check.js', 'Definition of Done']
 ];
 
 function read(rel) {

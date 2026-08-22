@@ -26,6 +26,7 @@ jobs:
           node --check web-prototype/smoke-tests.js
           node --check tools/external-evidence-check.js
           node --check tools/external-evidence-check.test.js
+          node --check tools/issue-template-contract-check.js
 
       - name: Run fly-lab smoke tests
         run: node web-prototype/smoke-tests.js
@@ -38,3 +39,6 @@ jobs:
 
       - name: Self-test external evidence checker
         run: node tools/external-evidence-check.test.js
+
+      - name: Check evidence issue templates
+        run: node tools/issue-template-contract-check.js

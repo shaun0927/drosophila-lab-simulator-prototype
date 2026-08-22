@@ -12,7 +12,7 @@ External-evidence intake is tracked in [`fly-lab-external-evidence-ledger.md`](f
 
 Prototype status aid: `web-prototype/index.html?validation=status` opens an in-app summary of the current unfilled #27/#33 evidence gates. It is a visibility aid only; it does not replace external evidence.
 
-External validation execution tracker: [`external-validation-execution-tracker.md`](external-validation-execution-tracker.md) records which #35 through #39 execution issues still lack accepted evidence rows. `node tools/external-validation-tracker-check.js` verifies that tracker counts still match the evidence ledger and route-coverage status.
+External validation execution tracker: [`external-validation-execution-tracker.md`](external-validation-execution-tracker.md) records which #35 through #39 execution issues still lack accepted evidence rows. `node tools/external-validation-tracker-check.js` verifies that tracker counts still match the evidence ledger and route-coverage status. `node tools/external-validation-issue-state-audit.js` locally verifies the tracker issue states against live GitHub.
 
 ## Requirement Matrix
 
@@ -160,5 +160,6 @@ The objective can be marked complete only when:
 8. `node tools/r-series-status-check.js` passes.
 9. `node tools/external-evidence-check.js` passes.
 10. `node tools/external-validation-tracker-check.js` passes.
-11. `node tools/issue-template-contract-check.js` passes.
-12. Main CI is green on the commit that contains the final audit.
+11. `node tools/external-validation-issue-state-audit.js` passes in an authenticated local `gh` environment.
+12. `node tools/issue-template-contract-check.js` passes.
+13. Main CI is green on the commit that contains the final audit.

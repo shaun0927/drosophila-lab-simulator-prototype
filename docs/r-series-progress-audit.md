@@ -28,6 +28,8 @@ Session packet source: [`external-validation-session-packets.md`](external-valid
 
 External validation execution tracker: [`external-validation-execution-tracker.md`](external-validation-execution-tracker.md) records that #35 through #39 are open and that #27/#33 accepted evidence counts remain at zero until real sessions are recorded. `node tools/external-validation-tracker-check.js` verifies the tracker counts against the ledger and route-coverage status.
 
+Live issue-state audit: `node tools/external-validation-issue-state-audit.js` uses authenticated `gh` locally to verify that #27, #33, and #35 through #39 still match the open states recorded in the execution tracker. This is not a CI gate because it depends on live GitHub issue state.
+
 External-evidence ledger: [`fly-lab-external-evidence-ledger.md`](fly-lab-external-evidence-ledger.md) records the unfilled #27 lived-experience slots and #33 player/SME validation slots.
 
 ## Current implementation status

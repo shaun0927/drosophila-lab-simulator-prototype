@@ -40,10 +40,13 @@ Run:
 ```bash
 node tools/external-evidence-check.js
 node tools/external-validation-tracker-check.js
+node tools/external-validation-issue-state-audit.js
 node tools/r-series-status-check.js
 node web-prototype/smoke-tests.js
 node tools/issue-template-contract-check.js
 ```
+
+Run `node tools/external-validation-issue-state-audit.js` from a local environment with `gh` authenticated. It is intentionally not a CI gate because it depends on live GitHub issue state.
 
 Then update:
 

@@ -10,6 +10,8 @@ Use [`fly-lab-validation-finding-decision-tree.md`](fly-lab-validation-finding-d
 
 Use [`external-validation-sprint-plan.md`](external-validation-sprint-plan.md) to run the remaining #27/#33 sessions in a fixed order before raising accepted counts.
 
+Use [`external-validation-session-packets.md`](external-validation-session-packets.md) to fill the issue-specific raw packets for #35 through #39 before copying accepted rows into this ledger.
+
 ## Current Ledger Status
 
 | Evidence gate | Required count | Accepted count | Current status | Blocking issue |

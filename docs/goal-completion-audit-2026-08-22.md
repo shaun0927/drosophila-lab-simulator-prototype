@@ -37,6 +37,7 @@ What exists:
 - `web-prototype/index.html?validation=status` shows the current 0/5 #27 lived-evidence gap in the prototype.
 - `web-prototype/index.html?validation=lived` exposes the collection packet in the prototype.
 - `docs/external-validation-sprint-plan.md` defines the #27 session order, accepted `LE-*` minimum output, update order, and drift controls.
+- `docs/external-validation-session-packets.md` provides the #35 raw interview and accepted-row packet before ledger updates.
 - `.github/ISSUE_TEMPLATE/fly_lab_lived_experience.yml` can capture follow-up implementation issues.
 - `tools/issue-template-contract-check.js` verifies that lived-experience follow-up issues keep Goal, Final Implementation Scope, Success Criteria, Verification Method, Guardrails, Explicit Non-Goals, Implementation Approach, PR Decomposition, Over-Engineering Checklist, Drift-Prevention Checklist, and Definition of Done required.
 
@@ -68,6 +69,7 @@ What exists:
 - `docs/fly-lab-validation-runbook.md` defines the execution protocol.
 - `docs/fly-lab-external-evidence-ledger.md` tracks the three player sessions, SME review, and follow-up issue gates.
 - `docs/external-validation-sprint-plan.md` assigns `P-01`, `P-02`, and `P-03` target route coverage and defines the accepted `SME-01` fixture/rating requirements.
+- `docs/external-validation-session-packets.md` provides the #36, #37, #38, and #39 raw session packets before validation-result and ledger updates.
 - `web-prototype/index.html?validation=status` shows the current 0/3 player, 0/3 route-coverage, and 0/1 SME evidence gap in the prototype.
 - `web-prototype/index.html?validation=packet` exposes the in-app validation launcher.
 - `docs/fly-lab-validation-results.md` records proxy QA and explicitly says no external validation has run yet.

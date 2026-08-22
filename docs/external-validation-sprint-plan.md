@@ -4,6 +4,8 @@ Date opened: 2026-08-22
 
 Purpose: turn the remaining #27 and #33 blockers into one executable validation sprint. This plan does not replace the evidence ledger. It defines who runs what, in what order, and which artifact must change before either issue can close.
 
+Session packet source: use [`external-validation-session-packets.md`](external-validation-session-packets.md) as the issue-by-issue field packet for #35 through #39.
+
 ## Sprint Goal
 
 Produce the missing non-proxy evidence for the R-series Procedure Lab slice:

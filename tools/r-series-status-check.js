@@ -50,7 +50,7 @@ const textChecks = [
   ['docs/fly-lab-validation-results.md', 'External validation in progress'],
   ['docs/fly-lab-validation-results.md', 'node tools/external-evidence-check.js'],
   ['docs/fly-lab-validation-results.md', 'node tools/issue-template-contract-check.js'],
-  ['docs/fly-lab-validation-results.md', '32576086649'],
+  ['docs/fly-lab-validation-results.md', 'gh run list --branch main --limit 5'],
   ['docs/fly-lab-validation-results.md', 'external evidence ledger check passed: counts match intake rows, status docs, and in-app status'],
   ['docs/fly-lab-validation-results.md', 'pass fixture accepted: partial player evidence in progress'],
   ['docs/fly-lab-validation-results.md', 'issue template contract check passed: evidence follow-up forms require scoped implementation fields'],
@@ -94,7 +94,7 @@ const textChecks = [
   ['docs/r-series-progress-audit.md', '#27 and #33 require external/user evidence'],
   ['docs/r-series-progress-audit.md', 'tools/external-evidence-check.js'],
   ['docs/r-series-progress-audit.md', 'tools/issue-template-contract-check.js'],
-  ['docs/r-series-progress-audit.md', '32575846239'],
+  ['docs/r-series-progress-audit.md', 'gh run list --branch main --limit 5'],
   ['docs/r-series-progress-audit.md', 'external evidence ledger check passed: counts match intake rows, status docs, and in-app status'],
   ['docs/r-series-progress-audit.md', 'pass fixture accepted: partial player evidence in progress'],
   ['docs/r-series-progress-audit.md', 'pass fixture accepted: partial lived-experience evidence in progress'],
@@ -109,7 +109,7 @@ const textChecks = [
   ['docs/goal-completion-audit-2026-08-22.md', 'fly-lab-external-evidence-ledger.md'],
   ['docs/goal-completion-audit-2026-08-22.md', 'tools/external-evidence-check.js'],
   ['docs/goal-completion-audit-2026-08-22.md', 'tools/issue-template-contract-check.js'],
-  ['docs/goal-completion-audit-2026-08-22.md', '32575846239'],
+  ['docs/goal-completion-audit-2026-08-22.md', 'gh run list --branch main --limit 5'],
   ['docs/goal-completion-audit-2026-08-22.md', 'Main CI is green on the commit that contains the final audit'],
   ['docs/open-issue-triage-2026-08-22.md', 'r-series-current'],
   ['docs/open-issue-triage-2026-08-22.md', 'parked-unity-line'],
@@ -146,7 +146,8 @@ const textChecks = [
   ['tools/issue-template-contract-check.js', 'issue template contract check passed'],
   ['tools/issue-template-contract-check.js', 'must be required'],
   ['tools/issue-template-contract-check.js', 'Final Implementation Scope'],
-  ['tools/issue-template-contract-check.js', 'Definition of Done']
+  ['tools/issue-template-contract-check.js', 'Definition of Done'],
+  ['tools/r-series-status-check.js', 'must not hard-code a GitHub Actions run id']
 ];
 
 function read(rel) {
@@ -165,6 +166,16 @@ for (const rel of requiredFiles) {
 
 for (const [rel, needle] of textChecks) {
   assert(read(rel).includes(needle), `${rel} missing required text: ${needle}`);
+}
+
+for (const rel of [
+  'docs/fly-lab-validation-results.md',
+  'docs/r-series-progress-audit.md',
+  'docs/goal-completion-audit-2026-08-22.md'
+]) {
+  const content = read(rel);
+  assert(!/actions\/runs\/\d+/.test(content), `${rel} must not hard-code a GitHub Actions run URL`);
+  assert(!/\b\d{11}\b/.test(content), `${rel} must not hard-code a GitHub Actions run id`);
 }
 
 const progress = read('docs/r-series-progress-audit.md');

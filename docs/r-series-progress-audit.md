@@ -12,6 +12,8 @@ Status guardrail: `node tools/r-series-status-check.js` verifies that required R
 
 Open-issue triage: [`open-issue-triage-2026-08-22.md`](open-issue-triage-2026-08-22.md) classifies the older Unity/phenomenon-first issues so they do not steer the current R-series browser slice by accident.
 
+Thread-goal audit: [`goal-completion-audit-2026-08-22.md`](goal-completion-audit-2026-08-22.md) checks the user's active objective requirement by requirement and records why the overall goal is still not complete.
+
 ## Current implementation status
 
 | Issue | Status | Evidence | Remaining gap |

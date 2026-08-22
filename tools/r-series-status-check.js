@@ -11,6 +11,7 @@ const requiredFiles = [
   'docs/fly-lab-validation-runbook.md',
   'docs/fly-lab-validation-results.md',
   'docs/r-series-progress-audit.md',
+  'docs/goal-completion-audit-2026-08-22.md',
   'docs/open-issue-triage-2026-08-22.md',
   '.github/ISSUE_TEMPLATE/fly_lab_lived_experience.yml',
   '.github/ISSUE_TEMPLATE/fly_lab_validation_finding.yml',
@@ -38,6 +39,12 @@ const textChecks = [
   ['docs/r-series-progress-audit.md', '#27 R1 Experience map'],
   ['docs/r-series-progress-audit.md', '#33 R7 Vertical slice validation'],
   ['docs/r-series-progress-audit.md', '#27 and #33 require external/user evidence'],
+  ['docs/r-series-progress-audit.md', 'goal-completion-audit-2026-08-22.md'],
+  ['docs/goal-completion-audit-2026-08-22.md', 'Do not mark the thread goal complete'],
+  ['docs/goal-completion-audit-2026-08-22.md', '#27 lacks lived-experience provenance'],
+  ['docs/goal-completion-audit-2026-08-22.md', '#33 lacks player and SME validation'],
+  ['docs/goal-completion-audit-2026-08-22.md', 'Do not treat screenshots as player, SME, or lived-experience evidence'],
+  ['docs/goal-completion-audit-2026-08-22.md', 'Main CI is green on the commit that contains the final audit'],
   ['docs/open-issue-triage-2026-08-22.md', 'r-series-current'],
   ['docs/open-issue-triage-2026-08-22.md', 'parked-unity-line'],
   ['docs/open-issue-triage-2026-08-22.md', '#1 0/1 phase agreement'],
@@ -75,4 +82,4 @@ const triage = read('docs/open-issue-triage-2026-08-22.md');
 assert(triage.includes('#4, #5'), 'parked Unity line must remain classified');
 assert(triage.includes('Do not pick up #4/#5/#7/#9/#10-#25'), 'parked issue drift guardrail missing');
 
-console.log('r-series status check passed: artifacts present, packets wired, external blockers preserved, parked scope guarded');
+console.log('r-series status check passed: artifacts present, packets wired, external blockers preserved, parked scope guarded, goal audit linked');

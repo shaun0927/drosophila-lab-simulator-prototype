@@ -22,6 +22,8 @@ Final closure checklist: [`final-closure-review-checklist.md`](final-closure-rev
 
 External validation sprint plan: [`external-validation-sprint-plan.md`](external-validation-sprint-plan.md) turns the remaining #27/#33 evidence work into a role-based session order with update, follow-up, and closure rules.
 
+External validation execution issues: #35 collects #27 `LE-01` through `LE-05`; #36 collects #33 `P-01` clean; #37 collects #33 `P-02` dirty; #38 collects #33 `P-03` missing-control; #39 collects #33 `SME-01` fixture/rating review.
+
 External-evidence ledger: [`fly-lab-external-evidence-ledger.md`](fly-lab-external-evidence-ledger.md) records the unfilled #27 lived-experience slots and #33 player/SME validation slots.
 
 ## Current implementation status

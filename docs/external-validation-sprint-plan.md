@@ -15,6 +15,22 @@ Produce the missing non-proxy evidence for the R-series Procedure Lab slice:
 | #33 SME validation | 1 accepted `SME-*` review covering clean, dirty, and missing-control fixtures | `docs/fly-lab-external-evidence-ledger.md`, `docs/fly-lab-validation-results.md` |
 | Follow-up handling | Concrete issue references for every counted Fix/Cut row, with resolved or accepted-non-blocking disposition | GitHub issues, `docs/fly-lab-validation-results.md` |
 
+## Execution Issues
+
+Use these issues to run the sprint without blending evidence types:
+
+| Issue | Evidence slot | Output |
+|---|---|---|
+| #35 | #27 lived-experience interview | `LE-01` through `LE-05`, including at least one design-changing row |
+| #36 | #33 clean-route fresh-player session | `P-01` clean route or fixture evidence |
+| #37 | #33 dirty-route fresh-player session | `P-02` dirty route or fixture evidence |
+| #38 | #33 missing-control fresh-player session | `P-03` missing-control route or fixture evidence |
+| #39 | #33 biology-aware SME review | `SME-01` clean, dirty, and missing-control fixture review with five core ratings |
+
+Do not close #27 before #35 is resolved and reflected in the ledger and experience map.
+
+Do not close #33 before #36, #37, #38, and #39 are resolved and reflected in the ledger and validation results.
+
 ## Roles
 
 | Role | Responsibility | Must not do |

@@ -45,6 +45,7 @@ What is missing:
 - At least 5 accepted event-map rows with user or lived-experience provenance.
 - At least one answer that changes a mechanic, guardrail, or SME risk assessment.
 - A recorded decision that unsupported arbitrary phenomena stay outside the first slice.
+- Execution issue #35 must resolve with accepted `LE-*` rows or an explicit no-experience closure path before #27 can close.
 
 Why it is not complete:
 
@@ -82,6 +83,7 @@ What is missing:
 - Clean, dirty, and missing-control route or fixture coverage across the accepted player sessions.
 - Clean, dirty, and missing-control fixture coverage linked to the accepted SME review id.
 - A final closure decision for #33 based on recorded evidence.
+- Execution issues #36, #37, #38, and #39 must resolve with accepted `P-*` and `SME-*` rows or scoped Fix/Cut follow-up issues before #33 can close.
 
 Why it is not complete:
 

@@ -14,6 +14,7 @@ const requiredFiles = [
   'docs/r-series-progress-audit.md',
   'docs/goal-completion-audit-2026-08-22.md',
   'docs/open-issue-triage-2026-08-22.md',
+  'tools/external-evidence-check.js',
   '.github/ISSUE_TEMPLATE/fly_lab_lived_experience.yml',
   '.github/ISSUE_TEMPLATE/fly_lab_validation_finding.yml',
   'dogfood-output/screenshot-ux-audit.md',
@@ -61,7 +62,8 @@ const textChecks = [
   ['web-prototype/app.js', 'Unsupported arbitrary phenomena stay excluded from the first slice'],
   ['web-prototype/app.js', 'Do not invent unsupported first-slice phenomena'],
   ['web-prototype/smoke-tests.js', 'testLivedExperiencePacket'],
-  ['web-prototype/smoke-tests.js', 'validation packets']
+  ['web-prototype/smoke-tests.js', 'validation packets'],
+  ['tools/external-evidence-check.js', 'external evidence ledger check passed']
 ];
 
 function read(rel) {
@@ -87,12 +89,9 @@ assert(progress.includes('| #27 R1 Experience map | Open'), '#27 must remain exp
 assert(progress.includes('| #33 R7 Vertical slice validation | Open'), '#33 must remain explicitly open until player/SME evidence exists');
 
 const ledger = read('docs/fly-lab-external-evidence-ledger.md');
-assert(ledger.includes('| Lived-experience event rows with user or observed-lab provenance | 5 | 0 | Pending collection | #27 |'), '#27 ledger gate must start with 0 accepted lived-experience rows');
-assert(ledger.includes('| Fresh-player first-run sessions | 3 | 0 | Pending execution | #33 |'), '#33 ledger gate must start with 0 accepted player sessions');
-assert(ledger.includes('| SME or biology-aware review | 1 | 0 | Pending execution | #33 |'), '#33 ledger gate must start with 0 accepted SME reviews');
-assert(ledger.includes('| LE-05 | Pending'), '#27 ledger must reserve five lived-experience intake rows');
-assert(ledger.includes('| P-03 | Pending'), '#33 ledger must reserve three player-session rows');
-assert(ledger.includes('| SME-01 | Pending'), '#33 ledger must reserve one SME-review row');
+assert(ledger.includes('| LE-05 |'), '#27 ledger must reserve five lived-experience intake rows');
+assert(ledger.includes('| P-03 |'), '#33 ledger must reserve three player-session rows');
+assert(ledger.includes('| SME-01 |'), '#33 ledger must reserve one SME-review row');
 
 const triage = read('docs/open-issue-triage-2026-08-22.md');
 assert(triage.includes('#4, #5'), 'parked Unity line must remain classified');

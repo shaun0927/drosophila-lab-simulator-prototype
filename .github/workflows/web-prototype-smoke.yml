@@ -30,6 +30,8 @@ jobs:
           node --check tools/external-validation-tracker-check.test.js
           node --check tools/external-validation-execution-contract-check.js
           node --check tools/external-validation-execution-contract-check.test.js
+          node --check tools/external-validation-intake-runbook-check.js
+          node --check tools/external-validation-intake-runbook-check.test.js
           node --check tools/external-validation-issue-state-audit.js
           node --check tools/external-validation-issue-state-audit.test.js
           node --check tools/external-validation-full-check.js
@@ -59,6 +61,12 @@ jobs:
 
       - name: Self-test external validation execution contracts
         run: node tools/external-validation-execution-contract-check.test.js
+
+      - name: Check external validation intake runbook
+        run: node tools/external-validation-intake-runbook-check.js
+
+      - name: Self-test external validation intake runbook
+        run: node tools/external-validation-intake-runbook-check.test.js
 
       - name: Self-test external evidence checker
         run: node tools/external-evidence-check.test.js

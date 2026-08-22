@@ -6,7 +6,7 @@ Parent contract: [`fly-lab-product-thesis.md`](fly-lab-product-thesis.md)
 
 Implementation PR: https://github.com/shaun0927/drosophila-lab-simulator-prototype/pull/34 merged to `main` at merge commit `f470330`.
 
-CI guardrail: `.github/workflows/web-prototype-smoke.yml` runs JavaScript syntax checks, `node web-prototype/smoke-tests.js`, `node tools/r-series-status-check.js`, `node tools/external-evidence-check.js`, `node tools/external-validation-tracker-check.js`, `node tools/external-validation-tracker-check.test.js`, `node tools/external-validation-execution-contract-check.js`, `node tools/external-validation-execution-contract-check.test.js`, `node tools/external-evidence-check.test.js`, `node tools/external-validation-issue-state-audit.test.js`, `node tools/final-closure-readiness-check.js`, `node tools/final-closure-readiness-check.test.js`, `node tools/open-issue-triage-audit.test.js`, and `node tools/issue-template-contract-check.js` on pull requests and pushes.
+CI guardrail: `.github/workflows/web-prototype-smoke.yml` runs JavaScript syntax checks, `node web-prototype/smoke-tests.js`, `node tools/r-series-status-check.js`, `node tools/external-evidence-check.js`, `node tools/external-validation-tracker-check.js`, `node tools/external-validation-tracker-check.test.js`, `node tools/external-validation-execution-contract-check.js`, `node tools/external-validation-execution-contract-check.test.js`, `node tools/external-validation-intake-runbook-check.js`, `node tools/external-validation-intake-runbook-check.test.js`, `node tools/external-evidence-check.test.js`, `node tools/external-validation-issue-state-audit.test.js`, `node tools/final-closure-readiness-check.js`, `node tools/final-closure-readiness-check.test.js`, `node tools/open-issue-triage-audit.test.js`, and `node tools/issue-template-contract-check.js` on pull requests and pushes.
 
 Status guardrail: `node tools/r-series-status-check.js` verifies that required R-series artifacts, validation packets, screenshot evidence, external blocker language, issue-template contract checks, and parked-issue drift guardrails are still present.
 
@@ -27,6 +27,8 @@ Final closure readiness guardrail: `node tools/final-closure-readiness-check.js`
 External validation sprint plan: [`external-validation-sprint-plan.md`](external-validation-sprint-plan.md) turns the remaining #27/#33 evidence work into a role-based session order with update, follow-up, and closure rules.
 
 External validation intake runbook: [`external-validation-intake-runbook.md`](external-validation-intake-runbook.md) defines the exact edit order after #35 through #39 produce real evidence, including when to update ledger rows, result docs, status counts, issue comments, and final closure commands.
+
+External validation intake runbook guardrail: `node tools/external-validation-intake-runbook-check.js` verifies the runbook keeps the required source order, accepted-row edit order, Fix/Cut handling, status update order, and final closure handoff rules. `node tools/external-validation-intake-runbook-check.test.js` keeps missing-warning, command drift, section-order, and status-update mismatch fixtures in CI.
 
 External validation execution issues: #35 collects #27 `LE-01` through `LE-05`; #36 collects #33 `P-01` clean; #37 collects #33 `P-02` dirty; #38 collects #33 `P-03` missing-control; #39 collects #33 `SME-01` fixture/rating review.
 

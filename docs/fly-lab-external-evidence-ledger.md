@@ -6,6 +6,8 @@ Purpose: keep the remaining external-evidence work for #27 and #33 auditable. Th
 
 Use [`fly-lab-session-capture-packet.md`](fly-lab-session-capture-packet.md) to record raw external evidence before updating this ledger.
 
+Use [`fly-lab-validation-finding-decision-tree.md`](fly-lab-validation-finding-decision-tree.md) to decide whether captured evidence changes counts, opens a fix/cut issue, or gets rejected.
+
 ## Current Ledger Status
 
 | Evidence gate | Required count | Accepted count | Current status | Blocking issue |

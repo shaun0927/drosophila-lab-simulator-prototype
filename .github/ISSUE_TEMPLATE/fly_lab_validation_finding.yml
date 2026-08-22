@@ -9,6 +9,7 @@ body:
     attributes:
       value: |
         Use this after running `docs/fly-lab-validation-runbook.md`.
+        Apply `docs/fly-lab-validation-finding-decision-tree.md` before filing.
         Do not file broad redesign wishes here. Each issue should fix or cut one observed validation failure.
   - type: dropdown
     id: source
@@ -61,7 +62,14 @@ body:
     id: approach
     attributes:
       label: Proposed fix or cut
-      description: Keep the scope to the affected mechanic. Include an explicit non-goal.
+      description: Keep the scope to the affected mechanic. Include implementation approach, PR decomposition, guardrails, and an explicit non-goal.
+    validations:
+      required: true
+  - type: textarea
+    id: success_criteria
+    attributes:
+      label: Success criteria and Definition of Done
+      description: State the concrete pass condition, drift-prevention checklist, and done criteria for this finding.
     validations:
       required: true
   - type: textarea

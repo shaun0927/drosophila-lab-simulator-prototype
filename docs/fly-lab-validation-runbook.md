@@ -2,6 +2,8 @@
 
 Use this to execute the remaining #33 validation without drifting into general feedback. During the session, record raw answers in [`fly-lab-session-capture-packet.md`](fly-lab-session-capture-packet.md) before summarizing results.
 
+After capture, use [`fly-lab-validation-finding-decision-tree.md`](fly-lab-validation-finding-decision-tree.md) to convert findings into pass evidence, fix issues, cut/rework issues, or rejected notes.
+
 ## Validation Goal
 
 Prove or disprove the current five-minute fly-lab slice against two separate questions:
@@ -115,6 +117,8 @@ Each follow-up issue must include:
 - explicit non-goal
 
 Use `.github/ISSUE_TEMPLATE/fly_lab_validation_finding.yml` for these follow-up issues.
+
+Use `docs/fly-lab-validation-finding-decision-tree.md` to choose `Fix before #33 can close`, `Cut or redesign before #33 can close`, or `Follow-up polish after #33`.
 
 ## Results Recording
 

@@ -4,6 +4,8 @@ Date opened: 2026-08-22
 
 Purpose: capture the exact external evidence needed to update [`fly-lab-external-evidence-ledger.md`](fly-lab-external-evidence-ledger.md). This is the field packet for #27 lived-experience collection and #33 player/SME validation. It should be filled during or immediately after sessions, before summary language is written.
 
+Use [`fly-lab-validation-finding-decision-tree.md`](fly-lab-validation-finding-decision-tree.md) to decide whether a captured finding becomes pass evidence, a fix issue, a cut/rework issue, or a rejected note.
+
 ## Capture Rules
 
 - Record exact phrases before interpreting them.
@@ -165,7 +167,8 @@ Open a validation finding issue if:
 2. Update `docs/fly-lab-external-evidence-ledger.md` counts and intake rows.
 3. For #27 accepted rows, update `docs/fly-lab-experience-map.md`.
 4. Open follow-up issues for every fix/cut trigger.
-5. Run:
+5. Apply `docs/fly-lab-validation-finding-decision-tree.md` before changing implementation.
+6. Run:
 
 ```bash
 node web-prototype/smoke-tests.js
@@ -173,7 +176,7 @@ node tools/r-series-status-check.js
 node tools/external-evidence-check.js
 ```
 
-6. Update #27 or #33 with the result link and whether closure criteria are now met.
+7. Update #27 or #33 with the result link and whether closure criteria are now met.
 
 ## Closure Warning
 

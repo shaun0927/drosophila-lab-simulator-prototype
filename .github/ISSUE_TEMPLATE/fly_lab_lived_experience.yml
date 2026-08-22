@@ -9,6 +9,7 @@ body:
     attributes:
       value: |
         Use this when adding firsthand, observed, or secondhand fly-lab experience to close #27.
+        Apply `docs/fly-lab-validation-finding-decision-tree.md` before turning the entry into implementation work.
         Keep it concrete. The goal is to convert real lab friction into game verbs, failure modes, delayed consequences, and SME risks.
   - type: dropdown
     id: provenance
@@ -61,3 +62,8 @@ body:
       description: Paste the event-table row or note that this should not be included.
     validations:
       required: true
+  - type: textarea
+    id: implementation_scope
+    attributes:
+      label: Implementation scope and guardrails
+      description: If this entry should change the game, include final scope, success criteria, verification method, explicit non-goals, and drift-prevention notes.

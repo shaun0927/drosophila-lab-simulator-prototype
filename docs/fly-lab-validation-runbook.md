@@ -1,6 +1,6 @@
 # Fly-Lab Validation Runbook
 
-Use this to execute the remaining #33 validation without drifting into general feedback.
+Use this to execute the remaining #33 validation without drifting into general feedback. During the session, record raw answers in [`fly-lab-session-capture-packet.md`](fly-lab-session-capture-packet.md) before summarizing results.
 
 ## Validation Goal
 

@@ -54,6 +54,7 @@ The player repeatedly chooses whether to make the phenomenon more believable or 
 - `docs/fly-lab-sme-validation-sheet.md` — R7 biology-aware validation rubric.
 - `docs/fly-lab-validation-runbook.md` — Step-by-step protocol for player/SME validation and follow-up issue creation.
 - `docs/fly-lab-validation-results.md` — Validation status and result log.
+- `docs/fly-lab-session-capture-packet.md` — Field capture packet for recording exact #27/#33 external evidence before updating the ledger.
 - `docs/00-competition-scope.md`
 - `docs/01-core-fun-loop-paper-design.md`
 - `docs/design-verdict.md`

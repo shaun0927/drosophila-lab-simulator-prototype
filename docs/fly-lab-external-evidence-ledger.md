@@ -4,6 +4,8 @@ Date opened: 2026-08-22
 
 Purpose: keep the remaining external-evidence work for #27 and #33 auditable. This ledger is the intake checklist for evidence that cannot be produced by smoke tests, screenshots, or issue comments.
 
+Use [`fly-lab-session-capture-packet.md`](fly-lab-session-capture-packet.md) to record raw external evidence before updating this ledger.
+
 ## Current Ledger Status
 
 | Evidence gate | Required count | Accepted count | Current status | Blocking issue |

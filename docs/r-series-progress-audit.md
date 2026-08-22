@@ -48,6 +48,7 @@ browser smoke passed: assay mini-plot renders after controlled run
 browser smoke passed: clean/dirty/missing-control URL fixtures load expected reviewer findings
 responsive browser QA passed: desktop/mobile fixtures render without horizontal overflow
 main CI passed: Web prototype smoke run https://github.com/shaun0927/drosophila-lab-simulator-prototype/actions/runs/32563843521
+screenshot UX audit passed after fixing Procedure Lab chrome drift: `dogfood-output/screenshot-ux-audit.md`
 ```
 
 ## Drift audit
@@ -65,6 +66,7 @@ The current implementation stays aligned with the parent contract because:
 - negative geotaxis produces assay records with n, control, mean climb, variance, confidence, and caveats, and displays a compact plot for readability
 - reviewer attacks now point to evidence refs from experiment records
 - clean, dirty, and missing-control validation paths are reproducible through URL fixtures
+- Procedure Lab chrome now uses `Lab Record View` and `can the notebook defend the claim?` instead of old phenomenon-first chamber/footer language
 
 ## Why the full goal is not complete yet
 

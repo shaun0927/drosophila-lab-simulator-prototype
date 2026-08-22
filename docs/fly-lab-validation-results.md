@@ -30,6 +30,7 @@ browser smoke passed: assay mini-plot renders after controlled run
 browser smoke passed: clean/dirty/missing-control URL fixtures load expected reviewer findings
 responsive browser QA passed: desktop/mobile fixtures render without horizontal overflow
 main CI passed: Web prototype smoke run https://github.com/shaun0927/drosophila-lab-simulator-prototype/actions/runs/32563843521
+screenshot UX audit passed after fixing Procedure Lab chrome drift: `dogfood-output/screenshot-ux-audit.md`
 ```
 
 Reusable validation URLs:
@@ -41,6 +42,8 @@ Reusable validation URLs:
 ## Why this is not sufficient for #33
 
 The smoke harness and browser checks prove that the route mechanics can execute, clean/dirty/missing-control paths produce different reviewer findings, reusable URL fixtures load those paths, the specimen pad renders, sorting clicks register, the assay mini-plot appears after a controlled run, and desktop/mobile fixture pages do not horizontally overflow. They do not prove that a fresh player understands the route, that the procedure feels good, or that a biology-aware reviewer accepts the simplifications.
+
+The screenshot UX audit also caught and fixed a visible drift issue where Procedure Lab still used the old `Live Assay Chamber` and phenomenon-first footer language. This remains proxy evidence only, not a replacement for player or SME validation.
 
 ## Pending validation
 

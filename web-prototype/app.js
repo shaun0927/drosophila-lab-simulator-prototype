@@ -15,7 +15,12 @@ function renderStats(){
   $('#stats').innerHTML = `<div class="stat">Time ${S.time}s</div><div class="stat">Budget $${S.budget}</div><div></div>`+
     ['ev','weird','cred','hype','susp'].map(k=>`<div class="stat ${k==='susp'?'bad':'good'}">${statName(k)} ${S[k]}</div>`).join('');
 }
-function render(){ renderStats(); $('#log').innerHTML=S.log.slice(-9).map(x=>`<div>${x}</div>`).join(''); ({mode,lab,traits,discover,assay,figure,reviewer,final,result})[S.phase](); }
+function render(){ renderStats(); renderChrome(); $('#log').innerHTML=S.log.slice(-9).map(x=>`<div>${x}</div>`).join(''); ({mode,lab,traits,discover,assay,figure,reviewer,final,result})[S.phase](); }
+function renderChrome(){
+  const procedure = S && S.lab && S.phase==='lab';
+  $('#side-title').textContent = procedure ? 'Lab Record View' : 'Live Assay Chamber';
+  $('#footer-question').textContent = procedure ? 'Core question: can the notebook defend the claim?' : 'Core question: make the phenomenon more believable, or more sensational?';
+}
 function btn(label, detail, fn, cls='choice'){ const b=document.createElement('button'); b.className=cls; b.innerHTML=`<h3>${label}</h3><p>${detail||''}</p>`; b.onclick=fn; return b; }
 function setStage(html){ $('#stage').innerHTML=html; $('#choices').innerHTML=''; }
 function choose(c, next){ add(c); if(c.log) log(c.log); if(c.title) S.title=c.title; if(S.time<=0||S.budget<=0) return submit(); if(next) S.phase=next; render(); }
@@ -451,6 +456,27 @@ function drawChamber(){
   const cv=$('#chamber'), ctx=cv.getContext('2d'), w=cv.width, h=cv.height; anim+=0.025;
   ctx.clearRect(0,0,w,h); ctx.fillStyle='#02040a'; ctx.fillRect(0,0,w,h);
   ctx.strokeStyle='#25324a'; ctx.strokeRect(8,8,w-16,h-16);
+  if(S.lab&&S.phase==='lab'){
+    const vials = activeVials(), batches = S.lab.batchRecords.length, assays = S.lab.assayRecords.length, review = S.lab.figureReview;
+    ctx.fillStyle='#d8e6ff'; ctx.font='20px system-ui'; ctx.fillText('Procedure record, not phenomenon chamber.',28,48);
+    ctx.fillStyle='#9fb0c6'; ctx.font='15px system-ui'; ctx.fillText(`Day ${S.lab.day} • active vials ${vials.length} • batches ${batches} • assays ${assays}`,28,76);
+    vials.slice(0,5).forEach((v,i)=>{
+      const x=38+i*92, y=122, age=vialAge(v), conf=v.lineageConfidence||0;
+      ctx.strokeStyle=v.flags&&v.flags.some(f=>f.includes('risk')||f.includes('incomplete'))?'#d78352':'#7cc7ff';
+      ctx.fillStyle='#0b111c'; ctx.fillRect(x,y,54,112); ctx.strokeRect(x,y,54,112);
+      ctx.fillStyle=conf>=80?'#9fdc61':conf>=50?'#f5c86a':'#ff8f6b';
+      ctx.fillRect(x+8,y+98-conf*.86,38,conf*.86);
+      ctx.fillStyle='#d8e6ff'; ctx.font='12px system-ui'; ctx.fillText(v.id,x,y+130);
+      ctx.fillStyle='#9fb0c6'; ctx.fillText(`${age}d`,x+2,y+146);
+    });
+    if(review){
+      ctx.fillStyle='#f5c86a'; ctx.font='15px system-ui'; ctx.fillText(`Reviewer: ${review.finding.id}`,28,h-58);
+      ctx.fillStyle='#d8e6ff'; ctx.font='13px system-ui'; ctx.fillText(`Evidence ref ${review.finding.evidenceRef}`,28,h-34);
+    } else {
+      ctx.fillStyle='#9fb0c6'; ctx.font='14px system-ui'; ctx.fillText('Run sorting and assay records to expose reviewer vulnerabilities.',28,h-34);
+    }
+    return requestAnimationFrame(drawChamber);
+  }
   if(!S.phenomenon){ ctx.fillStyle='#d8e6ff'; ctx.font='20px system-ui'; ctx.fillText('No mutant line yet.',28,55); ctx.fillStyle='#9fb0c6'; ctx.font='16px system-ui'; ctx.fillText('Choose traits to discover what flies do.',28,82); return requestAnimationFrame(drawChamber); }
   const grad=ctx.createLinearGradient(w*.4,0,w*.6,h); grad.addColorStop(0,'rgba(70,150,255,.28)'); grad.addColorStop(1,'rgba(70,150,255,.02)'); ctx.fillStyle=grad; ctx.fillRect(w*.38,20,w*.24,h-40);
   for(let i=0;i<38;i++){ let a=anim*(S.phenomenon.name.includes('Dance')?3.0:1.7)+i*.57, r=55+(i%8)*13, x=Math.cos(a+i)*r+Math.sin(a*.37+i)*25, y=Math.sin(a*1.2+i)*r*.55+Math.cos(a*.21+i)*35; if(S.phenomenon.name.includes('Wall')){x=Math.sin(a+i)*w*.38;y=h*.31*Math.sign(Math.sin(a*.35+i));} if(S.phenomenon.name.includes('Spiral')){r=(i*8+(anim*80)%130);x=Math.cos(a)*r;y=Math.sin(a)*r*.55;} ctx.fillStyle=i%5?'#f1d35e':'#72bdff'; ctx.fillRect(w/2+x,h/2+y,7,7); }

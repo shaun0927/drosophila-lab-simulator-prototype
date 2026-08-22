@@ -94,6 +94,10 @@ function isMissingFollowUp(value) {
   return !value || /^(Pending|none|n\/a|-|No)$/i.test(value);
 }
 
+function isConcreteIssueReference(value) {
+  return /(^|\s)(#\d+|https:\/\/github\.com\/[^/\s]+\/[^/\s]+\/issues\/\d+)(\s|$)/.test(value || '');
+}
+
 function isMissingEvidenceField(value) {
   return !value || /^(Pending|n\/a|-)$/i.test(value);
 }
@@ -143,6 +147,7 @@ function requireFixCutFollowUps(markdown) {
     const followUp = isPlayer ? row[8] : row[9];
     if (/^(Fix|Cut)$/i.test(decision)) {
       assert(!isMissingFollowUp(followUp), `${id} decision ${decision} must link a follow-up issue before it can count`);
+      assert(isConcreteIssueReference(followUp), `${id} decision ${decision} follow-up must be a concrete GitHub issue reference`);
     }
   }
 }

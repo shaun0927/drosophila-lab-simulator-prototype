@@ -3,8 +3,6 @@ const path = require('path');
 const { execFileSync } = require('child_process');
 
 const root = process.cwd();
-const trackerPath = path.join(root, 'docs/external-validation-execution-tracker.md');
-const tracker = fs.readFileSync(trackerPath, 'utf8');
 
 function assert(condition, message) {
   if (!condition) {
@@ -38,38 +36,62 @@ function issueNumbersFrom(text) {
   return [...new Set(matches.map(match => Number(match.slice(1))))];
 }
 
-function ghIssueState(number) {
+function ghIssueState(number, cwd = root) {
   const output = execFileSync('gh', ['issue', 'view', String(number), '--json', 'number,state,title,url'], {
-    cwd: root,
+    cwd,
     encoding: 'utf8'
   });
   return JSON.parse(output);
 }
 
-const summaryRows = parseSummaryRows(tracker);
-assert(summaryRows.length > 0, 'tracker has no current gate summary rows to audit');
+function expectedIssueStates(markdown) {
+  const summaryRows = parseSummaryRows(markdown);
+  assert(summaryRows.length > 0, 'tracker has no current gate summary rows to audit');
 
-const expected = new Map();
-for (const row of summaryRows) {
-  for (const number of issueNumbersFrom(row.parent)) {
-    expected.set(number, 'OPEN');
-  }
-  for (const number of issueNumbersFrom(row.executionIssue)) {
-    if (/^Open$/i.test(row.issueState)) {
+  const expected = new Map();
+  for (const row of summaryRows) {
+    for (const number of issueNumbersFrom(row.parent)) {
       expected.set(number, 'OPEN');
     }
+    for (const number of issueNumbersFrom(row.executionIssue)) {
+      if (/^Open$/i.test(row.issueState)) {
+        expected.set(number, 'OPEN');
+      }
+    }
   }
+
+  return expected;
 }
 
-for (const number of [27, 33, 35, 36, 37, 38, 39]) {
-  assert(expected.has(number), `tracker does not declare expected state for issue #${number}`);
+function auditTrackerIssueStates(markdown, fetchIssueState = ghIssueState) {
+  const expected = expectedIssueStates(markdown);
+
+  for (const number of [27, 33, 35, 36, 37, 38, 39]) {
+    assert(expected.has(number), `tracker does not declare expected state for issue #${number}`);
+  }
+
+  for (const [number, expectedState] of expected.entries()) {
+    const issue = fetchIssueState(number);
+    assert(issue.state === expectedState, `issue #${number} tracker state mismatch: expected ${expectedState}, got ${issue.state}`);
+  }
+
+  assert(markdown.includes('Do not close #27, #33, or the thread goal from the current tracker state'), 'tracker must preserve current no-closure decision');
 }
 
-for (const [number, expectedState] of expected.entries()) {
-  const issue = ghIssueState(number);
-  assert(issue.state === expectedState, `issue #${number} tracker state mismatch: expected ${expectedState}, got ${issue.state}`);
+function main() {
+  const trackerPath = path.join(root, 'docs/external-validation-execution-tracker.md');
+  const tracker = fs.readFileSync(trackerPath, 'utf8');
+  auditTrackerIssueStates(tracker);
+  console.log('external validation issue-state audit passed: tracker issue states match GitHub');
 }
 
-assert(tracker.includes('Do not close #27, #33, or the thread goal from the current tracker state'), 'tracker must preserve current no-closure decision');
+if (require.main === module) {
+  main();
+}
 
-console.log('external validation issue-state audit passed: tracker issue states match GitHub');
+module.exports = {
+  auditTrackerIssueStates,
+  expectedIssueStates,
+  parseSummaryRows,
+  issueNumbersFrom
+};

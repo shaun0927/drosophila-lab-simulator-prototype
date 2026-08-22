@@ -27,6 +27,8 @@ jobs:
           node --check tools/external-evidence-check.js
           node --check tools/external-evidence-check.test.js
           node --check tools/external-validation-tracker-check.js
+          node --check tools/external-validation-issue-state-audit.js
+          node --check tools/external-validation-issue-state-audit.test.js
           node --check tools/issue-template-contract-check.js
 
       - name: Run fly-lab smoke tests
@@ -43,6 +45,9 @@ jobs:
 
       - name: Self-test external evidence checker
         run: node tools/external-evidence-check.test.js
+
+      - name: Self-test external validation issue-state audit
+        run: node tools/external-validation-issue-state-audit.test.js
 
       - name: Check evidence issue templates
         run: node tools/issue-template-contract-check.js

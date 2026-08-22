@@ -6,7 +6,7 @@ Parent contract: [`fly-lab-product-thesis.md`](fly-lab-product-thesis.md)
 
 Implementation PR: https://github.com/shaun0927/drosophila-lab-simulator-prototype/pull/34 merged to `main` at merge commit `f470330`.
 
-CI guardrail: `.github/workflows/web-prototype-smoke.yml` runs JavaScript syntax checks, `node web-prototype/smoke-tests.js`, `node tools/r-series-status-check.js`, `node tools/external-evidence-check.js`, `node tools/external-validation-tracker-check.js`, `node tools/external-evidence-check.test.js`, and `node tools/issue-template-contract-check.js` on pull requests and pushes.
+CI guardrail: `.github/workflows/web-prototype-smoke.yml` runs JavaScript syntax checks, `node web-prototype/smoke-tests.js`, `node tools/r-series-status-check.js`, `node tools/external-evidence-check.js`, `node tools/external-validation-tracker-check.js`, `node tools/external-evidence-check.test.js`, `node tools/external-validation-issue-state-audit.test.js`, and `node tools/issue-template-contract-check.js` on pull requests and pushes.
 
 Status guardrail: `node tools/r-series-status-check.js` verifies that required R-series artifacts, validation packets, screenshot evidence, external blocker language, issue-template contract checks, and parked-issue drift guardrails are still present.
 
@@ -29,6 +29,8 @@ Session packet source: [`external-validation-session-packets.md`](external-valid
 External validation execution tracker: [`external-validation-execution-tracker.md`](external-validation-execution-tracker.md) records that #35 through #39 are open and that #27/#33 accepted evidence counts remain at zero until real sessions are recorded. `node tools/external-validation-tracker-check.js` verifies the tracker counts against the ledger and route-coverage status.
 
 Live issue-state audit: `node tools/external-validation-issue-state-audit.js` uses authenticated `gh` locally to verify that #27, #33, and #35 through #39 still match the open states recorded in the execution tracker. This is not a CI gate because it depends on live GitHub issue state.
+
+Issue-state audit self-test: `node tools/external-validation-issue-state-audit.test.js` uses mock issue states in CI to verify that the live audit parser rejects closed issues, missing no-closure decisions, and missing required execution issues.
 
 External-evidence ledger: [`fly-lab-external-evidence-ledger.md`](fly-lab-external-evidence-ledger.md) records the unfilled #27 lived-experience slots and #33 player/SME validation slots.
 

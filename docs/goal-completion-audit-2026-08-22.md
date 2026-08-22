@@ -14,6 +14,8 @@ Prototype status aid: `web-prototype/index.html?validation=status` opens an in-a
 
 External validation execution tracker: [`external-validation-execution-tracker.md`](external-validation-execution-tracker.md) records which #35 through #39 execution issues still lack accepted evidence rows. `node tools/external-validation-tracker-check.js` verifies that tracker counts still match the evidence ledger and route-coverage status. `node tools/external-validation-issue-state-audit.js` locally verifies the tracker issue states against live GitHub.
 
+Issue-state audit self-test: `node tools/external-validation-issue-state-audit.test.js` verifies the live issue-state audit parser and mismatch detection with mock issue states in CI.
+
 ## Requirement Matrix
 
 | Requirement from the objective | Current evidence | Status | Why this status is correct |
@@ -161,5 +163,6 @@ The objective can be marked complete only when:
 9. `node tools/external-evidence-check.js` passes.
 10. `node tools/external-validation-tracker-check.js` passes.
 11. `node tools/external-validation-issue-state-audit.js` passes in an authenticated local `gh` environment.
-12. `node tools/issue-template-contract-check.js` passes.
-13. Main CI is green on the commit that contains the final audit.
+12. `node tools/external-validation-issue-state-audit.test.js` passes.
+13. `node tools/issue-template-contract-check.js` passes.
+14. Main CI is green on the commit that contains the final audit.

@@ -108,6 +108,7 @@ const textChecks = [
   ['docs/r-series-progress-audit.md', 'rejects Fix/Cut follow-up references that point back to #27 or #33'],
   ['docs/r-series-progress-audit.md', 'requires the follow-up issue accepted count to match unique concrete Fix/Cut follow-up references'],
   ['docs/r-series-progress-audit.md', 'the in-app status cannot hide unresolved validation failures'],
+  ['docs/r-series-progress-audit.md', 'requires the follow-up issue ledger gate to remain `As needed`, linked to #33, and represented by a non-negative accepted count'],
   ['docs/r-series-progress-audit.md', 'requires accepted LE provenance and design-effect fields to use the allowed #27 closure vocabulary'],
   ['docs/r-series-progress-audit.md', 'requires the #27 design-change count to match accepted LE rows'],
   ['docs/r-series-progress-audit.md', 'uses ledger counts to accept either zero-evidence pending language or partial-evidence in-progress language'],
@@ -212,6 +213,7 @@ const textChecks = [
   ['tools/r-series-status-check.js', 'must not hard-code a GitHub Actions run id'],
   ['tools/r-series-status-check.js', 'validateEvidenceStatusLanguage'],
   ['tools/r-series-status-check.js', 'partial player/SME validation progress'],
+  ['tools/r-series-status-check.js', 'follow-up issue gate must remain As needed in the ledger'],
   ['tools/r-series-status-check.js', 'pending user-input language while #27 evidence count is zero']
 ];
 
@@ -236,8 +238,10 @@ function currentStatusRows(markdown) {
     const row = cells(line);
     if (row.length !== 5 || row[0] === 'Evidence gate') continue;
     rows.set(row[0], {
-      required: Number(row[1]),
-      accepted: Number(row[2])
+      required: row[1],
+      accepted: Number(row[2]),
+      status: row[3],
+      issue: row[4]
     });
   }
   return rows;
@@ -253,13 +257,17 @@ function validateEvidenceStatusLanguage() {
   const designChange = ledgerRows.get('Lived-experience answer that changes a mechanic, guardrail, or SME risk');
   const playerRows = ledgerRows.get('Fresh-player first-run sessions');
   const smeRows = ledgerRows.get('SME or biology-aware review');
+  const followUpRows = ledgerRows.get('Follow-up fix/cut issues for failed external criteria');
   const experienceMap = read('docs/fly-lab-experience-map.md');
   const validationResults = read('docs/fly-lab-validation-results.md');
 
-  assert(livedRows && designChange && playerRows && smeRows, 'ledger missing evidence status rows required for dynamic status language check');
+  assert(livedRows && designChange && playerRows && smeRows && followUpRows, 'ledger missing evidence status rows required for dynamic status language check');
+  assert(followUpRows.required === 'As needed', 'follow-up issue gate must remain As needed in the ledger');
+  assert(followUpRows.issue === '#33', 'follow-up issue gate must remain linked to #33');
+  assert(Number.isInteger(followUpRows.accepted) && followUpRows.accepted >= 0, 'follow-up issue accepted count must be a non-negative integer');
 
   const hasLivedEvidence = livedRows.accepted > 0 || designChange.accepted > 0;
-  const hasValidationEvidence = playerRows.accepted > 0 || smeRows.accepted > 0;
+  const hasValidationEvidence = playerRows.accepted > 0 || smeRows.accepted > 0 || followUpRows.accepted > 0;
 
   if (hasLivedEvidence) {
     requireAnyText(experienceMap, ['User lived-experience pass: in progress', 'Accepted lived-experience rows'], 'experience map must describe partial lived-evidence progress');

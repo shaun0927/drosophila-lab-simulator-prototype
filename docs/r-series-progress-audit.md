@@ -114,6 +114,7 @@ The current implementation stays aligned with the parent contract because:
 - `node tools/external-evidence-check.js` rejects Fix/Cut follow-up references that point back to #27 or #33
 - `node tools/external-evidence-check.js` requires the follow-up issue accepted count to match unique concrete Fix/Cut follow-up references
 - `?validation=status` and `web-prototype/data.js` expose the Fix/Cut follow-up issue gate so the in-app status cannot hide unresolved validation failures
+- `node tools/r-series-status-check.js` requires the follow-up issue ledger gate to remain `As needed`, linked to #33, and represented by a non-negative accepted count
 - `node tools/external-evidence-check.js` requires accepted LE provenance and design-effect fields to use the allowed #27 closure vocabulary
 - `node tools/external-evidence-check.js` requires the #27 design-change count to match accepted LE rows whose design effect is a mechanic change, guardrail change, or SME-risk update
 - `node tools/external-evidence-check.js` rejects `Fix` or `Cut` player/SME evidence rows unless they link a concrete follow-up issue before counting

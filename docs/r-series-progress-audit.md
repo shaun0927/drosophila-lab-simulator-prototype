@@ -6,6 +6,8 @@ Parent contract: [`fly-lab-product-thesis.md`](fly-lab-product-thesis.md)
 
 Implementation PR: https://github.com/shaun0927/drosophila-lab-simulator-prototype/pull/34
 
+CI guardrail: `.github/workflows/web-prototype-smoke.yml` runs JavaScript syntax checks and `node web-prototype/smoke-tests.js` on pull requests and pushes.
+
 ## Current implementation status
 
 | Issue | Status | Evidence | Remaining gap |
@@ -26,6 +28,8 @@ Commands run:
 ```bash
 node --check web-prototype/app.js
 node --check web-prototype/data.js
+node --check web-prototype/smoke-tests.js
+node web-prototype/smoke-tests.js
 ```
 
 Smoke checks run with a DOM stub:

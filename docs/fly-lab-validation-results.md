@@ -2,6 +2,8 @@
 
 Implementation PR: https://github.com/shaun0927/drosophila-lab-simulator-prototype/pull/34
 
+CI guardrail: `.github/workflows/web-prototype-smoke.yml` runs syntax checks and `node web-prototype/smoke-tests.js` for pull requests and pushes.
+
 No external player or SME validation has been run yet.
 
 ## Current internal regression status

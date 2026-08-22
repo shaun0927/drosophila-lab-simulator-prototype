@@ -403,6 +403,23 @@ expectFail(
 );
 
 expectFail(
+  'accepted no-experience LE row with design change',
+  baseLedger
+    .replace('| Lived-experience event rows with user or observed-lab provenance | 5 | 0 | Pending collection | #27 |', '| Lived-experience event rows with user or observed-lab provenance | 5 | 1 | In progress | #27 |')
+    .replace('| Lived-experience answer that changes a mechanic, guardrail, or SME risk | 1 | 0 | Pending collection | #27 |', '| Lived-experience answer that changes a mechanic, guardrail, or SME risk | 1 | 1 | In progress | #27 |')
+    .replace('| LE-01 | Pending | Pending | Pending | Pending | Pending | Pending | Pending | No |', '| LE-01 | explicit no relevant experience | light show | add spectacle | novelty | fake memory | wrong slice | mechanic change | Yes |'),
+  'LE-01 no-experience row must use explicit exclusion as its design effect',
+  {
+    externalEvidence: {
+      livedRows: {accepted: 1, required: 5},
+      livedDesignChange: {accepted: 1, required: 1},
+      playerSessions: {accepted: 0, required: 3},
+      smeReviews: {accepted: 0, required: 1}
+    }
+  }
+);
+
+expectFail(
   'accepted player row with incomplete required field',
   baseLedger
     .replace('| Fresh-player first-run sessions | 3 | 0 | Pending execution | #33 |', '| Fresh-player first-run sessions | 3 | 1 | In progress | #33 |')

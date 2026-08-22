@@ -142,6 +142,9 @@ function requireLivedExperienceContract(row, id) {
   const designEffect = row[7] || '';
   assert(/^(firsthand|observed lab work|explicit no relevant experience)$/i.test(provenance), `${id} accepted lived-experience row has invalid provenance`);
   assert(/^(mechanic change|guardrail change|SME risk update|explicit exclusion)$/i.test(designEffect), `${id} accepted lived-experience row has invalid design effect`);
+  if (/^explicit no relevant experience$/i.test(provenance)) {
+    assert(/^explicit exclusion$/i.test(designEffect), `${id} no-experience row must use explicit exclusion as its design effect`);
+  }
 }
 
 function requirePlayerDecisionConsistency(row, id) {
